@@ -61,7 +61,10 @@ function naturLaden(text,s){
   const p=(async()=>{
     const url=naturUrl(text,s);let r;
     try{const c=await caches.open('samlernt-stimme');r=await c.match(url);
-      if(!r){r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);try{await c.put(url,r.clone())}catch(e){}}}
+      if(!r){r=await fetch(url);
+        // Die Begründung des Servers (z. B. von OpenAI) weitergeben, damit Eltern sehen, woran es liegt
+        if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.fehler||('HTTP '+r.status))}
+        try{await c.put(url,r.clone())}catch(e){}}}
     catch(e){
       // Server nicht erreichbar oder ohne Guthaben: eine Weile nur die Gerätestimme nehmen statt jedes Mal zu warten
       NATUR.aus=Date.now()+5*60000;throw e;
