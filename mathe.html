@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Sam lernt">
+<meta name="theme-color" content="#ffe3b8">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="bilder/icon-180.png">
+<link rel="icon" href="bilder/icon-192.png">
+<title>Sam lernt: Mathe</title>
+<link rel="stylesheet" href="gemeinsam/stil.css">
+<style>
+/* Zahl + Zehnerfeld */
+.bignum{font-size:min(32vw,22vh);line-height:1;font-weight:900;text-shadow:0 7px 0 rgba(0,0,0,.13);cursor:pointer}
+.ghost{color:#d8c3ae!important;text-shadow:none}
+.frame,.grp{--s:min(15vw,10vh);display:grid;grid-template-columns:repeat(var(--cols,5),var(--s));grid-auto-rows:var(--s);gap:6px;padding:10px;background:#ffffff70;border-radius:22px}
+.grp{--s:min(10.5vw,8.5vh)}
+.slot{position:relative;background:#fff;border-radius:16px;display:grid;place-items:center;box-shadow:inset 0 0 0 3px #f3dfcb}
+.obj{font-size:calc(var(--s)*.68);line-height:1;transition:transform .35s,opacity .35s,filter .35s;display:flex;align-items:center;justify-content:center}
+.obj .fig{width:calc(var(--s)*.86);height:calc(var(--s)*.86)}
+.obj.hidden{opacity:0;transform:scale(.2)}
+.obj.todo{filter:grayscale(1);opacity:.4;cursor:pointer;animation:wobble 1.6s ease-in-out infinite}
+.obj.hl{transform:scale(1.18)}
+.obj.gone{opacity:.18;filter:grayscale(1);transform:scale(.7) rotate(-25deg)}
+.slot.x::after{content:"✖";position:absolute;font-size:calc(var(--s)*.6);color:#e53935;animation:pop .3s}
+.slot i{position:absolute;top:1px;right:5px;font-style:normal;font-weight:900;font-size:calc(var(--s)*.3);color:#e65100;animation:pop .3s}
+.groups{display:flex;align-items:center;gap:min(3vw,2vh);flex-wrap:wrap;justify-content:center}
+.op{font-size:min(12vw,8vh);font-weight:900}
+.eq{font-size:min(17vw,12vh);font-weight:900;line-height:1;text-shadow:0 5px 0 rgba(0,0,0,.1);display:flex;gap:.25em;align-items:center}
+/* Zahlenleiste (Entdecken) */
+.strip{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:0 12px 14px}
+.strip button{width:min(14vw,9vh);height:min(14vw,9vh);border-radius:18px;background:var(--c);color:#fff;font-size:min(8vw,5.5vh);font-weight:900;box-shadow:0 5px 0 rgba(0,0,0,.2);text-shadow:0 2px 0 rgba(0,0,0,.2)}
+.strip button.on{outline:5px solid #fff;transform:scale(1.1)}
+/* Karten */
+.cards{display:flex;gap:min(4vw,3vh);flex-wrap:wrap;justify-content:center;max-width:100%}
+.card{width:min(30vw,22vh);aspect-ratio:3/4;background:#fff;border-radius:28px;color:var(--c);font-size:min(20vw,15vh);font-weight:900;box-shadow:0 8px 0 rgba(0,0,0,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;transition:opacity .3s}
+.num{width:min(20vw,13vh);height:min(20vw,13vh);color:var(--c);font-size:min(13vw,9vh);font-weight:900}
+.mini{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;font-size:min(3.4vw,2.6vh);height:2.6em;margin-top:.4em;align-content:start}
+/* Aufnehmen */
+.recrow{display:flex;gap:min(4vw,3vh);align-items:center}
+.mic{width:min(28vw,17vh);height:min(28vw,17vh);border-radius:50%;background:#ef5350;color:#fff;font-size:min(14vw,9vh);box-shadow:0 8px 0 rgba(0,0,0,.18)}
+.mic.live{background:#c62828;animation:pulse .8s ease-in-out infinite}
+.recs{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center}
+.recs .n{font-size:30px;font-weight:900;width:44px;text-align:center}
+.recs .b{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:8px}
+.stats div{background:#fff8ee;border-radius:12px;padding:8px;text-align:center;font-size:13px}
+.stats b{display:block;font-size:22px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script src="gemeinsam/kern.js"></script>
+<script src="gemeinsam/figuren.js"></script>
+<script src="gemeinsam/ki.js"></script>
+<script src="gemeinsam/belohnungen.js"></script>
+<script>
+const WORDS=['null','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn'];
+const CAP=w=>w[0].toUpperCase()+w.slice(1);
+const COLORS=['#8d8d8d','#f44336','#ff9800','#f9a825','#43a047','#00897b','#039be5','#3949ab','#8e24aa','#d81b60','#6d4c41'];
+const THINGS=[
+  {e:'🍎',sg:'ein Apfel',pl:'Äpfel'},{e:'🐶',sg:'ein Hund',pl:'Hunde'},{e:'⭐',sg:'ein Stern',pl:'Sterne'},
+  {e:'🐟',sg:'ein Fisch',pl:'Fische'},{e:'🚗',sg:'ein Auto',pl:'Autos'},{e:'🎈',sg:'ein Luftballon',pl:'Luftballons'},
+  {e:'🦆',sg:'eine Ente',pl:'Enten'},{e:'🍓',sg:'eine Erdbeere',pl:'Erdbeeren'},{e:'🐞',sg:'ein Marienkäfer',pl:'Marienkäfer'},
+  {e:'🌸',sg:'eine Blume',pl:'Blumen'},{e:'🐱',sg:'eine Katze',pl:'Katzen'},{e:'🍌',sg:'eine Banane',pl:'Bananen'},
+  {e:'🦖',sg:'ein Dino',pl:'Dinos'}
+];
+// Die Figuren der Reihe kommen besonders oft vor
+const FIGTHINGS=Object.keys(CHAR).map(f=>({f,sg:CHAR[f].sg,pl:CHAR[f].pl}));
+const thing=()=>Math.random()<.5?rnd(FIGTHINGS):rnd(THINGS);
+const thingHTML=th=>th.f?fig(th.f):th.e;
+const app=$('#app');
+
+const M={max:load('mathe.max',5),useRec:load('mathe.useRec',true),stats:load('mathe.stats',{}),last:null};
+const weights={};
+
+/* ---------- Eigene Aufnahmen der Zahlen (bleiben im Browser gespeichert) ---------- */
+const rec={};
+const playRec=(n,t=token)=>playUrl(rec[n],t);
+// Text und Zahlen gemischt sprechen: Zahlen kommen aus der eigenen Aufnahme, wenn es eine gibt
+async function talk(t,...parts){
+  let buf='';
+  for(const p of parts){
+    if(t!==token)return;
+    if(typeof p==='number'){
+      if(rec[p]&&M.useRec){if(buf.trim())await say(buf,t);buf='';await playRec(p,t)}
+      else buf+=' '+CAP(WORDS[p])+' ';
+    }else buf+=p;
+  }
+  if(buf.trim())await say(buf,t);
+}
+let dbp=null;
+function db(){
+  return dbp||(dbp=new Promise((res,rej)=>{
+    const r=indexedDB.open('samlernt-mathe',1);
+    r.onupgradeneeded=()=>r.result.createObjectStore('rec');
+    r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);
+  }));
+}
+async function store(fn){
+  const d=await db();
+  return new Promise((res,rej)=>{const tx=d.transaction('rec','readwrite');fn(tx.objectStore('rec'));tx.oncomplete=res;tx.onerror=()=>rej(tx.error)});
+}
+async function loadRecs(){
+  try{
+    const d=await db();
+    await new Promise(res=>{
+      const tx=d.transaction('rec');
+      tx.objectStore('rec').openCursor().onsuccess=e=>{const c=e.target.result;if(c){rec[c.key]=URL.createObjectURL(c.value);c.continue()}};
+      tx.oncomplete=res;tx.onerror=res;
+    });
+  }catch(e){}
+}
+async function setRec(n,blob){
+  blob=await trim(blob);
+  try{await store(st=>st.put(blob,n))}catch(e){}
+  if(rec[n])URL.revokeObjectURL(rec[n]);
+  rec[n]=URL.createObjectURL(blob);
+}
+async function delRec(n){
+  try{await store(st=>st.delete(n))}catch(e){}
+  if(rec[n])URL.revokeObjectURL(rec[n]);
+  delete rec[n];
+}
+// Stille am Anfang und Ende abschneiden und Lautstärke angleichen, damit das Zählen flüssig klingt
+async function trim(blob){
+  try{
+    const buf=await actx().decodeAudioData(await blob.arrayBuffer());
+    const ch=buf.getChannelData(0),sr=buf.sampleRate,win=Math.floor(sr*.02);
+    let peak=0;for(let i=0;i<ch.length;i++){const x=Math.abs(ch[i]);if(x>peak)peak=x}
+    if(peak<.01)return blob;
+    let s=-1,e=-1;
+    for(let i=0;i<ch.length;i+=win){
+      let m=0;for(let j=i;j<Math.min(i+win,ch.length);j++){const x=Math.abs(ch[j]);if(x>m)m=x}
+      if(m>peak*.12){if(s<0)s=i;e=i+win}
+    }
+    const from=Math.max(0,s-Math.floor(sr*.08)),to=Math.min(ch.length,e+Math.floor(sr*.15)),len=to-from;
+    const g=Math.min(4,.9/peak),ab=new ArrayBuffer(44+len*2),v=new DataView(ab);
+    const w=(o,str)=>{for(let i=0;i<str.length;i++)v.setUint8(o+i,str.charCodeAt(i))};
+    w(0,'RIFF');v.setUint32(4,36+len*2,true);w(8,'WAVE');w(12,'fmt ');v.setUint32(16,16,true);v.setUint16(20,1,true);v.setUint16(22,1,true);
+    v.setUint32(24,sr,true);v.setUint32(28,sr*2,true);v.setUint16(32,2,true);v.setUint16(34,16,true);w(36,'data');v.setUint32(40,len*2,true);
+    for(let i=0;i<len;i++)v.setInt16(44+i*2,Math.max(-1,Math.min(1,ch[from+i]*g))*32767,true);
+    return new Blob([ab],{type:'audio/wav'});
+  }catch(e){return blob}
+}
+let recorder=null;
+async function record(n,{onStart,onDone,ms=2500}={}){
+  if(recorder){recorder.stop();return}
+  quiet();
+  let stream;
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:true})}
+  catch(e){alert('Das Mikrofon ist nicht erreichbar. Bitte im Browser den Zugriff erlauben – oder im Eltern-Bereich eine Aufnahme vom Handy laden.');onDone&&onDone(false);return}
+  const chunks=[];let timer;
+  recorder=new MediaRecorder(stream);
+  recorder.ondataavailable=e=>e.data.size&&chunks.push(e.data);
+  recorder.onstop=async()=>{
+    clearTimeout(timer);stream.getTracks().forEach(tr=>tr.stop());recorder=null;
+    if(chunks.length)await setRec(n,new Blob(chunks,{type:chunks[0].type}));
+    onDone&&onDone(chunks.length>0);
+  };
+  recorder.start();onStart&&onStart();
+  timer=setTimeout(()=>recorder&&recorder.stop(),ms);
+}
+
+/* ---------- Lernlogik: falsch beantwortete Zahlen kommen öfter ---------- */
+const weight=n=>weights[n]??2;
+function tally(key,ok){const s=M.stats[key]||(M.stats[key]={ok:0,bad:0});s[ok?'ok':'bad']++;save('mathe.stats',M.stats)}
+function learn(n,ok){weights[n]=ok?Math.max(1,weight(n)-1):weight(n)+3;tally(n,ok)}
+function pick(min){
+  const ns=[];for(let n=min;n<=M.max;n++)if(n!==M.last)ns.push(n);
+  let r=Math.random()*ns.reduce((a,n)=>a+weight(n),0);
+  for(const n of ns){r-=weight(n);if(r<=0){M.last=n;return n}}
+  return M.last=ns[ns.length-1];
+}
+function options(target){
+  const k=M.max<=5?3:4,pool=[];
+  for(let n=0;n<=M.max;n++)if(n!==target)pool.push(n);
+  return shuffle([target,...shuffle(pool).slice(0,k-1)]);
+}
+
+/* ---------- Bausteine ---------- */
+function frameHTML(n,th,cls=''){
+  const slots=M.max<=5?5:10;let h='<div class="frame">';
+  for(let i=0;i<slots;i++)h+=i<n?`<div class="slot"><span class="obj ${cls}">${thingHTML(th)}</span></div>`:'<div class="slot"></div>';
+  return h+'</div>';
+}
+function groupHTML(n,th){
+  let h=`<div class="grp" style="--cols:${Math.min(5,Math.max(1,n))}">`;
+  for(let i=0;i<n;i++)h+=`<div class="slot"><span class="obj pop">${thingHTML(th)}</span></div>`;
+  return h+'</div>';
+}
+const numBtns=opts=>`<div class="cards">${opts.map(n=>`<button class="opt num" data-n="${n}" style="--c:${COLORS[n]}">${n}</button>`).join('')}</div>`;
+function badge(obj,k){const b=document.createElement('i');b.textContent=k;obj.parentNode.appendChild(b)}
+function topbar(){
+  return `<div class="top"><button class="ic" id="home" aria-label="Start">🏠</button>${progHTML()}
+  <button class="ic" id="again" aria-label="Nochmal hören">🔊</button></div><div id="stage"></div>`;
+}
+function wireTop(){
+  $('#home').onclick=()=>{hush();home()};
+  $('#again').onclick=()=>{quiet();state.prompt&&state.prompt()};
+}
+// Bei richtigen Antworten saust manchmal eine Figur vorbei
+function cheer(){confetti();if(Math.random()<.35)flyBy(undefined,false)}
+async function countAlong(t,n){
+  const objs=$$('#stage .obj:not(.gone)');$$('#stage .slot i').forEach(i=>i.remove());
+  for(let i=0;i<n;i++){
+    if(t!==token)return;
+    objs[i].classList.add('hl');badge(objs[i],i+1);sfx.pop(i+1);
+    await talk(t,i+1);
+  }
+}
+
+/* ---------- Startseite ---------- */
+function home(){
+  state.prompt=null;
+  const title='Mathe'.split('').map((c,i)=>`<span style="color:${COLORS[i*2+1]};animation-delay:${i*.15}s">${c}</span>`).join('');
+  app.innerHTML=`<div class="home">
+    <p class="series">Sam lernt:</p>
+    <h1>${title}</h1>
+    <div class="modes">
+      <button class="mode" data-m="explore"><span class="ico">🔍</span>Entdecken</button>
+      <button class="mode" data-m="find"><span class="ico">👂</span>Finde die Zahl</button>
+      <button class="mode" data-m="how"><span class="ico">${fig('pig')}</span>Wie viele?</button>
+      <button class="mode" data-m="count"><span class="ico">👆</span>Zählen</button>
+      <button class="mode" data-m="math"><span class="ico">➕</span>Rechnen</button>
+      <button class="mode" data-m="speak"><span class="ico">🎙️</span>Ich spreche</button>
+    </div>
+    ${progHTML()}
+    <div class="settings">
+      <a class="pill" href="index.html" style="text-decoration:none;color:inherit">◀ Alle Spiele</a>
+      <button class="pill ${M.max===5?'on':''}" data-max="5">0 bis 5</button>
+      <button class="pill ${M.max===10?'on':''}" data-max="10">0 bis 10</button>
+      <button class="pill" id="vt">${state.voice?'🔊 Ton an':'🔇 Ton aus'}</button>
+      <button class="pill" id="par">👪 Eltern</button>
+    </div>
+    <div class="hint" id="hint">Noch ${Math.max(0,state.goal-state.prog)} Sterne bis zur Schatzkiste 🎁</div>
+  </div>`;
+  const names={explore:'Entdecken',find:'Finde die Zahl',how:'Wie viele?',count:'Zählen',math:'Rechnen',speak:'Ich spreche'};
+  const start={explore,find:findRound,how:howRound,count:countRound,math:mathRound,speak:()=>speakShow(0)};
+  $$('.mode').forEach(b=>b.onclick=()=>{
+    hush();const m=b.dataset.m,t=token;
+    app.innerHTML=topbar();wireTop();
+    say(names[m],t).then(()=>{if(t===token)start[m]()});
+  });
+  $$('[data-max]').forEach(b=>b.onclick=()=>{M.max=+b.dataset.max;save('mathe.max',M.max);M.last=null;hush();home();talk(token,'Zahlen von ',0,' bis ',M.max)});
+  $('#vt').onclick=()=>{state.voice=!state.voice;save('voice',state.voice);hush();home();say('Ton an')};
+  holdToOpen($('#par'),()=>{hush();parents()},()=>{$('#hint').textContent='Für Eltern: den Knopf „Eltern“ gedrückt halten.'});
+}
+
+/* ---------- Modus 1: Entdecken ---------- */
+function explore(){
+  token++;
+  let strip='<div class="strip">';
+  for(let n=0;n<=M.max;n++)strip+=`<button data-n="${n}" style="--c:${COLORS[n]}">${n}</button>`;
+  $('#stage').insertAdjacentHTML('afterend',strip+'</div>');
+  $('#stage').innerHTML='<div class="q">👇</div>';
+  $$('.strip button').forEach(b=>b.onclick=()=>exploreShow(+b.dataset.n));
+  state.prompt=()=>say('Tippe auf eine Zahl!');
+  state.prompt();
+}
+async function exploreShow(n){
+  hush();const t=token,th=thing();
+  $('#stage').innerHTML=`<div class="bignum pop" style="color:${COLORS[n]}">${n}</div>${frameHTML(n,th,'hidden')}`;
+  $$('.strip button').forEach(b=>b.classList.toggle('on',+b.dataset.n===n));
+  $('.bignum').onclick=()=>exploreShow(n);
+  state.prompt=()=>exploreShow(n);
+  await talk(t,n);
+  if(n===0){await say('Null heißt: gar nichts! Das Feld ist leer.',t);return}
+  const objs=$$('#stage .obj');
+  for(let i=0;i<n;i++){
+    if(t!==token)return;
+    objs[i].classList.remove('hidden');badge(objs[i],i+1);sfx.pop(i+1);
+    await talk(t,i+1);
+  }
+  if(n===1)await talk(t,`${CAP(th.sg)}. Das ist die `,1,'!');
+  else await talk(t,n,` ${th.pl}. Das ist die `,n,'!');
+}
+
+/* ---------- Modus 2: Finde die Zahl ---------- */
+async function findRound(){
+  hush();const t=token,target=pick(0),opts=options(target);
+  let locked=false;
+  state.prompt=()=>talk(token,'Wo ist die ',target,'?');
+  $('#stage').innerHTML=`<div class="q">👂</div><div class="cards">${opts.map(n=>`<button class="card" data-n="${n}" style="--c:${COLORS[n]}">${n}<span class="mini"></span></button>`).join('')}</div>`;
+  const showDots=(b,n)=>{b.querySelector('.mini').innerHTML=n?'<span>●</span>'.repeat(n):'<span style="grid-column:1/-1">leer</span>'};
+  $$('.card').forEach(b=>b.onclick=async()=>{
+    if(locked||b.disabled)return;const n=+b.dataset.n;
+    quiet();
+    if(n===target){
+      locked=true;sfx.ok();b.classList.add('right');showDots(b,n);cheer();learn(target,true);addStar();
+      await talk(t,`${praise()} Das ist die `,target,'.');
+      await wait(500,t);next(t,findRound);
+    }else{
+      sfx.no();b.classList.add('wrong');b.disabled=true;showDots(b,n);learn(target,false);
+      await talk(t,'Das ist die ',n,'. Wo ist die ',target,'?');
+    }
+  });
+  await state.prompt();
+}
+
+/* ---------- Modus 3: Wie viele? ---------- */
+async function howRound(){
+  hush();const t=token,target=pick(0),th=thing(),opts=options(target);
+  let locked=false;
+  state.prompt=()=>say(`Wie viele ${th.pl} siehst du?`);
+  $('#stage').innerHTML=frameHTML(target,th,'pop')+numBtns(opts);
+  $$('.num').forEach(b=>b.onclick=async()=>{
+    if(locked||b.disabled)return;const n=+b.dataset.n;
+    quiet();locked=true;
+    if(n===target){
+      sfx.ok();b.classList.add('right');cheer();learn(target,true);addStar();
+      if(target===0)await talk(t,`${praise()} `,0,'. Da ist gar nichts!');
+      else{
+        await countAlong(t,target);
+        if(target===1)await talk(t,`${praise()} ${CAP(th.sg)}. Die `,1,'!');
+        else await talk(t,`${praise()} `,target,` ${th.pl}!`);
+      }
+      await wait(500,t);next(t,howRound);
+    }else{
+      sfx.no();b.classList.add('wrong');b.disabled=true;learn(target,false);
+      if(target===0)await say('Schau mal, da ist gar nichts. Wie viel ist gar nichts?',t);
+      else{
+        await say('Hmm. Lass uns zusammen zählen!',t);
+        await countAlong(t,target);
+        await say('Welche Zahl ist das?',t);
+      }
+      locked=false;
+    }
+  });
+  await state.prompt();
+}
+
+/* ---------- Modus 4: Zählen ---------- */
+async function countRound(){
+  hush();const t=token,target=pick(1),th=thing();
+  let c=0;
+  state.prompt=()=>say(`Tippe alle ${th.pl} an und zähl mit!`);
+  $('#stage').innerHTML=`<div class="bignum ghost" id="res">?</div>${frameHTML(target,th,'todo')}`;
+  $$('#stage .obj').forEach(o=>o.onclick=async()=>{
+    if(t!==token||!o.classList.contains('todo'))return;
+    o.classList.remove('todo');c++;badge(o,c);sfx.pop(c);
+    quiet();
+    if(c<target){talk(t,c);return}
+    const r=$('#res');r.textContent=target;r.style.color=COLORS[target];r.classList.remove('ghost');r.classList.add('pop');
+    learn(target,true);
+    await talk(t,c);
+    sfx.ok();cheer();addStar();
+    if(target===1)await talk(t,1,`! ${CAP(th.sg)}. ${praise()}`);
+    else await talk(t,target,'! Du hast ',target,` ${th.pl} gezählt. ${praise()}`);
+    await wait(700,t);next(t,countRound);
+  });
+  await state.prompt();
+}
+
+/* ---------- Modus 5: Rechnen ---------- */
+async function mathRound(){
+  hush();const t=token,max=M.max,th=thing();
+  const minus=max>5&&Math.random()<.4;
+  let a,b,res;
+  if(minus){a=2+Math.floor(Math.random()*(max-1));b=1+Math.floor(Math.random()*(a-1));res=a-b}
+  else{a=1+Math.floor(Math.random()*(max-1));b=1+Math.floor(Math.random()*(max-a));res=a+b}
+  const word=minus?' minus ':' plus ',opts=options(res);
+  let locked=true;
+  state.prompt=()=>talk(token,'Wie viel ist ',a,word,b,'?');
+  let th2;do{th2=thing()}while(th2===th);
+  $('#stage').innerHTML=`<div class="eq"><span style="color:${COLORS[a]}">${a}</span><span>${minus?'−':'+'}</span><span style="color:${COLORS[b]}">${b}</span><span>=</span><span id="res" class="ghost">?</span></div>
+    <div class="groups">${minus?groupHTML(a,th):groupHTML(a,th)+'<span class="op">+</span>'+groupHTML(b,th2)}</div>${numBtns(opts)}`;
+  $$('.num').forEach(btn=>btn.onclick=async()=>{
+    if(locked||btn.disabled)return;const n=+btn.dataset.n;
+    quiet();locked=true;
+    if(n===res){
+      sfx.ok();btn.classList.add('right');cheer();tally(minus?'minus':'plus',true);addStar();
+      const r=$('#res');r.textContent=res;r.style.color=COLORS[res];r.classList.remove('ghost');r.classList.add('pop');
+      await countAlong(t,res);
+      await talk(t,`${praise()} `,a,word,b,' ist ',res,'.');
+      await wait(500,t);next(t,mathRound);
+    }else{
+      sfx.no();btn.classList.add('wrong');btn.disabled=true;tally(minus?'minus':'plus',false);
+      if(res===0)await say('Schau mal, es bleibt gar nichts übrig!',t);
+      else{await say('Lass uns zusammen zählen!',t);await countAlong(t,res)}
+      await say('Welche Zahl ist das?',t);
+      locked=false;
+    }
+  });
+  if(minus){
+    await talk(t,'Hier sind ',a,'.');
+    const objs=$$('#stage .obj');
+    for(let i=a-1;i>=a-b;i--){if(t!==token)return;objs[i].classList.add('gone');objs[i].parentNode.classList.add('x');sfx.no();await wait(350,t)}
+    await talk(t,b,b===1?' geht weg.':' gehen weg.');
+  }
+  locked=false;
+  await state.prompt();
+}
+
+/* ---------- Modus 6: Ich spreche (das Kind nimmt die Zahlen selbst auf) ---------- */
+async function speakShow(n){
+  hush();const t=token,th=thing(),max=M.max;
+  state.prompt=()=>say(`Sag mal: ${CAP(WORDS[n])}!`);
+  $('#stage').innerHTML=`<div class="bignum pop" style="color:${COLORS[n]}">${n}</div>${frameHTML(n,th)}
+    <div class="recrow">
+      <button class="ic" id="prev" aria-label="Zurück">◀</button>
+      <button class="ic" id="hear" aria-label="Anhören" ${rec[n]?'':'disabled style="opacity:.35"'}>▶️</button>
+      <button class="mic" id="mic" aria-label="Aufnehmen">🎙️</button>
+      <button class="ic" id="next" aria-label="Weiter">▶</button>
+    </div>`;
+  $('#prev').onclick=()=>speakShow((n+max)%(max+1));
+  $('#next').onclick=()=>speakShow((n+1)%(max+1));
+  $('#hear').onclick=()=>{quiet();playRec(n)};
+  $('.bignum').onclick=()=>{quiet();state.prompt()};
+  const mic=$('#mic');
+  mic.onclick=()=>record(n,{
+    onStart:()=>mic.classList.add('live'),
+    onDone:async ok=>{
+      mic.classList.remove('live');
+      if(!ok||t!==token)return;
+      $('#hear').disabled=false;$('#hear').style.opacity='';
+      await playRec(n,t);
+      sfx.ok();cheer();addStar();
+      await say(praise(),t);
+      await wait(400,t);next(t,()=>speakShow((n+1)%(max+1)));
+    }
+  });
+  await state.prompt();
+}
+
+/* ---------- Eltern-Bereich (Mathe-Teil) ---------- */
+function parents(){
+  let rows='';
+  for(let n=0;n<=10;n++)rows+=`<div class="n" style="color:${COLORS[n]}">${n}</div><div class="b" data-n="${n}">
+    <button class="sb" data-a="rec">🎙️ Aufnehmen</button>
+    <button class="sb" data-a="play" ${rec[n]?'':'disabled'}>▶ Anhören</button>
+    <label class="sb">📁 Datei<input type="file" accept="audio/*" hidden></label>
+    <button class="sb" data-a="del" ${rec[n]?'':'disabled'}>🗑</button>
+    <span class="ok">${rec[n]?'✓':''}</span></div>`;
+  const st=k=>{const s=M.stats[k]||{ok:0,bad:0},all=s.ok+s.bad;return `<div><b>${k==='plus'?'+':k==='minus'?'−':k}</b>${all?`${Math.round(s.ok/all*100)} % richtig<br>${all}× geübt`:'noch nicht'}</div>`};
+  parentsPage({back:home,extraHTML:`
+    <div class="box">
+      <h2>Mathe: Fortschritt</h2>
+      <div class="stats">${[0,1,2,3,4,5,6,7,8,9,10,'plus','minus'].map(st).join('')}</div>
+      <p><button class="sb" id="sreset">Statistik löschen</button></p>
+    </div>
+    ${typeof KI!=='undefined'?KI.parentsHTML():''}
+    <div class="box">
+      <h2>Zahlen mit eigener Stimme</h2>
+      <p>Nehmt jede Zahl einmal auf – am Mikrofon (🎙️, ca. 2,5 Sekunden, das Wort gleich nach dem Tippen sagen) oder als Aufnahme vom Handy (📁). Stille am Anfang und Ende wird automatisch abgeschnitten. Die Aufnahmen bleiben nur auf diesem Gerät.</p>
+      <p>Euer Kind kann die Zahlen auch selbst im Spiel <b>🎙️ Ich spreche</b> aufnehmen – danach zählt das Spiel mit seiner Stimme.</p>
+      <p><label><input type="checkbox" id="userec" ${M.useRec?'checked':''}> Aufnahmen im Spiel verwenden</label></p>
+      <div class="recs">${rows}</div>
+    </div>`,
+    wire:()=>{
+      if(typeof KI!=='undefined')KI.wireParents(()=>M.stats);
+      $('#sreset').onclick=()=>{if(confirm('Statistik wirklich löschen?')){M.stats={};save('mathe.stats',{});parents()}};
+      $('#userec').onchange=e=>{M.useRec=e.target.checked;save('mathe.useRec',M.useRec)};
+      $$('.recs .b').forEach(row=>{
+        const n=+row.dataset.n,recBtn=row.querySelector('[data-a=rec]');
+        recBtn.onclick=()=>record(n,{
+          onStart:()=>{recBtn.classList.add('live');recBtn.textContent='⏺ Sprich jetzt…'},
+          onDone:async ok=>{if(ok){parents();await playRec(n)}else{recBtn.classList.remove('live');recBtn.textContent='🎙️ Aufnehmen'}}
+        });
+        row.querySelector('[data-a=play]').onclick=()=>{hush();playRec(n)};
+        row.querySelector('[data-a=del]').onclick=async()=>{await delRec(n);parents()};
+        row.querySelector('input').onchange=async e=>{const f=e.target.files[0];if(!f)return;await setRec(n,f);parents();playRec(n)};
+      });
+    }});
+}
+
+loadRecs().then(()=>state.name?home():nameScreen(home));
+</script>
+</body>
+</html>

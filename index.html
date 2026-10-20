@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Sam lernt">
+<meta name="theme-color" content="#ffe3b8">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="bilder/icon-180.png">
+<link rel="icon" href="bilder/icon-192.png">
+<title>Sam lernt</title>
+<link rel="stylesheet" href="gemeinsam/stil.css">
+</head>
+<body>
+<div id="app"></div>
+<script src="gemeinsam/kern.js"></script>
+<script src="gemeinsam/figuren.js"></script>
+<script src="gemeinsam/ki.js"></script>
+<script>
+// Alle Spiele der Reihe – neue einfach hier eintragen
+const GAMES=[
+  {href:'mathe.html',ico:'🔢',label:'Mathe',say:'Mathe'},
+  {ico:'🔤',label:'Buchstaben',say:'Buchstaben'},
+  {ico:'🎨',label:'Farben & Formen',say:'Farben und Formen'},
+  {ico:'⏰',label:'Uhrzeit',say:'Uhrzeit'}
+];
+const COLORS=['#f44336','#ff9800','#f9a825','#43a047','#039be5','#8e24aa'];
+
+function home(){
+  state.prompt=null;
+  const title='Sam lernt'.split('').map((c,i)=>c===' '?' ':`<span style="color:${COLORS[i%COLORS.length]};animation-delay:${i*.12}s">${c}</span>`).join('');
+  $('#app').innerHTML=`<div class="home">
+    <p class="hello">${state.name?`Hallo ${esc(state.name)}! 👋`:'Hallo! 👋'}</p>
+    <h1>${title}</h1>
+    <div class="gang">${Object.keys(FIG).map(f=>`<button data-f="${f}" aria-label="${CHAR[f].name}">${fig(f)}</button>`).join('')}</div>
+    <div class="modes">${GAMES.map((g,i)=>`<button class="mode ${g.href?'':'soon'}" data-g="${i}"><span class="ico">${g.ico}</span>${g.label}${g.href?'':'<small style="font-size:.7em;opacity:.7">kommt bald</small>'}</button>`).join('')}</div>
+    ${progHTML()}
+    <div class="settings">
+      <button class="pill" id="vt">${state.voice?'🔊 Ton an':'🔇 Ton aus'}</button>
+      <button class="pill" id="par">👪 Eltern</button>
+    </div>
+    <div class="hint" id="hint">Tipp auf Rosi, Bobo, Klapper und Paul!</div>
+  </div>`;
+  const hi={pig:'Oink! Ich bin Rosi, das fliegende Schwein!',monkey:'Uh uh, ah ah! Ich bin Bobo, der Affe!',skel:'Klapper, klapper! Ich bin Klapper, das Skelett!',pirate:'Arrr! Ich bin Pirat Paul!'};
+  $$('.gang button').forEach(b=>b.onclick=()=>{hush();const f=b.dataset.f;CHAR[f].sound();restart(b,'jump');setTimeout(()=>say(hi[f]),700)});
+  $$('[data-g]').forEach(b=>b.onclick=async()=>{
+    const g=GAMES[+b.dataset.g];hush();
+    if(!g.href){restart(b,'shake');say(g.say+' kommt bald!');return}
+    await say(g.say);location.href=g.href;
+  });
+  $('#vt').onclick=()=>{state.voice=!state.voice;save('voice',state.voice);hush();home();say('Ton an')};
+  holdToOpen($('#par'),()=>{hush();parentsPage({back:home,extraHTML:typeof KI!=='undefined'?KI.parentsHTML():'',wire:()=>typeof KI!=='undefined'&&KI.wireParents(()=>load('mathe.stats',{}))})},
+    ()=>{$('#hint').textContent='Für Eltern: den Knopf „Eltern“ gedrückt halten.'});
+}
+// Ab und zu fliegt jemand vorbei
+setInterval(()=>{if(!$('#ov')&&$('.gang'))flyBy(undefined,false)},14000);
+state.name?home():nameScreen(home);
+</script>
+</body>
+</html>
