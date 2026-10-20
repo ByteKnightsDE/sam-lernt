@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Sam lernt">
-<meta name="theme-color" content="#ffe3b8">
+<meta name="theme-color" content="#ffeedb">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="bilder/icon-180.png">
 <link rel="icon" href="bilder/icon-192.png">
@@ -22,10 +22,10 @@
 <script>
 // Alle Spiele der Reihe – neue einfach hier eintragen
 const GAMES=[
-  {href:'mathe.html',ico:'🔢',label:'Mathe',say:'Mathe'},
-  {ico:'🔤',label:'Buchstaben',say:'Buchstaben'},
-  {ico:'🎨',label:'Farben & Formen',say:'Farben und Formen'},
-  {ico:'⏰',label:'Uhrzeit',say:'Uhrzeit'}
+  {href:'mathe.html',ico:'🔢',label:'Mathe',say:'Mathe',c:'#ff7043'},
+  {ico:'🔤',label:'Buchstaben',say:'Buchstaben',c:'#42a5f5'},
+  {ico:'🎨',label:'Farben & Formen',say:'Farben und Formen',c:'#ab47bc'},
+  {ico:'⏰',label:'Uhrzeit',say:'Uhrzeit',c:'#26a69a'}
 ];
 const COLORS=['#f44336','#ff9800','#f9a825','#43a047','#039be5','#8e24aa'];
 
@@ -36,9 +36,9 @@ function home(){
     <p class="hello">${state.name?`Hallo ${esc(state.name)}! 👋`:'Hallo! 👋'}</p>
     <h1>${title}</h1>
     <div class="gang">${Object.keys(FIG).map(f=>`<button data-f="${f}" aria-label="${CHAR[f].name}">${fig(f)}</button>`).join('')}</div>
-    <div class="modes">${GAMES.map((g,i)=>`<button class="mode ${g.href?'':'soon'}" data-g="${i}"><span class="ico">${g.ico}</span>${g.label}${g.href?'':'<small style="font-size:.7em;opacity:.7">kommt bald</small>'}</button>`).join('')}</div>
+    <div class="modes">${GAMES.map((g,i)=>`<button class="mode ${g.href?'':'soon'}" data-g="${i}" style="--c:${g.c}"><span class="ico">${g.ico}</span>${g.label}${g.href?'':'<span class="tag">Bald</span>'}</button>`).join('')}</div>
     ${progHTML()}
-    <div class="settings">
+    <div class="bar">
       <button class="pill" id="vt">${state.voice?'🔊 Ton an':'🔇 Ton aus'}</button>
       <button class="pill" id="par">👪 Eltern</button>
     </div>

@@ -140,7 +140,7 @@ function restart(el,cls){el.classList.remove(cls);void el.getBoundingClientRect(
 /* ---------- Sterne und Weg zur Schatzkiste ---------- */
 function progHTML(){
   const p=Math.min(1,state.prog/state.goal)*100;
-  return `<div class="prog" id="prog"><div class="track"><div class="fill" style="width:${p}%"></div><span class="walker" style="left:${p}%">🦖</span></div><span class="chest">🎁</span><span>⭐<span id="sc">${state.stars}</span></span></div>`;
+  return `<div class="prog" id="prog"><div class="track"><div class="fill" style="width:${p}%"></div><span class="walker" style="left:${p}%">🦖</span></div><span class="chest">🎁</span><span class="stars">⭐<span id="sc">${state.stars}</span></span></div>`;
 }
 function updProg(){
   const el=$('#prog');if(!el)return;
@@ -184,7 +184,7 @@ function parentsPage({extraHTML='',wire=()=>{},back}){
   const opts=(de.length?de:vs).map(v=>`<option value="${esc(v.name)}" ${voice&&v.name===voice.name?'selected':''}>${esc(v.name)}${v.localService?'':' (online)'}</option>`).join('');
   const sel=(id,vals,cur,unit)=>`<select id="${id}">${vals.map(v=>`<option value="${v}" ${v===cur?'selected':''}>${v} ${unit}</option>`).join('')}</select>`;
   const viaServer=location.protocol.startsWith('http');
-  $('#app').innerHTML=`<div class="top"><button class="ic" id="home" aria-label="Zurück">🏠</button><b style="font-size:22px">👪 Eltern</b><span style="width:10vh"></span></div>
+  $('#app').innerHTML=`<div class="top"><button class="ic" id="home" aria-label="Zurück">🏠</button><b>👪 Eltern</b><span class="ic" style="visibility:hidden"></span></div>
   <div class="parents">
     <div class="box">
       <h2>Kind</h2>

@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Sam lernt">
-<meta name="theme-color" content="#ffe3b8">
+<meta name="theme-color" content="#ffeedb">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="bilder/icon-180.png">
 <link rel="icon" href="bilder/icon-192.png">
@@ -18,7 +18,7 @@
 .bignum{font-size:min(32vw,22vh);line-height:1;font-weight:900;text-shadow:0 7px 0 rgba(0,0,0,.13);cursor:pointer}
 .ghost{color:#d8c3ae!important;text-shadow:none}
 .frame,.grp{--s:min(15vw,10vh);display:grid;grid-template-columns:repeat(var(--cols,5),var(--s));grid-auto-rows:var(--s);gap:6px;padding:10px;background:#ffffff70;border-radius:22px}
-.grp{--s:min(10.5vw,8.5vh)}
+.grp{--s:min(13vw,9vh)}
 .slot{position:relative;background:#fff;border-radius:16px;display:grid;place-items:center;box-shadow:inset 0 0 0 3px #f3dfcb}
 .obj{font-size:calc(var(--s)*.68);line-height:1;transition:transform .35s,opacity .35s,filter .35s;display:flex;align-items:center;justify-content:center}
 .obj .fig{width:calc(var(--s)*.86);height:calc(var(--s)*.86)}
@@ -38,7 +38,7 @@
 /* Karten */
 .cards{display:flex;gap:min(4vw,3vh);flex-wrap:wrap;justify-content:center;max-width:100%}
 .card{width:min(30vw,22vh);aspect-ratio:3/4;background:#fff;border-radius:28px;color:var(--c);font-size:min(20vw,15vh);font-weight:900;box-shadow:0 8px 0 rgba(0,0,0,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1;transition:opacity .3s}
-.num{width:min(20vw,13vh);height:min(20vw,13vh);color:var(--c);font-size:min(13vw,9vh);font-weight:900}
+.num{width:min(22vw,14vh);height:min(22vw,14vh);border-radius:26px;color:var(--c);font-size:min(13vw,9vh);font-weight:900}
 .mini{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;font-size:min(3.4vw,2.6vh);height:2.6em;margin-top:.4em;align-content:start}
 /* Aufnehmen */
 .recrow{display:flex;gap:min(4vw,3vh);align-items:center}
@@ -222,18 +222,22 @@ function home(){
     <p class="series">Sam lernt:</p>
     <h1>${title}</h1>
     <div class="modes">
-      <button class="mode" data-m="explore"><span class="ico">🔍</span>Entdecken</button>
-      <button class="mode" data-m="find"><span class="ico">👂</span>Finde die Zahl</button>
-      <button class="mode" data-m="how"><span class="ico">${fig('pig')}</span>Wie viele?</button>
-      <button class="mode" data-m="count"><span class="ico">👆</span>Zählen</button>
-      <button class="mode" data-m="math"><span class="ico">➕</span>Rechnen</button>
-      <button class="mode" data-m="speak"><span class="ico">🎙️</span>Ich spreche</button>
+      <button class="mode" data-m="explore" style="--c:#42a5f5"><span class="ico">🔍</span>Entdecken</button>
+      <button class="mode" data-m="find" style="--c:#ffa726"><span class="ico">👂</span>Finde die Zahl</button>
+      <button class="mode" data-m="how" style="--c:#ec407a"><span class="ico">${fig('pig')}</span>Wie viele?</button>
+      <button class="mode" data-m="count" style="--c:#ffca28"><span class="ico">👆</span>Zählen</button>
+      <button class="mode" data-m="math" style="--c:#66bb6a"><span class="ico">➕</span>Rechnen</button>
+      <button class="mode" data-m="speak" style="--c:#ef5350"><span class="ico">🎙️</span>Ich spreche</button>
     </div>
     ${progHTML()}
-    <div class="settings">
-      <a class="pill" href="index.html" style="text-decoration:none;color:inherit">◀ Alle Spiele</a>
-      <button class="pill ${M.max===5?'on':''}" data-max="5">0 bis 5</button>
-      <button class="pill ${M.max===10?'on':''}" data-max="10">0 bis 10</button>
+    <div class="bar">
+      <a class="pill" href="index.html">◀ Alle Spiele</a>
+      <div class="seg" role="group" aria-label="Zahlenraum">
+        <button class="${M.max===5?'on':''}" data-max="5">0 – 5</button>
+        <button class="${M.max===10?'on':''}" data-max="10">0 – 10</button>
+      </div>
+    </div>
+    <div class="bar">
       <button class="pill" id="vt">${state.voice?'🔊 Ton an':'🔇 Ton aus'}</button>
       <button class="pill" id="par">👪 Eltern</button>
     </div>
