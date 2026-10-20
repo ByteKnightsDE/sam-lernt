@@ -48,7 +48,7 @@ function home(){
   </div>`;
   const hi={blupp:'Blubb, blubb! Ich bin BluppBlupp, das blaue Nilpferd. Ich wohne im Zauberwald!',
     zinn:'Guten Tag! Ich bin Herr Zinn, der Onkel von BluppBlupp. Meine Laterne leuchtet uns den Weg.'};
-  $$('[data-f]').forEach(b=>b.onclick=()=>{hush();const f=b.dataset.f;CHAR[f].sound();restart($('.hero'),'bump');setTimeout(()=>say(hi[f]),700)});
+  $$('[data-f]').forEach(b=>b.onclick=()=>{hush();const f=b.dataset.f;CHAR[f].sound();restart($('.hero'),'bump');setTimeout(()=>say(hi[f],token,f),700)});
   $$('[data-g]').forEach(b=>b.onclick=async()=>{
     const g=GAMES[+b.dataset.g];hush();
     if(!g.href){restart(b,'shake');say(g.say+' kommt bald!');return}

@@ -90,12 +90,14 @@ async function story(done){
     page++;quiet();
     if(page>=st.p.length){done();return}
     const pg=st.p[page];
+    if(st.p[page+1])vorladen(st.p[page+1].x);
     o.innerHTML=`<div class="scene">${pg.s.map(scItem).join('')}</div><p class="story-text">${esc(pg.x)}</p><button class="nextbtn" id="nx" style="visibility:hidden">▶</button>`;
     $$('.scene .sc').forEach(el=>el.onclick=()=>{const f=el.querySelector('.fig');if(f){CHAR[f.classList[1]].sound();restart(el,'jump')}});
     const nx=$('#nx');nx.onclick=show;
     await say(pg.x,t);
     if(t===token&&nx.isConnected)nx.style.visibility='visible';
   };
+  if(st.p[0])vorladen(st.p[0].x);
   o.innerHTML=`<div class="q">📖</div><h2>${esc(st.t)}</h2><button class="nextbtn" id="nx">▶</button>`;
   $('#nx').onclick=show;
   await say(st.t,t);
@@ -157,11 +159,11 @@ function stone(done){
     if(x==='💎'){
       found=true;sfx.fanfare();confetti(['💎','✨','⭐','🌟']);
       restart($('.side'),'jump');
-      await say(withName('Da ist er ja! Mein Zauberstein! Danke')+'! Jetzt leuchtet meine Laterne wieder doppelt so hell.',t);
+      await say(withName('Da ist er ja! Mein Zauberstein! Danke')+'! Jetzt leuchtet meine Laterne wieder doppelt so hell.',t,'zinn');
       endLater(t,done,{showAfter:500,autoAfter:15000});
     }else await say(FINDS[x],t);
   });
-  say('Herr Zinn hat seinen Zauberstein verloren. Er liegt unter einem Moos-Hügel. Hilfst du suchen?',t);
+  say(withName('Ach herrje',', ')+'! Ich habe meinen Zauberstein verloren. Er liegt unter einem Moos-Hügel. Hilfst du mir suchen?',t,'zinn');
 }
 
 /* ---------- Waldmusik mit BluppBlupp ---------- */
@@ -198,21 +200,21 @@ function feedBlupp(done){
       b.style.transform=`translate(${mr.left+mr.width/2-br.left-br.width/2}px,${mr.top+mr.height*.5-br.top-br.height/2}px) scale(.4)`;b.style.opacity='0';
       await wait(500,t);if(t!==token)return;
       b.remove();sfx.chomp();restart(mk,'jump');fed++;
-      if(fed<total){say(rnd(['Mmmh!','Lecker!','Mampf!','Noch eins, bitte!']),t);return}
+      if(fed<total){say(rnd(['Mmmh!','Lecker!','Mampf!','Noch eins, bitte!']),t,'blupp');return}
       sfx.blubb();restart(mk,'flip360');confetti(['🫐','✨','⭐']);
-      await say(withName('Danke')+'! Mein Bauch ist jetzt kugelrund.',t);
+      await say(withName('Danke')+'! Mein Bauch ist jetzt kugelrund.',t,'blupp');
       sfx.burp();await wait(800,t);
-      await say('Blubb! Oh, Entschuldigung! Hihi!',t);
+      await say('Blubb! Oh, Entschuldigung! Hihi!',t,'blupp');
       endLater(t,done,{showAfter:300,autoAfter:12000});
     };
     o.appendChild(b);
   }
   mk.onclick=()=>{sfx.blubb();restart(mk,'jump')};
-  say('BluppBlupp hat großen Hunger. Tipp auf die Beeren und füttere ihn!',t);
+  say('Ich hab so einen Hunger! Tipp auf die Beeren und füttere mich!',t,'blupp');
 }
 
 /* ---------- Dinge fangen, die schweben: Seifenblasen und Glühwürmchen ---------- */
-function catcher(done,{cls,title,intro,end,make,hit,every=650,ms=25000,extra=''}){
+function catcher(done,{cls,title,intro,end,make,hit,every=650,ms=25000,extra='',wer='erzaehler'}){
   hush();const t=token,o=overlay(cls);
   o.innerHTML=`<h2 style="position:absolute;top:calc(16px + env(safe-area-inset-top));left:0;right:0">${title}</h2>${extra}`;
   let running=true;
@@ -223,10 +225,10 @@ function catcher(done,{cls,title,intro,end,make,hit,every=650,ms=25000,extra=''}
     el.onpointerdown=e=>{e.preventDefault();if(!el.classList.contains('hit'))hit(el,o)};
     o.appendChild(el);setTimeout(spawn,every+Math.random()*400);
   };
-  spawn();say(intro,t);
+  spawn();say(intro,t,wer);
   setTimeout(async()=>{
     running=false;if(t!==token)return;
-    confetti(['✨','⭐','🌟']);await say(end,t);await wait(1200,t);if(t===token)done();
+    confetti(['✨','⭐','🌟']);await say(end,t,wer);await wait(1200,t);if(t===token)done();
   },ms);
 }
 function boomAt(el,o,txt){
@@ -235,7 +237,7 @@ function boomAt(el,o,txt){
 }
 function bubbles(done){
   const inside=['🦋','⭐','🍓','🫐','🌸','🐞','✨'];
-  catcher(done,{cls:'lichtung',title:'BluppBlupp pustet Seifenblasen!',intro:'BluppBlupp pustet Seifenblasen. Tipp sie an, dann machen sie Plopp!',end:'Plopp, plopp! Das war schön!',every:520,
+  catcher(done,{cls:'lichtung',title:'BluppBlupp pustet Seifenblasen!',intro:'Schau mal, ich puste Seifenblasen! Tipp sie an, dann machen sie Plopp!',end:'Plopp, plopp! Das war schön!',every:520,wer:'blupp',
     extra:`<div class="side" style="left:2vw;bottom:2vh">${fig('blupp')}</div>`,
     make:()=>{const b=document.createElement('button');b.className='bubble';b.setAttribute('aria-label','Seifenblase');
       b.style.left=12+Math.random()*76+'vw';b.style.animationDuration=6+Math.random()*4+'s';return b},
@@ -243,8 +245,8 @@ function bubbles(done){
 }
 function fireflies(done){
   let n=0;
-  catcher(done,{cls:'nacht',title:'Fang die Glühwürmchen!',intro:'Es ist Nacht im Zauberwald. Fang die Glühwürmchen für Herrn Zinns Laterne!',
-    end:'Schau mal, wie hell die Laterne jetzt leuchtet! Danke!',every:900,ms:28000,
+  catcher(done,{cls:'nacht',title:'Fang die Glühwürmchen!',intro:'Es ist Nacht im Zauberwald. Hilfst du mir? Fang die Glühwürmchen für meine Laterne!',wer:'zinn',
+    end:'Schau mal, wie hell die Laterne jetzt leuchtet! Danke dir!',every:900,ms:28000,
     extra:`<div class="lanternbig" id="lt">${fig('zinn')}</div>`,
     make:()=>{const f=document.createElement('button');f.className='firefly';f.setAttribute('aria-label','Glühwürmchen');
       f.style.left=5+Math.random()*70+'vw';f.style.top=25+Math.random()*55+'vh';f.style.animationDuration=7+Math.random()*4+'s';return f},

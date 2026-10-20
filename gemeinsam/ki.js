@@ -43,7 +43,9 @@ const KI={
   prefetch(){
     if(!this.ready()||this._loading)return;
     try{if(sessionStorage.getItem('samlernt.kiStory'))return}catch(e){}
-    this._loading=this.fetchStory().then(st=>{try{sessionStorage.setItem('samlernt.kiStory',JSON.stringify(st))}catch(e){}})
+    // Mit der Geschichte gleich ihre Sprache vorladen, damit beim Vorlesen nichts hakt
+    this._loading=this.fetchStory().then(st=>{try{sessionStorage.setItem('samlernt.kiStory',JSON.stringify(st))}catch(e){}
+      if(typeof vorladen==='function'){vorladen(st.t);st.p.forEach(pg=>vorladen(pg.x))}})
       .catch(()=>{}).finally(()=>{this._loading=null});
   },
   async story(){

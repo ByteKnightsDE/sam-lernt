@@ -49,3 +49,10 @@ Die App läuft bei Cloudflare als ein Projekt: die Spiele als Dateien, der ChatG
 Was an ChatGPT geht: ein zufälliges Thema, beim Bericht nur die Zahlen „wie oft richtig/falsch“, und der Vorname nur, wenn das Häkchen gesetzt ist. OpenAI speichert die Anfragen nicht (`store: false`).
 Modell: `gpt-6.1-sol` (in `wrangler.jsonc` bei `MODELL` änderbar, günstiger: `gpt-6-luna`). Geschichten werden vorab geladen, damit das Kind nicht wartet.
 Ohne Internet und am PC (über die .bat) laufen die eingebauten Geschichten.
+
+**Natürliche Stimme:** Erzähler, Herr Zinn und BluppBlupp sprechen über OpenAI mit eigenen Stimmen (`/api/stimme`, Einstellungen in
+`ki-server/src/index.js` bei `STIMMEN`). Jeder Satz wird einmal erzeugt, bei Cloudflare und auf dem Gerät gespeichert und danach nicht mehr bezahlt.
+Schalter und Hörproben: *Eltern* → *Stimme*. Ohne Internet oder Guthaben spricht die Gerätestimme.
+Der OpenAI-Schlüssel braucht dafür auch die Berechtigung für Audio (`/v1/audio/speech`).
+**Wichtig:** Das Sprachmodell `gpt-4o-mini-tts` schaltet OpenAI am 6. Januar 2027 ab – vorher den Server auf den Nachfolger umstellen
+(nur `ki-server/`, die App bleibt gleich; dann `VERSION_STIMME` hochzählen).

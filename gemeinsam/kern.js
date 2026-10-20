@@ -32,10 +32,11 @@ function pickVoice(){
 }
 if(hasSpeech){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
 const keep=[];
-function say(text,t=token){
+// Gerätestimme (Rückfall ohne Internet oder solange ein Satz noch nicht als natürliche Stimme bereitliegt)
+function deviceSay(text,t=token){
   return new Promise(res=>{
     if(t!==token)return res();
-    if(!hasSpeech||!state.voice)return setTimeout(res,350+text.length*45);
+    if(!hasSpeech)return setTimeout(res,350+text.length*45);
     const u=new SpeechSynthesisUtterance(text);
     // Langsam und warm – passend zum Zauberwald
     u.lang=voice?voice.lang:'de-DE';if(voice)u.voice=voice;u.rate=.84;u.pitch=1.06;
@@ -45,6 +46,60 @@ function say(text,t=token){
     // Chrome verschluckt Sätze, die direkt nach cancel() kommen – kurz warten
     setTimeout(()=>{if(t!==token)return fin();speechSynthesis.resume();speechSynthesis.speak(u)},80);
   });
+}
+
+/* ---------- Natürliche Stimme (ChatGPT über den eigenen Server, /api/stimme) ----------
+   Jeder Satz wird einmal erzeugt und dann auf dem Gerät gespeichert; beim zweiten Mal kommt er sofort.
+   Abgespielt wird über Web Audio, weil iPhone/iPad das nach der ersten Berührung zuverlässig erlauben. */
+const NATUR={on:load('stimme.natur',true),mem:new Map(),laeuft:new Map(),src:null,aus:0};
+const naturBereit=()=>NATUR.on&&typeof KI!=='undefined'&&KI.ready()&&KI.url==='/api'&&'caches' in window&&navigator.onLine!==false&&Date.now()>NATUR.aus;
+const naturUrl=(text,s)=>'/api/stimme?s='+s+'&t='+encodeURIComponent(text);
+function naturLaden(text,s){
+  const key=s+'|'+text;
+  if(NATUR.mem.has(key))return Promise.resolve(NATUR.mem.get(key));
+  if(NATUR.laeuft.has(key))return NATUR.laeuft.get(key);
+  const p=(async()=>{
+    const url=naturUrl(text,s);let r;
+    try{const c=await caches.open('samlernt-stimme');r=await c.match(url);
+      if(!r){r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);try{await c.put(url,r.clone())}catch(e){}}}
+    catch(e){
+      // Server nicht erreichbar oder ohne Guthaben: eine Weile nur die Gerätestimme nehmen statt jedes Mal zu warten
+      NATUR.aus=Date.now()+5*60000;throw e;
+    }
+    const buf=await actx().decodeAudioData(await r.arrayBuffer());
+    if(NATUR.mem.size>120)NATUR.mem.delete(NATUR.mem.keys().next().value);
+    NATUR.mem.set(key,buf);return buf;
+  })().finally(()=>NATUR.laeuft.delete(key));
+  NATUR.laeuft.set(key,p);
+  return p;
+}
+function naturSpielen(buf,t){
+  return new Promise(res=>{
+    if(t!==token)return res();
+    stopNatur();
+    const c=actx(),src=c.createBufferSource();
+    src.buffer=buf;src.connect(c.destination);NATUR.src=src;
+    let done=false;const fin=()=>{if(!done){done=true;if(NATUR.src===src)NATUR.src=null;res()}};
+    src.onended=fin;setTimeout(fin,buf.duration*1000+1500);
+    src.start();
+  });
+}
+function stopNatur(){const s=NATUR.src;NATUR.src=null;if(s)try{s.onended=null;s.stop()}catch(e){}}
+// Schon mal im Hintergrund laden, was gleich gesagt wird (z. B. die nächste Seite einer Geschichte)
+function vorladen(text,s='erzaehler'){if(naturBereit())naturLaden(text,s).catch(()=>{})}
+
+// Sprechen: wer spricht, steht in s – 'erzaehler', 'zinn' oder 'blupp'
+async function say(text,t=token,s='erzaehler'){
+  if(t!==token)return;
+  if(!state.voice)return new Promise(r=>setTimeout(r,350+text.length*45));
+  if(naturBereit()){
+    const p=naturLaden(text,s);
+    // Höchstens kurz warten; kommt der Satz nicht rechtzeitig, spricht die Gerätestimme und er liegt fürs nächste Mal bereit
+    const buf=await Promise.race([p,new Promise(r=>setTimeout(()=>r(null),3000))]).catch(()=>null);
+    if(t!==token)return;
+    if(buf)return naturSpielen(buf,t);
+  }
+  return deviceSay(text,t);
 }
 const wait=(ms,t)=>new Promise(r=>setTimeout(r,t===token?ms:0));
 
@@ -60,7 +115,7 @@ function playUrl(url,t=token){
     a.play().catch(fin);
   });
 }
-function quiet(){if(hasSpeech)speechSynthesis.cancel();stopAudio()}
+function quiet(){if(hasSpeech)speechSynthesis.cancel();stopAudio();stopNatur()}
 function hush(){token++;quiet()}
 
 /* ---------- Töne ---------- */
@@ -180,7 +235,7 @@ function nameScreen(after){
   const nm=$('#nm');nm.focus();nm.select();
   const go=()=>{
     state.name=nm.value.trim();save('name',state.name);
-    after();say(withName('Guten Tag',', ')+'! Ich bin Herr Zinn. Komm mit in den Zauberwald. Was möchtest du spielen?');
+    after();say(withName('Guten Tag',', ')+'! Ich bin Herr Zinn. Komm mit in den Zauberwald. Was möchtest du spielen?',token,'zinn');
   };
   $('#go').onclick=go;nm.onkeydown=e=>{if(e.key==='Enter')go()};
 }
@@ -220,7 +275,12 @@ function parentsPage({extraHTML='',wire=()=>{},back}){
       <p>${viaServer?'✓ Gestartet über „Sam lernt starten.bat“ – die Videos laufen direkt im Spiel.':'Hinweis: Die Seite ist direkt als Datei geöffnet. Dann öffnet sich das Video in einem eigenen Fenster. Im Spiel eingebettet läuft es, wenn ihr über <b>„Sam lernt starten.bat“</b> startet.'}</p>
     </div>
     <div class="box">
-      <h2>Computerstimme</h2>
+      <h2>Stimme</h2>
+      <p><label><input type="checkbox" id="natur" ${NATUR.on?'checked':''}> <span><b>Natürliche Stimme</b> (ChatGPT) – Erzähler, Herr Zinn und BluppBlupp sprechen mit eigenen Stimmen. Jeder Satz wird einmal erzeugt und dann auf diesem Gerät gespeichert. Ohne Internet spricht die Gerätestimme.</span></label></p>
+      <p><button class="sb" id="ntest">▶ Herr Zinn</button> <button class="sb" id="btest">▶ BluppBlupp</button> <button class="sb" id="etest">▶ Erzähler</button> <span id="nout" class="ok"></span></p>
+    </div>
+    <div class="box">
+      <h2>Gerätestimme (Rückfall)</h2>
       ${!hasSpeech?'<p>Dieser Browser hat keine Sprachausgabe. Bitte Edge oder Chrome verwenden.</p>':
         vs.length?`<p><select id="vsel">${opts}</select> <button class="sb" id="vtest">▶ Testen</button></p>
         <p>${de.length?`${de.length} deutsche Stimme${de.length>1?'n':''} gefunden.`:'<b>Keine deutsche Stimme gefunden.</b>'} Ist nichts zu hören: Lautstärke prüfen, eine andere Stimme wählen oder unter Windows <i>Einstellungen › Zeit und Sprache › Sprache</i> bei „Deutsch“ die Sprachausgabe nachinstallieren.</p>`
@@ -234,9 +294,20 @@ function parentsPage({extraHTML='',wire=()=>{},back}){
   $('#vmin').onchange=e=>{state.videoMin=+e.target.value;save('videoMin',state.videoMin)};
   const vc=()=>{const n=state.videos.filter(ytId).length,bad=state.videos.length-n;$('#vcount').textContent=(n?`✓ ${n} Video${n>1?'s':''} erkannt`:'Noch keine Videos – dann gibt es nur die anderen Überraschungen.')+(bad?` · ${bad} Zeile${bad>1?'n':''} nicht erkannt`:'')};
   $('#vids').oninput=e=>{state.videos=e.target.value.split('\n').map(s=>s.trim()).filter(Boolean);save('videos',state.videos);vc()};vc();
+  $('#natur').onchange=e=>{NATUR.on=e.target.checked;save('stimme.natur',NATUR.on);NATUR.aus=0};
+  const probe=async(s,txt)=>{
+    hush();const out=$('#nout');NATUR.aus=0;
+    if(!naturBereit()){out.textContent=NATUR.on?'Hier gibt es keinen KI-Server – es spricht die Gerätestimme.':'Natürliche Stimme ist aus.';return deviceSay(txt)}
+    out.textContent='Stimme wird geladen …';
+    try{const buf=await naturLaden(txt,s);out.textContent='✓';await naturSpielen(buf,token)}
+    catch(e){out.textContent='✗ '+(e.message||'Keine Verbindung')+' – es spricht die Gerätestimme.';deviceSay(txt)}
+  };
+  $('#ntest').onclick=()=>probe('zinn',withName('Guten Abend',', ')+'! Ich bin Herr Zinn. Komm, wir gehen in den Zauberwald.');
+  $('#btest').onclick=()=>probe('blupp','Blubb, blubb! Ich bin BluppBlupp. Spielst du mit mir?');
+  $('#etest').onclick=()=>probe('erzaehler','Es war einmal ein kleines blaues Nilpferd, das wohnte im Zauberwald.');
   if($('#vsel')){
     $('#vsel').onchange=e=>{state.voiceName=e.target.value;save('voiceName',state.voiceName);pickVoice()};
-    $('#vtest').onclick=()=>{hush();say(withName('Hallo',' ')+'! Eins, zwei, drei. Das klappt!')};
+    $('#vtest').onclick=()=>{hush();deviceSay(withName('Hallo',' ')+'! Eins, zwei, drei. Das klappt!')};
   }
   wire();
 }

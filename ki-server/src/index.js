@@ -53,7 +53,7 @@ function cors(origin, env, eigene) {
   const ok = erlaubt(origin, env, eigene);
   return {
     'access-control-allow-origin': ok ? origin : 'null',
-    'access-control-allow-methods': 'POST, OPTIONS',
+    'access-control-allow-methods': 'GET, POST, OPTIONS',
     'access-control-allow-headers': 'content-type, x-zugang',
     'access-control-max-age': '86400',
     vary: 'origin'
@@ -139,6 +139,43 @@ async function bericht(env, b) {
   return { text: (await openai(env, { system: REPORT_SYSTEM, user, maxTokens: 900 })).trim() };
 }
 
+/* ---------- Stimme: Text wird zu natürlicher Sprache ----------
+   Drei feste Stimmen. Die Anweisung hängt an der Stimme, nicht an der Anfrage – so ist derselbe Satz immer
+   dieselbe Datei und kann dauerhaft gespeichert werden (bei Cloudflare und auf dem Gerät).
+   VERSION_STIMME hochzählen, wenn sich Stimmen oder Modell ändern – dann werden alle Sätze neu erzeugt. */
+const VERSION_STIMME = '1';
+const STIMMEN = {
+  erzaehler: { voice: 'marin', instructions: 'Du liest einem kleinen Kind eine Gutenachtgeschichte auf Deutsch vor. Sprich warm, ruhig und etwas langsam, freundlich lächelnd, mit klarer Aussprache. Kleine Pausen an Satzenden. Nie hektisch, nie übertrieben.' },
+  zinn: { voice: 'cedar', instructions: 'Du bist Herr Zinn, ein alter, gemütlicher Mann aus dem Zauberwald mit tiefer, sanfter Stimme. Sprich Deutsch, langsam, warm, ein wenig brummig und verschmitzt schmunzelnd, wie ein liebevoller Großonkel.' },
+  blupp: { voice: 'verse', instructions: 'Du bist BluppBlupp, ein kleines, fröhliches blaues Nilpferd. Sprich Deutsch mit heller, verspielter, kindlicher Stimme, neugierig und gut gelaunt, ein bisschen kichernd, aber deutlich und nicht zu schnell.' }
+};
+
+async function stimme(req, env, url, h) {
+  const s = url.searchParams.get('s') || 'erzaehler';
+  const text = String(url.searchParams.get('t') || '').replace(/[\u0000-\u001f]/g, ' ').trim();
+  if (!STIMMEN[s]) return antwort({ fehler: 'Unbekannte Stimme' }, 400, h);
+  if (!text || text.length > 600) return antwort({ fehler: 'Text fehlt oder ist zu lang' }, 400, h);
+  // Fester Schlüssel für den Cloudflare-Speicher: Version + Stimme + Text
+  const key = new Request(`${url.origin}/api/stimme-cache/v${VERSION_STIMME}/${s}?t=${encodeURIComponent(text)}`);
+  const cache = caches.default;
+  const alt = await cache.match(key);
+  if (alt) return new Response(alt.body, { headers: { ...Object.fromEntries(alt.headers), ...h } });
+
+  const r = await fetch('https://api.openai.com/v1/audio/speech', {
+    method: 'POST',
+    headers: { authorization: 'Bearer ' + env.OPENAI_API_KEY, 'content-type': 'application/json' },
+    body: JSON.stringify({ model: env.MODELL_STIMME || 'gpt-4o-mini-tts', voice: STIMMEN[s].voice, instructions: STIMMEN[s].instructions, input: text, response_format: 'mp3' })
+  });
+  if (!r.ok) {
+    const j = await r.json().catch(() => ({}));
+    return antwort({ fehler: (j.error && j.error.message) || 'Stimme: OpenAI antwortet mit ' + r.status }, r.status === 429 ? 429 : 502, h);
+  }
+  const audio = await r.arrayBuffer();
+  const kopf = { 'content-type': 'audio/mpeg', 'cache-control': 'public, max-age=31536000, immutable' };
+  await cache.put(key, new Response(audio, { headers: kopf }));
+  return new Response(audio, { headers: { ...kopf, ...h } });
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -149,10 +186,14 @@ export default {
     const origin = req.headers.get('origin') || '';
     const h = cors(origin, env, url.origin);
     if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: h });
-    if (req.method !== 'POST') return antwort({ fehler: 'Nur POST' }, 405, h);
-    if (!erlaubt(origin, env, url.origin)) return antwort({ fehler: 'Diese Seite ist nicht freigegeben' }, 403, h);
+    // Sprache wird per GET geholt, damit Browser und Cloudflare sie wie eine Datei speichern können.
+    // Ein GET von der eigenen Seite schickt oft keinen Origin mit – dann schützt allein Cloudflare Access davor.
+    const istStimme = req.method === 'GET' && url.pathname === '/api/stimme';
+    if (req.method !== 'POST' && !istStimme) return antwort({ fehler: 'Nur POST' }, 405, h);
+    if (!(istStimme && !origin) && !erlaubt(origin, env, url.origin)) return antwort({ fehler: 'Diese Seite ist nicht freigegeben' }, 403, h);
     if (env.ZUGANGSCODE && !gleich(req.headers.get('x-zugang') || '', env.ZUGANGSCODE)) return antwort({ fehler: 'Zugangscode falsch' }, 401, h);
     if (!env.OPENAI_API_KEY) return antwort({ fehler: 'OPENAI_API_KEY fehlt im Server' }, 500, h);
+    if (istStimme) { try { return await stimme(req, env, url, h) } catch (e) { return antwort({ fehler: e.message || 'Fehler' }, 500, h) } }
 
     let b = {};
     try { const t = await req.text(); if (t.length > 8000) throw 0; b = t ? JSON.parse(t) : {} } catch (e) { return antwort({ fehler: 'Ungültige Anfrage' }, 400, h) }
