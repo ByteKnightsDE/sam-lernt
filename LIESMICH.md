@@ -1,6 +1,7 @@
 # Sam lernt
 
-Lernspiele für Kinder mit Rosi (fliegendes Schwein), Bobo (Affe), Klapper (Skelett) und Paul (Pirat).
+Lernspiele für Kinder im Zauberwald – mit BluppBlupp, dem blauen Nilpferd, und seinem Onkel Herrn Zinn mit der Laterne.
+Verträumt, ruhig und trotzdem spannend. Vorlage der Figuren: `bilder/zauberwald.jpg`.
 Läuft im Browser am PC und auf dem iPad, auch ohne Internet.
 
 ## Inhalt
@@ -10,7 +11,7 @@ Läuft im Browser am PC und auf dem iPad, auch ohne Internet.
 | `index.html` | Startseite der Reihe – hier kommen neue Spiele dazu |
 | `mathe.html` | Sam lernt: Mathe (Zahlen 0–10, Zählen, Plus und Minus) |
 | `gemeinsam/` | Was alle Spiele teilen: Aussehen, Schrift, Stimme, Töne, Sterne, Figuren, Schatzkiste, KI-Anbindung |
-| `bilder/` | App-Symbol |
+| `bilder/` | Titelbild aus dem Zauberwald und App-Symbol |
 | `sw.js`, `manifest.webmanifest` | Offline-Modus und „Zum Home-Bildschirm“ auf dem iPad |
 | `ki-server/`, `wrangler.jsonc`, `.assetsignore` | ChatGPT-Helfer und Cloudflare-Einstellungen – enthalten keine Schlüssel und werden nicht ausgeliefert |
 | `Sam lernt starten.bat` | Am Windows-PC starten |

@@ -7,14 +7,17 @@
 const KI_ADRESSE=/\.pages\.dev$|\.workers\.dev$|byteknights\.de$/.test(location.hostname)?'/api':'';
 
 // Was die KI in Bildern zeigen darf – muss zur Liste im Server passen
-const KI_TOKENS=['pig','pig:big','pig:fall','monkey','monkey:big','skel','skel:big','skel:dance','skel:flip','pirate','pirate:big',
-  '☁️','🌙','⭐','🌈','☀️','🌊','🏝️','🌴','🌳','🌸','🍎','🍌','🍓','🎂','🍦','🧦','🗺️','⛵','⛏️','💰','👑','🎈','🎁','🎵','🎶','🎺','🥁',
-  '🐦','🐟','🐙','🦀','🐢','🦖','🦕','🐶','🐱','🐮','🐸','🦆','🐞','🦴','💀','💦','💨','😄','😂','😴','❤️','🏠','🚗','🚂','🚀','⚽','🧸'];
-const KI_THEMEN=['ein Ausflug ans Meer','ein Geburtstag','ein verlorener Schuh','Regenwetter','ein Zauberhut','ein Picknick','ein Wettrennen','die Nacht im Zelt','ein Kuchen backen','ein neuer Freund','ein Ballon, der wegfliegt','Zählen bis fünf'];
+// Was die KI in Bildern zeigen darf – muss zu TOKENS in ki-server/src/index.js passen
+const KI_TOKENS=['blupp','blupp:big','blupp:fall','blupp:dance','zinn','zinn:big',
+  '🌙','⭐','🌟','✨','☀️','🌈','☁️','🌧️','💧','❄️','🌲','🌳','🍂','🍄','🌰','🌸','🌻','🦋','🐞','🐌','🦔','🦊','🦉','🐿️','🐸','🦆','🐟','🐢',
+  '🫐','🍓','🍎','🍯','🧁','🏮','💎','🔮','🗝️','🎁','🎵','🎶','🔔','🫧','🛶','🏞️','🏡','🛏️','😴','😄','❤️','🧣','👢','🪁'];
+const KI_THEMEN=['ein verlorenes Glühwürmchen','der Mond spiegelt sich im See','eine Pilz-Party','der erste Schnee im Zauberwald','ein Regenbogen nach dem Regen',
+  'die kleine Eule kann nicht schlafen','eine Schatzkarte aus Blättern','Zählen bis fünf mit Sternen','ein kleiner Drache sucht einen Freund','Herr Zinns Laterne flackert',
+  'BluppBlupp lernt pfeifen','ein Picknick am Bach','ein Drachen im Herbstwind','die Glühwürmchen-Laternen-Parade','ein Geheimgang unter der alten Eiche'];
 
 const KI={
   // Eine im Eltern-Bereich eingetragene Adresse geht vor – nur zum Ausprobieren eines anderen Servers
-  url:load('ki.url','')||KI_ADRESSE,code:load('ki.code',''),sendName:load('ki.sendName',true),
+  url:load('ki.url','')||KI_ADRESSE,code:/^sk-/i.test(load('ki.code',''))?'':load('ki.code',''),sendName:load('ki.sendName',true),
   ready(){return !!this.url},
   async call(path,body,ms=45000){
     const ctrl=new AbortController(),to=setTimeout(()=>ctrl.abort(),ms);
@@ -56,7 +59,7 @@ const KI={
     const eigen=this.url!==KI_ADRESSE;
     return `<div class="box">
       <h2>KI-Helfer (ChatGPT) <span class="ki-status" id="kistat">${this.ready()?'prüfe …':'nicht eingerichtet'}</span></h2>
-      <p>ChatGPT erfindet immer neue Geschichten mit Rosi, Bobo, Klapper und Paul und schreibt euch auf Wunsch einen kurzen Bericht über den Lernstand. Ohne Internet laufen die eingebauten Geschichten weiter.</p>
+      <p>ChatGPT erfindet immer neue Zauberwald-Geschichten mit BluppBlupp und Herrn Zinn und schreibt euch auf Wunsch einen kurzen Bericht über den Lernstand. Ohne Internet laufen die eingebauten Geschichten weiter.</p>
       <p><label><input type="checkbox" id="kiname" ${this.sendName?'checked':''}> Den Vornamen in die Geschichten einbauen (er wird dafür an ChatGPT geschickt)</label></p>
       <p><button class="sb" id="kitest">Verbindung testen</button> <button class="sb" id="kireport">📝 Lernbericht schreiben</button></p>
       <p id="kiout" style="white-space:pre-wrap"></p>
@@ -82,7 +85,11 @@ const KI={
       if(r!==true)out.textContent='✗ '+r;
     };
     $('#kiurl').onchange=e=>{const v=e.target.value.trim();save('ki.url',v);this.url=v||KI_ADRESSE;zeige()};
-    $('#kicode').onchange=e=>{this.code=e.target.value.trim();save('ki.code',this.code);out.textContent='';zeige();this.prefetch()};
+    $('#kicode').onchange=e=>{
+      const v=e.target.value.trim();
+      // Ein OpenAI-Schlüssel gehört nur in Cloudflare – nie auf ein Gerät
+      if(/^sk-/i.test(v)){e.target.value='';this.code='';save('ki.code','');out.textContent='✗ Das ist ein OpenAI-Schlüssel. Der gehört nur in Cloudflare, nicht hierher. Das Feld bleibt leer.';return}
+      this.code=v;save('ki.code',this.code);out.textContent='';zeige();this.prefetch()};
     $('#kiname').onchange=e=>{this.sendName=e.target.checked;save('ki.sendName',this.sendName);try{sessionStorage.removeItem('samlernt.kiStory')}catch(x){}};
     $('#kitest').onclick=async()=>{
       if(!this.ready()){out.textContent='Hier gibt es keinen KI-Server. Die App über die Cloudflare-Adresse öffnen.';return}
@@ -98,4 +105,6 @@ const KI={
     zeige();
   }
 };
+// Früher versehentlich gespeicherte OpenAI-Schlüssel vom Gerät löschen
+if(/^sk-/i.test(load('ki.code','')))save('ki.code','');
 KI.prefetch();

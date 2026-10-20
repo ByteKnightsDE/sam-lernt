@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Sam lernt">
-<meta name="theme-color" content="#ffeedb">
+<meta name="theme-color" content="#f3cfcf">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="bilder/icon-180.png">
 <link rel="icon" href="bilder/icon-192.png">
@@ -61,17 +61,19 @@
 <script>
 const WORDS=['null','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn'];
 const CAP=w=>w[0].toUpperCase()+w.slice(1);
-const COLORS=['#8d8d8d','#f44336','#ff9800','#f9a825','#43a047','#00897b','#039be5','#3949ab','#8e24aa','#d81b60','#6d4c41'];
+// Aquarellfarben für die Zahlen 0–10, gut unterscheidbar und trotzdem ruhig
+const COLORS=['#9a8f97','#d9675a','#e08a3c','#c49a2c','#6f9f6b','#3f9a8f','#4f8fb5','#6a74b8','#9a72b8','#c76a96','#8a6a52'];
+// Was im Zauberwald gezählt wird
 const THINGS=[
-  {e:'🍎',sg:'ein Apfel',pl:'Äpfel'},{e:'🐶',sg:'ein Hund',pl:'Hunde'},{e:'⭐',sg:'ein Stern',pl:'Sterne'},
-  {e:'🐟',sg:'ein Fisch',pl:'Fische'},{e:'🚗',sg:'ein Auto',pl:'Autos'},{e:'🎈',sg:'ein Luftballon',pl:'Luftballons'},
-  {e:'🦆',sg:'eine Ente',pl:'Enten'},{e:'🍓',sg:'eine Erdbeere',pl:'Erdbeeren'},{e:'🐞',sg:'ein Marienkäfer',pl:'Marienkäfer'},
-  {e:'🌸',sg:'eine Blume',pl:'Blumen'},{e:'🐱',sg:'eine Katze',pl:'Katzen'},{e:'🍌',sg:'eine Banane',pl:'Bananen'},
-  {e:'🦖',sg:'ein Dino',pl:'Dinos'}
+  {e:'🍄',sg:'ein Pilz',pl:'Pilze'},{e:'🦉',sg:'eine Eule',pl:'Eulen'},{e:'⭐',sg:'ein Stern',pl:'Sterne'},
+  {e:'🦔',sg:'ein Igel',pl:'Igel'},{e:'🦊',sg:'ein Fuchs',pl:'Füchse'},{e:'🌰',sg:'eine Kastanie',pl:'Kastanien'},
+  {e:'🍂',sg:'ein Blatt',pl:'Blätter'},{e:'🦋',sg:'ein Schmetterling',pl:'Schmetterlinge'},{e:'🐞',sg:'ein Marienkäfer',pl:'Marienkäfer'},
+  {e:'🐌',sg:'eine Schnecke',pl:'Schnecken'},{e:'🐸',sg:'ein Frosch',pl:'Frösche'},{e:'🫐',sg:'eine Blaubeere',pl:'Blaubeeren'},
+  {e:'🐿️',sg:'ein Eichhörnchen',pl:'Eichhörnchen'},{e:'🌸',sg:'eine Blume',pl:'Blumen'}
 ];
-// Die Figuren der Reihe kommen besonders oft vor
-const FIGTHINGS=Object.keys(CHAR).map(f=>({f,sg:CHAR[f].sg,pl:CHAR[f].pl}));
-const thing=()=>Math.random()<.5?rnd(FIGTHINGS):rnd(THINGS);
+// BluppBlupp kommt oft vor; Herr Zinn wird nicht abgezählt
+const FIGTHINGS=Object.keys(CHAR).filter(f=>CHAR[f].count!==false).map(f=>({f,sg:CHAR[f].sg,pl:CHAR[f].pl}));
+const thing=()=>Math.random()<.35?rnd(FIGTHINGS):rnd(THINGS);
 const thingHTML=th=>th.f?fig(th.f):th.e;
 const app=$('#app');
 
@@ -222,12 +224,12 @@ function home(){
     <p class="series">Sam lernt:</p>
     <h1>${title}</h1>
     <div class="modes">
-      <button class="mode" data-m="explore" style="--c:#42a5f5"><span class="ico">🔍</span>Entdecken</button>
-      <button class="mode" data-m="find" style="--c:#ffa726"><span class="ico">👂</span>Finde die Zahl</button>
-      <button class="mode" data-m="how" style="--c:#ec407a"><span class="ico">${fig('pig')}</span>Wie viele?</button>
-      <button class="mode" data-m="count" style="--c:#ffca28"><span class="ico">👆</span>Zählen</button>
-      <button class="mode" data-m="math" style="--c:#66bb6a"><span class="ico">➕</span>Rechnen</button>
-      <button class="mode" data-m="speak" style="--c:#ef5350"><span class="ico">🎙️</span>Ich spreche</button>
+      <button class="mode" data-m="explore" style="--c:#6fa8b5"><span class="ico">🔍</span>Entdecken</button>
+      <button class="mode" data-m="find" style="--c:#e9a25b"><span class="ico">👂</span>Finde die Zahl</button>
+      <button class="mode" data-m="how" style="--c:#86c6d2"><span class="ico">${fig('blupp')}</span>Wie viele?</button>
+      <button class="mode" data-m="count" style="--c:#c9a440"><span class="ico">🍄</span>Zählen</button>
+      <button class="mode" data-m="math" style="--c:#7fae8a"><span class="ico">➕</span>Rechnen</button>
+      <button class="mode" data-m="speak" style="--c:#c76a96"><span class="ico">🎙️</span>Ich spreche</button>
     </div>
     ${progHTML()}
     <div class="bar">

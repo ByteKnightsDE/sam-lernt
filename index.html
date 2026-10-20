@@ -7,7 +7,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Sam lernt">
-<meta name="theme-color" content="#ffeedb">
+<meta name="theme-color" content="#f3cfcf">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="bilder/icon-180.png">
 <link rel="icon" href="bilder/icon-192.png">
@@ -22,30 +22,33 @@
 <script>
 // Alle Spiele der Reihe – neue einfach hier eintragen
 const GAMES=[
-  {href:'mathe.html',ico:'🔢',label:'Mathe',say:'Mathe',c:'#ff7043'},
-  {ico:'🔤',label:'Buchstaben',say:'Buchstaben',c:'#42a5f5'},
-  {ico:'🎨',label:'Farben & Formen',say:'Farben und Formen',c:'#ab47bc'},
-  {ico:'⏰',label:'Uhrzeit',say:'Uhrzeit',c:'#26a69a'}
+  {href:'mathe.html',ico:'🔢',label:'Mathe',say:'Mathe',c:'#e9a25b'},
+  {ico:'🔤',label:'Buchstaben',say:'Buchstaben',c:'#6fa8b5'},
+  {ico:'🎨',label:'Farben & Formen',say:'Farben und Formen',c:'#b48fc4'},
+  {ico:'⏰',label:'Uhrzeit',say:'Uhrzeit',c:'#7fae8a'}
 ];
-const COLORS=['#f44336','#ff9800','#f9a825','#43a047','#039be5','#8e24aa'];
+// Aquarellfarben passend zum Zauberwald
+const COLORS=['#d9776a','#e39a52','#c9a440','#7fae8a','#5f9fb0','#9a84c2'];
 
 function home(){
   state.prompt=null;
   const title='Sam lernt'.split('').map((c,i)=>c===' '?' ':`<span style="color:${COLORS[i%COLORS.length]};animation-delay:${i*.12}s">${c}</span>`).join('');
   $('#app').innerHTML=`<div class="home">
-    <p class="hello">${state.name?`Hallo ${esc(state.name)}! 👋`:'Hallo! 👋'}</p>
+    <p class="hello">${state.name?`Hallo ${esc(state.name)}!`:'Hallo!'}</p>
     <h1>${title}</h1>
-    <div class="gang">${Object.keys(FIG).map(f=>`<button data-f="${f}" aria-label="${CHAR[f].name}">${fig(f)}</button>`).join('')}</div>
+    <p class="sub">im Zauberwald</p>
+    <div class="hero"><img src="bilder/zauberwald.jpg" alt="BluppBlupp und Herr Zinn im Zauberwald"><button class="l" data-f="blupp" aria-label="BluppBlupp"></button><button class="r" data-f="zinn" aria-label="Herr Zinn"></button></div>
     <div class="modes">${GAMES.map((g,i)=>`<button class="mode ${g.href?'':'soon'}" data-g="${i}" style="--c:${g.c}"><span class="ico">${g.ico}</span>${g.label}${g.href?'':'<span class="tag">Bald</span>'}</button>`).join('')}</div>
     ${progHTML()}
     <div class="bar">
       <button class="pill" id="vt">${state.voice?'🔊 Ton an':'🔇 Ton aus'}</button>
       <button class="pill" id="par">👪 Eltern</button>
     </div>
-    <div class="hint" id="hint">Tipp auf Rosi, Bobo, Klapper und Paul!</div>
+    <div class="hint" id="hint">Tipp auf BluppBlupp und Herrn Zinn!</div>
   </div>`;
-  const hi={pig:'Oink! Ich bin Rosi, das fliegende Schwein!',monkey:'Uh uh, ah ah! Ich bin Bobo, der Affe!',skel:'Klapper, klapper! Ich bin Klapper, das Skelett!',pirate:'Arrr! Ich bin Pirat Paul!'};
-  $$('.gang button').forEach(b=>b.onclick=()=>{hush();const f=b.dataset.f;CHAR[f].sound();restart(b,'jump');setTimeout(()=>say(hi[f]),700)});
+  const hi={blupp:'Blubb, blubb! Ich bin BluppBlupp, das blaue Nilpferd. Ich wohne im Zauberwald!',
+    zinn:'Guten Tag! Ich bin Herr Zinn, der Onkel von BluppBlupp. Meine Laterne leuchtet uns den Weg.'};
+  $$('[data-f]').forEach(b=>b.onclick=()=>{hush();const f=b.dataset.f;CHAR[f].sound();restart($('.hero'),'bump');setTimeout(()=>say(hi[f]),700)});
   $$('[data-g]').forEach(b=>b.onclick=async()=>{
     const g=GAMES[+b.dataset.g];hush();
     if(!g.href){restart(b,'shake');say(g.say+' kommt bald!');return}
@@ -56,7 +59,7 @@ function home(){
     ()=>{$('#hint').textContent='Für Eltern: den Knopf „Eltern“ gedrückt halten.'});
 }
 // Ab und zu fliegt jemand vorbei
-setInterval(()=>{if(!$('#ov')&&$('.gang'))flyBy(undefined,false)},14000);
+setInterval(()=>{if(!$('#ov')&&$('.hero'))flyBy(undefined,false)},22000);
 state.name?home():nameScreen(home);
 </script>
 </body>

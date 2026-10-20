@@ -5,9 +5,9 @@
    Cloudflare Access vor der ganzen App; ein Zugangscode (ZUGANGSCODE) ist zusätzlich möglich. */
 
 // Was die Geschichten zeigen dürfen – muss zu KI_TOKENS in gemeinsam/ki.js passen
-const TOKENS = ['pig','pig:big','pig:fall','monkey','monkey:big','skel','skel:big','skel:dance','skel:flip','pirate','pirate:big',
-  '☁️','🌙','⭐','🌈','☀️','🌊','🏝️','🌴','🌳','🌸','🍎','🍌','🍓','🎂','🍦','🧦','🗺️','⛵','⛏️','💰','👑','🎈','🎁','🎵','🎶','🎺','🥁',
-  '🐦','🐟','🐙','🦀','🐢','🦖','🦕','🐶','🐱','🐮','🐸','🦆','🐞','🦴','💀','💦','💨','😄','😂','😴','❤️','🏠','🚗','🚂','🚀','⚽','🧸'];
+const TOKENS = ['blupp','blupp:big','blupp:fall','blupp:dance','zinn','zinn:big',
+  '🌙','⭐','🌟','✨','☀️','🌈','☁️','🌧️','💧','❄️','🌲','🌳','🍂','🍄','🌰','🌸','🌻','🦋','🐞','🐌','🦔','🦊','🦉','🐿️','🐸','🦆','🐟','🐢',
+  '🫐','🍓','🍎','🍯','🧁','🏮','💎','🔮','🗝️','🎁','🎵','🎶','🔔','🫧','🛶','🏞️','🏡','🛏️','😴','😄','❤️','🧣','👢','🪁'];
 
 const STORY_SCHEMA = {
   type: 'object',
@@ -29,19 +29,20 @@ const STORY_SCHEMA = {
 };
 
 const STORY_SYSTEM = `Du schreibst kurze Bildergeschichten auf Deutsch für ein Kind im Kindergarten- bzw. Vorschulalter.
-Die vier Figuren:
-- Rosi, ein fliegendes rosa Schwein (Bild-Token "pig")
-- Bobo, ein lustiger Affe, isst gern Bananen (Token "monkey")
-- Klapper, ein freundliches, kitzliges Skelett, tanzt gern (Token "skel")
-- Paul, ein Pirat, ruft gern "Arrr!" (Token "pirate")
+Die Welt ist der Zauberwald: Birken, Moos, Pilze, Glühwürmchen, ein stiller See, abends rosa Himmel und Sterne. Verträumt und ein bisschen geheimnisvoll.
+Die zwei Figuren:
+- BluppBlupp, ein kleines, fröhliches blaues Nilpferd. Sagt gern "Blubb!", ist neugierig und mutig. (Bild-Token "blupp")
+- Herr Zinn, BluppBlupps Onkel: ein freundlicher, alter Waldmann mit großem braunem Spitzhut, weißem Bart, roter Nase und grünem Mantel.
+  Er trägt immer eine Laterne, ist ruhig, weise und ein bisschen lustig. BluppBlupp nennt ihn "Onkel Zinn". (Token "zinn")
+Waldtiere dürfen mitspielen (Eule, Igel, Fuchs, Eichhörnchen, Frosch, Schnecke, Schmetterling …).
 Regeln:
-- 3 bis 6 Seiten. Jede Seite: 1 bis 2 kurze, einfache Sätze (höchstens 25 Wörter), die gut vorgelesen klingen.
-- Lustig, warmherzig, gerne mit Geräuschen und Wiederholungen. Nichts Gruseliges, keine Gewalt, keine Gefahr.
-- Gern kleine Zähl-Momente (eins, zwei, drei …), aber nicht belehrend.
-- Die letzte Seite endet mit "Ende."
+- 3 bis 6 Seiten. Jede Seite: 1 bis 2 kurze, einfache Sätze (höchstens 25 Wörter), die sich ruhig vorlesen lassen.
+- Beruhigend und spannend zugleich: ein kleines Rätsel oder eine Überraschung, die sich freundlich auflöst. Nichts Gruseliges, keine Gewalt, keine echte Gefahr, niemand ist böse.
+- Gern sanfte Geräusche (blubb, huhu, plitsch) und kleine Zähl-Momente (eins, zwei, drei …), aber nicht belehrend.
+- Das Ende ist friedlich und gemütlich; die letzte Seite endet mit "Ende."
 - "s" sind die Bilder der Seite, nur aus der erlaubten Liste. Figuren-Varianten:
-  ":big" = groß im Bild, "pig:fall" = Rosi purzelt, "skel:dance" = Klapper tanzt, "skel:flip" = Klapper steht auf dem Kopf.
-  Ein Emoji mit ":big" oder ":fall" ist NICHT erlaubt, nur die Varianten aus der Liste.`;
+  ":big" = groß im Bild, "blupp:fall" = BluppBlupp purzelt, "blupp:dance" = BluppBlupp tanzt.
+  Emojis haben keine Varianten.`;
 
 const REPORT_SYSTEM = `Du schreibst Eltern auf Deutsch einen kurzen, freundlichen Bericht über den Lernstand ihres Kindes in einem Mathe-Lernspiel (Zahlen 0–10, Zählen, Plus, Minus).
 Du bekommst je Zahl bzw. "plus"/"minus", wie oft richtig (ok) und falsch (bad) geantwortet wurde.

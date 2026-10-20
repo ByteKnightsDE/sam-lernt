@@ -1,78 +1,76 @@
-/* Sam lernt – die Figuren der Reihe: Rosi (fliegendes Schwein), Bobo (Affe), Klapper (Skelett), Paul (Pirat) */
+/* Sam lernt – die Figuren aus dem Zauberwald: BluppBlupp (das blaue Nilpferd) und Herr Zinn (sein Onkel mit der Laterne).
+   Gezeichnet nach Marcs Vorlage in bilder/zauberwald.jpg. Ohne Verläufe/Filter mit IDs, damit beliebig viele
+   Figuren gleichzeitig auf dem Bildschirm sein können. */
 
 const FIG={
-pig:`<g class="wing wl"><path d="M32 52 Q8 26 3 42 Q12 44 9 53 Q18 51 32 60Z" fill="#fff" stroke="#9fb3d6" stroke-width="2.5" stroke-linejoin="round"/></g>
-<g class="wing wr"><path d="M68 52 Q92 26 97 42 Q88 44 91 53 Q82 51 68 60Z" fill="#fff" stroke="#9fb3d6" stroke-width="2.5" stroke-linejoin="round"/></g>
-<path class="tail" d="M77 66 q11 -1 9 -10 q-2 -6 -7 -2" fill="none" stroke="#e57fa0" stroke-width="3" stroke-linecap="round"/>
-<ellipse cx="50" cy="67" rx="28" ry="21" fill="#f7a8c4"/>
-<rect x="33" y="80" width="8" height="13" rx="3" fill="#e88aac"/><rect x="59" y="80" width="8" height="13" rx="3" fill="#e88aac"/>
-<path d="M31 32 L25 13 L44 24Z" fill="#e88aac"/><path d="M69 32 L75 13 L56 24Z" fill="#e88aac"/>
-<circle cx="50" cy="41" r="22" fill="#f9b6cd"/>
-<circle cx="35" cy="46" r="4" fill="#ff8fb0" opacity=".6"/><circle cx="65" cy="46" r="4" fill="#ff8fb0" opacity=".6"/>
-<circle cx="41" cy="36" r="3.6" fill="#3b2a2a"/><circle cx="59" cy="36" r="3.6" fill="#3b2a2a"/>
-<circle cx="42.3" cy="34.7" r="1.2" fill="#fff"/><circle cx="60.3" cy="34.7" r="1.2" fill="#fff"/>
-<ellipse cx="50" cy="48" rx="10" ry="7" fill="#f28db2" stroke="#e07aa0" stroke-width="1.5"/>
-<ellipse cx="46.5" cy="48" rx="2" ry="3" fill="#b85a7c"/><ellipse cx="53.5" cy="48" rx="2" ry="3" fill="#b85a7c"/>`,
+blupp:`<path class="tail" d="M71 74 q8 1 7 7" fill="none" stroke="#6fb2bf" stroke-width="3" stroke-linecap="round"/>
+<rect x="35" y="80" width="12" height="15" rx="6" fill="#74b7c4"/><rect x="53" y="80" width="12" height="15" rx="6" fill="#74b7c4"/>
+<ellipse cx="41" cy="94" rx="6.5" ry="2.6" fill="#5f9fad"/><ellipse cx="59" cy="94" rx="6.5" ry="2.6" fill="#5f9fad"/>
+<ellipse cx="50" cy="67" rx="23" ry="21" fill="#86c6d2"/>
+<ellipse cx="50" cy="72" rx="14" ry="13" fill="#a3d6df"/>
+<g class="arm al"><ellipse cx="29" cy="66" rx="5.5" ry="9" transform="rotate(18 29 66)" fill="#7dbfcb"/></g>
+<g class="arm ar"><ellipse cx="71" cy="66" rx="5.5" ry="9" transform="rotate(-18 71 66)" fill="#7dbfcb"/></g>
+<g class="ear el"><circle cx="34" cy="21" r="5.5" fill="#74b7c4"/><circle cx="34" cy="21.5" r="2.8" fill="#f2b8b4"/></g>
+<g class="ear er"><circle cx="66" cy="21" r="5.5" fill="#74b7c4"/><circle cx="66" cy="21.5" r="2.8" fill="#f2b8b4"/></g>
+<ellipse cx="50" cy="35" rx="21" ry="17" fill="#86c6d2"/>
+<ellipse cx="50" cy="44.5" rx="20" ry="12.5" fill="#a3d6df"/>
+<circle cx="31.5" cy="42" r="4.2" fill="#f4a3a3" opacity=".55"/><circle cx="68.5" cy="42" r="4.2" fill="#f4a3a3" opacity=".55"/>
+<g class="eyes"><circle cx="41" cy="30.5" r="3" fill="#2f3340"/><circle cx="59" cy="30.5" r="3" fill="#2f3340"/>
+<circle cx="42.1" cy="29.3" r="1" fill="#fff"/><circle cx="60.1" cy="29.3" r="1" fill="#fff"/></g>
+<ellipse cx="44.5" cy="41" rx="1.7" ry="2.3" fill="#4f8792"/><ellipse cx="55.5" cy="41" rx="1.7" ry="2.3" fill="#4f8792"/>
+<path class="mouth" d="M43 49.5 q7 5 14 0" fill="none" stroke="#4f8792" stroke-width="2.2" stroke-linecap="round"/>`,
 
-monkey:`<path class="tail" d="M68 80 q24 4 20 -17 q-3 -10 -10 -4" fill="none" stroke="#8d5a3b" stroke-width="5" stroke-linecap="round"/>
-<ellipse cx="50" cy="78" rx="20" ry="17" fill="#8d5a3b"/><ellipse cx="50" cy="81" rx="12" ry="10" fill="#e8c39e"/>
-<circle cx="24" cy="40" r="10" fill="#8d5a3b"/><circle cx="24" cy="40" r="6" fill="#e8c39e"/>
-<circle cx="76" cy="40" r="10" fill="#8d5a3b"/><circle cx="76" cy="40" r="6" fill="#e8c39e"/>
-<path d="M44 18 q6 -12 12 0" fill="#8d5a3b"/>
-<circle cx="50" cy="41" r="25" fill="#8d5a3b"/>
-<path d="M50 27 c-12 -6 -22 2 -20 12 c-4 6 -2 18 20 20 c22 -2 24 -14 20 -20 c2 -10 -8 -18 -20 -12z" fill="#e8c39e"/>
-<circle cx="42" cy="37" r="3.6" fill="#3b2a2a"/><circle cx="58" cy="37" r="3.6" fill="#3b2a2a"/>
-<circle cx="43.3" cy="35.7" r="1.2" fill="#fff"/><circle cx="59.3" cy="35.7" r="1.2" fill="#fff"/>
-<circle cx="47" cy="46" r="1.4" fill="#5a3522"/><circle cx="53" cy="46" r="1.4" fill="#5a3522"/>
-<path class="mouth" d="M40 51 q10 9 20 0" fill="none" stroke="#5a3522" stroke-width="2.6" stroke-linecap="round"/>`,
-
-skel:`<g class="arm al"><path d="M39 59 L23 73" stroke="#fafafa" stroke-width="5" stroke-linecap="round"/><circle cx="22" cy="74" r="4.5" fill="#fafafa"/></g>
-<g class="arm ar"><path d="M61 59 L77 73" stroke="#fafafa" stroke-width="5" stroke-linecap="round"/><circle cx="78" cy="74" r="4.5" fill="#fafafa"/></g>
-<path d="M50 52 V84" stroke="#fafafa" stroke-width="5"/>
-<path d="M38 59 q12 6 24 0 M39 66 q11 5 22 0 M41 73 q9 4 18 0" fill="none" stroke="#fafafa" stroke-width="4" stroke-linecap="round"/>
-<path d="M40 83 q10 8 20 0" stroke="#fafafa" stroke-width="5" fill="none" stroke-linecap="round"/>
-<path d="M43 86 L38 97 M57 86 L62 97" stroke="#fafafa" stroke-width="5" stroke-linecap="round"/>
-<path d="M30 30 a20 20 0 0 1 40 0 v8 q0 6 -6 8 v4 h-28 v-4 q-6 -2 -6 -8z" fill="#fafafa"/>
-<circle cx="42" cy="32" r="6.5" fill="#333"/><circle cx="58" cy="32" r="6.5" fill="#333"/>
-<circle cx="43.6" cy="30.8" r="2" fill="#fff"/><circle cx="59.6" cy="30.8" r="2" fill="#fff"/>
-<path d="M50 38 l-3 5 h6z" fill="#333"/>
-<g class="jaw"><rect x="38" y="46" width="24" height="8" rx="3" fill="#fafafa"/><path d="M44 46v8M50 46v8M56 46v8" stroke="#9e9e9e" stroke-width="1.5"/></g>`,
-
-pirate:`<path d="M24 99 q2 -27 26 -29 q24 2 26 29z" fill="#1e88e5"/>
-<path d="M29 86h42M26 94h48" stroke="#fff" stroke-width="4"/>
-<circle cx="50" cy="48" r="22" fill="#f6c9a0"/>
-<path d="M30 52 q2 22 20 24 q18 -2 20 -24 q-6 8 -20 8 q-14 0 -20 -8z" fill="#6d3f1f"/>
-<path class="mouth" d="M43 61 q7 5 14 0" stroke="#3b2a2a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-<path d="M37 57 q7 -6 13 0 q6 -6 13 0 q-7 3 -13 0 q-6 3 -13 0z" fill="#5a3218"/>
-<circle cx="50" cy="51" r="3.6" fill="#eaa77f"/>
-<circle cx="58" cy="43" r="3.5" fill="#3b2a2a"/><circle cx="59.2" cy="41.8" r="1.2" fill="#fff"/>
-<path d="M30 35 L70 46" stroke="#222" stroke-width="2"/><ellipse cx="42" cy="43" rx="6.5" ry="5.5" fill="#222"/>
-<path d="M27 42 q2 -22 23 -22 q21 0 23 22 q-23 -8 -46 0z" fill="#e53935"/>
-<circle cx="41" cy="30" r="2" fill="#fff"/><circle cx="55" cy="27" r="2" fill="#fff"/><circle cx="64" cy="34" r="2" fill="#fff"/>
-<path d="M72 36 l13 -5 l-4 11z M72 39 l11 8 l-13 1z" fill="#c62828"/>
-<circle cx="28" cy="53" r="3.2" fill="none" stroke="#fbc02d" stroke-width="2.2"/>`
+zinn:`<ellipse cx="41" cy="96" rx="7.5" ry="3" fill="#6b4a33"/><ellipse cx="59" cy="96" rx="7.5" ry="3" fill="#6b4a33"/>
+<rect x="38" y="80" width="6.5" height="15" rx="2" fill="#7c5c45"/><rect x="55.5" y="80" width="6.5" height="15" rx="2" fill="#7c5c45"/>
+<path d="M39 83h5.5M39 87h5.5M39 91h5.5M55.5 83h6.5M55.5 87h6.5M55.5 91h6.5" stroke="#a1826a" stroke-width="1.2"/>
+<path d="M30 50 Q50 42 70 50 L75 85 Q50 90 25 85Z" fill="#5f9e8a"/>
+<path d="M50 49 L50 87" stroke="#4b8573" stroke-width="1.6"/>
+<path d="M50 50 L43 62 M50 50 L57 62" stroke="#4b8573" stroke-width="1.4" fill="none"/>
+<rect x="31" y="70" width="10" height="8" rx="2" fill="#568f7c" stroke="#4b8573" stroke-width="1"/>
+<rect x="59" y="70" width="10" height="8" rx="2" fill="#568f7c" stroke="#4b8573" stroke-width="1"/>
+<circle cx="52.5" cy="66" r="1.2" fill="#e9d9b8"/><circle cx="52.5" cy="74" r="1.2" fill="#e9d9b8"/>
+<g class="arm al"><path d="M31 52 Q25 64 29 76" stroke="#5f9e8a" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="29.5" cy="77" r="3.3" fill="#f3c9ae"/></g>
+<g class="lantern">
+  <circle class="glow g1" cx="80" cy="76" r="17" fill="#ffd77e" opacity=".16"/>
+  <circle class="glow g2" cx="80" cy="76" r="11" fill="#ffd77e" opacity=".28"/>
+  <path d="M75 66 q5 -6 10 0" stroke="#6b4a33" stroke-width="1.6" fill="none"/>
+  <rect x="74.5" y="67" width="11" height="3" rx="1" fill="#7a4e33"/>
+  <rect x="75.5" y="70" width="9" height="12" rx="2" fill="#ffe2a0" stroke="#7a4e33" stroke-width="1.6"/>
+  <path class="flame" d="M80 79 q-2.5 -3 0 -6.5 q2.5 3.5 0 6.5z" fill="#ff9d3c"/>
+  <rect x="74.5" y="82" width="11" height="2.6" rx="1" fill="#7a4e33"/>
+</g>
+<g class="arm ar"><path d="M69 52 Q76 58 79 66" stroke="#5f9e8a" stroke-width="7" fill="none" stroke-linecap="round"/><circle cx="79.5" cy="66" r="3.3" fill="#f3c9ae"/></g>
+<ellipse cx="37" cy="36" rx="4" ry="5" fill="#ece7dd"/><ellipse cx="63" cy="36" rx="4" ry="5" fill="#ece7dd"/>
+<circle cx="50" cy="35" r="12.5" fill="#f3c9ae"/>
+<path d="M37 39 Q37 58 50 61 Q63 58 63 39 Q58 46 50 46 Q42 46 37 39Z" fill="#f4f1ea"/>
+<path d="M42 50 q2 3 0 6 M50 52 q2 3 0 6 M58 50 q-2 3 0 6" stroke="#ddd6c8" stroke-width="1.1" fill="none"/>
+<circle cx="42" cy="40" r="2.6" fill="#f0a2a0" opacity=".6"/><circle cx="58" cy="40" r="2.6" fill="#f0a2a0" opacity=".6"/>
+<g class="eyes"><circle cx="45" cy="33.5" r="1.5" fill="#3b2a2a"/><circle cx="55" cy="33.5" r="1.5" fill="#3b2a2a"/></g>
+<path d="M42.5 30.5 q2.5 -1.6 5 0 M52.5 30.5 q2.5 -1.6 5 0" stroke="#ece7dd" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+<path class="mouth" d="M46.5 45 q3.5 2.2 7 0" stroke="#b57d72" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+<circle cx="50" cy="39.5" r="4.4" fill="#ec8a82"/><circle cx="48.7" cy="38.2" r="1.2" fill="#fff" opacity=".7"/>
+<ellipse cx="50" cy="26" rx="21" ry="5" fill="#86603f"/>
+<path d="M35 25 Q37 7 54 3 Q68 1 77 13 Q69 9 64 12 Q65 19 65 25 Q50 28 35 25Z" fill="#9c7049"/>
+<path d="M36 24 Q50 27 64.5 24" stroke="#7a5536" stroke-width="2.2" fill="none"/>
+<path d="M46 12 l1.2 2.4 2.6 .3 -1.9 1.8 .5 2.6 -2.4 -1.3 -2.4 1.3 .5 -2.6 -1.9 -1.8 2.6 -.3z" fill="#e7c46a" opacity=".9"/>`
 };
 
-// Wie die Figuren heißen und klingen
+// Wie die Figuren heißen und klingen. count:false – Herr Zinn wird nicht abgezählt („drei Herr Zinns“ klingt schief)
 const CHAR={
-  pig:{name:'Rosi',sg:'ein fliegendes Schwein',pl:'fliegende Schweine',who:'das fliegende Schwein',sound:()=>sfx.oink()},
-  monkey:{name:'Bobo',sg:'ein Affe',pl:'Affen',who:'der Affe',sound:()=>sfx.monkey()},
-  skel:{name:'Klapper',sg:'ein Skelett',pl:'Skelette',who:'das Skelett',sound:()=>sfx.rattle()},
-  pirate:{name:'Paul',sg:'ein Pirat',pl:'Piraten',who:'der Pirat',sound:()=>sfx.arr()}
+  blupp:{name:'BluppBlupp',sg:'ein blaues Nilpferd',pl:'blaue Nilpferde',who:'das blaue Nilpferd',sound:()=>sfx.blubb()},
+  zinn:{name:'Herr Zinn',sg:'Herr Zinn',pl:'Herr Zinn',who:'BluppBlupps Onkel mit der Laterne',count:false,sound:()=>sfx.zinn()}
 };
 
 function fig(name,cls=''){return `<svg class="fig ${name} ${cls}" viewBox="0 0 100 100" aria-hidden="true">${FIG[name]}</svg>`}
 
-// Eine Figur kurz über den Bildschirm sausen lassen – zur Freude zwischendurch
+// Ab und zu zieht eine Figur sanft durchs Bild – BluppBlupp schwebt an Seifenblasen, Herr Zinn spaziert mit der Laterne
 function flyBy(name=rnd(Object.keys(FIG)),withSound=true){
   const d=document.createElement('div');
   d.className='flyer fly-'+name;
-  d.innerHTML=fig(name,name==='skel'?'dance':'');
-  if(name==='pig')d.style.top=8+Math.random()*45+'vh';
-  if(name==='monkey')d.style.left=15+Math.random()*60+'vw';
-  if(name==='skel')d.style.left=10+Math.random()*70+'vw';
-  if(name==='pirate')d.style.bottom=4+Math.random()*30+'vh';
+  d.innerHTML=fig(name,name==='blupp'?'dance':'');
+  if(name==='blupp')d.style.top=10+Math.random()*40+'vh';
+  if(name==='zinn')d.style.bottom=3+Math.random()*12+'vh';
   document.body.appendChild(d);
-  if(withSound)setTimeout(()=>CHAR[name].sound(),500);
-  setTimeout(()=>d.remove(),3200);
+  if(withSound)setTimeout(()=>CHAR[name].sound(),600);
+  setTimeout(()=>d.remove(),6200);
 }

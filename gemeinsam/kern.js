@@ -18,7 +18,7 @@ const state={
 };
 let token=0;
 
-const PRAISE=['Super','Toll gemacht','Richtig','Klasse','Prima','Spitze','Ja, genau','Wunderbar','Sehr gut'];
+const PRAISE=['Wunderbar','Toll gemacht','Richtig','Ganz genau','Prima','Sehr schön','Ja, genau','Zauberhaft','Sehr gut'];
 const praise=()=>rnd(PRAISE)+(state.name&&Math.random()<.5?', '+state.name:'')+'!';
 const withName=(s,sep=', ')=>state.name?s+sep+state.name:s;
 
@@ -37,7 +37,8 @@ function say(text,t=token){
     if(t!==token)return res();
     if(!hasSpeech||!state.voice)return setTimeout(res,350+text.length*45);
     const u=new SpeechSynthesisUtterance(text);
-    u.lang=voice?voice.lang:'de-DE';if(voice)u.voice=voice;u.rate=.88;u.pitch=1.15;
+    // Langsam und warm – passend zum Zauberwald
+    u.lang=voice?voice.lang:'de-DE';if(voice)u.voice=voice;u.rate=.84;u.pitch=1.06;
     let done=false;const fin=()=>{if(!done){done=true;const i=keep.indexOf(u);if(i>=0)keep.splice(i,1);res()}};
     u.onend=fin;u.onerror=fin;keep.push(u);
     setTimeout(fin,2500+text.length*130);
@@ -101,11 +102,28 @@ function noise(dur=.12,vol=.35,freq=1400,delay=0){
     s.connect(f).connect(g).connect(c.destination);s.start(c.currentTime+delay);
   }catch(e){}
 }
+// Glockenton mit langem Ausklang – klingt nach Zauberwald statt nach Spielhalle
+function bell(freqs,gap=.12,vol=.09){
+  if(!state.voice)return;
+  try{
+    const c=actx(),t=c.currentTime;
+    freqs.forEach((f,i)=>[1,2.76].forEach((h,k)=>{
+      const o=c.createOscillator(),g=c.createGain(),s=t+i*gap;
+      o.type='sine';o.frequency.value=f*h;
+      g.gain.setValueAtTime(.0001,s);g.gain.exponentialRampToValueAtTime(vol/(k?3:1),s+.01);g.gain.exponentialRampToValueAtTime(.0001,s+(k?.5:1.4));
+      o.connect(g).connect(c.destination);o.start(s);o.stop(s+1.5);
+    }));
+  }catch(e){}
+}
 const sfx={
-  pop:k=>tone([380+k*55],.09,'triangle',.13),
-  ok:()=>tone([523,659,784,1047],.1,'triangle'),
-  no:()=>tone([240,190],.16,'sine',.12),
-  fanfare:()=>tone([523,523,523,698,880,1047],.13,'triangle',.16),
+  pop:k=>bell([523*Math.pow(2,(k-1)/12*2)],.1,.07),
+  ok:()=>bell([784,988,1175,1568],.09),
+  no:()=>tone([294,262],.2,'sine',.08),
+  fanfare:()=>bell([523,659,784,1047,1319,1568],.11,.1),
+  blubb:()=>{sweep(180,420,.12,{type:'sine',vol:.2,lp:2000});sweep(200,480,.12,{type:'sine',vol:.18,lp:2000,delay:.16});sweep(160,380,.14,{type:'sine',vol:.16,lp:2000,delay:.34})},
+  zinn:()=>{sweep(196,220,.35,{type:'triangle',vol:.12,lp:900});sweep(220,196,.4,{type:'triangle',vol:.12,lp:900,delay:.38});bell([1568],.1,.05)},
+  firefly:()=>bell([1760+Math.random()*600],.1,.05),
+  bubble:()=>{sweep(500+Math.random()*300,1400,.08,{type:'sine',vol:.12,lp:5000});noise(.03,.15,4000)},
   bang:()=>{noise(.15,.5,900);tone([1200,600],.05,'square',.04)},
   crack:()=>noise(.08,.4,3000),
   roar:()=>sweep(240,65,1,{lp:900,vol:.3}),
@@ -140,7 +158,7 @@ function restart(el,cls){el.classList.remove(cls);void el.getBoundingClientRect(
 /* ---------- Sterne und Weg zur Schatzkiste ---------- */
 function progHTML(){
   const p=Math.min(1,state.prog/state.goal)*100;
-  return `<div class="prog" id="prog"><div class="track"><div class="fill" style="width:${p}%"></div><span class="walker" style="left:${p}%">🦖</span></div><span class="chest">🎁</span><span class="stars">⭐<span id="sc">${state.stars}</span></span></div>`;
+  return `<div class="prog" id="prog"><div class="track"><div class="fill" style="width:${p}%"></div><span class="walker" style="left:${p}%">${typeof fig==='function'?fig('blupp'):'🦛'}</span></div><span class="chest">🎁</span><span class="stars">⭐<span id="sc">${state.stars}</span></span></div>`;
 }
 function updProg(){
   const el=$('#prog');if(!el)return;
@@ -156,13 +174,13 @@ function next(t,fn){if(t!==token)return;state.prog>=state.goal?reward(fn):fn()}
 function nameScreen(after){
   state.prompt=null;
   const app=$('#app');
-  app.innerHTML=`<div class="home"><div class="q">👋</div><h1 style="font-size:min(10vw,7vh)">Wie heißt du?</h1>
+  app.innerHTML=`<div class="home"><div class="hero-fig">${fig('zinn')}</div><h1 style="font-size:min(10vw,7vh)">Wie heißt du?</h1>
     <input class="nameinput" id="nm" maxlength="20" autocomplete="off" value="${esc(state.name||'Sam')}">
     <button class="bigbtn" id="go">Los geht's ▶</button></div>`;
   const nm=$('#nm');nm.focus();nm.select();
   const go=()=>{
     state.name=nm.value.trim();save('name',state.name);
-    after();say(withName('Hallo',' ')+'! Schön, dass du da bist. Was möchtest du spielen?');
+    after();say(withName('Guten Tag',', ')+'! Ich bin Herr Zinn. Komm mit in den Zauberwald. Was möchtest du spielen?');
   };
   $('#go').onclick=go;nm.onkeydown=e=>{if(e.key==='Enter')go()};
 }
@@ -195,7 +213,7 @@ function parentsPage({extraHTML='',wire=()=>{},back}){
     <div class="box">
       <h2>Belohnung</h2>
       <p>Schatzkiste alle ${sel('goal',[5,8,10,15,20],state.goal,'Sterne')} &nbsp; Video höchstens ${sel('vmin',[2,3,4,5,8,10],state.videoMin,'Minuten')}</p>
-      <p>In der Schatzkiste darf er aus drei Überraschungen wählen: Geschichten, Rätsel, Schatzsuche, Skelett-Disco, Affe füttern, Schweine-Flug, Ballons, Überraschungs-Ei – und ein <b>Dino-Video</b>, wenn unten Links stehen. Danach geht es von selbst weiter.</p>
+      <p>In der Schatzkiste darf er aus drei Überraschungen wählen: Geschichten, Rätsel, Glühwürmchen fangen, Seifenblasen, BluppBlupp füttern, Waldmusik, Zauberstein-Suche, Zauber-Ei – und ein <b>Video</b>, wenn unten Links stehen. Danach geht es von selbst weiter.</p>
       <p><b>YouTube-Links</b> – einer pro Zeile. Am besten die Videos vorher selbst anschauen, das Spiel nimmt zufällig eins davon:</p>
       <textarea id="vids" placeholder="https://www.youtube.com/watch?v=...">${esc(state.videos.join('\n'))}</textarea>
       <p class="ok" id="vcount"></p>
@@ -222,6 +240,21 @@ function parentsPage({extraHTML='',wire=()=>{},back}){
   }
   wire();
 }
+
+/* ---------- Zauberwald im Hintergrund: Birken am Rand und ein paar Glühwürmchen ---------- */
+function forest(){
+  if($('#wald'))return;
+  const birke=(x,h,w,lean)=>{
+    let marks='';for(let y=12;y<h;y+=9+((x*7+y)%7))marks+=`<path d="M${x-w/2+1} ${100-y} q${w/2} -1.4 ${w-2} 0" stroke="#5b4d52" stroke-width="${.5+((x+y)%3)*.25}" opacity=".5" fill="none"/>`;
+    return `<g transform="rotate(${lean} ${x} 100)"><rect x="${x-w/2}" y="${100-h}" width="${w}" height="${h}" rx="${w/2}" fill="#f7f1ea"/>${marks}</g>`;
+  };
+  const w=document.createElement('div');w.id='wald';w.setAttribute('aria-hidden','true');
+  w.innerHTML=`<svg class="trees l" viewBox="0 0 40 100" preserveAspectRatio="xMinYMax slice">${birke(6,96,4.2,-2)+birke(16,78,3,3)+birke(27,90,2.4,-1)}</svg>
+    <svg class="trees r" viewBox="0 0 40 100" preserveAspectRatio="xMaxYMax slice">${birke(34,98,4.4,2)+birke(22,82,2.8,-3)+birke(12,70,2,1)}</svg>
+    ${Array.from({length:14},(_,i)=>`<i class="ff" style="left:${(i*37)%100}vw;top:${12+(i*53)%78}vh;animation-delay:${-(i*1.7)%9}s;animation-duration:${7+(i%5)*1.6}s"></i>`).join('')}`;
+  document.body.prepend(w);
+}
+forest();
 
 /* ---------- iPad und iPhone ---------- */
 // Safari erlaubt Ton und Sprache erst nach der ersten Berührung – dabei beides freischalten
