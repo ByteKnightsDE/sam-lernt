@@ -1,7 +1,8 @@
 /* Sam lernt – KI-Helfer (Cloudflare Worker) mit ChatGPT.
    Warum ein eigener Server: Der OpenAI-Schlüssel darf nie in die Webseite, denn die liegt
    öffentlich auf GitHub Pages. Er liegt nur hier als Secret (OPENAI_API_KEY).
-   Zugang nur mit Zugangscode (ZUGANGSCODE) und nur von den erlaubten Seiten (ERLAUBTE_SEITEN). */
+   Läuft als Teil der App unter /api/ (siehe wrangler.jsonc im Hauptordner). Den Zugang schützt
+   Cloudflare Access vor der ganzen App; ein Zugangscode (ZUGANGSCODE) ist zusätzlich möglich. */
 
 // Was die Geschichten zeigen dürfen – muss zu KI_TOKENS in gemeinsam/ki.js passen
 const TOKENS = ['pig','pig:big','pig:fall','monkey','monkey:big','skel','skel:big','skel:dance','skel:flip','pirate','pirate:big',
@@ -47,8 +48,8 @@ Du bekommst je Zahl bzw. "plus"/"minus", wie oft richtig (ok) und falsch (bad) g
 Höchstens 120 Wörter, Fließtext ohne Überschriften und ohne Markdown. Erst was schon gut klappt, dann 1–2 Zahlen oder Bereiche zum Üben,
 dann ein konkreter Spiel-Tipp für den Alltag. Keine Prozent-Listen, keine Diagnosen. Wenige Daten: ehrlich sagen, dass es noch zu früh für eine Einschätzung ist.`;
 
-function cors(origin, env) {
-  const ok = erlaubt(origin, env);
+function cors(origin, env, eigene) {
+  const ok = erlaubt(origin, env, eigene);
   return {
     'access-control-allow-origin': ok ? origin : 'null',
     'access-control-allow-methods': 'POST, OPTIONS',
@@ -57,8 +58,10 @@ function cors(origin, env) {
     vary: 'origin'
   };
 }
-function erlaubt(origin, env) {
+function erlaubt(origin, env, eigene) {
   if (!origin) return false;
+  // Die App ruft den Helfer auf ihrer eigenen Adresse auf
+  if (origin === eigene) return true;
   // Der PC startet das Spiel über "Sam lernt starten.bat" auf 127.0.0.1:8765
   const liste = String(env.ERLAUBTE_SEITEN || '').split(',').map(s => s.trim()).filter(Boolean).concat(['http://127.0.0.1:8765']);
   return liste.includes(origin);
@@ -137,18 +140,23 @@ async function bericht(env, b) {
 
 export default {
   async fetch(req, env) {
+    const url = new URL(req.url);
+    // Alles außer /api/ sind die Spiele selbst
+    // Die nackte Adresse zeigt die Startseite (ohne Umleitung, die mag Safari offline nicht)
+    if (url.pathname === '/' && env.ASSETS) return env.ASSETS.fetch(new Request(new URL('/index.html', url), req));
+    if (!url.pathname.startsWith('/api/') && env.ASSETS) return env.ASSETS.fetch(req);
     const origin = req.headers.get('origin') || '';
-    const h = cors(origin, env);
+    const h = cors(origin, env, url.origin);
     if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: h });
     if (req.method !== 'POST') return antwort({ fehler: 'Nur POST' }, 405, h);
-    if (!erlaubt(origin, env)) return antwort({ fehler: 'Diese Seite ist nicht freigegeben' }, 403, h);
-    if (!env.ZUGANGSCODE || !gleich(req.headers.get('x-zugang') || '', env.ZUGANGSCODE)) return antwort({ fehler: 'Zugangscode falsch' }, 401, h);
+    if (!erlaubt(origin, env, url.origin)) return antwort({ fehler: 'Diese Seite ist nicht freigegeben' }, 403, h);
+    if (env.ZUGANGSCODE && !gleich(req.headers.get('x-zugang') || '', env.ZUGANGSCODE)) return antwort({ fehler: 'Zugangscode falsch' }, 401, h);
     if (!env.OPENAI_API_KEY) return antwort({ fehler: 'OPENAI_API_KEY fehlt im Server' }, 500, h);
 
     let b = {};
     try { const t = await req.text(); if (t.length > 8000) throw 0; b = t ? JSON.parse(t) : {} } catch (e) { return antwort({ fehler: 'Ungültige Anfrage' }, 400, h) }
 
-    const pfad = new URL(req.url).pathname.replace(/\/+$/, '');
+    const pfad = url.pathname.replace(/^\/api/, '').replace(/\/+$/, '');
     try {
       if (pfad === '/status') return antwort({ ok: true, modell: env.MODELL || 'gpt-6.1-sol' }, 200, h);
       if (pfad === '/geschichte') return antwort(await geschichte(env, b), 200, h);

@@ -1,0 +1,19 @@
+// Sam lernt bei Cloudflare: die Spiele als statische Dateien, der ChatGPT-Helfer unter /api/.
+// Den Schlüssel nie hier eintragen – er liegt im Cloudflare-Dashboard als Geheimnis OPENAI_API_KEY.
+{
+  "name": "sam-lernt",
+  "main": "ki-server/src/index.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./",
+    "binding": "ASSETS",
+    // Keine Umleitung von index.html auf "/" – Safari verwirft umgeleitete Seiten im Offline-Speicher
+    "html_handling": "none",
+    // Nur /api/* (und die nackte Adresse "/") geht an den Server, alles andere liefert Cloudflare direkt aus
+    "run_worker_first": ["/api/*", "/"]
+  },
+  "vars": {
+    // ChatGPT-Modell. Günstiger: "gpt-6-luna"
+    "MODELL": "gpt-6.1-sol"
+  }
+}

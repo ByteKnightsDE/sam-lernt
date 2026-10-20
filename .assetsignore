@@ -1,0 +1,11 @@
+# Was Cloudflare NICHT als Webseite ausliefern soll
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+ki-server
+node_modules
+.wrangler
+*.bat
+LIESMICH.md
+server

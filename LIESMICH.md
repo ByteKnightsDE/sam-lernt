@@ -12,7 +12,7 @@ Läuft im Browser am PC und auf dem iPad, auch ohne Internet.
 | `gemeinsam/` | Was alle Spiele teilen: Aussehen, Schrift, Stimme, Töne, Sterne, Figuren, Schatzkiste, KI-Anbindung |
 | `bilder/` | App-Symbol |
 | `sw.js`, `manifest.webmanifest` | Offline-Modus und „Zum Home-Bildschirm“ auf dem iPad |
-| `ki-server/` | KI-Helfer mit ChatGPT (Cloudflare Worker) – enthält keine Schlüssel |
+| `ki-server/`, `wrangler.jsonc`, `.assetsignore` | ChatGPT-Helfer und Cloudflare-Einstellungen – enthalten keine Schlüssel und werden nicht ausgeliefert |
 | `Sam lernt starten.bat` | Am Windows-PC starten |
 
 ## Am PC spielen
@@ -31,28 +31,20 @@ Die Spiele müssen dafür im Internet liegen (https). Vorschlag: **GitHub Pages*
 Wichtig: Sterne, Name, Aufnahmen und Einstellungen liegen auf dem jeweiligen Gerät (PC und iPad getrennt).
 Bei einer neuen Version in `sw.js` die Zahl in `VERSION` erhöhen, damit das iPad die neuen Dateien holt.
 
-## KI-Helfer mit ChatGPT einrichten
+## Bei Cloudflare (mit ChatGPT)
 
-ChatGPT erfindet neue Geschichten mit den vier Figuren und schreibt Eltern einen kurzen Lernbericht.
-Der OpenAI-Schlüssel darf nie in die Webseite (sie ist öffentlich) – deshalb läuft ein kleiner eigener Server
-in `ki-server/` (Cloudflare Worker, kostenlos).
+Die App läuft bei Cloudflare als ein Projekt: die Spiele als Dateien, der ChatGPT-Helfer unter `/api/`
+(Code in `ki-server/`, Einstellungen in `wrangler.jsonc`). Jeder Push auf `main` wird automatisch veröffentlicht.
 
-**Einmalig einrichten** (am PC, im Ordner `ki-server/`):
+**Einmalig einrichten** (alles im Browser):
 
-```
-npm install
-npx wrangler login
-npx wrangler secret put OPENAI_API_KEY
-npx wrangler secret put ZUGANGSCODE
-npx wrangler deploy
-```
-
-- `OPENAI_API_KEY`: unter platform.openai.com › API keys anlegen. **Dort im Projekt ein Monatslimit setzen** (z. B. 5 €) – dann kann nie mehr verbraucht werden.
-- `ZUGANGSCODE`: ein beliebiges Passwort ausdenken.
-- `deploy` zeigt am Ende die Adresse, z. B. `https://sam-lernt-ki.<konto>.workers.dev`. Diese in `gemeinsam/ki.js` bei `KI_ADRESSE` eintragen.
-
-**Auf jedem Gerät einmal:** *Eltern* (Knopf gedrückt halten) → *KI-Helfer* → Zugangscode eintragen → *Verbindung testen*.
+1. Cloudflare → *Compute* → *Workers & Pages* → *Erstellen* → GitHub-Repo `sam-lernt` importieren.
+   Build-Befehl leer, Bereitstellungsbefehl `npx wrangler deploy`, Pfad `/`, **„Mit Cloudflare Access schützen“ einschalten**.
+2. Im Projekt → *Einstellungen* → *Variablen und Geheimnisse* → `OPENAI_API_KEY` als **Geheimnis** eintragen.
+   Auf platform.openai.com im Projekt ein **Monatslimit** setzen (z. B. 5 €).
+3. Zero Trust → *Access* → die App → Regel: nur die eigene E-Mail-Adresse, Sitzungsdauer 1 Monat.
+4. Danach darf das GitHub-Repo privat sein; GitHub Pages abschalten.
 
 Was an ChatGPT geht: ein zufälliges Thema, beim Bericht nur die Zahlen „wie oft richtig/falsch“, und der Vorname nur, wenn das Häkchen gesetzt ist. OpenAI speichert die Anfragen nicht (`store: false`).
-Modell: `gpt-6.1-sol` (in `ki-server/wrangler.toml` bei `MODELL` änderbar, günstiger: `gpt-6-luna`). Geschichten werden vorab geladen, damit das Kind nicht wartet.
-Ohne Internet funktioniert alles weiter mit den eingebauten Geschichten.
+Modell: `gpt-6.1-sol` (in `wrangler.jsonc` bei `MODELL` änderbar, günstiger: `gpt-6-luna`). Geschichten werden vorab geladen, damit das Kind nicht wartet.
+Ohne Internet und am PC (über die .bat) laufen die eingebauten Geschichten.

@@ -2,8 +2,9 @@
    Die KI erfindet neue Geschichten mit den Figuren und schreibt Eltern-Berichte.
    Ohne Internet oder ohne Zugangscode nimmt das Spiel still die eingebauten Geschichten. */
 
-// Adresse des eigenen KI-Servers – fest für alle Geräte. Steht nach "npx wrangler deploy" im Terminal.
-const KI_ADRESSE='';
+// Der KI-Server läuft bei Cloudflare als Teil der App – deshalb reicht der Pfad, ohne eigene Adresse.
+// Auf GitHub Pages oder am PC gibt es ihn nicht; dann laufen still die eingebauten Geschichten.
+const KI_ADRESSE=/\.pages\.dev$|\.workers\.dev$|byteknights\.de$/.test(location.hostname)?'/api':'';
 
 // Was die KI in Bildern zeigen darf – muss zur Liste im Server passen
 const KI_TOKENS=['pig','pig:big','pig:fall','monkey','monkey:big','skel','skel:big','skel:dance','skel:flip','pirate','pirate:big',
@@ -14,7 +15,7 @@ const KI_THEMEN=['ein Ausflug ans Meer','ein Geburtstag','ein verlorener Schuh',
 const KI={
   // Eine im Eltern-Bereich eingetragene Adresse geht vor – nur zum Ausprobieren eines anderen Servers
   url:load('ki.url','')||KI_ADRESSE,code:load('ki.code',''),sendName:load('ki.sendName',true),
-  ready(){return !!(this.url&&this.code)},
+  ready(){return !!this.url},
   async call(path,body,ms=45000){
     const ctrl=new AbortController(),to=setTimeout(()=>ctrl.abort(),ms);
     try{
@@ -56,12 +57,12 @@ const KI={
     return `<div class="box">
       <h2>KI-Helfer (ChatGPT) <span class="ki-status" id="kistat">${this.ready()?'prüfe …':'nicht eingerichtet'}</span></h2>
       <p>ChatGPT erfindet immer neue Geschichten mit Rosi, Bobo, Klapper und Paul und schreibt euch auf Wunsch einen kurzen Bericht über den Lernstand. Ohne Internet laufen die eingebauten Geschichten weiter.</p>
-      <p>Zugangscode (einmal pro Gerät): <input type="text" id="kicode" value="${esc(this.code)}" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:12em"></p>
       <p><label><input type="checkbox" id="kiname" ${this.sendName?'checked':''}> Den Vornamen in die Geschichten einbauen (er wird dafür an ChatGPT geschickt)</label></p>
       <p><button class="sb" id="kitest">Verbindung testen</button> <button class="sb" id="kireport">📝 Lernbericht schreiben</button></p>
       <p id="kiout" style="white-space:pre-wrap"></p>
-      <details ${eigen||!KI_ADRESSE?'open':''}><summary style="cursor:pointer;font-size:14px">Server-Adresse</summary>
-        <p><input type="text" id="kiurl" style="width:100%" placeholder="https://sam-lernt-ki.….workers.dev" value="${esc(this.url)}" autocapitalize="off" spellcheck="false"></p>
+      <details ${eigen||!KI_ADRESSE?'open':''}><summary style="cursor:pointer;font-size:14px">Technik</summary>
+        <p>Zugangscode (nur falls im Server eingerichtet): <input type="text" id="kicode" value="${esc(this.code)}" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:12em"></p>
+        <p>Server-Adresse: <input type="text" id="kiurl" style="width:100%" placeholder="https://sam-lernt-ki.….workers.dev" value="${esc(this.url)}" autocapitalize="off" spellcheck="false"></p>
         <p style="font-size:13px">${KI_ADRESSE?'Leer lassen für den fest eingebauten Server.':'Noch kein Server fest eingebaut – Adresse hier eintragen.'}</p>
       </details>
     </div>`;
@@ -73,7 +74,7 @@ const KI={
     const out=$('#kiout'),stat=$('#kistat');
     const zeige=async()=>{
       if(!stat)return;
-      if(!this.ready()){stat.className='ki-status';stat.textContent=this.url?'Zugangscode fehlt':'nicht eingerichtet';return}
+      if(!this.ready()){stat.className='ki-status';stat.textContent='nicht eingerichtet';return}
       stat.className='ki-status';stat.textContent='prüfe …';
       const r=await this.status();
       if(!stat.isConnected)return;
@@ -84,13 +85,13 @@ const KI={
     $('#kicode').onchange=e=>{this.code=e.target.value.trim();save('ki.code',this.code);out.textContent='';zeige();this.prefetch()};
     $('#kiname').onchange=e=>{this.sendName=e.target.checked;save('ki.sendName',this.sendName);try{sessionStorage.removeItem('samlernt.kiStory')}catch(x){}};
     $('#kitest').onclick=async()=>{
-      if(!this.ready()){out.textContent=this.url?'Bitte zuerst den Zugangscode eintragen.':'Bitte zuerst die Server-Adresse eintragen.';return}
+      if(!this.ready()){out.textContent='Hier gibt es keinen KI-Server. Die App über die Cloudflare-Adresse öffnen.';return}
       out.textContent='ChatGPT schreibt eine Probe-Geschichte …';
       try{const st=await this.fetchStory();out.textContent=`✓ Klappt! Neue Geschichte: „${st.t}“`;zeige()}
       catch(e){out.textContent='✗ Das hat nicht geklappt: '+e.message}
     };
     $('#kireport').onclick=async()=>{
-      if(!this.ready()){out.textContent='Bitte zuerst den Zugangscode eintragen.';return}
+      if(!this.ready()){out.textContent='Hier gibt es keinen KI-Server. Die App über die Cloudflare-Adresse öffnen.';return}
       out.textContent='Der Bericht wird geschrieben …';
       try{out.textContent=await this.report(getStats())}catch(e){out.textContent='✗ Das hat nicht geklappt: '+e.message}
     };
