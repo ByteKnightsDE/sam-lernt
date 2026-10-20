@@ -120,12 +120,12 @@ async function loadRecs(){
 async function setRec(n,blob){
   blob=await trim(blob);
   try{await store(st=>st.put(blob,n))}catch(e){}
-  if(rec[n])URL.revokeObjectURL(rec[n]);
+  if(rec[n]){recBuf.delete(rec[n]);URL.revokeObjectURL(rec[n])}
   rec[n]=URL.createObjectURL(blob);
 }
 async function delRec(n){
   try{await store(st=>st.delete(n))}catch(e){}
-  if(rec[n])URL.revokeObjectURL(rec[n]);
+  if(rec[n]){recBuf.delete(rec[n]);URL.revokeObjectURL(rec[n])}
   delete rec[n];
 }
 // Stille am Anfang und Ende abschneiden und Lautstärke angleichen, damit das Zählen flüssig klingt

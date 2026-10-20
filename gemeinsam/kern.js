@@ -106,16 +106,30 @@ async function say(text,t=token,s='erzaehler'){
 }
 const wait=(ms,t)=>new Promise(r=>setTimeout(r,t===token?ms:0));
 
-let audio=null;
-function stopAudio(){if(audio){const a=audio;audio=null;a.pause()}}
+// Eigene Aufnahmen (z. B. die Zahlen) laufen über Web Audio: Einfache Audio-Elemente erlauben iPhone, iPad und
+// Chrome nur kurz nach einer Berührung – beim Mitzählen bis zehn brach die Ausgabe sonst nach etwa fünf Zahlen ab.
+let audio=null;const recBuf=new Map();
+function stopAudio(){const a=audio;audio=null;if(!a)return;try{a.stop?a.stop():a.pause()}catch(e){}}
+async function recBuffer(url){
+  if(recBuf.has(url))return recBuf.get(url);
+  const buf=await actx().decodeAudioData(await (await fetch(url)).arrayBuffer());
+  recBuf.set(url,buf);return buf;
+}
 function playUrl(url,t=token){
-  return new Promise(res=>{
+  return new Promise(async res=>{
     if(t!==token||!state.voice||!url)return res();
     stopAudio();
-    const a=new Audio(url);audio=a;
     let done=false;const fin=()=>{if(!done){done=true;res()}};
-    a.onended=fin;a.onerror=fin;a.onpause=fin;setTimeout(fin,5000);
-    a.play().catch(fin);
+    try{
+      const buf=await recBuffer(url);
+      if(t!==token)return fin();
+      const c=actx(),src=c.createBufferSource();src.buffer=buf;src.connect(c.destination);
+      audio=src;src.onended=()=>{if(audio===src)audio=null;fin()};
+      setTimeout(fin,buf.duration*1000+800);src.start();
+    }catch(e){
+      // Notfalls wie früher über ein Audio-Element
+      const a=new Audio(url);audio=a;a.onended=fin;a.onerror=fin;a.onpause=fin;setTimeout(fin,5000);a.play().catch(fin);
+    }
   });
 }
 function quiet(){if(hasSpeech)speechSynthesis.cancel();stopAudio();stopNatur()}
