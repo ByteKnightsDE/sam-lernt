@@ -1,3 +1,4 @@
+import { STIMMEN, MODELL_STIMME } from './stimmen.js';
 /* Sam lernt – KI-Helfer (Cloudflare Worker) mit ChatGPT.
    Warum ein eigener Server: Der OpenAI-Schlüssel darf nie in die Webseite, denn die liegt
    öffentlich auf GitHub Pages. Er liegt nur hier als Secret (OPENAI_API_KEY).
@@ -144,12 +145,6 @@ async function bericht(env, b) {
    dieselbe Datei und kann dauerhaft gespeichert werden (bei Cloudflare und auf dem Gerät).
    VERSION_STIMME hochzählen, wenn sich Stimmen oder Modell ändern – dann werden alle Sätze neu erzeugt. */
 const VERSION_STIMME = '2';
-const STIMMEN = {
-  erzaehler: { voice: 'marin', instructions: 'Du liest einem kleinen Kind eine Gutenachtgeschichte auf Deutsch vor. Sprich warm, ruhig und etwas langsam, freundlich lächelnd, mit klarer Aussprache. Kleine Pausen an Satzenden. Nie hektisch, nie übertrieben.' },
-  zinn: { voice: 'cedar', instructions: 'Du bist Herr Zinn, ein alter, gemütlicher Mann aus dem Zauberwald mit tiefer, sanfter Stimme. Sprich Deutsch, langsam, warm, ein wenig brummig und verschmitzt schmunzelnd, wie ein liebevoller Großonkel.' },
-  blupp: { voice: 'verse', instructions: 'Du bist BluppBlupp, ein kleines, fröhliches blaues Nilpferd. Sprich Deutsch mit heller, verspielter, kindlicher Stimme, neugierig und gut gelaunt, ein bisschen kichernd, aber deutlich und nicht zu schnell.' }
-};
-
 async function fingerabdruck(t) {
   const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
   return [...new Uint8Array(d)].map(b => b.toString(16).padStart(2, '0')).join('');
@@ -171,7 +166,7 @@ async function stimme(req, env, url, h) {
   const r = await fetch('https://api.openai.com/v1/audio/speech', {
     method: 'POST',
     headers: { authorization: 'Bearer ' + env.OPENAI_API_KEY, 'content-type': 'application/json' },
-    body: JSON.stringify({ model: env.MODELL_STIMME || 'gpt-4o-mini-tts', voice: STIMMEN[s].voice, instructions: STIMMEN[s].instructions, input: text, response_format: 'mp3' })
+    body: JSON.stringify({ model: env.MODELL_STIMME || MODELL_STIMME, voice: STIMMEN[s].voice, instructions: STIMMEN[s].instructions, input: text, response_format: 'mp3' })
   });
   if (!r.ok) {
     const j = await r.json().catch(() => ({}));

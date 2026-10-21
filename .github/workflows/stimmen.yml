@@ -1,0 +1,28 @@
+# Erzeugt die Stimmbank (stimme/) mit OpenAI – nur Sätze, die noch fehlen – und legt sie ins Repo.
+# Braucht unter Settings › Secrets and variables › Actions das Geheimnis OPENAI_API_KEY.
+name: Stimmen erzeugen
+on:
+  push:
+    branches: [main]
+    paths-ignore: ['stimme/**']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: stimmen, cancel-in-progress: false }
+jobs:
+  stimmen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Fehlende Sätze sprechen lassen
+        env: { OPENAI_API_KEY: '${{ secrets.OPENAI_API_KEY }}' }
+        run: node werkzeuge/stimmen-erzeugen.mjs
+      - name: Ins Repo legen
+        run: |
+          git config user.name "Sam lernt Stimmen"
+          git config user.email "actions@users.noreply.github.com"
+          git add stimme
+          git diff --cached --quiet || git commit -m "Stimmbank aktualisiert"
+          git push

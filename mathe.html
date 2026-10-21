@@ -54,6 +54,7 @@
 </head>
 <body>
 <div id="app"></div>
+<script src="gemeinsam/stimmbank.js"></script>
 <script src="gemeinsam/kern.js"></script>
 <script src="gemeinsam/figuren.js"></script>
 <script src="gemeinsam/ki.js"></script>
@@ -83,8 +84,22 @@ const weights={};
 /* ---------- Eigene Aufnahmen der Zahlen (bleiben im Browser gespeichert) ---------- */
 const rec={};
 const playRec=(n,t=token)=>playUrl(rec[n],t);
-// Text und Zahlen gemischt sprechen: Zahlen kommen aus der eigenen Aufnahme, wenn es eine gibt
+// Text und Zahlen gemischt sprechen: Zahlen aus der eigenen Aufnahme oder der Stimmbank, Text aus der Stimmbank.
+// Liegt nicht alles in der Stimmbank, wird wie früher der ganze Satz am Stück gesprochen (Zahlen als Wort).
 async function talk(t,...parts){
+  const stuecke=[];let alleDa=bankBereit();
+  for(const p of parts){
+    if(typeof p==='number'){
+      if(rec[p]&&M.useRec)stuecke.push({rec:p});
+      else stuecke.push({text:CAP(WORDS[p])});
+    }else if(teile(p).length)stuecke.push({text:p});
+  }
+  if(alleDa)for(const st of stuecke)if(st.text&&!(await bankSchluessel(st.text,'erzaehler'))){alleDa=false;break}
+  if(t!==token)return;
+  if(alleDa){
+    for(const st of stuecke){if(t!==token)return;st.rec!==undefined?await playRec(st.rec,t):await say(st.text,t)}
+    return;
+  }
   let buf='';
   for(const p of parts){
     if(t!==token)return;

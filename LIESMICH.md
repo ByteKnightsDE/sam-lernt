@@ -50,6 +50,11 @@ Was an ChatGPT geht: ein zufälliges Thema, beim Bericht nur die Zahlen „wie o
 Modell: `gpt-6.1-sol` (in `wrangler.jsonc` bei `MODELL` änderbar, günstiger: `gpt-6-luna`). Geschichten werden vorab geladen, damit das Kind nicht wartet.
 Ohne Internet und am PC (über die .bat) laufen die eingebauten Geschichten.
 
+**Stimmbank:** Alle festen Sätze (Rechnen, Zählen, Lob, Geschichten, Rätsel, Überraschungen) liegen fertig gesprochen in `stimme/`.
+Sie werden von der GitHub Action *Stimmen erzeugen* nach jedem Push einmal erzeugt (nur, was fehlt) – dafür im Repo unter
+*Settings › Secrets and variables › Actions* das Geheimnis `OPENAI_API_KEY` anlegen. Welche Sätze es gibt: `stimme/saetze.json`.
+Die Dateien spielen auch nach der Abschaltung des Sprachmodells weiter.
+
 **Natürliche Stimme:** Erzähler, Herr Zinn und BluppBlupp sprechen über OpenAI mit eigenen Stimmen (`/api/stimme`, Einstellungen in
 `ki-server/src/index.js` bei `STIMMEN`). Jeder Satz wird einmal erzeugt, bei Cloudflare und auf dem Gerät gespeichert und danach nicht mehr bezahlt.
 Schalter und Hörproben: *Eltern* → *Stimme*. Ohne Internet oder Guthaben spricht die Gerätestimme.

@@ -102,10 +102,53 @@ function stopNatur(){const s=NATUR.src;NATUR.src=null;if(s)try{s.onended=null;s.
 // Schon mal im Hintergrund laden, was gleich gesagt wird (z. B. die nächste Seite einer Geschichte)
 function vorladen(text,s='erzaehler'){if(naturBereit())naturLaden(text,s).catch(()=>{})}
 
+/* ---------- Stimmbank: fertig gesprochene Sätze als Dateien (stimme/…), einmal erzeugt ----------
+   Alles Feste (Rechnen, Zählen, Lob, Geschichten …) kommt von hier – sofort und immer gleich.
+   Live erzeugt wird nur noch, was sich ändert (z. B. neue ChatGPT-Geschichten). */
+const BANK={liste:null,mem:new Map()};
+const bankBereit=()=>NATUR.on&&!!BANK.liste&&typeof teile==='function';
+fetch('stimme/liste.json').then(r=>r.ok?r.json():null).then(l=>{
+  if(!l)return;
+  BANK.liste={};for(const s of ['erzaehler','zinn','blupp'])BANK.liste[s]=new Set(l[s]||[]);
+  // Einmal im Hintergrund alle Dateien holen, damit die Stimmen auch ohne Internet da sind
+  const merk='stimmbank.'+(l.version||1)+'.'+Object.values(BANK.liste).reduce((a,x)=>a+x.size,0);
+  if(load('stimmbank.geladen','')!==merk&&navigator.onLine!==false)setTimeout(async()=>{
+    for(const s of Object.keys(BANK.liste))for(const k of BANK.liste[s]){try{await fetch(`stimme/${s}/${k}.mp3`)}catch(e){return}}
+    save('stimmbank.geladen',merk);
+  },4000);
+}).catch(()=>{});
+// Schlüssel aller Sätze eines Textes – oder null, wenn auch nur einer nicht in der Bank liegt
+async function bankSchluessel(text,s){
+  if(!bankBereit())return null;
+  const ks=[];
+  for(const satz of teile(text)){const k=await schluessel(s,satz);if(!BANK.liste[s]||!BANK.liste[s].has(k))return null;ks.push(k)}
+  return ks.length?ks:null;
+}
+async function bankLaden(s,k){
+  const key=s+'/'+k;
+  if(BANK.mem.has(key))return BANK.mem.get(key);
+  const p=fetch(`stimme/${key}.mp3`).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.arrayBuffer()}).then(b=>actx().decodeAudioData(b));
+  BANK.mem.set(key,p);p.catch(()=>BANK.mem.delete(key));
+  if(BANK.mem.size>200)BANK.mem.delete(BANK.mem.keys().next().value);
+  return p;
+}
+async function bankSpielen(ks,s,t){
+  // Den nächsten Satz schon laden, während der aktuelle läuft
+  for(let i=0;i<ks.length;i++){
+    if(t!==token)return;
+    const buf=await bankLaden(s,ks[i]);if(ks[i+1])bankLaden(s,ks[i+1]).catch(()=>{});
+    if(t!==token)return;
+    await naturSpielen(buf,t);
+  }
+}
+
 // Sprechen: wer spricht, steht in s – 'erzaehler', 'zinn' oder 'blupp'
 async function say(text,t=token,s='erzaehler'){
   if(t!==token)return;
   if(!state.voice)return new Promise(r=>setTimeout(r,350+text.length*45));
+  const ks=await bankSchluessel(text,s);
+  if(t!==token)return;
+  if(ks){try{return await bankSpielen(ks,s,t)}catch(e){}}
   if(naturBereit()){
     const p=naturLaden(text,s);
     // Höchstens kurz warten; kommt der Satz nicht rechtzeitig, spricht die Gerätestimme und er liegt fürs nächste Mal bereit
