@@ -42,7 +42,6 @@ for (const b of PLAN) {
   form.append('quality', 'high');
   form.append('background', b.transparent ? 'transparent' : 'opaque');
   form.append('output_format', b.transparent ? 'png' : 'jpeg');
-  form.append('input_fidelity', 'high');
   for (const r of b.ref) {
     const p = path.join(ROOT, r);
     if (!fs.existsSync(p)) { console.error('Referenz fehlt:', r); continue; }
@@ -61,6 +60,8 @@ for (const b of PLAN) {
       } else {
         const msg = (j.error && j.error.message) || ('HTTP ' + r.status);
         console.error('Fehler', b.datei, msg);
+        const ohne = msg.match(/does not support the '(\w+)' parameter/);
+        if (ohne) { form.delete(ohne[1]); console.log('ohne', ohne[1], 'nochmal'); versuch--; continue; }
         if (r.status !== 429 && r.status < 500) { fehler.push(`${b.datei}: ${msg}`); break; }
         await new Promise(res => setTimeout(res, 5000 * versuch));
       }
