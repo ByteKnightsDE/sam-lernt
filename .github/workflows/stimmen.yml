@@ -26,7 +26,10 @@ jobs:
           for durchgang in $(seq 1 15); do
             set +e; node werkzeuge/stimmen-erzeugen.mjs --max 400; code=$?; set -e
             git add stimme
-            git diff --cached --quiet || { git commit -q -m "Stimmbank aktualisiert ($durchgang)"; git pull -q --rebase; git push -q; }
+            if ! git diff --cached --quiet; then
+              git commit -q -m "Stimmbank aktualisiert ($durchgang)"
+              for v in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+            fi
             if [ $code -eq 0 ]; then echo "Alle Sätze fertig"; exit 0; fi
             if [ $code -ne 3 ]; then echo "Abbruch mit Fehler $code"; cat stimme/fehler.txt; exit $code; fi
           done

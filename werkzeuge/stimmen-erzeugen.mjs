@@ -153,20 +153,25 @@ const letzteFehler = [];
 const warte = [...fehlt];
 async function sprich(x) {
   for (let versuch = 1; versuch <= 4; versuch++) {
-    // Nie ewig warten: hängt eine Anfrage, nach 60 s abbrechen und neu versuchen
-    let r;
-    try { r = await fetch('https://api.openai.com/v1/audio/speech', {
-      signal: AbortSignal.timeout(60000),
-      method: 'POST', headers: { authorization: 'Bearer ' + key, 'content-type': 'application/json' },
-      body: JSON.stringify({ model: MODELL_STIMME, voice: STIMMEN[x.s].voice, instructions: STIMMEN[x.s].instructions, input: x.text, response_format: 'mp3' })
-    }); } catch (e) { console.error('Zeitüberschreitung/Netz', x.s, x.text.slice(0, 40)); await new Promise(res => setTimeout(res, 2000 * versuch)); continue; }
-    if (r.ok) {
+    // Nie ewig warten: hängt eine Anfrage (auch beim Herunterladen der Datei), nach 90 s abbrechen und neu versuchen
+    let r, daten = null, msg = '';
+    // Eigener Zeitgeber (AbortSignal.timeout hält den Prozess nicht am Leben)
+    const ac = new AbortController(), zeit = setTimeout(() => ac.abort(new Error('Zeitlimit 90 s')), 90000);
+    try {
+      r = await fetch('https://api.openai.com/v1/audio/speech', {
+        signal: ac.signal,
+        method: 'POST', headers: { authorization: 'Bearer ' + key, 'content-type': 'application/json' },
+        body: JSON.stringify({ model: MODELL_STIMME, voice: STIMMEN[x.s].voice, instructions: STIMMEN[x.s].instructions, input: x.text, response_format: 'mp3' })
+      });
+      if (r.ok) daten = Buffer.from(await r.arrayBuffer()); else msg = await r.text();
+      clearTimeout(zeit);
+    } catch (e) { clearTimeout(zeit); x.letzte = 'Netz/Zeit: ' + e.message; console.error('Zeitüberschreitung/Netz', x.s, x.text.slice(0, 40)); await new Promise(res => setTimeout(res, 2000 * versuch)); continue; }
+    if (daten && daten.length > 500) {
       fs.mkdirSync(path.dirname(datei(x)), { recursive: true });
-      fs.writeFileSync(datei(x), Buffer.from(await r.arrayBuffer()));
+      fs.writeFileSync(datei(x), daten);
       if (++fertig % 50 === 0) console.log(fertig, '/', fehlt.length);
       return;
     }
-    const msg = await r.text();
     // Budget oder Guthaben aufgebraucht: sofort aufhören statt stundenlang zu warten
     if (/insufficient_quota|billing|budget|exceeded your current quota|spend limit/i.test(msg)) {
       console.error('ABBRUCH: OpenAI-Budget oder Guthaben aufgebraucht – im Projekt „Sam lernt“ unter Settings › Limits erhöhen.');
@@ -177,7 +182,8 @@ async function sprich(x) {
   }
   letzteFehler.push(`aufgegeben ${x.s} „${x.text}“ – ${x.letzte || 'Zeitüberschreitung'}`); fehler++;
 }
-await Promise.all(Array.from({ length: 4 }, async () => { while (warte.length) await sprich(warte.shift()); }));
+process.on('unhandledRejection', e => { console.error('Unerwartet:', e); });
+await Promise.all(Array.from({ length: 4 }, async () => { while (warte.length) { try { await sprich(warte.shift()); } catch (e) { console.error('Unerwartet:', e.message); fehler++; } } }));
 // Nur fertige Dateien in die Liste – so spielt die App nie eine Datei, die es nicht gibt
 for (const s of Object.keys(saetze)) liste[s] = liste[s].filter(k => fs.existsSync(path.join(ROOT, 'stimme', s, k + '.mp3')));
 fs.writeFileSync(path.join(ROOT, 'stimme/liste.json'), JSON.stringify(liste));
