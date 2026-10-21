@@ -16,6 +16,11 @@
  },
  {
   "s": "erzaehler",
+  "k": "e36171998bd7643cfa04",
+  "text": "Andersrum!"
+ },
+ {
+  "s": "erzaehler",
   "k": "53615b2340bb9fe52917",
   "text": "Auf ins Zahlenland"
  },
@@ -26,8 +31,38 @@
  },
  {
   "s": "erzaehler",
+  "k": "b6568245a1fc4bbd765b",
+  "text": "Bei der Eins zeigt der kleine Haken oben nach links."
+ },
+ {
+  "s": "erzaehler",
+  "k": "8f22be0914e37c0a8bf5",
+  "text": "Bei der Neun ist der Kopf oben links."
+ },
+ {
+  "s": "erzaehler",
+  "k": "6f1ec24c044e2fbfc24a",
+  "text": "Bei der Sechs kommt der Bogen von oben rechts."
+ },
+ {
+  "s": "erzaehler",
+  "k": "9c90d60c4828979ab7bc",
+  "text": "Bei der Vier steht der lange Strich rechts."
+ },
+ {
+  "s": "erzaehler",
   "k": "0fe319b881e038b22cf6",
   "text": "Bei fünf sind die Augen der Eule ganz schwer."
+ },
+ {
+  "s": "erzaehler",
+  "k": "c4d9e2293de646be9ecb",
+  "text": "Beide Bäuche zeigen nach rechts."
+ },
+ {
+  "s": "erzaehler",
+  "k": "7e80295c523f0dfb8657",
+  "text": "Bleib schön auf der Spur."
  },
  {
   "s": "erzaehler",
@@ -171,6 +206,56 @@
  },
  {
   "s": "erzaehler",
+  "k": "63ca35e85814af5185d3",
+  "text": "Das ist eine schöne Acht!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "1feba2408994cbb0f4d2",
+  "text": "Das ist eine schöne Drei!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "7545c15514bc306d3d0a",
+  "text": "Das ist eine schöne Eins!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "ddce81e73e3cf631b221",
+  "text": "Das ist eine schöne Fünf!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "09a849eba4febd64e8e5",
+  "text": "Das ist eine schöne Neun!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "179523b9d4a78e105754",
+  "text": "Das ist eine schöne Null!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "bb37c506f66a073026a5",
+  "text": "Das ist eine schöne Sechs!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "6213dd3c43c2025b1b4f",
+  "text": "Das ist eine schöne Sieben!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "08ecb3532256de2dd601",
+  "text": "Das ist eine schöne Vier!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "14a621d8aa4bce8e3348",
+  "text": "Das ist eine schöne Zwei!"
+ },
+ {
+  "s": "erzaehler",
   "k": "098f2e1261f0b5f4c928",
   "text": "Der Igel kommt, der Fuchs kommt, und das Eichhörnchen kommt auch."
  },
@@ -181,8 +266,28 @@
  },
  {
   "s": "erzaehler",
+  "k": "81d940baa7f679162b2f",
+  "text": "Der lange Strich steht rechts davon."
+ },
+ {
+  "s": "erzaehler",
+  "k": "acf962656bceff8a5334",
+  "text": "Der lange Strich steht rechts."
+ },
+ {
+  "s": "erzaehler",
   "k": "97092b488bb64468230e",
   "text": "Die"
+ },
+ {
+  "s": "erzaehler",
+  "k": "60eb2f0a857664297c71",
+  "text": "Die Acht ist wie ein Schneemann."
+ },
+ {
+  "s": "erzaehler",
+  "k": "0b5ea21df6a7b5bc1ae5",
+  "text": "Die Drei hat zwei Bäuche."
  },
  {
   "s": "erzaehler",
@@ -191,13 +296,38 @@
  },
  {
   "s": "erzaehler",
+  "k": "651e54ea0f38a0ee23bb",
+  "text": "Die Fünf hat oben einen Hut nach rechts und unten einen dicken Bauch nach rechts."
+ },
+ {
+  "s": "erzaehler",
   "k": "660b93795c91ea1453a9",
   "text": "Die Glühwürmchen setzen sich in die Laterne."
  },
  {
   "s": "erzaehler",
+  "k": "170c151fbb6ebeb41785",
+  "text": "Die Null ist rund wie ein Ei."
+ },
+ {
+  "s": "erzaehler",
   "k": "6ade4f746a9d2080416e",
   "text": "Die Pilz-Party"
+ },
+ {
+  "s": "erzaehler",
+  "k": "eba27a327ed3f142333a",
+  "text": "Die Sieben geht oben nach rechts und dann schräg nach unten links."
+ },
+ {
+  "s": "erzaehler",
+  "k": "52841d42fe91cd5759d0",
+  "text": "Die Zwei macht oben einen Bogen nach rechts."
+ },
+ {
+  "s": "erzaehler",
+  "k": "fd4d39041da6decf9d6f",
+  "text": "Die ist gespiegelt."
  },
  {
   "s": "erzaehler",
@@ -306,6 +436,11 @@
  },
  {
   "s": "erzaehler",
+  "k": "2b58abc6d0d76c9e7322",
+  "text": "Erst schräg nach unten, dann quer, dann den langen Strich."
+ },
+ {
+  "s": "erzaehler",
   "k": "636935a4bb679cc4e627",
   "text": "Es regnet im Zauberwald."
  },
@@ -313,6 +448,11 @@
   "s": "erzaehler",
   "k": "930510e5f9d05002f1ab",
   "text": "Es wird Abend im Zauberwald."
+ },
+ {
+  "s": "erzaehler",
+  "k": "fa6bb8328a968078d147",
+  "text": "Fang beim grünen Punkt an und fahr die Spur nach."
  },
  {
   "s": "erzaehler",
@@ -348,6 +488,16 @@
   "s": "erzaehler",
   "k": "f2a39347f26d5dc82677",
   "text": "Ganz langsam kriecht sie weg."
+ },
+ {
+  "s": "erzaehler",
+  "k": "063b0b4f1c4cc4daed35",
+  "text": "Genau!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "21cde5390c9f51f20516",
+  "text": "Gut so!"
  },
  {
   "s": "erzaehler",
@@ -436,6 +586,11 @@
  },
  {
   "s": "erzaehler",
+  "k": "6788ec57cde4abc8028d",
+  "text": "Jetzt der zweite Strich."
+ },
+ {
+  "s": "erzaehler",
   "k": "387cd48e37614e64751a",
   "text": "Jetzt ist er ganz nass und lacht."
  },
@@ -478,6 +633,11 @@
   "s": "erzaehler",
   "k": "2cc1918401ef95df0fe4",
   "text": "Neun."
+ },
+ {
+  "s": "erzaehler",
+  "k": "159e77975bd14cfb59b9",
+  "text": "Nochmal!"
  },
  {
   "s": "erzaehler",
@@ -611,6 +771,61 @@
  },
  {
   "s": "erzaehler",
+  "k": "6d3b46721220e84856c7",
+  "text": "Schau mal, so schreibt man die Acht."
+ },
+ {
+  "s": "erzaehler",
+  "k": "647855e120e14f1662f7",
+  "text": "Schau mal, so schreibt man die Drei."
+ },
+ {
+  "s": "erzaehler",
+  "k": "8323b617ea5c4b74219e",
+  "text": "Schau mal, so schreibt man die Eins."
+ },
+ {
+  "s": "erzaehler",
+  "k": "6017d098413ead09ad1b",
+  "text": "Schau mal, so schreibt man die Fünf."
+ },
+ {
+  "s": "erzaehler",
+  "k": "eee08d7b1e4d5217afb8",
+  "text": "Schau mal, so schreibt man die Neun."
+ },
+ {
+  "s": "erzaehler",
+  "k": "dfb754a442b62f96faa1",
+  "text": "Schau mal, so schreibt man die Null."
+ },
+ {
+  "s": "erzaehler",
+  "k": "115004617f57ff80de1c",
+  "text": "Schau mal, so schreibt man die Sechs."
+ },
+ {
+  "s": "erzaehler",
+  "k": "387ffc04cf5dbec0c4bb",
+  "text": "Schau mal, so schreibt man die Sieben."
+ },
+ {
+  "s": "erzaehler",
+  "k": "9e5ad0d18a3adb4e820e",
+  "text": "Schau mal, so schreibt man die Vier."
+ },
+ {
+  "s": "erzaehler",
+  "k": "30a2ae6f6837d3188c8d",
+  "text": "Schau mal, so schreibt man die Zwei."
+ },
+ {
+  "s": "erzaehler",
+  "k": "2b740be5e4043619a9a1",
+  "text": "Schau, so herum ist es richtig."
+ },
+ {
+  "s": "erzaehler",
   "k": "f9a7b44b3e3dbe8dd8df",
   "text": "Sechs"
  },
@@ -671,6 +886,56 @@
  },
  {
   "s": "erzaehler",
+  "k": "d1ea9edfa3a2737d8310",
+  "text": "So steht die Acht richtig."
+ },
+ {
+  "s": "erzaehler",
+  "k": "bf3a63964aa5979f8588",
+  "text": "So steht die Drei richtig."
+ },
+ {
+  "s": "erzaehler",
+  "k": "b7958bb18b96938ff4e0",
+  "text": "So steht die Eins richtig."
+ },
+ {
+  "s": "erzaehler",
+  "k": "c37550cde5953267617d",
+  "text": "So steht die Fünf richtig."
+ },
+ {
+  "s": "erzaehler",
+  "k": "c3555679bde7f1ead8af",
+  "text": "So steht die Neun richtig."
+ },
+ {
+  "s": "erzaehler",
+  "k": "cff0ad134de9b31eca0e",
+  "text": "So steht die Null richtig."
+ },
+ {
+  "s": "erzaehler",
+  "k": "41b5310a2898ae379025",
+  "text": "So steht die Sechs richtig."
+ },
+ {
+  "s": "erzaehler",
+  "k": "cb41030cc3e035c1b6d8",
+  "text": "So steht die Sieben richtig."
+ },
+ {
+  "s": "erzaehler",
+  "k": "4da615ee583c3c744e30",
+  "text": "So steht die Vier richtig."
+ },
+ {
+  "s": "erzaehler",
+  "k": "fbc2c061cd456d3e0304",
+  "text": "So steht die Zwei richtig."
+ },
+ {
+  "s": "erzaehler",
   "k": "5d95dba838ba1e2bc710",
   "text": "Tipp ganz oft drauf!"
  },
@@ -718,6 +983,16 @@
   "s": "erzaehler",
   "k": "c22e913207e01f0d04f7",
   "text": "Und schau mal: ein Regenbogen über dem See!"
+ },
+ {
+  "s": "erzaehler",
+  "k": "478bea61d20e00dd2026",
+  "text": "Unten hat sie einen runden Bauch."
+ },
+ {
+  "s": "erzaehler",
+  "k": "2dc4d4e2d8a477ce8d53",
+  "text": "Unten läuft sie auf einem geraden Strich nach rechts."
  },
  {
   "s": "erzaehler",
@@ -771,8 +1046,58 @@
  },
  {
   "s": "erzaehler",
+  "k": "3754b31fa6ac71686904",
+  "text": "Welche Acht steht richtig herum?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "3235b78780848ded602c",
+  "text": "Welche Drei steht richtig herum?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "63afdfe34ac21923940a",
+  "text": "Welche Eins steht richtig herum?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "b706fa3e4bf5b9c304b4",
+  "text": "Welche Fünf steht richtig herum?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "0062717ff46f9286949a",
+  "text": "Welche Neun steht richtig herum?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "4b697f14605e158783dc",
+  "text": "Welche Null steht richtig herum?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "7894a48c509d32be9304",
+  "text": "Welche Sechs steht richtig herum?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "404eb09d900f67a1c39c",
+  "text": "Welche Sieben steht richtig herum?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "de6817442893825837e2",
+  "text": "Welche Vier steht richtig herum?"
+ },
+ {
+  "s": "erzaehler",
   "k": "11f49315dbca1b8f360c",
   "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "f3e9d612ab006adb8ed1",
+  "text": "Welche Zwei steht richtig herum?"
  },
  {
   "s": "erzaehler",
@@ -813,6 +1138,21 @@
   "s": "erzaehler",
   "k": "aa09c38116aef6173352",
   "text": "Wie viel ist gar nichts?"
+ },
+ {
+  "s": "erzaehler",
+  "k": "544337d9b94a57fcbabd",
+  "text": "Wir fangen beim grünen Punkt an."
+ },
+ {
+  "s": "erzaehler",
+  "k": "7c95da20da3fc6a89e40",
+  "text": "Wir fangen oben an und fahren nach links herum."
+ },
+ {
+  "s": "erzaehler",
+  "k": "9b9943def4a5a2d9f7b1",
+  "text": "Wir fangen oben rechts an und fahren eine Schlangenlinie."
  },
  {
   "s": "erzaehler",
@@ -931,18 +1271,33 @@
  },
  {
   "s": "zinn",
-  "k": "0bec70e21e0582ea0868",
-  "text": "Adler gezählt."
+  "k": "7b0ff7075c0eb4f5d6cb",
+  "text": "Andersrum!"
  },
  {
   "s": "zinn",
-  "k": "2efa2c339dd469b0ec9e",
-  "text": "Adler!"
+  "k": "112aa9ba79ea8b2daf19",
+  "text": "Bei der Eins zeigt der kleine Haken oben nach links."
  },
  {
   "s": "zinn",
-  "k": "208d91064603f921e3c7",
-  "text": "Adler."
+  "k": "088c821a91f783d27f79",
+  "text": "Bei der Neun ist der Kopf oben links."
+ },
+ {
+  "s": "zinn",
+  "k": "42104b929a6e35612a72",
+  "text": "Bei der Sechs kommt der Bogen von oben rechts."
+ },
+ {
+  "s": "zinn",
+  "k": "547b92a4d674ff5803eb",
+  "text": "Bei der Vier steht der lange Strich rechts."
+ },
+ {
+  "s": "zinn",
+  "k": "5e8233b4cf58e8451204",
+  "text": "Beide Bäuche zeigen nach rechts."
  },
  {
   "s": "zinn",
@@ -958,6 +1313,11 @@
   "s": "zinn",
   "k": "f09ae72583068312ae3c",
   "text": "Blaubeeren."
+ },
+ {
+  "s": "zinn",
+  "k": "3ca70d3066bb8618ef23",
+  "text": "Bleib schön auf der Spur."
  },
  {
   "s": "zinn",
@@ -1011,8 +1371,103 @@
  },
  {
   "s": "zinn",
+  "k": "db9a13bd120059b60fc3",
+  "text": "Das ist eine schöne Acht!"
+ },
+ {
+  "s": "zinn",
+  "k": "88790ace735dbc2181e1",
+  "text": "Das ist eine schöne Drei!"
+ },
+ {
+  "s": "zinn",
+  "k": "4be33e12c22849b45fdf",
+  "text": "Das ist eine schöne Eins!"
+ },
+ {
+  "s": "zinn",
+  "k": "f7953825c89bb056ebeb",
+  "text": "Das ist eine schöne Fünf!"
+ },
+ {
+  "s": "zinn",
+  "k": "67c4bc2a0e6383c603a8",
+  "text": "Das ist eine schöne Neun!"
+ },
+ {
+  "s": "zinn",
+  "k": "0d39a15a4216c3a85097",
+  "text": "Das ist eine schöne Null!"
+ },
+ {
+  "s": "zinn",
+  "k": "96f0edc423813e521f6a",
+  "text": "Das ist eine schöne Sechs!"
+ },
+ {
+  "s": "zinn",
+  "k": "06fc704d6da43682b6f5",
+  "text": "Das ist eine schöne Sieben!"
+ },
+ {
+  "s": "zinn",
+  "k": "5ab57f15e8632c01e3c6",
+  "text": "Das ist eine schöne Vier!"
+ },
+ {
+  "s": "zinn",
+  "k": "59e4187039bc716ef802",
+  "text": "Das ist eine schöne Zwei!"
+ },
+ {
+  "s": "zinn",
+  "k": "a063e5a6c77c1828b738",
+  "text": "Der lange Strich steht rechts davon."
+ },
+ {
+  "s": "zinn",
+  "k": "377760ce31f1ff456ec6",
+  "text": "Der lange Strich steht rechts."
+ },
+ {
+  "s": "zinn",
   "k": "fe883e69b4f10c3b03f6",
   "text": "Die"
+ },
+ {
+  "s": "zinn",
+  "k": "4a43546f46514aac915a",
+  "text": "Die Acht ist wie ein Schneemann."
+ },
+ {
+  "s": "zinn",
+  "k": "7e42daee9db20e338b5c",
+  "text": "Die Drei hat zwei Bäuche."
+ },
+ {
+  "s": "zinn",
+  "k": "3dcb37daccc7562c5125",
+  "text": "Die Fünf hat oben einen Hut nach rechts und unten einen dicken Bauch nach rechts."
+ },
+ {
+  "s": "zinn",
+  "k": "69837c7896694b78f34f",
+  "text": "Die Null ist rund wie ein Ei."
+ },
+ {
+  "s": "zinn",
+  "k": "b92ea66008f930b3c293",
+  "text": "Die Sieben geht oben nach rechts und dann schräg nach unten links."
+ },
+ {
+  "s": "zinn",
+  "k": "d57a9fc2f9a0de6fcb56",
+  "text": "Die Zwei macht oben einen Bogen nach rechts."
+ },
+ {
+  "s": "zinn",
+  "k": "7d8e8951b8814c03bbfd",
+  "text": "Die ist gespiegelt."
  },
  {
   "s": "zinn",
@@ -1043,11 +1498,6 @@
   "s": "zinn",
   "k": "72c3704327b0178c9a73",
   "text": "Eichhörnchen."
- },
- {
-  "s": "zinn",
-  "k": "5025c06c30b65ec28c72",
-  "text": "Ein Adler."
  },
  {
   "s": "zinn",
@@ -1101,26 +1551,6 @@
  },
  {
   "s": "zinn",
-  "k": "788754552792a0333af8",
-  "text": "Eine Schneeflocke."
- },
- {
-  "s": "zinn",
-  "k": "79816641201a6407db3a",
-  "text": "Eine Tanne."
- },
- {
-  "s": "zinn",
-  "k": "b70b757af7d33b23e6db",
-  "text": "Eine Wolke."
- },
- {
-  "s": "zinn",
-  "k": "82c255267cc6c9c09634",
-  "text": "Eine Ziege."
- },
- {
-  "s": "zinn",
   "k": "ac66aec3dd44a25fef75",
   "text": "Eins"
  },
@@ -1133,6 +1563,11 @@
   "s": "zinn",
   "k": "57989bf3329c0382974d",
   "text": "Er liegt unter einem Moos-Hügel."
+ },
+ {
+  "s": "zinn",
+  "k": "0e3c13dc50d477badca9",
+  "text": "Erst schräg nach unten, dann quer, dann den langen Strich."
  },
  {
   "s": "zinn",
@@ -1153,6 +1588,11 @@
   "s": "zinn",
   "k": "a3c00f06760d050dc414",
   "text": "Eulen."
+ },
+ {
+  "s": "zinn",
+  "k": "951188f79db8dd012986",
+  "text": "Fang beim grünen Punkt an und fahr die Spur nach."
  },
  {
   "s": "zinn",
@@ -1201,6 +1641,16 @@
  },
  {
   "s": "zinn",
+  "k": "c1e5b97b80cd3f99b8c4",
+  "text": "Genau!"
+ },
+ {
+  "s": "zinn",
+  "k": "9f4a379f8a3d03fe09f5",
+  "text": "Gut so!"
+ },
+ {
+  "s": "zinn",
   "k": "3040f30e5e76ff92796f",
   "text": "Guten Tag!"
  },
@@ -1208,11 +1658,6 @@
   "s": "zinn",
   "k": "fb399287b4e27a0ac4f7",
   "text": "Guten Tag, Sam!"
- },
- {
-  "s": "zinn",
-  "k": "84d50c7042bf885e303a",
-  "text": "Hier oben auf dem Echo-Gipfel ruft der Berg alles zurück."
  },
  {
   "s": "zinn",
@@ -1251,6 +1696,11 @@
  },
  {
   "s": "zinn",
+  "k": "81f76f0f342a1462abb0",
+  "text": "Ich zeige dir, wie die Zahlen gehen, und du fährst mit dem Finger nach."
+ },
+ {
+  "s": "zinn",
   "k": "fe33b52f1f9270160173",
   "text": "Igel gezählt."
  },
@@ -1266,6 +1716,11 @@
  },
  {
   "s": "zinn",
+  "k": "17668bd1d2a0344372de",
+  "text": "Im Sand kann man wunderbar schreiben."
+ },
+ {
+  "s": "zinn",
   "k": "eee372471b2e5162edc3",
   "text": "Ja, genau!"
  },
@@ -1273,6 +1728,11 @@
   "s": "zinn",
   "k": "eb2129bbfc5ca49323d3",
   "text": "Ja, genau, Sam!"
+ },
+ {
+  "s": "zinn",
+  "k": "b2803336e183c9e0817b",
+  "text": "Jetzt der zweite Strich."
  },
  {
   "s": "zinn",
@@ -1331,6 +1791,11 @@
  },
  {
   "s": "zinn",
+  "k": "f2a18efa24baddf36e74",
+  "text": "Nochmal!"
+ },
+ {
+  "s": "zinn",
   "k": "367d5b501bd3eec78e32",
   "text": "Null"
  },
@@ -1378,11 +1843,6 @@
   "s": "zinn",
   "k": "71b168fbead18d73ecd8",
   "text": "Richtig, Sam!"
- },
- {
-  "s": "zinn",
-  "k": "8b649a0839eb5344dc2c",
-  "text": "Sag die Zahl ganz laut!"
  },
  {
   "s": "zinn",
@@ -1451,23 +1911,63 @@
  },
  {
   "s": "zinn",
+  "k": "d605c571dbdf99685f7e",
+  "text": "Schau mal, so schreibt man die Acht."
+ },
+ {
+  "s": "zinn",
+  "k": "f4338ada4a87f038694d",
+  "text": "Schau mal, so schreibt man die Drei."
+ },
+ {
+  "s": "zinn",
+  "k": "5500cd81faf5ed445301",
+  "text": "Schau mal, so schreibt man die Eins."
+ },
+ {
+  "s": "zinn",
+  "k": "bd47c58f5ab247af4761",
+  "text": "Schau mal, so schreibt man die Fünf."
+ },
+ {
+  "s": "zinn",
+  "k": "90a1ee079efe95035e80",
+  "text": "Schau mal, so schreibt man die Neun."
+ },
+ {
+  "s": "zinn",
+  "k": "abdec6d6e7889b0c9331",
+  "text": "Schau mal, so schreibt man die Null."
+ },
+ {
+  "s": "zinn",
+  "k": "95c3d9cde7d5bc826978",
+  "text": "Schau mal, so schreibt man die Sechs."
+ },
+ {
+  "s": "zinn",
+  "k": "b03d80074f0ea077d73a",
+  "text": "Schau mal, so schreibt man die Sieben."
+ },
+ {
+  "s": "zinn",
+  "k": "f5bffa028eff17319937",
+  "text": "Schau mal, so schreibt man die Vier."
+ },
+ {
+  "s": "zinn",
+  "k": "dbac2e09a59778393631",
+  "text": "Schau mal, so schreibt man die Zwei."
+ },
+ {
+  "s": "zinn",
   "k": "b59b8471fda3b91a1336",
   "text": "Schau mal, wie hell die Laterne jetzt leuchtet!"
  },
  {
   "s": "zinn",
-  "k": "d01753d8d2a6007e77c6",
-  "text": "Schneeflocken gezählt."
- },
- {
-  "s": "zinn",
-  "k": "7735b28a2394b577e8fb",
-  "text": "Schneeflocken!"
- },
- {
-  "s": "zinn",
-  "k": "da858b1a6e36007f74c1",
-  "text": "Schneeflocken."
+  "k": "d4020d453a0a9fda6d39",
+  "text": "Schau, so herum ist es richtig."
  },
  {
   "s": "zinn",
@@ -1511,6 +2011,56 @@
  },
  {
   "s": "zinn",
+  "k": "a18f374b348c46b54dd1",
+  "text": "So steht die Acht richtig."
+ },
+ {
+  "s": "zinn",
+  "k": "0547c69dde167bf2abb0",
+  "text": "So steht die Drei richtig."
+ },
+ {
+  "s": "zinn",
+  "k": "653526632ce99082cf22",
+  "text": "So steht die Eins richtig."
+ },
+ {
+  "s": "zinn",
+  "k": "86e0bfa9285ecd9298c4",
+  "text": "So steht die Fünf richtig."
+ },
+ {
+  "s": "zinn",
+  "k": "92d4e13c102d6c2ba187",
+  "text": "So steht die Neun richtig."
+ },
+ {
+  "s": "zinn",
+  "k": "0da5a950958689f85a71",
+  "text": "So steht die Null richtig."
+ },
+ {
+  "s": "zinn",
+  "k": "5bde78a7f7bef377bd2c",
+  "text": "So steht die Sechs richtig."
+ },
+ {
+  "s": "zinn",
+  "k": "b06b3bf09ae18c9cb9e6",
+  "text": "So steht die Sieben richtig."
+ },
+ {
+  "s": "zinn",
+  "k": "a1fa8464f685506884de",
+  "text": "So steht die Vier richtig."
+ },
+ {
+  "s": "zinn",
+  "k": "d468e71462f390fb9946",
+  "text": "So steht die Zwei richtig."
+ },
+ {
+  "s": "zinn",
   "k": "a9b87ce305cabf934387",
   "text": "Sterne gezählt."
  },
@@ -1523,26 +2073,6 @@
   "s": "zinn",
   "k": "6e136ad7519fd74ee2a5",
   "text": "Sterne."
- },
- {
-  "s": "zinn",
-  "k": "18a16c7e57e25b95188d",
-  "text": "Tannen gezählt."
- },
- {
-  "s": "zinn",
-  "k": "bc5653cabc75b932c412",
-  "text": "Tannen!"
- },
- {
-  "s": "zinn",
-  "k": "60c606e6ed074fed896c",
-  "text": "Tannen."
- },
- {
-  "s": "zinn",
-  "k": "b094aab502213df6bbe1",
-  "text": "Tippe alle Adler an und zähl mit!"
  },
  {
   "s": "zinn",
@@ -1586,28 +2116,8 @@
  },
  {
   "s": "zinn",
-  "k": "425127a03d84af89f5c1",
-  "text": "Tippe alle Schneeflocken an und zähl mit!"
- },
- {
-  "s": "zinn",
   "k": "0c729ff5979925c9ce22",
   "text": "Tippe alle Sterne an und zähl mit!"
- },
- {
-  "s": "zinn",
-  "k": "af4898184292e3e944cb",
-  "text": "Tippe alle Tannen an und zähl mit!"
- },
- {
-  "s": "zinn",
-  "k": "42d173f79e960d235c0c",
-  "text": "Tippe alle Wolken an und zähl mit!"
- },
- {
-  "s": "zinn",
-  "k": "805b2072525c6a35115b",
-  "text": "Tippe alle Ziegen an und zähl mit!"
  },
  {
   "s": "zinn",
@@ -1636,6 +2146,16 @@
  },
  {
   "s": "zinn",
+  "k": "e338b72ac923ea189b92",
+  "text": "Unten hat sie einen runden Bauch."
+ },
+ {
+  "s": "zinn",
+  "k": "1c0778f0ec647a1135c3",
+  "text": "Unten läuft sie auf einem geraden Strich nach rechts."
+ },
+ {
+  "s": "zinn",
   "k": "6d43781c78fbed1c5047",
   "text": "Vier"
  },
@@ -1651,8 +2171,58 @@
  },
  {
   "s": "zinn",
+  "k": "20df9c2479856a6efcbf",
+  "text": "Welche Acht steht richtig herum?"
+ },
+ {
+  "s": "zinn",
+  "k": "a528b0f9afbb1d27edd4",
+  "text": "Welche Drei steht richtig herum?"
+ },
+ {
+  "s": "zinn",
+  "k": "6bdcf4fe74d9b60f49b3",
+  "text": "Welche Eins steht richtig herum?"
+ },
+ {
+  "s": "zinn",
+  "k": "d37692b167cd12dadd11",
+  "text": "Welche Fünf steht richtig herum?"
+ },
+ {
+  "s": "zinn",
+  "k": "39f1ccc1fea6a0685564",
+  "text": "Welche Neun steht richtig herum?"
+ },
+ {
+  "s": "zinn",
+  "k": "587770c955f7545a3221",
+  "text": "Welche Null steht richtig herum?"
+ },
+ {
+  "s": "zinn",
+  "k": "be7ee45c9a19c46437c4",
+  "text": "Welche Sechs steht richtig herum?"
+ },
+ {
+  "s": "zinn",
+  "k": "9305a37c8fcb1cf88be5",
+  "text": "Welche Sieben steht richtig herum?"
+ },
+ {
+  "s": "zinn",
+  "k": "9c63229aafb8594f014b",
+  "text": "Welche Vier steht richtig herum?"
+ },
+ {
+  "s": "zinn",
   "k": "4780fcf68d289a0ffefc",
   "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "zinn",
+  "k": "7c9a93f6e927f6a091f2",
+  "text": "Welche Zwei steht richtig herum?"
  },
  {
   "s": "zinn",
@@ -1663,11 +2233,6 @@
   "s": "zinn",
   "k": "40c8c52873da8790fcb1",
   "text": "Wie viel ist gar nichts?"
- },
- {
-  "s": "zinn",
-  "k": "2e0fe99ac977f4ae64df",
-  "text": "Wie viele Adler siehst du?"
  },
  {
   "s": "zinn",
@@ -1711,28 +2276,8 @@
  },
  {
   "s": "zinn",
-  "k": "c77c76827d43df201f53",
-  "text": "Wie viele Schneeflocken siehst du?"
- },
- {
-  "s": "zinn",
   "k": "405d665c3fc1a7c09bf2",
   "text": "Wie viele Sterne siehst du?"
- },
- {
-  "s": "zinn",
-  "k": "6febf7f4700b4ed79876",
-  "text": "Wie viele Tannen siehst du?"
- },
- {
-  "s": "zinn",
-  "k": "558a70e121c391964d3e",
-  "text": "Wie viele Wolken siehst du?"
- },
- {
-  "s": "zinn",
-  "k": "a018d5977c052e5dca0f",
-  "text": "Wie viele Ziegen siehst du?"
  },
  {
   "s": "zinn",
@@ -1746,23 +2291,23 @@
  },
  {
   "s": "zinn",
+  "k": "f6344098e82c42155ef1",
+  "text": "Wir fangen beim grünen Punkt an."
+ },
+ {
+  "s": "zinn",
+  "k": "e0e12c0048d2c4ba38ca",
+  "text": "Wir fangen oben an und fahren nach links herum."
+ },
+ {
+  "s": "zinn",
+  "k": "4eb12358b798321e7f53",
+  "text": "Wir fangen oben rechts an und fahren eine Schlangenlinie."
+ },
+ {
+  "s": "zinn",
   "k": "c1faacfe3bb8fa38c835",
   "text": "Wo ist die"
- },
- {
-  "s": "zinn",
-  "k": "b928cc6ce4dca422f372",
-  "text": "Wolken gezählt."
- },
- {
-  "s": "zinn",
-  "k": "b0894c81002b2d8276dd",
-  "text": "Wolken!"
- },
- {
-  "s": "zinn",
-  "k": "50e39957c551a46fda1f",
-  "text": "Wolken."
  },
  {
   "s": "zinn",
@@ -1798,21 +2343,6 @@
   "s": "zinn",
   "k": "ebb97dc495c5aeb124c9",
   "text": "Zehn."
- },
- {
-  "s": "zinn",
-  "k": "0080971f3cdfb6618a93",
-  "text": "Ziegen gezählt."
- },
- {
-  "s": "zinn",
-  "k": "4fd5be4c6e17b28d9a17",
-  "text": "Ziegen!"
- },
- {
-  "s": "zinn",
-  "k": "01d6370215221acc82d9",
-  "text": "Ziegen."
  },
  {
   "s": "zinn",
@@ -1881,6 +2411,26 @@
  },
  {
   "s": "klonk",
+  "k": "0f1694eaaf77ec14dd9f",
+  "text": "Adler gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "8f9fd89310ba9ef6e44c",
+  "text": "Adler!"
+ },
+ {
+  "s": "klonk",
+  "k": "da3ed2e372bdd1694f15",
+  "text": "Adler."
+ },
+ {
+  "s": "klonk",
+  "k": "eba3147fdd9a54d9aa12",
+  "text": "Andersrum!"
+ },
+ {
+  "s": "klonk",
   "k": "2cad85b8883196dbbb7b",
   "text": "Batterien gezählt."
  },
@@ -1893,6 +2443,36 @@
   "s": "klonk",
   "k": "439c45320a7767a97644",
   "text": "Batterien."
+ },
+ {
+  "s": "klonk",
+  "k": "2c4fcce21b2cc71b3653",
+  "text": "Bei der Eins zeigt der kleine Haken oben nach links."
+ },
+ {
+  "s": "klonk",
+  "k": "4f8495d4e08f53edafd4",
+  "text": "Bei der Neun ist der Kopf oben links."
+ },
+ {
+  "s": "klonk",
+  "k": "2cf75001390925e405c6",
+  "text": "Bei der Sechs kommt der Bogen von oben rechts."
+ },
+ {
+  "s": "klonk",
+  "k": "85038f92a49780b82a73",
+  "text": "Bei der Vier steht der lange Strich rechts."
+ },
+ {
+  "s": "klonk",
+  "k": "937ab0cacea4cb739c91",
+  "text": "Beide Bäuche zeigen nach rechts."
+ },
+ {
+  "s": "klonk",
+  "k": "11dd515b408abdcb3fd6",
+  "text": "Bleib schön auf der Spur."
  },
  {
   "s": "klonk",
@@ -1911,8 +2491,103 @@
  },
  {
   "s": "klonk",
+  "k": "698eee82dbe42a485f49",
+  "text": "Das ist eine schöne Acht!"
+ },
+ {
+  "s": "klonk",
+  "k": "9387ae2ae8565c13464f",
+  "text": "Das ist eine schöne Drei!"
+ },
+ {
+  "s": "klonk",
+  "k": "e8d78a2b5fa2aad8a251",
+  "text": "Das ist eine schöne Eins!"
+ },
+ {
+  "s": "klonk",
+  "k": "93ec7ce031710a019ee1",
+  "text": "Das ist eine schöne Fünf!"
+ },
+ {
+  "s": "klonk",
+  "k": "a995c45c442e79a746c8",
+  "text": "Das ist eine schöne Neun!"
+ },
+ {
+  "s": "klonk",
+  "k": "59d34aae121d34902eb4",
+  "text": "Das ist eine schöne Null!"
+ },
+ {
+  "s": "klonk",
+  "k": "5ab8e74731ac147093c8",
+  "text": "Das ist eine schöne Sechs!"
+ },
+ {
+  "s": "klonk",
+  "k": "26a6f8edf1b6cb5b6e68",
+  "text": "Das ist eine schöne Sieben!"
+ },
+ {
+  "s": "klonk",
+  "k": "f64fb134a0bcd869c15f",
+  "text": "Das ist eine schöne Vier!"
+ },
+ {
+  "s": "klonk",
+  "k": "0e0e1c794fe37d20c4b8",
+  "text": "Das ist eine schöne Zwei!"
+ },
+ {
+  "s": "klonk",
+  "k": "663c1ab186a8fb465ea5",
+  "text": "Der lange Strich steht rechts davon."
+ },
+ {
+  "s": "klonk",
+  "k": "bfbade69db69458481fe",
+  "text": "Der lange Strich steht rechts."
+ },
+ {
+  "s": "klonk",
   "k": "8e37796d5785f3b3df74",
   "text": "Die"
+ },
+ {
+  "s": "klonk",
+  "k": "8ce4dc25af313ac8d875",
+  "text": "Die Acht ist wie ein Schneemann."
+ },
+ {
+  "s": "klonk",
+  "k": "07e90b1ce0636dbf7b1b",
+  "text": "Die Drei hat zwei Bäuche."
+ },
+ {
+  "s": "klonk",
+  "k": "fd1a54d4278a12845b9f",
+  "text": "Die Fünf hat oben einen Hut nach rechts und unten einen dicken Bauch nach rechts."
+ },
+ {
+  "s": "klonk",
+  "k": "ce2430bfc9592d5dce1c",
+  "text": "Die Null ist rund wie ein Ei."
+ },
+ {
+  "s": "klonk",
+  "k": "a3e44bbeecc979f39e92",
+  "text": "Die Sieben geht oben nach rechts und dann schräg nach unten links."
+ },
+ {
+  "s": "klonk",
+  "k": "a37b790b7d75c18734e2",
+  "text": "Die Zwei macht oben einen Bogen nach rechts."
+ },
+ {
+  "s": "klonk",
+  "k": "e2c7b63cc3fc44a0cd80",
+  "text": "Die ist gespiegelt."
  },
  {
   "s": "klonk",
@@ -1946,6 +2621,11 @@
  },
  {
   "s": "klonk",
+  "k": "753602d7513ab4748dfc",
+  "text": "Ein Adler."
+ },
+ {
+  "s": "klonk",
   "k": "a6c60bc425a2567dccde",
   "text": "Ein Edelstein."
  },
@@ -1976,8 +2656,28 @@
  },
  {
   "s": "klonk",
+  "k": "703c371d30b6678b8958",
+  "text": "Eine Schneeflocke."
+ },
+ {
+  "s": "klonk",
   "k": "86eb84a38c9a8782c209",
   "text": "Eine Schraube."
+ },
+ {
+  "s": "klonk",
+  "k": "812aff965140eeb618d0",
+  "text": "Eine Tanne."
+ },
+ {
+  "s": "klonk",
+  "k": "b6b55ce58b7aebd437a8",
+  "text": "Eine Wolke."
+ },
+ {
+  "s": "klonk",
+  "k": "0a14abe31d70fd0c3889",
+  "text": "Eine Ziege."
  },
  {
   "s": "klonk",
@@ -1988,6 +2688,16 @@
   "s": "klonk",
   "k": "5b44c20addbbec5a4a6c",
   "text": "Eins."
+ },
+ {
+  "s": "klonk",
+  "k": "1da8c7977f74d83b9b1a",
+  "text": "Erst schräg nach unten, dann quer, dann den langen Strich."
+ },
+ {
+  "s": "klonk",
+  "k": "32a8f2424cc0568d6dd4",
+  "text": "Fang beim grünen Punkt an und fahr die Spur nach."
  },
  {
   "s": "klonk",
@@ -2016,6 +2726,11 @@
  },
  {
   "s": "klonk",
+  "k": "a813b04b7ac26750365d",
+  "text": "Genau!"
+ },
+ {
+  "s": "klonk",
   "k": "9cf6bdebbe786ec2c9bd",
   "text": "Glühbirnen gezählt."
  },
@@ -2028,6 +2743,16 @@
   "s": "klonk",
   "k": "9045513d59e7b26d83af",
   "text": "Glühbirnen."
+ },
+ {
+  "s": "klonk",
+  "k": "0c59bfae25c9ec7d2dbc",
+  "text": "Gut so!"
+ },
+ {
+  "s": "klonk",
+  "k": "f76f35248f4b2db0260d",
+  "text": "Hier oben auf dem Echo-Gipfel nehme ich deine Stimme auf."
  },
  {
   "s": "klonk",
@@ -2071,6 +2796,11 @@
  },
  {
   "s": "klonk",
+  "k": "63a2ff77080e550d314c",
+  "text": "Jetzt der zweite Strich."
+ },
+ {
+  "s": "klonk",
   "k": "186ef98c41d4aacacc90",
   "text": "Lass uns zusammen zählen!"
  },
@@ -2086,6 +2816,11 @@
  },
  {
   "s": "klonk",
+  "k": "8f8110a6290e632344f3",
+  "text": "Nochmal!"
+ },
+ {
+  "s": "klonk",
   "k": "e667633677e71f192d64",
   "text": "Null"
  },
@@ -2098,6 +2833,11 @@
   "s": "klonk",
   "k": "78dca4f23f1e89a46f15",
   "text": "Null."
+ },
+ {
+  "s": "klonk",
+  "k": "1c99afe31d4ffa11015a",
+  "text": "Piep!"
  },
  {
   "s": "klonk",
@@ -2153,6 +2893,11 @@
   "s": "klonk",
   "k": "6fd28bc0623609803f62",
   "text": "Roboter."
+ },
+ {
+  "s": "klonk",
+  "k": "346907e334beb25e3f21",
+  "text": "Sag die Zahl ganz laut!"
  },
  {
   "s": "klonk",
@@ -2221,6 +2966,76 @@
  },
  {
   "s": "klonk",
+  "k": "0d077979849e5dae5ebe",
+  "text": "Schau mal, so schreibt man die Acht."
+ },
+ {
+  "s": "klonk",
+  "k": "020f4d28796a0376213f",
+  "text": "Schau mal, so schreibt man die Drei."
+ },
+ {
+  "s": "klonk",
+  "k": "6e96d13320453ca869e8",
+  "text": "Schau mal, so schreibt man die Eins."
+ },
+ {
+  "s": "klonk",
+  "k": "bc74a8bd8945464c9625",
+  "text": "Schau mal, so schreibt man die Fünf."
+ },
+ {
+  "s": "klonk",
+  "k": "64212274f5fa0f2551db",
+  "text": "Schau mal, so schreibt man die Neun."
+ },
+ {
+  "s": "klonk",
+  "k": "ab6b191f75980367ab45",
+  "text": "Schau mal, so schreibt man die Null."
+ },
+ {
+  "s": "klonk",
+  "k": "2464fb8895702adc81bc",
+  "text": "Schau mal, so schreibt man die Sechs."
+ },
+ {
+  "s": "klonk",
+  "k": "83081327dda0b482b865",
+  "text": "Schau mal, so schreibt man die Sieben."
+ },
+ {
+  "s": "klonk",
+  "k": "5814136f49712f70cb0e",
+  "text": "Schau mal, so schreibt man die Vier."
+ },
+ {
+  "s": "klonk",
+  "k": "70ce7b9e8e8933eec49a",
+  "text": "Schau mal, so schreibt man die Zwei."
+ },
+ {
+  "s": "klonk",
+  "k": "2801ef91b55c6fc8bca4",
+  "text": "Schau, so herum ist es richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "44e27f53e2ad87cf90eb",
+  "text": "Schneeflocken gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "f06ae9296fe4cfb32588",
+  "text": "Schneeflocken!"
+ },
+ {
+  "s": "klonk",
+  "k": "7ff03f4d5d92b5286f28",
+  "text": "Schneeflocken."
+ },
+ {
+  "s": "klonk",
   "k": "f9f79311779fd0673798",
   "text": "Schrauben gezählt."
  },
@@ -2276,6 +3091,76 @@
  },
  {
   "s": "klonk",
+  "k": "680c51d755aa1a37710f",
+  "text": "So steht die Acht richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "37c107bc1c2dfcebf0ca",
+  "text": "So steht die Drei richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "46091a203475d16c2384",
+  "text": "So steht die Eins richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "5c66fec2bbb5171360e2",
+  "text": "So steht die Fünf richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "bfeb4469bfad285c250b",
+  "text": "So steht die Neun richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "a8dcf11cbfc2e274ee37",
+  "text": "So steht die Null richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "c7f02fbf67ffc84e323e",
+  "text": "So steht die Sechs richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "71f3efa8df6d50b3e392",
+  "text": "So steht die Sieben richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "f962e2ac5f18d3410c51",
+  "text": "So steht die Vier richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "366c85038980a0d01e72",
+  "text": "So steht die Zwei richtig."
+ },
+ {
+  "s": "klonk",
+  "k": "bed9879a503963cd1258",
+  "text": "Tannen gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "8f5d475070176acd0840",
+  "text": "Tannen!"
+ },
+ {
+  "s": "klonk",
+  "k": "55096e089c6daa274147",
+  "text": "Tannen."
+ },
+ {
+  "s": "klonk",
+  "k": "6c06de63b8ffe91889f4",
+  "text": "Tippe alle Adler an und zähl mit!"
+ },
+ {
+  "s": "klonk",
   "k": "8c31b43443f0ee579c44",
   "text": "Tippe alle Batterien an und zähl mit!"
  },
@@ -2301,13 +3186,33 @@
  },
  {
   "s": "klonk",
+  "k": "7267f9f3279519fb3a8b",
+  "text": "Tippe alle Schneeflocken an und zähl mit!"
+ },
+ {
+  "s": "klonk",
   "k": "201c3c351207e9f3e599",
   "text": "Tippe alle Schrauben an und zähl mit!"
  },
  {
   "s": "klonk",
+  "k": "1bcbbf4d678f79e4f972",
+  "text": "Tippe alle Tannen an und zähl mit!"
+ },
+ {
+  "s": "klonk",
+  "k": "18a8208c8c26563f2c9f",
+  "text": "Tippe alle Wolken an und zähl mit!"
+ },
+ {
+  "s": "klonk",
   "k": "7837e150a0462fdcf755",
   "text": "Tippe alle Zahnräder an und zähl mit!"
+ },
+ {
+  "s": "klonk",
+  "k": "4c0fa502d4b86f90c5a8",
+  "text": "Tippe alle Ziegen an und zähl mit!"
  },
  {
   "s": "klonk",
@@ -2331,6 +3236,16 @@
  },
  {
   "s": "klonk",
+  "k": "fdcca4d1695fc42fdc96",
+  "text": "Unten hat sie einen runden Bauch."
+ },
+ {
+  "s": "klonk",
+  "k": "bb97cdcd6ad5d3553092",
+  "text": "Unten läuft sie auf einem geraden Strich nach rechts."
+ },
+ {
+  "s": "klonk",
   "k": "6ae0e95cdd0ab6d6e27e",
   "text": "Vier"
  },
@@ -2341,8 +3256,58 @@
  },
  {
   "s": "klonk",
+  "k": "e2ec22cad76eed1b81cd",
+  "text": "Welche Acht steht richtig herum?"
+ },
+ {
+  "s": "klonk",
+  "k": "98ec6ef663e15253176f",
+  "text": "Welche Drei steht richtig herum?"
+ },
+ {
+  "s": "klonk",
+  "k": "57adc4d5df5933a85be9",
+  "text": "Welche Eins steht richtig herum?"
+ },
+ {
+  "s": "klonk",
+  "k": "e34c1f826a436623bc49",
+  "text": "Welche Fünf steht richtig herum?"
+ },
+ {
+  "s": "klonk",
+  "k": "bd59bfbc92ced0754b6e",
+  "text": "Welche Neun steht richtig herum?"
+ },
+ {
+  "s": "klonk",
+  "k": "478b46ec5cf5ff6f5313",
+  "text": "Welche Null steht richtig herum?"
+ },
+ {
+  "s": "klonk",
+  "k": "c23f6a74641bf8fbc1f4",
+  "text": "Welche Sechs steht richtig herum?"
+ },
+ {
+  "s": "klonk",
+  "k": "f9a4b21fb0639d1bdca0",
+  "text": "Welche Sieben steht richtig herum?"
+ },
+ {
+  "s": "klonk",
+  "k": "f50ac5d4ed1848051b3b",
+  "text": "Welche Vier steht richtig herum?"
+ },
+ {
+  "s": "klonk",
   "k": "5ac09cbc3a78e87f20b3",
   "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "klonk",
+  "k": "20af9ed42a719f90fece",
+  "text": "Welche Zwei steht richtig herum?"
  },
  {
   "s": "klonk",
@@ -2353,6 +3318,11 @@
   "s": "klonk",
   "k": "13524ea5d94cd7decbc2",
   "text": "Wie viel ist gar nichts?"
+ },
+ {
+  "s": "klonk",
+  "k": "eb51086b123a69985541",
+  "text": "Wie viele Adler siehst du?"
  },
  {
   "s": "klonk",
@@ -2381,8 +3351,23 @@
  },
  {
   "s": "klonk",
+  "k": "8b14a6bfc3f85768f505",
+  "text": "Wie viele Schneeflocken siehst du?"
+ },
+ {
+  "s": "klonk",
   "k": "3ba5eab9cd4780b7b1c3",
   "text": "Wie viele Schrauben siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "07deb427148b1c635beb",
+  "text": "Wie viele Tannen siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "b78391d5bbb55ec179dc",
+  "text": "Wie viele Wolken siehst du?"
  },
  {
   "s": "klonk",
@@ -2391,8 +3376,43 @@
  },
  {
   "s": "klonk",
+  "k": "185fc7b8eca238fbe2db",
+  "text": "Wie viele Ziegen siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "354d3a4d9bb7932c716c",
+  "text": "Wir fangen beim grünen Punkt an."
+ },
+ {
+  "s": "klonk",
+  "k": "a0c218670a876de996a0",
+  "text": "Wir fangen oben an und fahren nach links herum."
+ },
+ {
+  "s": "klonk",
+  "k": "22d89ab757c778376545",
+  "text": "Wir fangen oben rechts an und fahren eine Schlangenlinie."
+ },
+ {
+  "s": "klonk",
   "k": "6330375fe4db46859aa4",
   "text": "Wo ist die"
+ },
+ {
+  "s": "klonk",
+  "k": "cc93245b7e6a51c5d92a",
+  "text": "Wolken gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "5e2d4925a5d013836069",
+  "text": "Wolken!"
+ },
+ {
+  "s": "klonk",
+  "k": "9b58cae2a21ec139324e",
+  "text": "Wolken."
  },
  {
   "s": "klonk",
@@ -2446,6 +3466,21 @@
  },
  {
   "s": "klonk",
+  "k": "2633488928301fdf3400",
+  "text": "Ziegen gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "d78654423a8fd38de6a5",
+  "text": "Ziegen!"
+ },
+ {
+  "s": "klonk",
+  "k": "9dd949292c7fd95404eb",
+  "text": "Ziegen."
+ },
+ {
+  "s": "klonk",
   "k": "90a69f47c4d99c5820eb",
   "text": "Zwei"
  },
@@ -2496,6 +3531,36 @@
  },
  {
   "s": "holunder",
+  "k": "b3c91489443403bd28f7",
+  "text": "Andersrum!"
+ },
+ {
+  "s": "holunder",
+  "k": "4601da8d66a4f41a334a",
+  "text": "Bei der Eins zeigt der kleine Haken oben nach links."
+ },
+ {
+  "s": "holunder",
+  "k": "539cf549a5eb9f2e332f",
+  "text": "Bei der Neun ist der Kopf oben links."
+ },
+ {
+  "s": "holunder",
+  "k": "913bfee39d8589563005",
+  "text": "Bei der Sechs kommt der Bogen von oben rechts."
+ },
+ {
+  "s": "holunder",
+  "k": "72a09e84d9d7462efcba",
+  "text": "Bei der Vier steht der lange Strich rechts."
+ },
+ {
+  "s": "holunder",
+  "k": "c8278278bd29a7901148",
+  "text": "Beide Bäuche zeigen nach rechts."
+ },
+ {
+  "s": "holunder",
   "k": "914bf6ca74ca965f57da",
   "text": "Besen gezählt."
  },
@@ -2508,6 +3573,11 @@
   "s": "holunder",
   "k": "1126cc4577219db71b71",
   "text": "Besen."
+ },
+ {
+  "s": "holunder",
+  "k": "f6003dfdb445bf730215",
+  "text": "Bleib schön auf der Spur."
  },
  {
   "s": "holunder",
@@ -2531,8 +3601,108 @@
  },
  {
   "s": "holunder",
+  "k": "55c5c211ffd524c55c3e",
+  "text": "Das ist eine schöne Acht!"
+ },
+ {
+  "s": "holunder",
+  "k": "a15acf5335882f6c718a",
+  "text": "Das ist eine schöne Drei!"
+ },
+ {
+  "s": "holunder",
+  "k": "27b3fb20245800cbb0e4",
+  "text": "Das ist eine schöne Eins!"
+ },
+ {
+  "s": "holunder",
+  "k": "70b2b08b5cb8d08f7964",
+  "text": "Das ist eine schöne Fünf!"
+ },
+ {
+  "s": "holunder",
+  "k": "32c008c321e1024feef5",
+  "text": "Das ist eine schöne Neun!"
+ },
+ {
+  "s": "holunder",
+  "k": "37bfc5c49980fbfd78f9",
+  "text": "Das ist eine schöne Null!"
+ },
+ {
+  "s": "holunder",
+  "k": "dc6be821017a47d394eb",
+  "text": "Das ist eine schöne Sechs!"
+ },
+ {
+  "s": "holunder",
+  "k": "d666b5132daabf85729b",
+  "text": "Das ist eine schöne Sieben!"
+ },
+ {
+  "s": "holunder",
+  "k": "28d27b9e743c41ec8f84",
+  "text": "Das ist eine schöne Vier!"
+ },
+ {
+  "s": "holunder",
+  "k": "07720760ad51eb9a6dd9",
+  "text": "Das ist eine schöne Zwei!"
+ },
+ {
+  "s": "holunder",
+  "k": "d2f82083b1c9643ead5e",
+  "text": "Der Spiegelsee ist verzaubert."
+ },
+ {
+  "s": "holunder",
+  "k": "e85ad199610cc0a45c6f",
+  "text": "Der lange Strich steht rechts davon."
+ },
+ {
+  "s": "holunder",
+  "k": "c52af23c68883e312d70",
+  "text": "Der lange Strich steht rechts."
+ },
+ {
+  "s": "holunder",
   "k": "27f32d563371d00e3df7",
   "text": "Die"
+ },
+ {
+  "s": "holunder",
+  "k": "9216270461ac04725527",
+  "text": "Die Acht ist wie ein Schneemann."
+ },
+ {
+  "s": "holunder",
+  "k": "a484d0ab148a120aca01",
+  "text": "Die Drei hat zwei Bäuche."
+ },
+ {
+  "s": "holunder",
+  "k": "42d675083d0a0e89eb74",
+  "text": "Die Fünf hat oben einen Hut nach rechts und unten einen dicken Bauch nach rechts."
+ },
+ {
+  "s": "holunder",
+  "k": "3f24138c26a2ca0ad674",
+  "text": "Die Null ist rund wie ein Ei."
+ },
+ {
+  "s": "holunder",
+  "k": "58db5a56af1d385a4fd5",
+  "text": "Die Sieben geht oben nach rechts und dann schräg nach unten links."
+ },
+ {
+  "s": "holunder",
+  "k": "87610c240007b189d5df",
+  "text": "Die Zwei macht oben einen Bogen nach rechts."
+ },
+ {
+  "s": "holunder",
+  "k": "f84d1324d3c87af42e4b",
+  "text": "Die ist gespiegelt."
  },
  {
   "s": "holunder",
@@ -2601,6 +3771,26 @@
  },
  {
   "s": "holunder",
+  "k": "8b984549353c03477556",
+  "text": "Er dreht die Zahlen um."
+ },
+ {
+  "s": "holunder",
+  "k": "7ad152eabceb442e3c80",
+  "text": "Erst schräg nach unten, dann quer, dann den langen Strich."
+ },
+ {
+  "s": "holunder",
+  "k": "adddebf9550713290732",
+  "text": "Fang beim grünen Punkt an und fahr die Spur nach."
+ },
+ {
+  "s": "holunder",
+  "k": "09761fb2a4d5ac46a82d",
+  "text": "Findest du heraus, welche richtig herum steht?"
+ },
+ {
+  "s": "holunder",
   "k": "ae63ebbdd9d4f4ad739a",
   "text": "Fledermäuse gezählt."
  },
@@ -2653,6 +3843,16 @@
   "s": "holunder",
   "k": "00f962bd114627b27961",
   "text": "Ganz genau, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "b5c4ccefa25e441ebd46",
+  "text": "Genau!"
+ },
+ {
+  "s": "holunder",
+  "k": "9c5074500e16b9e98e0c",
+  "text": "Gut so!"
  },
  {
   "s": "holunder",
@@ -2731,6 +3931,11 @@
  },
  {
   "s": "holunder",
+  "k": "a010496430a90803b4ae",
+  "text": "Jetzt der zweite Strich."
+ },
+ {
+  "s": "holunder",
   "k": "76e8fc39c06f0e82275b",
   "text": "Kürbisse gezählt."
  },
@@ -2763,6 +3968,11 @@
   "s": "holunder",
   "k": "efb1d339bf7e10d19f01",
   "text": "Noch etwas!"
+ },
+ {
+  "s": "holunder",
+  "k": "ee36900050785c0fac6e",
+  "text": "Nochmal!"
  },
  {
   "s": "holunder",
@@ -2881,6 +4091,61 @@
  },
  {
   "s": "holunder",
+  "k": "e32c15a98b005beaa477",
+  "text": "Schau mal, so schreibt man die Acht."
+ },
+ {
+  "s": "holunder",
+  "k": "6d0629901ae051f86b30",
+  "text": "Schau mal, so schreibt man die Drei."
+ },
+ {
+  "s": "holunder",
+  "k": "7a6eb9a65afe37671bc5",
+  "text": "Schau mal, so schreibt man die Eins."
+ },
+ {
+  "s": "holunder",
+  "k": "58b3054d02a3787a9934",
+  "text": "Schau mal, so schreibt man die Fünf."
+ },
+ {
+  "s": "holunder",
+  "k": "97f1af96b187acf6bf5b",
+  "text": "Schau mal, so schreibt man die Neun."
+ },
+ {
+  "s": "holunder",
+  "k": "d8c3935a62f46d3ca375",
+  "text": "Schau mal, so schreibt man die Null."
+ },
+ {
+  "s": "holunder",
+  "k": "802a59ae50cfdf10fb0e",
+  "text": "Schau mal, so schreibt man die Sechs."
+ },
+ {
+  "s": "holunder",
+  "k": "f118915b272fa15212e3",
+  "text": "Schau mal, so schreibt man die Sieben."
+ },
+ {
+  "s": "holunder",
+  "k": "4fdd783ddbac33d9bbfe",
+  "text": "Schau mal, so schreibt man die Vier."
+ },
+ {
+  "s": "holunder",
+  "k": "885c205b85591204231a",
+  "text": "Schau mal, so schreibt man die Zwei."
+ },
+ {
+  "s": "holunder",
+  "k": "3b7ecbe3b5ed001bcbfb",
+  "text": "Schau, so herum ist es richtig."
+ },
+ {
+  "s": "holunder",
   "k": "8b34b93255818f3867b0",
   "text": "Sechs"
  },
@@ -2923,6 +4188,56 @@
   "s": "holunder",
   "k": "55f842559bc8680a663e",
   "text": "Simsalabim!"
+ },
+ {
+  "s": "holunder",
+  "k": "e5ccdad09ff37aabc995",
+  "text": "So steht die Acht richtig."
+ },
+ {
+  "s": "holunder",
+  "k": "5d3b88ab560f750b312f",
+  "text": "So steht die Drei richtig."
+ },
+ {
+  "s": "holunder",
+  "k": "d0c1c6e16de325c387a4",
+  "text": "So steht die Eins richtig."
+ },
+ {
+  "s": "holunder",
+  "k": "7418fc1a60364a117132",
+  "text": "So steht die Fünf richtig."
+ },
+ {
+  "s": "holunder",
+  "k": "be6ebc9e0c6b705baab6",
+  "text": "So steht die Neun richtig."
+ },
+ {
+  "s": "holunder",
+  "k": "197f9914a0a6afbdda1c",
+  "text": "So steht die Null richtig."
+ },
+ {
+  "s": "holunder",
+  "k": "882a87390c09504abd8e",
+  "text": "So steht die Sechs richtig."
+ },
+ {
+  "s": "holunder",
+  "k": "e6d93d49b3792d5a51a1",
+  "text": "So steht die Sieben richtig."
+ },
+ {
+  "s": "holunder",
+  "k": "7dfb9969ada189cca76b",
+  "text": "So steht die Vier richtig."
+ },
+ {
+  "s": "holunder",
+  "k": "8e61fd267f75bdef7e4a",
+  "text": "So steht die Zwei richtig."
  },
  {
   "s": "holunder",
@@ -2991,6 +4306,16 @@
  },
  {
   "s": "holunder",
+  "k": "ed71bb0c8b169da109c7",
+  "text": "Unten hat sie einen runden Bauch."
+ },
+ {
+  "s": "holunder",
+  "k": "e9ef3726977461fab430",
+  "text": "Unten läuft sie auf einem geraden Strich nach rechts."
+ },
+ {
+  "s": "holunder",
   "k": "3c4ec6aabff6cc517eab",
   "text": "Vier"
  },
@@ -3001,8 +4326,58 @@
  },
  {
   "s": "holunder",
+  "k": "e3d7284911aa670c7ef7",
+  "text": "Welche Acht steht richtig herum?"
+ },
+ {
+  "s": "holunder",
+  "k": "df77fdf994b4d934bc4b",
+  "text": "Welche Drei steht richtig herum?"
+ },
+ {
+  "s": "holunder",
+  "k": "b495156e4cf2c515f18e",
+  "text": "Welche Eins steht richtig herum?"
+ },
+ {
+  "s": "holunder",
+  "k": "59341d63c07afdeb9b6c",
+  "text": "Welche Fünf steht richtig herum?"
+ },
+ {
+  "s": "holunder",
+  "k": "0140c01f203e8b7cffaf",
+  "text": "Welche Neun steht richtig herum?"
+ },
+ {
+  "s": "holunder",
+  "k": "05b8ef7536d36e275ba3",
+  "text": "Welche Null steht richtig herum?"
+ },
+ {
+  "s": "holunder",
+  "k": "d6cabcf10eb3f5542911",
+  "text": "Welche Sechs steht richtig herum?"
+ },
+ {
+  "s": "holunder",
+  "k": "b8a1303c5fa9ee078d25",
+  "text": "Welche Sieben steht richtig herum?"
+ },
+ {
+  "s": "holunder",
+  "k": "8283206840e5244b648f",
+  "text": "Welche Vier steht richtig herum?"
+ },
+ {
+  "s": "holunder",
   "k": "55b13c24a9007733f1c3",
   "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "holunder",
+  "k": "9d679d78d1d6e87d427f",
+  "text": "Welche Zwei steht richtig herum?"
  },
  {
   "s": "holunder",
@@ -3063,6 +4438,21 @@
   "s": "holunder",
   "k": "10f08bf4dc7c880490a2",
   "text": "Wir brauen einen Zaubertrank."
+ },
+ {
+  "s": "holunder",
+  "k": "a641ae1ba8e074d91004",
+  "text": "Wir fangen beim grünen Punkt an."
+ },
+ {
+  "s": "holunder",
+  "k": "f313dc45db0dfc69d829",
+  "text": "Wir fangen oben an und fahren nach links herum."
+ },
+ {
+  "s": "holunder",
+  "k": "7179a1d23f9a0ec47957",
+  "text": "Wir fangen oben rechts an und fahren eine Schlangenlinie."
  },
  {
   "s": "holunder",
@@ -3206,8 +4596,43 @@
  },
  {
   "s": "hoppel",
+  "k": "a94b67c4afab1cf90aed",
+  "text": "Andersrum!"
+ },
+ {
+  "s": "hoppel",
   "k": "5a1a9b2c2d81e07914cc",
   "text": "Auf meiner Wiese verstecken sich Zahlen."
+ },
+ {
+  "s": "hoppel",
+  "k": "c0e47f7ff9d8e5cdd13e",
+  "text": "Bei der Eins zeigt der kleine Haken oben nach links."
+ },
+ {
+  "s": "hoppel",
+  "k": "8027b3ae8e0ee247dc58",
+  "text": "Bei der Neun ist der Kopf oben links."
+ },
+ {
+  "s": "hoppel",
+  "k": "dd5faa437f01ce965222",
+  "text": "Bei der Sechs kommt der Bogen von oben rechts."
+ },
+ {
+  "s": "hoppel",
+  "k": "0365d2d1592aa32490b6",
+  "text": "Bei der Vier steht der lange Strich rechts."
+ },
+ {
+  "s": "hoppel",
+  "k": "15db32cea1c58aa09a8a",
+  "text": "Beide Bäuche zeigen nach rechts."
+ },
+ {
+  "s": "hoppel",
+  "k": "fc23cc7d49c3e242d506",
+  "text": "Bleib schön auf der Spur."
  },
  {
   "s": "hoppel",
@@ -3241,8 +4666,103 @@
  },
  {
   "s": "hoppel",
+  "k": "503491ef335165e149a3",
+  "text": "Das ist eine schöne Acht!"
+ },
+ {
+  "s": "hoppel",
+  "k": "8f1c8e0008f7e8656b52",
+  "text": "Das ist eine schöne Drei!"
+ },
+ {
+  "s": "hoppel",
+  "k": "a3d321b65c1c4259bc89",
+  "text": "Das ist eine schöne Eins!"
+ },
+ {
+  "s": "hoppel",
+  "k": "918fb434f4aa4132d353",
+  "text": "Das ist eine schöne Fünf!"
+ },
+ {
+  "s": "hoppel",
+  "k": "9fca20c9f63d90e1f8ed",
+  "text": "Das ist eine schöne Neun!"
+ },
+ {
+  "s": "hoppel",
+  "k": "3d91b9958d434f2dad3f",
+  "text": "Das ist eine schöne Null!"
+ },
+ {
+  "s": "hoppel",
+  "k": "243127be4327e7348d4d",
+  "text": "Das ist eine schöne Sechs!"
+ },
+ {
+  "s": "hoppel",
+  "k": "8b9fc1c8f41b89a49121",
+  "text": "Das ist eine schöne Sieben!"
+ },
+ {
+  "s": "hoppel",
+  "k": "d2b2c386d70812a650ba",
+  "text": "Das ist eine schöne Vier!"
+ },
+ {
+  "s": "hoppel",
+  "k": "a56bd06a720b795d087c",
+  "text": "Das ist eine schöne Zwei!"
+ },
+ {
+  "s": "hoppel",
+  "k": "ff6a1ffe2ee588022146",
+  "text": "Der lange Strich steht rechts davon."
+ },
+ {
+  "s": "hoppel",
+  "k": "c486c66d08d9a4038abd",
+  "text": "Der lange Strich steht rechts."
+ },
+ {
+  "s": "hoppel",
   "k": "8c3e73731a89af3b1d65",
   "text": "Die"
+ },
+ {
+  "s": "hoppel",
+  "k": "16e67124cb7e8721489b",
+  "text": "Die Acht ist wie ein Schneemann."
+ },
+ {
+  "s": "hoppel",
+  "k": "b679026bdce998c5c300",
+  "text": "Die Drei hat zwei Bäuche."
+ },
+ {
+  "s": "hoppel",
+  "k": "47d5ae65321e4f289c13",
+  "text": "Die Fünf hat oben einen Hut nach rechts und unten einen dicken Bauch nach rechts."
+ },
+ {
+  "s": "hoppel",
+  "k": "0a34362eebd6d3ff007e",
+  "text": "Die Null ist rund wie ein Ei."
+ },
+ {
+  "s": "hoppel",
+  "k": "24f75a94fc7c259256cb",
+  "text": "Die Sieben geht oben nach rechts und dann schräg nach unten links."
+ },
+ {
+  "s": "hoppel",
+  "k": "aab102d38d4a558decb5",
+  "text": "Die Zwei macht oben einen Bogen nach rechts."
+ },
+ {
+  "s": "hoppel",
+  "k": "fb5677b30d2fb08766c6",
+  "text": "Die ist gespiegelt."
  },
  {
   "s": "hoppel",
@@ -3331,6 +4851,16 @@
  },
  {
   "s": "hoppel",
+  "k": "01fe5eb2ba595f050595",
+  "text": "Erst schräg nach unten, dann quer, dann den langen Strich."
+ },
+ {
+  "s": "hoppel",
+  "k": "704270fa7edc45bb51af",
+  "text": "Fang beim grünen Punkt an und fahr die Spur nach."
+ },
+ {
+  "s": "hoppel",
   "k": "7edc4f0623a01e7caeb8",
   "text": "Fünf"
  },
@@ -3353,6 +4883,16 @@
   "s": "hoppel",
   "k": "bde13324fc5e40d69730",
   "text": "Ganz genau, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "4c4b4d1b40fc1db28fdb",
+  "text": "Genau!"
+ },
+ {
+  "s": "hoppel",
+  "k": "81d5aa9f79109f0c6aed",
+  "text": "Gut so!"
  },
  {
   "s": "hoppel",
@@ -3418,6 +4958,11 @@
   "s": "hoppel",
   "k": "d071a6d1157cfb914c98",
   "text": "Ja, genau, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "028c6c0c5574be67a0ea",
+  "text": "Jetzt der zweite Strich."
  },
  {
   "s": "hoppel",
@@ -3586,6 +5131,61 @@
  },
  {
   "s": "hoppel",
+  "k": "8942bf709cfd1ce300c3",
+  "text": "Schau mal, so schreibt man die Acht."
+ },
+ {
+  "s": "hoppel",
+  "k": "a44451c50fd42d523d9d",
+  "text": "Schau mal, so schreibt man die Drei."
+ },
+ {
+  "s": "hoppel",
+  "k": "27b507895ee59445852b",
+  "text": "Schau mal, so schreibt man die Eins."
+ },
+ {
+  "s": "hoppel",
+  "k": "b4dca12545e82e56b598",
+  "text": "Schau mal, so schreibt man die Fünf."
+ },
+ {
+  "s": "hoppel",
+  "k": "fba6d4f0ceacee594d1a",
+  "text": "Schau mal, so schreibt man die Neun."
+ },
+ {
+  "s": "hoppel",
+  "k": "319862b8d129fea12143",
+  "text": "Schau mal, so schreibt man die Null."
+ },
+ {
+  "s": "hoppel",
+  "k": "9951fc6fdc28515da52b",
+  "text": "Schau mal, so schreibt man die Sechs."
+ },
+ {
+  "s": "hoppel",
+  "k": "2d9cf55368e687a0c38c",
+  "text": "Schau mal, so schreibt man die Sieben."
+ },
+ {
+  "s": "hoppel",
+  "k": "d20df5c5079fd9678ecb",
+  "text": "Schau mal, so schreibt man die Vier."
+ },
+ {
+  "s": "hoppel",
+  "k": "16973f127c0c03743aef",
+  "text": "Schau mal, so schreibt man die Zwei."
+ },
+ {
+  "s": "hoppel",
+  "k": "1de3fd5e49e3f0189cb6",
+  "text": "Schau, so herum ist es richtig."
+ },
+ {
+  "s": "hoppel",
   "k": "93bca94f57118c2ff4d9",
   "text": "Schmetterlinge gezählt."
  },
@@ -3656,6 +5256,56 @@
  },
  {
   "s": "hoppel",
+  "k": "d074229bf3f26e6bcdae",
+  "text": "So steht die Acht richtig."
+ },
+ {
+  "s": "hoppel",
+  "k": "dba757312d9dc1b2d70c",
+  "text": "So steht die Drei richtig."
+ },
+ {
+  "s": "hoppel",
+  "k": "fba7eda29c7448b17120",
+  "text": "So steht die Eins richtig."
+ },
+ {
+  "s": "hoppel",
+  "k": "68c41bcfc78e505cb1df",
+  "text": "So steht die Fünf richtig."
+ },
+ {
+  "s": "hoppel",
+  "k": "4d03465a7c1c23691b2a",
+  "text": "So steht die Neun richtig."
+ },
+ {
+  "s": "hoppel",
+  "k": "ef700770b03f394faa49",
+  "text": "So steht die Null richtig."
+ },
+ {
+  "s": "hoppel",
+  "k": "fe1d600ea18cb315864a",
+  "text": "So steht die Sechs richtig."
+ },
+ {
+  "s": "hoppel",
+  "k": "35231c01db0818055f05",
+  "text": "So steht die Sieben richtig."
+ },
+ {
+  "s": "hoppel",
+  "k": "e8d04d99e3354e6769c7",
+  "text": "So steht die Vier richtig."
+ },
+ {
+  "s": "hoppel",
+  "k": "50a9fc853b1f2a0ce6d9",
+  "text": "So steht die Zwei richtig."
+ },
+ {
+  "s": "hoppel",
   "k": "8b0e207f882a281c706f",
   "text": "Tipp mich an, wenn ich rausgucke!"
  },
@@ -3716,6 +5366,16 @@
  },
  {
   "s": "hoppel",
+  "k": "ee3bc356583c0aa35777",
+  "text": "Unten hat sie einen runden Bauch."
+ },
+ {
+  "s": "hoppel",
+  "k": "bb07d039564a8915cbd3",
+  "text": "Unten läuft sie auf einem geraden Strich nach rechts."
+ },
+ {
+  "s": "hoppel",
   "k": "d1403d2aa861536fb5d2",
   "text": "Vier"
  },
@@ -3726,8 +5386,58 @@
  },
  {
   "s": "hoppel",
+  "k": "2cb27ea8931d7d11dc76",
+  "text": "Welche Acht steht richtig herum?"
+ },
+ {
+  "s": "hoppel",
+  "k": "7ec6dbd4e490acc3509b",
+  "text": "Welche Drei steht richtig herum?"
+ },
+ {
+  "s": "hoppel",
+  "k": "3b30c1715e92ee703863",
+  "text": "Welche Eins steht richtig herum?"
+ },
+ {
+  "s": "hoppel",
+  "k": "21bd7a4a08eca444f137",
+  "text": "Welche Fünf steht richtig herum?"
+ },
+ {
+  "s": "hoppel",
+  "k": "175ddee304fe077f55d5",
+  "text": "Welche Neun steht richtig herum?"
+ },
+ {
+  "s": "hoppel",
+  "k": "c468a3ddb3667e346fe8",
+  "text": "Welche Null steht richtig herum?"
+ },
+ {
+  "s": "hoppel",
+  "k": "42ca292ce3700c741554",
+  "text": "Welche Sechs steht richtig herum?"
+ },
+ {
+  "s": "hoppel",
+  "k": "41de6143a7d6457a3826",
+  "text": "Welche Sieben steht richtig herum?"
+ },
+ {
+  "s": "hoppel",
+  "k": "4bac1b7ea148043e2e3a",
+  "text": "Welche Vier steht richtig herum?"
+ },
+ {
+  "s": "hoppel",
   "k": "6e84a188b8aa63aebd49",
   "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "hoppel",
+  "k": "e4df2e184978550331b2",
+  "text": "Welche Zwei steht richtig herum?"
  },
  {
   "s": "hoppel",
@@ -3773,6 +5483,21 @@
   "s": "hoppel",
   "k": "8d3dd51fd3b6bce58eaa",
   "text": "Wie viele Schnecken siehst du?"
+ },
+ {
+  "s": "hoppel",
+  "k": "4be5e43ebdbbca91dba7",
+  "text": "Wir fangen beim grünen Punkt an."
+ },
+ {
+  "s": "hoppel",
+  "k": "4aacf89e5c86f36099f6",
+  "text": "Wir fangen oben an und fahren nach links herum."
+ },
+ {
+  "s": "hoppel",
+  "k": "f44639f083636f1b0e79",
+  "text": "Wir fangen oben rechts an und fahren eine Schlangenlinie."
  },
  {
   "s": "hoppel",
@@ -3866,6 +5591,41 @@
  },
  {
   "s": "blupp",
+  "k": "af37f15959c7cf4998ed",
+  "text": "Andersrum!"
+ },
+ {
+  "s": "blupp",
+  "k": "0d6af725e7d8017f2eed",
+  "text": "Bei der Eins zeigt der kleine Haken oben nach links."
+ },
+ {
+  "s": "blupp",
+  "k": "3cb4afd06d3374a09e8e",
+  "text": "Bei der Neun ist der Kopf oben links."
+ },
+ {
+  "s": "blupp",
+  "k": "46fbaef8331dba8e2d5b",
+  "text": "Bei der Sechs kommt der Bogen von oben rechts."
+ },
+ {
+  "s": "blupp",
+  "k": "f63b1fce5dec98d4264d",
+  "text": "Bei der Vier steht der lange Strich rechts."
+ },
+ {
+  "s": "blupp",
+  "k": "80f2da02aeca5638c31b",
+  "text": "Beide Bäuche zeigen nach rechts."
+ },
+ {
+  "s": "blupp",
+  "k": "7362df51504fde893ab0",
+  "text": "Bleib schön auf der Spur."
+ },
+ {
+  "s": "blupp",
   "k": "25569b84c1c0cf7ccb04",
   "text": "Blubb!"
  },
@@ -3901,13 +5661,108 @@
  },
  {
   "s": "blupp",
+  "k": "4836acee8d593e2836ef",
+  "text": "Das ist eine schöne Acht!"
+ },
+ {
+  "s": "blupp",
+  "k": "f76215441102eebcc7e4",
+  "text": "Das ist eine schöne Drei!"
+ },
+ {
+  "s": "blupp",
+  "k": "e1f8a30492103ffb2c65",
+  "text": "Das ist eine schöne Eins!"
+ },
+ {
+  "s": "blupp",
+  "k": "bf24c3d121da0ec6c291",
+  "text": "Das ist eine schöne Fünf!"
+ },
+ {
+  "s": "blupp",
+  "k": "6c89cbc102cf19ab460e",
+  "text": "Das ist eine schöne Neun!"
+ },
+ {
+  "s": "blupp",
+  "k": "b3c9388f1820e3109df4",
+  "text": "Das ist eine schöne Null!"
+ },
+ {
+  "s": "blupp",
+  "k": "d207ff3a2d150b2cca70",
+  "text": "Das ist eine schöne Sechs!"
+ },
+ {
+  "s": "blupp",
+  "k": "c4bd12c5cb69b4917463",
+  "text": "Das ist eine schöne Sieben!"
+ },
+ {
+  "s": "blupp",
+  "k": "3e100229d5069b7ec57b",
+  "text": "Das ist eine schöne Vier!"
+ },
+ {
+  "s": "blupp",
+  "k": "f48e037554dac433176a",
+  "text": "Das ist eine schöne Zwei!"
+ },
+ {
+  "s": "blupp",
   "k": "17ffd64c6518f749f6be",
   "text": "Das war schön!"
  },
  {
   "s": "blupp",
+  "k": "4baebf15fa496e56e0c0",
+  "text": "Der lange Strich steht rechts davon."
+ },
+ {
+  "s": "blupp",
+  "k": "e0be85619dbc9b0e2a8b",
+  "text": "Der lange Strich steht rechts."
+ },
+ {
+  "s": "blupp",
   "k": "e2c0faca65e2157b7814",
   "text": "Die"
+ },
+ {
+  "s": "blupp",
+  "k": "ac92ec4ce9a02582f72d",
+  "text": "Die Acht ist wie ein Schneemann."
+ },
+ {
+  "s": "blupp",
+  "k": "c2258d29ae5db2076065",
+  "text": "Die Drei hat zwei Bäuche."
+ },
+ {
+  "s": "blupp",
+  "k": "cca018e4a7e975e60adc",
+  "text": "Die Fünf hat oben einen Hut nach rechts und unten einen dicken Bauch nach rechts."
+ },
+ {
+  "s": "blupp",
+  "k": "8a30c38a446b93aac6d3",
+  "text": "Die Null ist rund wie ein Ei."
+ },
+ {
+  "s": "blupp",
+  "k": "e6fa9b77927db024794f",
+  "text": "Die Sieben geht oben nach rechts und dann schräg nach unten links."
+ },
+ {
+  "s": "blupp",
+  "k": "c9a7287d9c871b1532a4",
+  "text": "Die Zwei macht oben einen Bogen nach rechts."
+ },
+ {
+  "s": "blupp",
+  "k": "69dc0676796ea45433ed",
+  "text": "Die ist gespiegelt."
  },
  {
   "s": "blupp",
@@ -3996,6 +5851,16 @@
  },
  {
   "s": "blupp",
+  "k": "adabcc1979a8b3c4bef4",
+  "text": "Erst schräg nach unten, dann quer, dann den langen Strich."
+ },
+ {
+  "s": "blupp",
+  "k": "7323d35ff9b7eb5423ae",
+  "text": "Fang beim grünen Punkt an und fahr die Spur nach."
+ },
+ {
+  "s": "blupp",
   "k": "672c4609f42ae7267aa5",
   "text": "Fische gezählt."
  },
@@ -4033,6 +5898,16 @@
   "s": "blupp",
   "k": "ff913a5de4bf85079caa",
   "text": "Ganz genau, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "18dd4ab16ac35f2c12d6",
+  "text": "Genau!"
+ },
+ {
+  "s": "blupp",
+  "k": "1faa570bd8ce5ded994d",
+  "text": "Gut so!"
  },
  {
   "s": "blupp",
@@ -4078,6 +5953,11 @@
   "s": "blupp",
   "k": "14099a3936979adfd093",
   "text": "Ja, genau, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "09bcf695a49fd345067b",
+  "text": "Jetzt der zweite Strich."
  },
  {
   "s": "blupp",
@@ -4148,6 +6028,11 @@
   "s": "blupp",
   "k": "a47d6c19a740067dc4b9",
   "text": "Noch eins, bitte!"
+ },
+ {
+  "s": "blupp",
+  "k": "c1ea37a4b1e8a4ad28bf",
+  "text": "Nochmal!"
  },
  {
   "s": "blupp",
@@ -4266,6 +6151,61 @@
  },
  {
   "s": "blupp",
+  "k": "256465df52242090b8c5",
+  "text": "Schau mal, so schreibt man die Acht."
+ },
+ {
+  "s": "blupp",
+  "k": "fd111b653b4a20bfd52d",
+  "text": "Schau mal, so schreibt man die Drei."
+ },
+ {
+  "s": "blupp",
+  "k": "1e2947dbbbd75d7a74c3",
+  "text": "Schau mal, so schreibt man die Eins."
+ },
+ {
+  "s": "blupp",
+  "k": "3b74883e183de467b97d",
+  "text": "Schau mal, so schreibt man die Fünf."
+ },
+ {
+  "s": "blupp",
+  "k": "f2bed5579c33b98291e7",
+  "text": "Schau mal, so schreibt man die Neun."
+ },
+ {
+  "s": "blupp",
+  "k": "d7232c1c3e974fb469b6",
+  "text": "Schau mal, so schreibt man die Null."
+ },
+ {
+  "s": "blupp",
+  "k": "c93bf8351564b0053bd1",
+  "text": "Schau mal, so schreibt man die Sechs."
+ },
+ {
+  "s": "blupp",
+  "k": "233df20d0488d4f99993",
+  "text": "Schau mal, so schreibt man die Sieben."
+ },
+ {
+  "s": "blupp",
+  "k": "c12427bac273fd11b986",
+  "text": "Schau mal, so schreibt man die Vier."
+ },
+ {
+  "s": "blupp",
+  "k": "963f50af2a0ab9ee3873",
+  "text": "Schau mal, so schreibt man die Zwei."
+ },
+ {
+  "s": "blupp",
+  "k": "a40b8667b8148e525bcb",
+  "text": "Schau, so herum ist es richtig."
+ },
+ {
+  "s": "blupp",
   "k": "992119fb7960c8827ab6",
   "text": "Schildkröten gezählt."
  },
@@ -4333,6 +6273,56 @@
   "s": "blupp",
   "k": "772a7795da96c9da1d2d",
   "text": "Sieben."
+ },
+ {
+  "s": "blupp",
+  "k": "0f7c4ab27787143f0a92",
+  "text": "So steht die Acht richtig."
+ },
+ {
+  "s": "blupp",
+  "k": "e5e84afb77d57c39d021",
+  "text": "So steht die Drei richtig."
+ },
+ {
+  "s": "blupp",
+  "k": "4c785853520f11443298",
+  "text": "So steht die Eins richtig."
+ },
+ {
+  "s": "blupp",
+  "k": "915027f1385deb65dfad",
+  "text": "So steht die Fünf richtig."
+ },
+ {
+  "s": "blupp",
+  "k": "a04da38fc1d78c05e973",
+  "text": "So steht die Neun richtig."
+ },
+ {
+  "s": "blupp",
+  "k": "85634f031b2440f19d15",
+  "text": "So steht die Null richtig."
+ },
+ {
+  "s": "blupp",
+  "k": "2dcb7cde8d123f7a63ae",
+  "text": "So steht die Sechs richtig."
+ },
+ {
+  "s": "blupp",
+  "k": "6fdfb64150d962054a5e",
+  "text": "So steht die Sieben richtig."
+ },
+ {
+  "s": "blupp",
+  "k": "44d3e4e920caa59b2fe1",
+  "text": "So steht die Vier richtig."
+ },
+ {
+  "s": "blupp",
+  "k": "2f55da7e2bfe91a78295",
+  "text": "So steht die Zwei richtig."
  },
  {
   "s": "blupp",
@@ -4426,6 +6416,16 @@
  },
  {
   "s": "blupp",
+  "k": "d5dc4912f37b9f26124f",
+  "text": "Unten hat sie einen runden Bauch."
+ },
+ {
+  "s": "blupp",
+  "k": "77336c80711d237ef153",
+  "text": "Unten läuft sie auf einem geraden Strich nach rechts."
+ },
+ {
+  "s": "blupp",
   "k": "ad7b92188ada6c89d67c",
   "text": "Vier"
  },
@@ -4436,8 +6436,58 @@
  },
  {
   "s": "blupp",
+  "k": "212af7618f7b07c97c75",
+  "text": "Welche Acht steht richtig herum?"
+ },
+ {
+  "s": "blupp",
+  "k": "c467e078004fdceed88f",
+  "text": "Welche Drei steht richtig herum?"
+ },
+ {
+  "s": "blupp",
+  "k": "3f3a992b0c2de1657b6d",
+  "text": "Welche Eins steht richtig herum?"
+ },
+ {
+  "s": "blupp",
+  "k": "79b7042af5b2f555fb7d",
+  "text": "Welche Fünf steht richtig herum?"
+ },
+ {
+  "s": "blupp",
+  "k": "d69043ccf5358a8a34a8",
+  "text": "Welche Neun steht richtig herum?"
+ },
+ {
+  "s": "blupp",
+  "k": "a982a534b6c013e7faf6",
+  "text": "Welche Null steht richtig herum?"
+ },
+ {
+  "s": "blupp",
+  "k": "e9ba5226fc568ecffdf8",
+  "text": "Welche Sechs steht richtig herum?"
+ },
+ {
+  "s": "blupp",
+  "k": "2db9415bb12e1460db2c",
+  "text": "Welche Sieben steht richtig herum?"
+ },
+ {
+  "s": "blupp",
+  "k": "27ba19cd9b867867ff0e",
+  "text": "Welche Vier steht richtig herum?"
+ },
+ {
+  "s": "blupp",
   "k": "f4264cda2a61c48812f2",
   "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "blupp",
+  "k": "e5a930fecd08d04c0fee",
+  "text": "Welche Zwei steht richtig herum?"
  },
  {
   "s": "blupp",
@@ -4498,6 +6548,21 @@
   "s": "blupp",
   "k": "ecb9233f3f853015b853",
   "text": "Willkommen am Wellenstrand!"
+ },
+ {
+  "s": "blupp",
+  "k": "c0de5de53aab7ef1f6e1",
+  "text": "Wir fangen beim grünen Punkt an."
+ },
+ {
+  "s": "blupp",
+  "k": "d46fae22f298f80d9793",
+  "text": "Wir fangen oben an und fahren nach links herum."
+ },
+ {
+  "s": "blupp",
+  "k": "80759b69a971ea7c785d",
+  "text": "Wir fangen oben rechts an und fahren eine Schlangenlinie."
  },
  {
   "s": "blupp",

@@ -8,6 +8,8 @@ const ORTE=[
     dinge:[{e:'🐟',sg:'ein Fisch',pl:'Fische'},{e:'🐠',sg:'ein bunter Fisch',pl:'bunte Fische'},{e:'🐚',sg:'eine Muschel',pl:'Muscheln'},
       {e:'🦀',sg:'ein Krebs',pl:'Krebse'},{e:'🐙',sg:'ein Tintenfisch',pl:'Tintenfische'},{e:'🐢',sg:'eine Schildkröte',pl:'Schildkröten'},
       {e:'🦆',sg:'eine Ente',pl:'Enten'},{e:'⛵',sg:'ein Segelboot',pl:'Segelboote'}]},
+  {id:'sand',name:'Sandschrift',modus:'write',spiel:'Zahlen schreiben',gast:'zinn',ico:'✍️',
+    hallo:'Im Sand kann man wunderbar schreiben. Ich zeige dir, wie die Zahlen gehen, und du fährst mit dem Finger nach.',dinge:[]},
   {id:'wiese',name:'Kaninchenwiese',modus:'find',spiel:'Finde die Zahl',gast:'hoppel',ico:'🥕',
     hallo:'Hallo, hallo! Ich bin Hoppel! Auf meiner Wiese verstecken sich Zahlen. Hilfst du mir, sie zu finden?',
     dinge:[{e:'🥕',sg:'eine Karotte',pl:'Karotten'},{e:'🌼',sg:'eine Blume',pl:'Blumen'},{e:'🐞',sg:'ein Marienkäfer',pl:'Marienkäfer'},
@@ -17,6 +19,8 @@ const ORTE=[
     dinge:[{e:'🍄',sg:'ein Pilz',pl:'Pilze'},{e:'🦉',sg:'eine Eule',pl:'Eulen'},{e:'⭐',sg:'ein Stern',pl:'Sterne'},
       {e:'🦔',sg:'ein Igel',pl:'Igel'},{e:'🦊',sg:'ein Fuchs',pl:'Füchse'},{e:'🌰',sg:'eine Kastanie',pl:'Kastanien'},
       {e:'🍂',sg:'ein Blatt',pl:'Blätter'},{e:'🐿️',sg:'ein Eichhörnchen',pl:'Eichhörnchen'},{e:'🫐',sg:'eine Blaubeere',pl:'Blaubeeren'}]},
+  {id:'spiegel',name:'Spiegelsee',modus:'mirror',spiel:'Wie rum ist richtig?',gast:'holunder',ico:'🪞',
+    hallo:'Hihi! Der Spiegelsee ist verzaubert. Er dreht die Zahlen um. Findest du heraus, welche richtig herum steht?',dinge:[]},
   {id:'hexe',name:'Hexenhaus',modus:'math',spiel:'Rechnen',gast:'holunder',ico:'🧪',
     hallo:'Hihi! Willkommen in meinem Hexenhaus! Hier zaubern wir mit Plus und Minus.',
     dinge:[{e:'🧪',sg:'ein Zaubertrank',pl:'Zaubertränke'},{e:'🎃',sg:'ein Kürbis',pl:'Kürbisse'},{e:'🦇',sg:'eine Fledermaus',pl:'Fledermäuse'},
@@ -25,8 +29,8 @@ const ORTE=[
     hallo:'Piep, piep! Ich bin Klonk. In meiner Werkstatt in den Bergen zählen wir alles ganz genau.',
     dinge:[{e:'⚙️',sg:'ein Zahnrad',pl:'Zahnräder'},{e:'🔩',sg:'eine Schraube',pl:'Schrauben'},{e:'🔋',sg:'eine Batterie',pl:'Batterien'},
       {e:'💡',sg:'eine Glühbirne',pl:'Glühbirnen'},{e:'💎',sg:'ein Edelstein',pl:'Edelsteine'},{e:'🚀',sg:'eine Rakete',pl:'Raketen'}]},
-  {id:'gipfel',name:'Echo-Gipfel',modus:'speak',spiel:'Ich spreche',gast:'zinn',ico:'🏔️',
-    hallo:'Hier oben auf dem Echo-Gipfel ruft der Berg alles zurück. Sag die Zahl ganz laut!',
+  {id:'gipfel',name:'Echo-Gipfel',modus:'speak',spiel:'Ich spreche',gast:'klonk',ico:'🏔️',
+    hallo:'Piep! Hier oben auf dem Echo-Gipfel nehme ich deine Stimme auf. Sag die Zahl ganz laut!',
     dinge:[{e:'❄️',sg:'eine Schneeflocke',pl:'Schneeflocken'},{e:'🐐',sg:'eine Ziege',pl:'Ziegen'},{e:'🌲',sg:'eine Tanne',pl:'Tannen'},
       {e:'🦅',sg:'ein Adler',pl:'Adler'},{e:'☁️',sg:'eine Wolke',pl:'Wolken'}]}
 ];
@@ -70,6 +74,14 @@ function szeneSVG(id){
       <g class="wellenzug">${wellen(470,['#9fd3e0','#7fc0d3','#5fa9c2'])}</g>
       <path d="M0 640 Q120 610 240 630 T400 620 V800 H0Z" fill="#f3d9a8"/><path d="M0 668 Q160 650 400 662 V800 H0Z" fill="#ecca8e"/>
       <text x="40" y="720" font-size="26">🐚</text><text x="330" y="700" font-size="22">⭐</text><text x="250" y="760" font-size="24">🦀</text>`,
+    sand:null,
+    spiegel:`<defs><linearGradient id="hp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9cfe0"/><stop offset=".5" stop-color="#f3e2df"/><stop offset="1" stop-color="#d9e6dc"/></linearGradient>
+      <linearGradient id="hpw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9dbe6"/><stop offset="1" stop-color="#8fc0d2"/></linearGradient></defs>
+      <rect width="400" height="800" fill="url(#hp)"/>${sterne(16,260,7)}
+      ${huegel(560,'#cfdcc8',30,0)}${birke(30,600,520,12)}${birke(370,600,560,13)}${birke(330,600,380,8)}
+      <rect y="560" width="400" height="240" fill="url(#hpw)"/>
+      <g opacity=".35" transform="translate(0 1160) scale(1 -1)">${birke(30,600,520,12)}${birke(370,600,560,13)}${birke(330,600,380,8)}</g>
+      <path class="glimm" d="M60 620 h80 M220 650 h110 M120 700 h70 M250 740 h60" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/>`,
     wiese:`<defs><linearGradient id="hw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe7ef"/><stop offset="1" stop-color="#f8ecd8"/></linearGradient></defs>
       <rect width="400" height="800" fill="url(#hw)"/><circle cx="80" cy="150" r="40" fill="#fff1c4"/>
       ${wolke(260,110,24)}${wolke(120,70,16)}
@@ -98,8 +110,9 @@ function szeneSVG(id){
       <rect width="400" height="800" fill="url(#hg)"/>${wolke(70,260,24)}${wolke(330,330,20)}${wolke(200,420,28)}
       ${berge(800,'#b7c6d8','#fff',[[200,620,260]])}${berge(800,'#9fb1c8','#f3f6fa',[[30,420,140],[380,460,160]])}
       ${Array.from({length:26},(_,i)=>`<circle class="flocke" style="animation-delay:${-(i*.7)%8}s;animation-duration:${6+(i%5)}s" cx="${(i*61)%400}" cy="-10" r="${2+(i%3)}" fill="#fff"/>`).join('')}`
-  }[id];
-  return `<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMax slice">${k}</svg>`;
+  };
+  k.sand=k.strand;
+  return `<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMax slice">${k[id]}</svg>`;
 }
 // Landschaft hinter das Spiel legen (ersetzt den Wald-Hintergrund)
 function szene(id){
@@ -112,7 +125,7 @@ function szene(id){
 
 /* ---------- Weltkarte: ein Pfad vom Strand (unten) bis zum Gipfel (oben) ---------- */
 const KARTE_H=1500;
-const PUNKTE={strand:[200,1385],wiese:[110,1160],wald:[285,935],hexe:[120,705],werkstatt:[280,470],gipfel:[195,215]};
+const PUNKTE={strand:[115,1410],sand:[290,1305],wiese:[105,1170],wald:[290,1030],spiegel:[105,880],hexe:[285,715],werkstatt:[125,470],gipfel:[205,215]};
 function kartePfad(){
   const p=ORTE.map(o=>PUNKTE[o.id]);let d=`M${p[0][0]} ${p[0][1]}`;
   for(let i=1;i<p.length;i++){const [x0,y0]=p[i-1],[x1,y1]=p[i];d+=` C${x0} ${y0-110} ${x1} ${y1+110} ${x1} ${y1}`}
@@ -130,12 +143,15 @@ function karteSVG(){
   ${Array.from({length:14},(_,i)=>`<circle class="flocke" style="animation-delay:${-(i*.9)%8}s;animation-duration:${7+(i%4)}s" cx="${(i*71)%400}" cy="-10" r="${1.5+(i%3)}" fill="#fff"/>`).join('')}
   <!-- Berge mit Werkstatt -->
   ${berge(600,'#a9b8cb','#fff',[[60,230,110],[340,260,120]])}${berge(620,'#8b9cb3',null,[[200,170,150]])}
-  ${tanne(40,610,16)}${tanne(370,620,15)}${werkstatt(300,560,.8)}
+  ${tanne(40,610,16)}${tanne(370,620,15)}${werkstatt(300,545,.8)}
   <!-- Hexenhaus -->
-  ${huegel(800,'#a58fb0',30,0)}${hexenhaus(60,760,.8)}<g class="fledermaus"><text font-size="16">🦇</text></g>
+  ${huegel(800,'#a58fb0',30,0)}${hexenhaus(345,790,.62)}<g class="fledermaus"><text font-size="16">🦇</text></g>
   <!-- Zauberwald -->
   ${huegel(1010,'#c7d6bf',30,50)}${birke(30,1050,230,10)}${birke(370,1060,250,11)}${birke(340,1040,150,7)}${birke(70,1030,140,6)}
-  <text x="180" y="1010" font-size="18">🍄</text>
+  <text x="180" y="1080" font-size="18">🍄</text>
+  <!-- Spiegelsee -->
+  <ellipse cx="230" cy="905" rx="125" ry="30" fill="#a9d4e0"/><ellipse cx="230" cy="902" rx="110" ry="22" fill="#c4e4ec"/>
+  <path class="glimm" d="M170 900 h40 M235 910 h50 M200 892 h22" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
   <!-- Wiese -->
   ${huegel(1230,'#b5d394',35,0)}${huegel(1270,'#9fc57f',30,50)}
   ${Array.from({length:16},(_,i)=>`<circle cx="${(i*67)%400}" cy="${1190+(i*29)%90}" r="${2.5+(i%2)}" fill="${['#fff','#ffd54f','#f48fb1'][i%3]}"/>`).join('')}

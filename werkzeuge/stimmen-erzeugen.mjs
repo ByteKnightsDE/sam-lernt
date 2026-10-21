@@ -72,6 +72,17 @@ for (const o of ORTE) {
   }
 }
 
+/* ---------- 3b. Sandschrift und Spiegelsee: Sätze je Ziffer, in der Stimme der Gastgeber ---------- */
+{
+  const src = lies('gemeinsam/schrift.js');
+  const ZIFFERN = eval('(' + src.match(/const ZIFFERN=(\{[\s\S]*?\n\});/)[1] + ')');
+  const SAETZE = eval('(' + src.match(/const SCHRIFT_SAETZE=(\{[\s\S]*?\n\});/)[1] + ')');
+  for (const v of ['erzaehler', ...GAESTE]) for (const n of Object.keys(ZIFFERN)) {
+    Object.values(SAETZE).forEach(x => add(x.replace('{Z}', CAP(WORDS[n])), v));
+    add(ZIFFERN[n].tipp, v);
+  }
+}
+
 /* ---------- 4. Geschichten, Rätsel, Überraschungen ---------- */
 for (const st of STORIES) { add(st.t); st.p.forEach(pg => add(pg.x)); }
 for (const r of RIDDLES) add(r.q);

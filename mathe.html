@@ -58,6 +58,7 @@
 <script src="gemeinsam/kern.js"></script>
 <script src="gemeinsam/figuren.js"></script>
 <script src="gemeinsam/welt.js"></script>
+<script src="gemeinsam/schrift.js"></script>
 <script src="gemeinsam/ki.js"></script>
 <script src="gemeinsam/belohnungen.js"></script>
 <script>
@@ -235,7 +236,7 @@ async function countAlong(t,n){
 }
 
 /* ---------- Weltkarte: Startseite von Mathe ---------- */
-const START={explore:()=>explore(),find:()=>findRound(),how:()=>howRound(),count:()=>countRound(),math:()=>mathRound(),speak:()=>speakShow(0)};
+const START={write:()=>schreibRunde(),mirror:()=>spiegelRunde(),explore:()=>explore(),find:()=>findRound(),how:()=>howRound(),count:()=>countRound(),math:()=>mathRound(),speak:()=>speakShow(0)};
 const sterneVon=id=>{const n=M.sterne[id]||0;return [3,10,25].map(g=>n>=g?'⭐':'<span class="leer">⭐</span>').join('')};
 let wegLaenge={};
 function home(){
@@ -470,6 +471,104 @@ async function speakShow(n){
   await state.prompt();
 }
 
+/* ---------- Sandschrift: Ziffern in Schreibrichtung nachfahren ----------
+   Gegen Spiegelschrift hilft vor allem die Bewegung: immer am selben Punkt anfangen, immer in dieselbe Richtung.
+   Darum zählt nur, wer am grünen Punkt beginnt und der Spur in Reihenfolge folgt. Die Hilfen werden weniger,
+   je öfter eine Ziffer geklappt hat: volle Spur mit Pfeilen → gepunktet → nur noch der Startpunkt. */
+const ZN=n=>CAP(WORDS[n]);
+const satz=(k,n)=>SCHRIFT_SAETZE[k].replace('{Z}',ZN(n));
+M.schreib=load('mathe.schreib',{});
+function schreibStufe(n){const k=M.schreib[n]||0;return k<2?1:k<4?2:3}
+async function schreibRunde(){
+  hush();const t=token,n=pick(0)%10,stufe=schreibStufe(n),Z=ZIFFERN[n];
+  const pfade=Z.striche.map((d,i)=>`<path class="spur s${stufe}" d="${d}"/>`).join('');
+  $('#stage').innerHTML=`<div class="tafel"><svg id="tafel" viewBox="-10 -6 120 152">
+      <rect x="-10" y="-6" width="120" height="152" rx="16" class="tafelgrund"/>
+      <g id="spuren">${pfade}</g><g id="pfeile"></g><g id="tinte"></g><g id="starts"></g><circle id="zeiger" r="7" class="zeiger" style="display:none"/>
+    </svg></div>`;
+  const svg=$('#tafel'),wege=$$('#spuren path');
+  // Kontrollpunkte entlang jedes Strichs, in Schreibrichtung
+  const punkte=wege.map(w=>{const L=w.getTotalLength(),a=[];for(let l=0;l<=L;l+=5)a.push(w.getPointAtLength(l));a.push(w.getPointAtLength(L));return a});
+  // Startpunkte und (bei Stufe 1) kleine Pfeile in Schreibrichtung
+  $('#starts').innerHTML=punkte.map((p,i)=>`<g class="startpunkt" data-i="${i}"><circle cx="${p[0].x}" cy="${p[0].y}" r="8"/>${punkte.length>1?`<text x="${p[0].x}" y="${p[0].y+4}">${i+1}</text>`:''}</g>`).join('');
+  if(stufe===1)$('#pfeile').innerHTML=punkte.map(p=>{let h='';for(let i=6;i<p.length-3;i+=9){const a=p[i],b=p[i+2],w=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;h+=`<path d="M-3 -3 L2 0 L-3 3" transform="translate(${a.x} ${a.y}) rotate(${w})"/>`}return h}).join('');
+  $$('.startpunkt').forEach((g,i)=>g.style.opacity=i?'.35':'1');
+  state.prompt=()=>vorfuehren();
+  // Vorführen: ein Lichtpunkt fährt die Striche in Schreibrichtung ab
+  async function vorfuehren(){
+    const z=$('#zeiger');if(!z)return;
+    const sp=say(satz('zeigen',n),token);
+    for(const p of punkte){z.style.display='';for(let i=0;i<p.length;i+=2){if(t!==token)return;z.setAttribute('cx',p[i].x);z.setAttribute('cy',p[i].y);await new Promise(r=>setTimeout(r,16))}await new Promise(r=>setTimeout(r,250))}
+    z.style.display='none';await sp;
+  }
+  // Nachfahren
+  let strich=0,idx=0,aktiv=false,tinte=null,fertig=false,fehler=0;
+  const pt=e=>{const q=svg.createSVGPoint();q.x=e.clientX;q.y=e.clientY;return q.matrixTransform(svg.getScreenCTM().inverse())};
+  const ab=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
+  const neueTinte=()=>{tinte=document.createElementNS('http://www.w3.org/2000/svg','polyline');tinte.setAttribute('class','tinte');$('#tinte').appendChild(tinte)};
+  const fortschritt=()=>{wege.forEach((w,i)=>{w.classList.toggle('erledigt',i<strich)})};
+  svg.onpointerdown=async e=>{
+    if(fertig||t!==token)return;e.preventDefault();svg.setPointerCapture(e.pointerId);
+    const q=pt(e),p=punkte[strich];
+    if(idx>0&&ab(q,p[idx])<20){aktiv=true;neueTinte();return}           // abgesetzt und weitergemacht
+    if(idx===0&&ab(q,p[0])<20){aktiv=true;neueTinte();quiet();return}
+    // Am falschen Ende angefangen – genau das passiert beim Spiegeln
+    if(idx===0&&ab(q,p[p.length-1])<24){falsch();restart($(`.startpunkt[data-i="${strich}"]`),'bump');await say(SCHRIFT_SAETZE.falschrum,t);return}
+    restart($(`.startpunkt[data-i="${strich}"]`),'bump');
+  };
+  svg.onpointermove=e=>{
+    if(!aktiv)return;e.preventDefault();
+    const q=pt(e),p=punkte[strich];
+    tinte.setAttribute('points',(tinte.getAttribute('points')||'')+` ${q.x.toFixed(1)},${q.y.toFixed(1)}`);
+    while(idx<p.length&&ab(q,p[idx])<15)idx++;
+    // Zu weit weg von der Spur? Dann diesen Strich nochmal
+    let nah=1e9;for(let i=Math.max(0,idx-4);i<Math.min(p.length,idx+8);i++)nah=Math.min(nah,ab(q,p[i]));
+    if(nah>30){aktiv=false;idx=0;$('#tinte').innerHTML='';fortschritt();fehler++;falsch();say(SCHRIFT_SAETZE.spur,t);return}
+    if(idx>=p.length-1)strichFertig();
+  };
+  svg.onpointerup=svg.onpointercancel=()=>{aktiv=false};
+  async function strichFertig(){
+    aktiv=false;strich++;idx=0;fortschritt();sfx.pop(strich+3);
+    $$('.startpunkt').forEach((g,i)=>g.style.opacity=i===strich?'1':i<strich?'0':'.35');
+    if(strich<punkte.length){say(SCHRIFT_SAETZE.weiter,t);return}
+    fertig=true;svg.classList.add('geschafft');
+    M.schreib[n]=(M.schreib[n]||0)+1;save('mathe.schreib',M.schreib);learn(n,fehler===0);
+    sfx.ok();cheer();addStar();
+    await say(satz('fertig',n),t);
+    await wait(600,t);next(t,schreibRunde);
+  }
+  await vorfuehren();
+  if(t===token&&!fertig&&!aktiv&&idx===0&&strich===0)await say(SCHRIFT_SAETZE.start,t);
+}
+
+/* ---------- Spiegelsee: Welche Ziffer steht richtig herum? ---------- */
+async function spiegelRunde(){
+  hush();const t=token;
+  let n;do{n=pick(1)}while(!SPIEGELBAR.includes(n%10));n%=10;
+  const schwer=(M.schreib.spiegel||0)>=6&&[2,3,4,5,7].includes(n);
+  // richtig, gespiegelt – und später auch auf dem Kopf
+  const varianten=[{art:'richtig',tr:''},{art:'spiegel',tr:'translate(100 0) scale(-1 1)'}];
+  if(schwer)varianten.push({art:'kopf',tr:'rotate(180 50 70)'});
+  const reihe=shuffle(varianten);let locked=false;
+  state.prompt=()=>say(satz('frage',n));
+  $('#stage').innerHTML=`<div class="see">${reihe.map((v,i)=>`<button class="opt seekarte" data-a="${v.art}" data-i="${i}">${ziffernSVG(n,{farbe:COLORS[n],transform:v.tr})}</button>`).join('')}</div>`;
+  $$('.seekarte').forEach(b=>b.onclick=async()=>{
+    if(locked||b.disabled)return;quiet();
+    if(b.dataset.a==='richtig'){
+      locked=true;sfx.ok();b.classList.add('right');cheer();addStar();tally('spiegel',true);
+      M.schreib.spiegel=(M.schreib.spiegel||0)+1;save('mathe.schreib',M.schreib);
+      await say(satz('richtig',n),t);await wait(500,t);next(t,spiegelRunde);
+    }else{
+      locked=true;falsch();b.disabled=true;tally('spiegel',false);learn(n,false);
+      // Die falsche Ziffer dreht sich sichtbar in die richtige Lage
+      b.classList.add('dreht');setTimeout(()=>{const g=b.querySelector('g');if(g)g.setAttribute('transform','')},450);
+      await say(SCHRIFT_SAETZE.falsch,t);await say(ZIFFERN[n].tipp,t);
+      locked=false;
+    }
+  });
+  await state.prompt();
+}
+
 /* ---------- Eltern-Bereich (Mathe-Teil) ---------- */
 function parents(){
   let rows='';
@@ -479,11 +578,12 @@ function parents(){
     <label class="sb">📁 Datei<input type="file" accept="audio/*" hidden></label>
     <button class="sb" data-a="del" ${rec[n]?'':'disabled'}>🗑</button>
     <span class="ok">${rec[n]?'✓':''}</span></div>`;
-  const st=k=>{const s=M.stats[k]||{ok:0,bad:0},all=s.ok+s.bad;return `<div><b>${k==='plus'?'+':k==='minus'?'−':k}</b>${all?`${Math.round(s.ok/all*100)} % richtig<br>${all}× geübt`:'noch nicht'}</div>`};
+  const st=k=>{const s=M.stats[k]||{ok:0,bad:0},all=s.ok+s.bad;return `<div><b>${k==='plus'?'+':k==='minus'?'−':k==='spiegel'?'🪞':k}</b>${all?`${Math.round(s.ok/all*100)} % richtig<br>${all}× geübt`:'noch nicht'}</div>`};
   parentsPage({back:home,extraHTML:`
     <div class="box">
       <h2>Mathe: Fortschritt</h2>
-      <div class="stats">${[0,1,2,3,4,5,6,7,8,9,10,'plus','minus'].map(st).join('')}</div>
+      <div class="stats">${[0,1,2,3,4,5,6,7,8,9,10,'plus','minus','spiegel'].map(st).join('')}</div>
+      <p>🪞 = Spiegelsee (richtig herum erkannt). Geschriebene Ziffern: ${Object.entries(M.schreib).filter(([k])=>k!=='spiegel').map(([k,v])=>`${k}: ${v}×`).join(', ')||'noch keine'}.</p>
       <p><button class="sb" id="sreset">Statistik löschen</button></p>
     </div>
     ${typeof KI!=='undefined'?KI.parentsHTML():''}

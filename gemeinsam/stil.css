@@ -361,3 +361,29 @@ body[data-ort="hexe"] .hint{color:#f3e6f5}
 .loch::after{content:"";position:absolute;left:0;right:0;bottom:0;height:24%;border-radius:50%;background:radial-gradient(#3e3024,#6b5541 70%,#8a7257);z-index:2}
 .loch .fig{position:absolute;left:0;width:100%;height:auto;aspect-ratio:1;bottom:-100%;transition:bottom .22s ease-out}
 .loch.raus .fig{bottom:4%}
+
+/* ---------- Sandschrift ---------- */
+.tafel{width:min(86vw,46vh);aspect-ratio:120/152;touch-action:none}
+.tafel svg{width:100%;height:100%;display:block;touch-action:none;-webkit-user-select:none;user-select:none}
+.tafelgrund{fill:#f6e3bf;stroke:#e6c88f;stroke-width:2}
+body[data-ort="spiegel"] .tafelgrund{fill:#fffaf4}
+.spur{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:15}
+.spur.s1{stroke:#e2c79a}
+.spur.s2{stroke:#d9bb88;stroke-width:5;stroke-dasharray:1 9}
+.spur.s3{stroke:#ead6b3;stroke-width:4;stroke-dasharray:1 14;opacity:.6}
+.spur.erledigt{stroke:#9ccc8f;stroke-dasharray:none;stroke-width:13;opacity:1}
+#pfeile path{fill:none;stroke:#b08a5a;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.tinte{fill:none;stroke:#5f9fb0;stroke-width:8;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.startpunkt circle{fill:#5fae5a;stroke:#fff;stroke-width:2.5;animation:pulse 1.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.startpunkt text{font-size:9px;font-weight:900;fill:#fff;text-anchor:middle}
+.zeiger{fill:#ffd77e;stroke:#e9a25b;stroke-width:2;filter:drop-shadow(0 0 4px #ffd77e)}
+#tafel.geschafft .spur{stroke:#e9b949;stroke-dasharray:none;stroke-width:13;opacity:1}
+#tafel.geschafft .tinte{opacity:0;transition:opacity .5s}
+
+/* ---------- Spiegelsee ---------- */
+.see{display:flex;gap:min(5vw,3vh);flex-wrap:wrap;justify-content:center}
+.seekarte{width:min(36vw,24vh);aspect-ratio:100/140;padding:10px;background:#fffaf4}
+.seekarte svg{width:100%;height:100%}
+.seekarte g{transition:transform .45s}
+.seekarte.dreht svg{animation:umdrehen .9s ease-in-out}
+@keyframes umdrehen{50%{transform:rotateY(90deg)}}
