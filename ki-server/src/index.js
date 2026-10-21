@@ -6,7 +6,8 @@ import { STIMMEN, MODELL_STIMME } from './stimmen.js';
    Cloudflare Access vor der ganzen App; ein Zugangscode (ZUGANGSCODE) ist zusätzlich möglich. */
 
 // Was die Geschichten zeigen dürfen – muss zu KI_TOKENS in gemeinsam/ki.js passen
-const TOKENS = ['blupp','blupp:big','blupp:fall','blupp:dance','zinn','zinn:big',
+const TOKENS = ['blupp','blupp:big','blupp:fall','blupp:dance','zinn','zinn:big','klonk','klonk:big','holunder','holunder:big','hoppel','hoppel:big',
+  '🌊','🏔️','🥕','🧪','🧹','⚙️','🐚','🦀','🎃','🦇','🚀','💡','🐇',
   '🌙','⭐','🌟','✨','☀️','🌈','☁️','🌧️','💧','❄️','🌲','🌳','🍂','🍄','🌰','🌸','🌻','🦋','🐞','🐌','🦔','🦊','🦉','🐿️','🐸','🦆','🐟','🐢',
   '🫐','🍓','🍎','🍯','🧁','🏮','💎','🔮','🗝️','🎁','🎵','🎶','🔔','🫧','🛶','🏞️','🏡','🛏️','😴','😄','❤️','🧣','👢','🪁'];
 
@@ -35,6 +36,11 @@ Die zwei Figuren:
 - BluppBlupp, ein kleines, fröhliches blaues Nilpferd. Sagt gern "Blubb!", ist neugierig und mutig. (Bild-Token "blupp")
 - Herr Zinn, BluppBlupps Onkel: ein freundlicher, alter Waldmann mit großem braunem Spitzhut, weißem Bart, roter Nase und grünem Mantel.
   Er trägt immer eine Laterne, ist ruhig, weise und ein bisschen lustig. BluppBlupp nennt ihn "Onkel Zinn". (Token "zinn")
+Ihre Freunde (dürfen mitspielen, müssen aber nicht):
+- Hoppel, ein flinkes, aufgeregtes Kaninchen von der Kaninchenwiese (Token "hoppel")
+- Klonk, ein lieber kleiner Roboter, der in einer Werkstatt in den Bergen Sachen baut und "Piep!" sagt (Token "klonk")
+- Hexe Holunder, eine freundliche, etwas schrullige Kräuterhexe mit Hexenhaus und Zaubertrank-Kessel – nie gruselig (Token "holunder")
+Die Welt hat außerdem einen Wellenstrand am Meer, die Kaninchenwiese, den Zauberwald, das Hexenhaus und hohe Berge mit dem Echo-Gipfel.
 Waldtiere dürfen mitspielen (Eule, Igel, Fuchs, Eichhörnchen, Frosch, Schnecke, Schmetterling …).
 Regeln:
 - 3 bis 6 Seiten. Jede Seite: 1 bis 2 kurze, einfache Sätze (höchstens 25 Wörter), die sich ruhig vorlesen lassen.
@@ -42,7 +48,7 @@ Regeln:
 - Gern sanfte Geräusche (blubb, huhu, plitsch) und kleine Zähl-Momente (eins, zwei, drei …), aber nicht belehrend.
 - Das Ende ist friedlich und gemütlich; die letzte Seite endet mit "Ende."
 - "s" sind die Bilder der Seite, nur aus der erlaubten Liste. Figuren-Varianten:
-  ":big" = groß im Bild, "blupp:fall" = BluppBlupp purzelt, "blupp:dance" = BluppBlupp tanzt.
+  ":big" = groß im Bild (bei jeder Figur), "blupp:fall" = BluppBlupp purzelt, "blupp:dance" = BluppBlupp tanzt.
   Emojis haben keine Varianten.`;
 
 const REPORT_SYSTEM = `Du schreibst Eltern auf Deutsch einen kurzen, freundlichen Bericht über den Lernstand ihres Kindes in einem Mathe-Lernspiel (Zahlen 0–10, Zählen, Plus, Minus).

@@ -10,11 +10,14 @@ const REWARDS=[
   {id:'feed',ico:()=>fig('blupp'),label:'BluppBlupp füttern',run:d=>feedBlupp(d)},
   {id:'music',ico:'🎵',label:'Waldmusik',run:d=>music(d)},
   {id:'stone',ico:()=>fig('zinn'),label:'Zauberstein-Suche',run:d=>stone(d)},
-  {id:'egg',ico:'🥚',label:'Zauber-Ei',run:d=>egg(d)}
+  {id:'egg',ico:'🥚',label:'Zauber-Ei',run:d=>egg(d)},
+  {id:'trank',ico:()=>fig('holunder'),label:'Zaubertrank',run:d=>zaubertrank(d)},
+  {id:'hoppel',ico:()=>fig('hoppel'),label:'Hoppel fangen',run:d=>hoppelFangen(d)}
 ];
 
 async function reward(then){
-  hush();const t=token;
+  // In der Schatzkiste spricht der Erzähler; danach wieder der Gastgeber
+  hush();const t=token,vorher=state.stimme;state.stimme='erzaehler';
   state.prog=0;save('prog',0);
   const o=overlay();
   o.innerHTML=`<h2>Du hast die Schatzkiste erreicht!</h2><button class="gift" id="gift">🎁</button><p class="clock">Tipp die Kiste an!</p>`;
@@ -23,7 +26,7 @@ async function reward(then){
   // auf der Kiste und der nächste gleich auf einer Überraschung – dann begann „von selbst“ eine Geschichte.
   let frei=Date.now()+1200;
   const finish=async()=>{
-    hush();closeOverlay();updProg();
+    hush();closeOverlay();updProg();state.stimme=vorher;
     await say(withName("Weiter geht's")+'!',token);
     then();
   };
@@ -285,6 +288,52 @@ function egg(done){
     await say(`Das ist ${pet.n}`+(pet.f?'':'!'),t);
     endLater(t,done,{showAfter:1500,autoAfter:25000});
   };
+}
+
+/* ---------- Zaubertrank mit Hexe Holunder ---------- */
+const ZUTATEN=[{e:'🍄',f:'#d9675a',n:'Ein Pilz'},{e:'🌟',f:'#f2c94c',n:'Ein Sternchen'},{e:'🐸',f:'#7fbf6a',n:'Ein Froschhüpfer'},{e:'🫐',f:'#6a74b8',n:'Eine Blaubeere'},{e:'🌸',f:'#e48fb4',n:'Eine Blüte'},{e:'❄️',f:'#9fd3e0',n:'Eine Schneeflocke'}];
+const VERZAUBERT=[{e:'🦄',n:'ein Einhorn'},{e:'🌈',n:'ein Regenbogen'},{e:'🦋',n:'ganz viele Schmetterlinge'},{f:'hoppel',n:'Hoppel'},{f:'klonk',n:'Klonk'},{e:'🐉',n:'ein kleiner Drache'}];
+function zaubertrank(done){
+  hush();const t=token,o=overlay('nacht'),zut=shuffle([...ZUTATEN]).slice(0,4);let drin=0;
+  o.innerHTML=`<div class="side" style="left:2vw;bottom:2vh">${fig('holunder')}</div><h2>Zaubertrank!</h2>
+    <div class="kessel"><svg viewBox="0 0 100 100"><ellipse cx="50" cy="88" rx="30" ry="5" fill="#000" opacity=".25"/>
+      <path d="M16 46 Q14 86 50 88 Q86 86 84 46Z" fill="#3a3044"/><ellipse class="trank" cx="50" cy="46" rx="34" ry="9" fill="#9be7a8"/>
+      <ellipse cx="50" cy="46" rx="34" ry="9" fill="none" stroke="#2a2233" stroke-width="3"/>
+      <g class="blasen"><circle cx="40" cy="40" r="3" fill="#fff" opacity=".6"/><circle cx="58" cy="38" r="2.4" fill="#fff" opacity=".6"/></g></svg></div>
+    <div class="zutaten">${zut.map((z,i)=>`<button data-i="${i}" aria-label="${z.n}">${z.e}</button>`).join('')}</div>`;
+  const trank=$('.kessel .trank'),kessel=$('.kessel');
+  $$('.zutaten button').forEach(b=>b.onclick=async()=>{
+    const z=zut[+b.dataset.i];b.classList.add('weg');quiet();bell([880+drin*120],.1,.08);
+    trank.setAttribute('fill',z.f);restart(kessel,'shake');drin++;
+    if(drin<zut.length){say(rnd(['Blubber, blubber!','Hihi, gut so!','Umrühren!','Noch etwas!']),t,'holunder');return}
+    await wait(400,t);sfx.hexe();confetti(['✨','🌟','💜','⭐']);
+    const v=rnd(VERZAUBERT);
+    $('.kessel').outerHTML=`<div class="hatch">${v.f?`<div class="bigfig">${fig(v.f)}</div>`:v.e}</div>`;$('.zutaten').remove();
+    await say(`Simsalabim! Heraus kommt ${v.n}!`,t,'holunder');
+    endLater(t,done,{showAfter:800,autoAfter:15000});
+  });
+  say('Hihi! Wir brauen einen Zaubertrank. Wirf alle Zutaten in den Kessel!',t,'holunder');
+}
+
+/* ---------- Hoppel fangen: er guckt mal hier, mal da aus seinen Löchern ---------- */
+function hoppelFangen(done){
+  hush();const t=token,o=overlay('lichtung');let gefangen=0,offen=-1,timer=null;const ziel=6;
+  o.innerHTML=`<h2>Wo ist Hoppel?</h2><div class="loecher">${Array.from({length:6},(_,i)=>`<button class="loch" data-i="${i}" aria-label="Loch">${fig('hoppel')}</button>`).join('')}</div><p class="clock" id="zz">0 von ${ziel}</p>`;
+  const loecher=$$('.loch');
+  const raus=()=>{
+    if(t!==token||gefangen>=ziel)return;
+    loecher.forEach(l=>l.classList.remove('raus'));
+    let i;do{i=Math.floor(Math.random()*6)}while(i===offen);offen=i;loecher[i].classList.add('raus');sfx.hoppel();
+    timer=setTimeout(raus,1600);
+  };
+  loecher.forEach((l,i)=>l.onclick=async()=>{
+    if(i!==offen||!l.classList.contains('raus'))return;
+    clearTimeout(timer);l.classList.remove('raus');offen=-1;gefangen++;sfx.ok();$('#zz').textContent=`${gefangen} von ${ziel}`;
+    if(gefangen<ziel){say(rnd(['Hihi, erwischt!','Huch!','Du bist schnell!','Nochmal!']),t,'hoppel');setTimeout(raus,900);return}
+    confetti(['🥕','✨','⭐']);await say('Du hast mich sechsmal gefunden! Hier, eine Karotte für dich!',t,'hoppel');
+    endLater(t,done,{showAfter:500,autoAfter:12000});
+  });
+  say('Ich verstecke mich in meinen Löchern! Tipp mich an, wenn ich rausgucke!',t,'hoppel').then(()=>{if(t===token)raus()});
 }
 
 /* ---------- Video: eingebettet (über https oder die Startdatei) oder im eigenen Fenster ---------- */

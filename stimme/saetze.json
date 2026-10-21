@@ -16,43 +16,23 @@
  },
  {
   "s": "erzaehler",
+  "k": "53615b2340bb9fe52917",
+  "text": "Auf ins Zahlenland"
+ },
+ {
+  "s": "erzaehler",
+  "k": "a7e62b03afb7615a7d70",
+  "text": "Auf ins Zahlenland kommt bald!"
+ },
+ {
+  "s": "erzaehler",
   "k": "0fe319b881e038b22cf6",
   "text": "Bei fünf sind die Augen der Eule ganz schwer."
  },
  {
   "s": "erzaehler",
-  "k": "9f621f3a4f4b652fa49c",
-  "text": "Blaubeeren gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "018677ad394de7db8416",
-  "text": "Blaubeeren!"
- },
- {
-  "s": "erzaehler",
-  "k": "841412c1c9c73311a9f9",
-  "text": "Blaubeeren."
- },
- {
-  "s": "erzaehler",
   "k": "8a8ccab4e169f4cfa6ad",
   "text": "Blubb, blubb!"
- },
- {
-  "s": "erzaehler",
-  "k": "6968f692bd2bed450367",
-  "text": "Blumen gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "38273ce2f2141e2e41cd",
-  "text": "Blumen!"
- },
- {
-  "s": "erzaehler",
-  "k": "17b4a8a82572c10a94de",
-  "text": "Blumen."
  },
  {
   "s": "erzaehler",
@@ -91,26 +71,6 @@
  },
  {
   "s": "erzaehler",
-  "k": "7c38602e1b67eeed1cce",
-  "text": "Blätter gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "fbbbb3907f27a627209c",
-  "text": "Blätter!"
- },
- {
-  "s": "erzaehler",
-  "k": "b0d5f3718976e784fd9c",
-  "text": "Blätter."
- },
- {
-  "s": "erzaehler",
-  "k": "0cd657f37268a7a6cea5",
-  "text": "Buchstaben"
- },
- {
-  "s": "erzaehler",
   "k": "cb25876686a011d21b4f",
   "text": "Buchstaben kommt bald!"
  },
@@ -143,6 +103,21 @@
   "s": "erzaehler",
   "k": "771aa9bf0669f4525f1b",
   "text": "Das ist Herr Zinn, BluppBlupps Onkel mit der Laterne."
+ },
+ {
+  "s": "erzaehler",
+  "k": "5f9ccbd25d77da22e80a",
+  "text": "Das ist Hexe Holunder, die freundliche Hexe aus dem Hexenhaus."
+ },
+ {
+  "s": "erzaehler",
+  "k": "4b90104d85368e335936",
+  "text": "Das ist Hoppel, das Kaninchen von der Wiese."
+ },
+ {
+  "s": "erzaehler",
+  "k": "78d09c4e08c348b75d6b",
+  "text": "Das ist Klonk, der Roboter aus der Bergwerkstatt."
  },
  {
   "s": "erzaehler",
@@ -266,73 +241,8 @@
  },
  {
   "s": "erzaehler",
-  "k": "cff68a167736b1128e15",
-  "text": "Eichhörnchen gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "6387d588fb673e965b4e",
-  "text": "Eichhörnchen!"
- },
- {
-  "s": "erzaehler",
-  "k": "f91ab6e2cf8d27bc0dc4",
-  "text": "Eichhörnchen."
- },
- {
-  "s": "erzaehler",
-  "k": "15a0fa42c8a54426e435",
-  "text": "Ein Blatt."
- },
- {
-  "s": "erzaehler",
-  "k": "b4adec5c73a5416a6127",
-  "text": "Ein Eichhörnchen."
- },
- {
-  "s": "erzaehler",
-  "k": "0f1327515b6497d12ea5",
-  "text": "Ein Frosch."
- },
- {
-  "s": "erzaehler",
-  "k": "696966cef888ecdfdbab",
-  "text": "Ein Fuchs."
- },
- {
-  "s": "erzaehler",
-  "k": "74911113b12c7b3b6be2",
-  "text": "Ein Igel."
- },
- {
-  "s": "erzaehler",
   "k": "c519f792ab454fb4e17b",
   "text": "Ein Marienkäfer!"
- },
- {
-  "s": "erzaehler",
-  "k": "03799ee2dc66b9623740",
-  "text": "Ein Marienkäfer."
- },
- {
-  "s": "erzaehler",
-  "k": "9e78db646db1108e08d0",
-  "text": "Ein Pilz."
- },
- {
-  "s": "erzaehler",
-  "k": "4a6bd723822732f3ff3a",
-  "text": "Ein Schmetterling."
- },
- {
-  "s": "erzaehler",
-  "k": "beaed1d7593fe60c7b32",
-  "text": "Ein Stern."
- },
- {
-  "s": "erzaehler",
-  "k": "7d88e32d7d428cd93be4",
-  "text": "Ein blaues Nilpferd."
  },
  {
   "s": "erzaehler",
@@ -341,28 +251,8 @@
  },
  {
   "s": "erzaehler",
-  "k": "0c686c7725f40a310b46",
-  "text": "Eine Blaubeere."
- },
- {
-  "s": "erzaehler",
-  "k": "f86af950592f50b656a8",
-  "text": "Eine Blume."
- },
- {
-  "s": "erzaehler",
-  "k": "9db958675edd559b1ed8",
-  "text": "Eine Eule."
- },
- {
-  "s": "erzaehler",
   "k": "04e93ba91978a19d2f3e",
   "text": "Eine Kastanie!"
- },
- {
-  "s": "erzaehler",
-  "k": "d20ee9492ea59c68d394",
-  "text": "Eine Kastanie."
  },
  {
   "s": "erzaehler",
@@ -373,11 +263,6 @@
   "s": "erzaehler",
   "k": "846540dad2ad0414c5c1",
   "text": "Eine Schnecke!"
- },
- {
-  "s": "erzaehler",
-  "k": "16274436c571fcd0c404",
-  "text": "Eine Schnecke."
  },
  {
   "s": "erzaehler",
@@ -406,11 +291,6 @@
  },
  {
   "s": "erzaehler",
-  "k": "3c12aa55c82d54686228",
-  "text": "Entdecken"
- },
- {
-  "s": "erzaehler",
   "k": "b0c8c92b291e23c82fae",
   "text": "Er krabbelt auf deinen Finger."
  },
@@ -436,63 +316,8 @@
  },
  {
   "s": "erzaehler",
-  "k": "4bfa2631b7d48be5f7f8",
-  "text": "Eulen gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "14e18143fd776603cc3d",
-  "text": "Eulen!"
- },
- {
-  "s": "erzaehler",
-  "k": "e459c7684c328d4d5c2c",
-  "text": "Eulen."
- },
- {
-  "s": "erzaehler",
-  "k": "c3c2b6c2452143aca251",
-  "text": "Farben und Formen"
- },
- {
-  "s": "erzaehler",
   "k": "31836e0faa8d762b252a",
   "text": "Farben und Formen kommt bald!"
- },
- {
-  "s": "erzaehler",
-  "k": "34e5933429576559e83c",
-  "text": "Finde die Zahl"
- },
- {
-  "s": "erzaehler",
-  "k": "175b6846aa030fbc43be",
-  "text": "Frösche gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "f57502fedce081aa61a1",
-  "text": "Frösche!"
- },
- {
-  "s": "erzaehler",
-  "k": "060f99b4932122fe52ce",
-  "text": "Frösche."
- },
- {
-  "s": "erzaehler",
-  "k": "914e454b34dacfc214f9",
-  "text": "Füchse gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "2a689ed1b4ee4e0f1411",
-  "text": "Füchse!"
- },
- {
-  "s": "erzaehler",
-  "k": "f99108dc1305068fc389",
-  "text": "Füchse."
  },
  {
   "s": "erzaehler",
@@ -503,6 +328,11 @@
   "s": "erzaehler",
   "k": "e9caa952c8d143cdc929",
   "text": "Fünf."
+ },
+ {
+  "s": "erzaehler",
+  "k": "8602d9bedaa4cbf2763b",
+  "text": "Für Eltern: den Knopf gedrückt halten."
  },
  {
   "s": "erzaehler",
@@ -586,11 +416,6 @@
  },
  {
   "s": "erzaehler",
-  "k": "449a780d947d1f7e558c",
-  "text": "Ich spreche"
- },
- {
-  "s": "erzaehler",
   "k": "20c847b9983e7b448d95",
   "text": "Ich trage einen großen Hut und eine Laterne."
  },
@@ -598,21 +423,6 @@
   "s": "erzaehler",
   "k": "c58babbe1e37b85323f5",
   "text": "Ich trage mein Haus auf dem Rücken."
- },
- {
-  "s": "erzaehler",
-  "k": "ef347367134be6914452",
-  "text": "Igel gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "593f04edf16546957994",
-  "text": "Igel!"
- },
- {
-  "s": "erzaehler",
-  "k": "ee3e9aac5d554aa865c7",
-  "text": "Igel."
  },
  {
   "s": "erzaehler",
@@ -646,48 +456,8 @@
  },
  {
   "s": "erzaehler",
-  "k": "f3ec53ba212041eeb4ed",
-  "text": "Kastanien gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "874c4d21feffcb5bf81e",
-  "text": "Kastanien!"
- },
- {
-  "s": "erzaehler",
-  "k": "f74749569fc6b057e235",
-  "text": "Kastanien."
- },
- {
-  "s": "erzaehler",
   "k": "a74ae4cbdd3e08a45ccf",
   "text": "Lass uns zusammen zählen!"
- },
- {
-  "s": "erzaehler",
-  "k": "a81b61927a090d3943bb",
-  "text": "Marienkäfer gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "115993daf6f37548ce5e",
-  "text": "Marienkäfer!"
- },
- {
-  "s": "erzaehler",
-  "k": "25a2e3aa53b9ac074068",
-  "text": "Marienkäfer."
- },
- {
-  "s": "erzaehler",
-  "k": "24eb9a4d47940e7fb6b4",
-  "text": "Mathe"
- },
- {
-  "s": "erzaehler",
-  "k": "2a829e59f4cf7a9559d9",
-  "text": "Mathe kommt bald!"
  },
  {
   "s": "erzaehler",
@@ -736,21 +506,6 @@
  },
  {
   "s": "erzaehler",
-  "k": "4699539725253b0c2820",
-  "text": "Pilze gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "f8dfe50d1ef5fe71763f",
-  "text": "Pilze!"
- },
- {
-  "s": "erzaehler",
-  "k": "569a08d59c347bde1d4d",
-  "text": "Pilze."
- },
- {
-  "s": "erzaehler",
   "k": "18d531ef11f9b734e5b7",
   "text": "Platsch!"
  },
@@ -773,11 +528,6 @@
   "s": "erzaehler",
   "k": "905df38f71df3f8a585c",
   "text": "Psst!"
- },
- {
-  "s": "erzaehler",
-  "k": "6a896c50e8f19dda653f",
-  "text": "Rechnen"
  },
  {
   "s": "erzaehler",
@@ -861,36 +611,6 @@
  },
  {
   "s": "erzaehler",
-  "k": "1aa83fe02139666b26fc",
-  "text": "Schmetterlinge gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "ad1f4c0150ebf7fb80fe",
-  "text": "Schmetterlinge!"
- },
- {
-  "s": "erzaehler",
-  "k": "e568dc98901c5eef7595",
-  "text": "Schmetterlinge."
- },
- {
-  "s": "erzaehler",
-  "k": "3c7dec48fc6c69df8202",
-  "text": "Schnecken gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "36ac2ada665efac6d795",
-  "text": "Schnecken!"
- },
- {
-  "s": "erzaehler",
-  "k": "c3cde3f2bfd36241182a",
-  "text": "Schnecken."
- },
- {
-  "s": "erzaehler",
   "k": "f9a7b44b3e3dbe8dd8df",
   "text": "Sechs"
  },
@@ -951,21 +671,6 @@
  },
  {
   "s": "erzaehler",
-  "k": "7d166c73208465db22ae",
-  "text": "Sterne gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "97d87a85164a9a6051d3",
-  "text": "Sterne!"
- },
- {
-  "s": "erzaehler",
-  "k": "b47c247374ca8b8ba9d9",
-  "text": "Sterne."
- },
- {
-  "s": "erzaehler",
   "k": "5d95dba838ba1e2bc710",
   "text": "Tipp ganz oft drauf!"
  },
@@ -973,81 +678,6 @@
   "s": "erzaehler",
   "k": "debd0aed2e2671bdf2b5",
   "text": "Tipp sie an!"
- },
- {
-  "s": "erzaehler",
-  "k": "1b90fd0d83f8563faf67",
-  "text": "Tippe alle Blaubeeren an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "4e9ebff2cdab82ab3d8f",
-  "text": "Tippe alle Blumen an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "c2bab2972772cfd7588d",
-  "text": "Tippe alle Blätter an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "bda9f255b2b7b2aba5bf",
-  "text": "Tippe alle Eichhörnchen an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "0725cafb10774db6d0ee",
-  "text": "Tippe alle Eulen an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "cee912ac083d01a2e1b7",
-  "text": "Tippe alle Frösche an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "49b6947875b769e7665c",
-  "text": "Tippe alle Füchse an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "f7db74eb56997b636ecb",
-  "text": "Tippe alle Igel an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "e45d49f804a70540ed23",
-  "text": "Tippe alle Kastanien an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "d69f47a2124c00193aaf",
-  "text": "Tippe alle Marienkäfer an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "edc4477769da815a1566",
-  "text": "Tippe alle Pilze an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "fffb548d5de0a2177e42",
-  "text": "Tippe alle Schmetterlinge an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "2f97cbf0e7b32fc46d30",
-  "text": "Tippe alle Schnecken an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "00beccc5928efc07a0ea",
-  "text": "Tippe alle Sterne an und zähl mit!"
- },
- {
-  "s": "erzaehler",
-  "k": "c2fcde253011cd037afd",
-  "text": "Tippe alle blaue Nilpferde an und zähl mit!"
  },
  {
   "s": "erzaehler",
@@ -1068,11 +698,6 @@
   "s": "erzaehler",
   "k": "1854687883273b9a611f",
   "text": "Ton an"
- },
- {
-  "s": "erzaehler",
-  "k": "4695776a6c33a75de500",
-  "text": "Uhrzeit"
  },
  {
   "s": "erzaehler",
@@ -1191,86 +816,6 @@
  },
  {
   "s": "erzaehler",
-  "k": "338b5be0bc5a54ac5117",
-  "text": "Wie viele Blaubeeren siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "e865c2e07bac1c052b34",
-  "text": "Wie viele Blumen siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "28a9ea5f7d77bdc41f7a",
-  "text": "Wie viele Blätter siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "09bea108c6123c6e3f55",
-  "text": "Wie viele Eichhörnchen siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "23315629152065ab7fcd",
-  "text": "Wie viele Eulen siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "be1ed04e2590b53b460b",
-  "text": "Wie viele Frösche siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "01075f44d4ae930425d3",
-  "text": "Wie viele Füchse siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "a3db5575dede1470c049",
-  "text": "Wie viele Igel siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "833afe1e3ea64d1c0702",
-  "text": "Wie viele Kastanien siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "e3b93c66635947274597",
-  "text": "Wie viele Marienkäfer siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "dd14f363f20ba4164248",
-  "text": "Wie viele Pilze siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "ab6608b225df5c821767",
-  "text": "Wie viele Schmetterlinge siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "d582572e3c18e928568d",
-  "text": "Wie viele Schnecken siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "ff03f3bc205c6e15a4c7",
-  "text": "Wie viele Sterne siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "5bda3cd03aab2a889790",
-  "text": "Wie viele blaue Nilpferde siehst du?"
- },
- {
-  "s": "erzaehler",
-  "k": "2177dda4610dcc7c777a",
-  "text": "Wie viele?"
- },
- {
-  "s": "erzaehler",
   "k": "93cba818e3ea59445a32",
   "text": "Wo ist die"
  },
@@ -1331,11 +876,6 @@
  },
  {
   "s": "erzaehler",
-  "k": "eb03576f73f2246cd43d",
-  "text": "Zählen"
- },
- {
-  "s": "erzaehler",
   "k": "f688802c63d84aea59f5",
   "text": "Zählst du mit?"
  },
@@ -1343,21 +883,6 @@
   "s": "erzaehler",
   "k": "0a2a7a2f097cb40eb318",
   "text": "bis"
- },
- {
-  "s": "erzaehler",
-  "k": "ff865228e9cdeb1c4dc6",
-  "text": "blaue Nilpferde gezählt."
- },
- {
-  "s": "erzaehler",
-  "k": "d163e7d7a27dedb980d7",
-  "text": "blaue Nilpferde!"
- },
- {
-  "s": "erzaehler",
-  "k": "bd1f28c89fa809c5c6b8",
-  "text": "blaue Nilpferde."
  },
  {
   "s": "erzaehler",
@@ -1396,8 +921,68 @@
  },
  {
   "s": "zinn",
+  "k": "556524cde746ed47ac9d",
+  "text": "Acht"
+ },
+ {
+  "s": "zinn",
+  "k": "bca558ed491447d44b6b",
+  "text": "Acht."
+ },
+ {
+  "s": "zinn",
+  "k": "0bec70e21e0582ea0868",
+  "text": "Adler gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "2efa2c339dd469b0ec9e",
+  "text": "Adler!"
+ },
+ {
+  "s": "zinn",
+  "k": "208d91064603f921e3c7",
+  "text": "Adler."
+ },
+ {
+  "s": "zinn",
+  "k": "6353c0fd8d87fb45323a",
+  "text": "Blaubeeren gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "fd7fc051cf3d1ceb71e8",
+  "text": "Blaubeeren!"
+ },
+ {
+  "s": "zinn",
+  "k": "f09ae72583068312ae3c",
+  "text": "Blaubeeren."
+ },
+ {
+  "s": "zinn",
+  "k": "1ed51c51eb70ae4f472c",
+  "text": "Blätter gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "596ab9ef3291dba83496",
+  "text": "Blätter!"
+ },
+ {
+  "s": "zinn",
+  "k": "0cda74f05c83cc885317",
+  "text": "Blätter."
+ },
+ {
+  "s": "zinn",
   "k": "ac6aa2c188b702ca622c",
   "text": "Da ist er ja!"
+ },
+ {
+  "s": "zinn",
+  "k": "4e5b7ab44bd9c4b6a519",
+  "text": "Da ist gar nichts!"
  },
  {
   "s": "zinn",
@@ -1416,6 +1001,136 @@
  },
  {
   "s": "zinn",
+  "k": "2994b3485dd04fb9cad3",
+  "text": "Das Feld ist leer."
+ },
+ {
+  "s": "zinn",
+  "k": "3603e71466c2954104ae",
+  "text": "Das ist die"
+ },
+ {
+  "s": "zinn",
+  "k": "fe883e69b4f10c3b03f6",
+  "text": "Die"
+ },
+ {
+  "s": "zinn",
+  "k": "92a13de526f5fb2e32de",
+  "text": "Drei"
+ },
+ {
+  "s": "zinn",
+  "k": "fb3715fe97a9bced6fbb",
+  "text": "Drei."
+ },
+ {
+  "s": "zinn",
+  "k": "1052ca67854e2d3e5918",
+  "text": "Du hast"
+ },
+ {
+  "s": "zinn",
+  "k": "3c6572fabb31ec4bd042",
+  "text": "Eichhörnchen gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "2cfb949fb506b3fd2390",
+  "text": "Eichhörnchen!"
+ },
+ {
+  "s": "zinn",
+  "k": "72c3704327b0178c9a73",
+  "text": "Eichhörnchen."
+ },
+ {
+  "s": "zinn",
+  "k": "5025c06c30b65ec28c72",
+  "text": "Ein Adler."
+ },
+ {
+  "s": "zinn",
+  "k": "5bd18f85dc75d3a9fe3c",
+  "text": "Ein Blatt."
+ },
+ {
+  "s": "zinn",
+  "k": "17d1e6e2013b47bade1b",
+  "text": "Ein Eichhörnchen."
+ },
+ {
+  "s": "zinn",
+  "k": "e25731fcac237273efa8",
+  "text": "Ein Fuchs."
+ },
+ {
+  "s": "zinn",
+  "k": "56dd416c58cfc4a79690",
+  "text": "Ein Igel."
+ },
+ {
+  "s": "zinn",
+  "k": "176775d4b13a4b503141",
+  "text": "Ein Pilz."
+ },
+ {
+  "s": "zinn",
+  "k": "4b0e596572f3b4658c14",
+  "text": "Ein Stern."
+ },
+ {
+  "s": "zinn",
+  "k": "c39679209599e4110f20",
+  "text": "Ein blaues Nilpferd."
+ },
+ {
+  "s": "zinn",
+  "k": "5dcf6694678cf0252c40",
+  "text": "Eine Blaubeere."
+ },
+ {
+  "s": "zinn",
+  "k": "12613c8aa9e899122e5d",
+  "text": "Eine Eule."
+ },
+ {
+  "s": "zinn",
+  "k": "6c5ae800a439a15855e6",
+  "text": "Eine Kastanie."
+ },
+ {
+  "s": "zinn",
+  "k": "788754552792a0333af8",
+  "text": "Eine Schneeflocke."
+ },
+ {
+  "s": "zinn",
+  "k": "79816641201a6407db3a",
+  "text": "Eine Tanne."
+ },
+ {
+  "s": "zinn",
+  "k": "b70b757af7d33b23e6db",
+  "text": "Eine Wolke."
+ },
+ {
+  "s": "zinn",
+  "k": "82c255267cc6c9c09634",
+  "text": "Eine Ziege."
+ },
+ {
+  "s": "zinn",
+  "k": "ac66aec3dd44a25fef75",
+  "text": "Eins"
+ },
+ {
+  "s": "zinn",
+  "k": "a009b4a37234842274d7",
+  "text": "Eins."
+ },
+ {
+  "s": "zinn",
   "k": "57989bf3329c0382974d",
   "text": "Er liegt unter einem Moos-Hügel."
  },
@@ -1426,8 +1141,63 @@
  },
  {
   "s": "zinn",
+  "k": "fbcaab9e02d6073724d2",
+  "text": "Eulen gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "4369b5539a0283350fa3",
+  "text": "Eulen!"
+ },
+ {
+  "s": "zinn",
+  "k": "a3c00f06760d050dc414",
+  "text": "Eulen."
+ },
+ {
+  "s": "zinn",
   "k": "9e6962d018419174e22f",
   "text": "Fang die Glühwürmchen für meine Laterne!"
+ },
+ {
+  "s": "zinn",
+  "k": "099f154a6f15eb423ace",
+  "text": "Füchse gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "72bef3023ded2705fa2a",
+  "text": "Füchse!"
+ },
+ {
+  "s": "zinn",
+  "k": "a71e726455bf418fe30f",
+  "text": "Füchse."
+ },
+ {
+  "s": "zinn",
+  "k": "cd3face2b2cf96ae6d54",
+  "text": "Fünf"
+ },
+ {
+  "s": "zinn",
+  "k": "9d14ebef40119410c2d3",
+  "text": "Fünf."
+ },
+ {
+  "s": "zinn",
+  "k": "b4d3c7706f8c53444374",
+  "text": "Für Eltern: den Knopf gedrückt halten."
+ },
+ {
+  "s": "zinn",
+  "k": "1b565e9bfc0f5accbca3",
+  "text": "Ganz genau!"
+ },
+ {
+  "s": "zinn",
+  "k": "48c268870a96730d5ddb",
+  "text": "Ganz genau, Sam!"
  },
  {
   "s": "zinn",
@@ -1441,6 +1211,16 @@
  },
  {
   "s": "zinn",
+  "k": "84d50c7042bf885e303a",
+  "text": "Hier oben auf dem Echo-Gipfel ruft der Berg alles zurück."
+ },
+ {
+  "s": "zinn",
+  "k": "3183e2221ceb844d14c3",
+  "text": "Hier sind"
+ },
+ {
+  "s": "zinn",
   "k": "cd3eca86a7bcc96a2d14",
   "text": "Hilfst du mir suchen?"
  },
@@ -1448,6 +1228,11 @@
   "s": "zinn",
   "k": "815308bef954a69b0b51",
   "text": "Hilfst du mir?"
+ },
+ {
+  "s": "zinn",
+  "k": "0910b508377376e46416",
+  "text": "Hmm."
  },
  {
   "s": "zinn",
@@ -1466,13 +1251,58 @@
  },
  {
   "s": "zinn",
+  "k": "fe33b52f1f9270160173",
+  "text": "Igel gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "00eefd73517d5f4b7b02",
+  "text": "Igel!"
+ },
+ {
+  "s": "zinn",
+  "k": "ba056918da986bed93b9",
+  "text": "Igel."
+ },
+ {
+  "s": "zinn",
+  "k": "eee372471b2e5162edc3",
+  "text": "Ja, genau!"
+ },
+ {
+  "s": "zinn",
+  "k": "eb2129bbfc5ca49323d3",
+  "text": "Ja, genau, Sam!"
+ },
+ {
+  "s": "zinn",
   "k": "3a45f6abb8fa6c4ec952",
   "text": "Jetzt leuchtet meine Laterne wieder doppelt so hell."
  },
  {
   "s": "zinn",
+  "k": "f4eacf55b553d64c6dd2",
+  "text": "Kastanien gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "b2cba6e340c0323e54c5",
+  "text": "Kastanien!"
+ },
+ {
+  "s": "zinn",
+  "k": "1993876e7fe26a05994e",
+  "text": "Kastanien."
+ },
+ {
+  "s": "zinn",
   "k": "43c70b04ad6c7f998512",
   "text": "Komm mit in den Zauberwald."
+ },
+ {
+  "s": "zinn",
+  "k": "c483e6cc7cc049fa68b6",
+  "text": "Lass uns zusammen zählen!"
  },
  {
   "s": "zinn",
@@ -1486,13 +1316,2553 @@
  },
  {
   "s": "zinn",
+  "k": "7a715377d8313340a5e1",
+  "text": "Meine Laterne zeigt dir die Zahlen."
+ },
+ {
+  "s": "zinn",
+  "k": "7f8caab07ed1d9c0c549",
+  "text": "Neun"
+ },
+ {
+  "s": "zinn",
+  "k": "bd3ddf3a56845566e4cd",
+  "text": "Neun."
+ },
+ {
+  "s": "zinn",
+  "k": "367d5b501bd3eec78e32",
+  "text": "Null"
+ },
+ {
+  "s": "zinn",
+  "k": "ad65d48ad169773ccceb",
+  "text": "Null heißt: gar nichts!"
+ },
+ {
+  "s": "zinn",
+  "k": "f4f92cace747fd6a1c8e",
+  "text": "Null."
+ },
+ {
+  "s": "zinn",
+  "k": "8352598066b9956bd48c",
+  "text": "Pilze gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "08f1d08c0a096e8447b0",
+  "text": "Pilze!"
+ },
+ {
+  "s": "zinn",
+  "k": "b130eb1b805eb68c5e4a",
+  "text": "Pilze."
+ },
+ {
+  "s": "zinn",
+  "k": "95bd12daeef5894b6ca7",
+  "text": "Prima!"
+ },
+ {
+  "s": "zinn",
+  "k": "0dcafc656d0335baaad2",
+  "text": "Prima, Sam!"
+ },
+ {
+  "s": "zinn",
+  "k": "ad41b37bba4f6a50935a",
+  "text": "Richtig!"
+ },
+ {
+  "s": "zinn",
+  "k": "71b168fbead18d73ecd8",
+  "text": "Richtig, Sam!"
+ },
+ {
+  "s": "zinn",
+  "k": "8b649a0839eb5344dc2c",
+  "text": "Sag die Zahl ganz laut!"
+ },
+ {
+  "s": "zinn",
+  "k": "6a00f170583ed66c7d14",
+  "text": "Sag mal: Acht!"
+ },
+ {
+  "s": "zinn",
+  "k": "3b24625656e2d02c9516",
+  "text": "Sag mal: Drei!"
+ },
+ {
+  "s": "zinn",
+  "k": "795401efe70051195db0",
+  "text": "Sag mal: Eins!"
+ },
+ {
+  "s": "zinn",
+  "k": "e4f4b32f82d6b98497f5",
+  "text": "Sag mal: Fünf!"
+ },
+ {
+  "s": "zinn",
+  "k": "cf2cdc80085468ac7b86",
+  "text": "Sag mal: Neun!"
+ },
+ {
+  "s": "zinn",
+  "k": "90037a80df58d0df92ac",
+  "text": "Sag mal: Null!"
+ },
+ {
+  "s": "zinn",
+  "k": "41eabfdd36d0dd4e3b51",
+  "text": "Sag mal: Sechs!"
+ },
+ {
+  "s": "zinn",
+  "k": "fc336204e95e45015734",
+  "text": "Sag mal: Sieben!"
+ },
+ {
+  "s": "zinn",
+  "k": "08cc069ef201ce67a8e7",
+  "text": "Sag mal: Vier!"
+ },
+ {
+  "s": "zinn",
+  "k": "c581d32462be65ed5d04",
+  "text": "Sag mal: Zehn!"
+ },
+ {
+  "s": "zinn",
+  "k": "a0b86c21893af0a1e7a5",
+  "text": "Sag mal: Zwei!"
+ },
+ {
+  "s": "zinn",
+  "k": "f3266a1cc6196743478e",
+  "text": "Schau mal, da ist gar nichts."
+ },
+ {
+  "s": "zinn",
+  "k": "619ec670ce1f9dc31a34",
+  "text": "Schau mal, es bleibt gar nichts übrig!"
+ },
+ {
+  "s": "zinn",
   "k": "b59b8471fda3b91a1336",
   "text": "Schau mal, wie hell die Laterne jetzt leuchtet!"
  },
  {
   "s": "zinn",
+  "k": "d01753d8d2a6007e77c6",
+  "text": "Schneeflocken gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "7735b28a2394b577e8fb",
+  "text": "Schneeflocken!"
+ },
+ {
+  "s": "zinn",
+  "k": "da858b1a6e36007f74c1",
+  "text": "Schneeflocken."
+ },
+ {
+  "s": "zinn",
+  "k": "c6ee0402bc01c6e39a7c",
+  "text": "Sechs"
+ },
+ {
+  "s": "zinn",
+  "k": "d39242903b09ba76df0f",
+  "text": "Sechs."
+ },
+ {
+  "s": "zinn",
+  "k": "e7b609cbf29f34f07c57",
+  "text": "Sehr gut!"
+ },
+ {
+  "s": "zinn",
+  "k": "31fd7a4c025adc46e41b",
+  "text": "Sehr gut, Sam!"
+ },
+ {
+  "s": "zinn",
+  "k": "20bb955d06b4e700d84f",
+  "text": "Sehr schön!"
+ },
+ {
+  "s": "zinn",
+  "k": "3e62261515fe04f61c00",
+  "text": "Sehr schön, Sam!"
+ },
+ {
+  "s": "zinn",
+  "k": "fd29f78f6259645344b3",
+  "text": "Sieben"
+ },
+ {
+  "s": "zinn",
+  "k": "a86a89545023bcf709b8",
+  "text": "Sieben."
+ },
+ {
+  "s": "zinn",
+  "k": "a9b87ce305cabf934387",
+  "text": "Sterne gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "9cbf0cb5ca88a8c7699e",
+  "text": "Sterne!"
+ },
+ {
+  "s": "zinn",
+  "k": "6e136ad7519fd74ee2a5",
+  "text": "Sterne."
+ },
+ {
+  "s": "zinn",
+  "k": "18a16c7e57e25b95188d",
+  "text": "Tannen gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "bc5653cabc75b932c412",
+  "text": "Tannen!"
+ },
+ {
+  "s": "zinn",
+  "k": "60c606e6ed074fed896c",
+  "text": "Tannen."
+ },
+ {
+  "s": "zinn",
+  "k": "b094aab502213df6bbe1",
+  "text": "Tippe alle Adler an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "ac5dddb76001393c3684",
+  "text": "Tippe alle Blaubeeren an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "e8a92449d65eb4409377",
+  "text": "Tippe alle Blätter an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "33ed6d1c97b21e5912cf",
+  "text": "Tippe alle Eichhörnchen an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "afe291cc49eb0f3d24ed",
+  "text": "Tippe alle Eulen an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "d23ae77d7f2041ffc45f",
+  "text": "Tippe alle Füchse an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "4a4d734fe5d16e3d2813",
+  "text": "Tippe alle Igel an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "cf9fc11bc5ba9ee7c402",
+  "text": "Tippe alle Kastanien an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "7f683b9e48a48c0752f7",
+  "text": "Tippe alle Pilze an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "425127a03d84af89f5c1",
+  "text": "Tippe alle Schneeflocken an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "0c729ff5979925c9ce22",
+  "text": "Tippe alle Sterne an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "af4898184292e3e944cb",
+  "text": "Tippe alle Tannen an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "42d173f79e960d235c0c",
+  "text": "Tippe alle Wolken an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "805b2072525c6a35115b",
+  "text": "Tippe alle Ziegen an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "c445a28c6b4c01dbb1fe",
+  "text": "Tippe alle blaue Nilpferde an und zähl mit!"
+ },
+ {
+  "s": "zinn",
+  "k": "88fc18667543853dc57e",
+  "text": "Tippe auf eine Zahl!"
+ },
+ {
+  "s": "zinn",
+  "k": "6f835f7081b74147f022",
+  "text": "Toll gemacht!"
+ },
+ {
+  "s": "zinn",
+  "k": "853a9477de6752916f66",
+  "text": "Toll gemacht, Sam!"
+ },
+ {
+  "s": "zinn",
+  "k": "97f9540f32df78aa89de",
+  "text": "Ton an"
+ },
+ {
+  "s": "zinn",
+  "k": "6d43781c78fbed1c5047",
+  "text": "Vier"
+ },
+ {
+  "s": "zinn",
+  "k": "0ba3b5e694366073cdf7",
+  "text": "Vier."
+ },
+ {
+  "s": "zinn",
   "k": "a20f6d035d7d0ee53710",
   "text": "Was möchtest du spielen?"
+ },
+ {
+  "s": "zinn",
+  "k": "4780fcf68d289a0ffefc",
+  "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "zinn",
+  "k": "575b3056af2cf63dc815",
+  "text": "Wie viel ist"
+ },
+ {
+  "s": "zinn",
+  "k": "40c8c52873da8790fcb1",
+  "text": "Wie viel ist gar nichts?"
+ },
+ {
+  "s": "zinn",
+  "k": "2e0fe99ac977f4ae64df",
+  "text": "Wie viele Adler siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "f0ed59423d8c7edc13d8",
+  "text": "Wie viele Blaubeeren siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "814eca1d55e022e1de97",
+  "text": "Wie viele Blätter siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "cbc5ad5e51255758b0e9",
+  "text": "Wie viele Eichhörnchen siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "dceb42daba8695237b1d",
+  "text": "Wie viele Eulen siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "446ccb54fcb3fb3b0616",
+  "text": "Wie viele Füchse siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "d640649517dbe3d443c4",
+  "text": "Wie viele Igel siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "ba516656b8787dc0355e",
+  "text": "Wie viele Kastanien siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "f77673c2f5df0201e130",
+  "text": "Wie viele Pilze siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "c77c76827d43df201f53",
+  "text": "Wie viele Schneeflocken siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "405d665c3fc1a7c09bf2",
+  "text": "Wie viele Sterne siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "6febf7f4700b4ed79876",
+  "text": "Wie viele Tannen siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "558a70e121c391964d3e",
+  "text": "Wie viele Wolken siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "a018d5977c052e5dca0f",
+  "text": "Wie viele Ziegen siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "f02e06c8213c3243eeab",
+  "text": "Wie viele blaue Nilpferde siehst du?"
+ },
+ {
+  "s": "zinn",
+  "k": "104434f13dc8a28dcadb",
+  "text": "Willkommen im Zauberwald."
+ },
+ {
+  "s": "zinn",
+  "k": "c1faacfe3bb8fa38c835",
+  "text": "Wo ist die"
+ },
+ {
+  "s": "zinn",
+  "k": "b928cc6ce4dca422f372",
+  "text": "Wolken gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "b0894c81002b2d8276dd",
+  "text": "Wolken!"
+ },
+ {
+  "s": "zinn",
+  "k": "50e39957c551a46fda1f",
+  "text": "Wolken."
+ },
+ {
+  "s": "zinn",
+  "k": "89e25e43f00597bc6595",
+  "text": "Wunderbar!"
+ },
+ {
+  "s": "zinn",
+  "k": "899d712bcbd5395ca508",
+  "text": "Wunderbar, Sam!"
+ },
+ {
+  "s": "zinn",
+  "k": "c1ddee48df6fcfc6b029",
+  "text": "Zahlen von"
+ },
+ {
+  "s": "zinn",
+  "k": "86d46719fbbfee7044f1",
+  "text": "Zauberhaft!"
+ },
+ {
+  "s": "zinn",
+  "k": "0c736dc3348d00d18952",
+  "text": "Zauberhaft, Sam!"
+ },
+ {
+  "s": "zinn",
+  "k": "6a59131eee3b72563808",
+  "text": "Zehn"
+ },
+ {
+  "s": "zinn",
+  "k": "ebb97dc495c5aeb124c9",
+  "text": "Zehn."
+ },
+ {
+  "s": "zinn",
+  "k": "0080971f3cdfb6618a93",
+  "text": "Ziegen gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "4fd5be4c6e17b28d9a17",
+  "text": "Ziegen!"
+ },
+ {
+  "s": "zinn",
+  "k": "01d6370215221acc82d9",
+  "text": "Ziegen."
+ },
+ {
+  "s": "zinn",
+  "k": "6be04586762932c7bb3e",
+  "text": "Zwei"
+ },
+ {
+  "s": "zinn",
+  "k": "add17338f2170174ef43",
+  "text": "Zwei."
+ },
+ {
+  "s": "zinn",
+  "k": "1bf4ef7530b7497e2feb",
+  "text": "bis"
+ },
+ {
+  "s": "zinn",
+  "k": "b6d85917dc3c1a97c7e8",
+  "text": "blaue Nilpferde gezählt."
+ },
+ {
+  "s": "zinn",
+  "k": "5332382c32d5c1b8cb24",
+  "text": "blaue Nilpferde!"
+ },
+ {
+  "s": "zinn",
+  "k": "5b53e031710cd935588c",
+  "text": "blaue Nilpferde."
+ },
+ {
+  "s": "zinn",
+  "k": "91fa476815f4c0cfe5a1",
+  "text": "gehen weg."
+ },
+ {
+  "s": "zinn",
+  "k": "c98a12c2decaaf22448b",
+  "text": "geht weg."
+ },
+ {
+  "s": "zinn",
+  "k": "6a23547affaf204ad7dc",
+  "text": "ist"
+ },
+ {
+  "s": "zinn",
+  "k": "33e14366dff6ce0b5926",
+  "text": "minus"
+ },
+ {
+  "s": "zinn",
+  "k": "8a866413742190d65e2e",
+  "text": "plus"
+ },
+ {
+  "s": "klonk",
+  "k": "9d5723af7d3608242c9c",
+  "text": "Acht"
+ },
+ {
+  "s": "klonk",
+  "k": "2b3c1d56e042e09382b9",
+  "text": "Acht."
+ },
+ {
+  "s": "klonk",
+  "k": "2cad85b8883196dbbb7b",
+  "text": "Batterien gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "569ccf379b43643d9bf8",
+  "text": "Batterien!"
+ },
+ {
+  "s": "klonk",
+  "k": "439c45320a7767a97644",
+  "text": "Batterien."
+ },
+ {
+  "s": "klonk",
+  "k": "72d18bb9a9f4d457cdf5",
+  "text": "Da ist gar nichts!"
+ },
+ {
+  "s": "klonk",
+  "k": "2fe91aaa99859c23a54a",
+  "text": "Das Feld ist leer."
+ },
+ {
+  "s": "klonk",
+  "k": "496bec30a29e02f5fdef",
+  "text": "Das ist die"
+ },
+ {
+  "s": "klonk",
+  "k": "8e37796d5785f3b3df74",
+  "text": "Die"
+ },
+ {
+  "s": "klonk",
+  "k": "1795766966f2735edf5e",
+  "text": "Drei"
+ },
+ {
+  "s": "klonk",
+  "k": "e044f4c7080f26f051a0",
+  "text": "Drei."
+ },
+ {
+  "s": "klonk",
+  "k": "4025bf8339af86bba764",
+  "text": "Du hast"
+ },
+ {
+  "s": "klonk",
+  "k": "70da47fd89a798b472a3",
+  "text": "Edelsteine gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "31909a6ff708c208ea3b",
+  "text": "Edelsteine!"
+ },
+ {
+  "s": "klonk",
+  "k": "2a20550fb40d1d5707cf",
+  "text": "Edelsteine."
+ },
+ {
+  "s": "klonk",
+  "k": "a6c60bc425a2567dccde",
+  "text": "Ein Edelstein."
+ },
+ {
+  "s": "klonk",
+  "k": "42ce9d093978541de5c0",
+  "text": "Ein Roboter."
+ },
+ {
+  "s": "klonk",
+  "k": "629da51174d60118e9f4",
+  "text": "Ein Zahnrad."
+ },
+ {
+  "s": "klonk",
+  "k": "3447d3756fb55584ed22",
+  "text": "Eine Batterie."
+ },
+ {
+  "s": "klonk",
+  "k": "933ffa914ece17fab511",
+  "text": "Eine Glühbirne."
+ },
+ {
+  "s": "klonk",
+  "k": "1fc1cbb3e2da57996bab",
+  "text": "Eine Rakete."
+ },
+ {
+  "s": "klonk",
+  "k": "86eb84a38c9a8782c209",
+  "text": "Eine Schraube."
+ },
+ {
+  "s": "klonk",
+  "k": "e58f542f68a55cb333cd",
+  "text": "Eins"
+ },
+ {
+  "s": "klonk",
+  "k": "5b44c20addbbec5a4a6c",
+  "text": "Eins."
+ },
+ {
+  "s": "klonk",
+  "k": "0def156d09dd391ae678",
+  "text": "Fünf"
+ },
+ {
+  "s": "klonk",
+  "k": "86031c11598a7123616c",
+  "text": "Fünf."
+ },
+ {
+  "s": "klonk",
+  "k": "1c9ea25e22370f6b0226",
+  "text": "Für Eltern: den Knopf gedrückt halten."
+ },
+ {
+  "s": "klonk",
+  "k": "a8715b76cea4c4341c07",
+  "text": "Ganz genau!"
+ },
+ {
+  "s": "klonk",
+  "k": "27fb06c7ba38194e3828",
+  "text": "Ganz genau, Sam!"
+ },
+ {
+  "s": "klonk",
+  "k": "9cf6bdebbe786ec2c9bd",
+  "text": "Glühbirnen gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "aacd7d4d5e480f661149",
+  "text": "Glühbirnen!"
+ },
+ {
+  "s": "klonk",
+  "k": "9045513d59e7b26d83af",
+  "text": "Glühbirnen."
+ },
+ {
+  "s": "klonk",
+  "k": "40c9b7860e37df54a2fc",
+  "text": "Hier sind"
+ },
+ {
+  "s": "klonk",
+  "k": "5d47072c629c251545f9",
+  "text": "Hmm."
+ },
+ {
+  "s": "klonk",
+  "k": "b6cb1b60c4073ec67202",
+  "text": "Ich baue Sachen in meiner Werkstatt in den Bergen."
+ },
+ {
+  "s": "klonk",
+  "k": "4792e99806dfd82e4094",
+  "text": "Ich bin Klonk, der Roboter."
+ },
+ {
+  "s": "klonk",
+  "k": "6849e7323343406d7de4",
+  "text": "Ich bin Klonk."
+ },
+ {
+  "s": "klonk",
+  "k": "027f2e97ab8d92fc62bc",
+  "text": "In meiner Werkstatt in den Bergen zählen wir alles ganz genau."
+ },
+ {
+  "s": "klonk",
+  "k": "5c05b3021d833afc9e1d",
+  "text": "Ja, genau!"
+ },
+ {
+  "s": "klonk",
+  "k": "08b68e62ac559b3712e0",
+  "text": "Ja, genau, Sam!"
+ },
+ {
+  "s": "klonk",
+  "k": "186ef98c41d4aacacc90",
+  "text": "Lass uns zusammen zählen!"
+ },
+ {
+  "s": "klonk",
+  "k": "46e2b029af9407cd76c4",
+  "text": "Neun"
+ },
+ {
+  "s": "klonk",
+  "k": "49fd3b82ccb9a7162d6f",
+  "text": "Neun."
+ },
+ {
+  "s": "klonk",
+  "k": "e667633677e71f192d64",
+  "text": "Null"
+ },
+ {
+  "s": "klonk",
+  "k": "741abaac4ed42ab50f88",
+  "text": "Null heißt: gar nichts!"
+ },
+ {
+  "s": "klonk",
+  "k": "78dca4f23f1e89a46f15",
+  "text": "Null."
+ },
+ {
+  "s": "klonk",
+  "k": "f49977c5cfafc6e5ac9f",
+  "text": "Piep, piep!"
+ },
+ {
+  "s": "klonk",
+  "k": "a3db0e33a827bf2f14c2",
+  "text": "Prima!"
+ },
+ {
+  "s": "klonk",
+  "k": "873959c8feca777dcdb0",
+  "text": "Prima, Sam!"
+ },
+ {
+  "s": "klonk",
+  "k": "422b73c3af479e9063b9",
+  "text": "Raketen gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "28f5571b07593c162505",
+  "text": "Raketen!"
+ },
+ {
+  "s": "klonk",
+  "k": "b2d2dbff266be92de769",
+  "text": "Raketen."
+ },
+ {
+  "s": "klonk",
+  "k": "d16a60862d2019ad2e0a",
+  "text": "Richtig!"
+ },
+ {
+  "s": "klonk",
+  "k": "59cdf82ce6edb8dd4767",
+  "text": "Richtig, Sam!"
+ },
+ {
+  "s": "klonk",
+  "k": "5aa4680546d871ca3e8c",
+  "text": "Roboter gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "1e6ffa93fc736f3d6388",
+  "text": "Roboter!"
+ },
+ {
+  "s": "klonk",
+  "k": "6fd28bc0623609803f62",
+  "text": "Roboter."
+ },
+ {
+  "s": "klonk",
+  "k": "d997721a32abe8441b4c",
+  "text": "Sag mal: Acht!"
+ },
+ {
+  "s": "klonk",
+  "k": "950bf2a616e9595c63f9",
+  "text": "Sag mal: Drei!"
+ },
+ {
+  "s": "klonk",
+  "k": "1a4c746c7d7e38845647",
+  "text": "Sag mal: Eins!"
+ },
+ {
+  "s": "klonk",
+  "k": "43e7f369c6f254f5b133",
+  "text": "Sag mal: Fünf!"
+ },
+ {
+  "s": "klonk",
+  "k": "ab29ab91758e695dbd60",
+  "text": "Sag mal: Neun!"
+ },
+ {
+  "s": "klonk",
+  "k": "7e42a39f1a68910b0816",
+  "text": "Sag mal: Null!"
+ },
+ {
+  "s": "klonk",
+  "k": "efe12968b53c82f2e9d2",
+  "text": "Sag mal: Sechs!"
+ },
+ {
+  "s": "klonk",
+  "k": "d7b40b0fc557033e04ac",
+  "text": "Sag mal: Sieben!"
+ },
+ {
+  "s": "klonk",
+  "k": "7172333205378d3d0806",
+  "text": "Sag mal: Vier!"
+ },
+ {
+  "s": "klonk",
+  "k": "41c88ab688b401cb3955",
+  "text": "Sag mal: Zehn!"
+ },
+ {
+  "s": "klonk",
+  "k": "5c76eaad37caba01c3a4",
+  "text": "Sag mal: Zwei!"
+ },
+ {
+  "s": "klonk",
+  "k": "ba2395de1f3338a2a6f8",
+  "text": "Schau mal, da ist gar nichts."
+ },
+ {
+  "s": "klonk",
+  "k": "e7ba0a873479550bf64d",
+  "text": "Schau mal, es bleibt gar nichts übrig!"
+ },
+ {
+  "s": "klonk",
+  "k": "f9f79311779fd0673798",
+  "text": "Schrauben gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "c55e90f2e10184fadddd",
+  "text": "Schrauben!"
+ },
+ {
+  "s": "klonk",
+  "k": "aff09f076b489222c7a1",
+  "text": "Schrauben."
+ },
+ {
+  "s": "klonk",
+  "k": "e41df3d67971da7ebe54",
+  "text": "Sechs"
+ },
+ {
+  "s": "klonk",
+  "k": "48d4578180720a93e397",
+  "text": "Sechs."
+ },
+ {
+  "s": "klonk",
+  "k": "f2174f289db01b2b0094",
+  "text": "Sehr gut!"
+ },
+ {
+  "s": "klonk",
+  "k": "21d9e3b6fffdfd719b30",
+  "text": "Sehr gut, Sam!"
+ },
+ {
+  "s": "klonk",
+  "k": "9ad1f3fd4bc54f293a75",
+  "text": "Sehr schön!"
+ },
+ {
+  "s": "klonk",
+  "k": "65ab4166287d3b31527d",
+  "text": "Sehr schön, Sam!"
+ },
+ {
+  "s": "klonk",
+  "k": "78218fd5bbaf8dd4fd5c",
+  "text": "Sieben"
+ },
+ {
+  "s": "klonk",
+  "k": "5a993cf48144b1799f49",
+  "text": "Sieben."
+ },
+ {
+  "s": "klonk",
+  "k": "8c31b43443f0ee579c44",
+  "text": "Tippe alle Batterien an und zähl mit!"
+ },
+ {
+  "s": "klonk",
+  "k": "a20bb5ba68249e5584f4",
+  "text": "Tippe alle Edelsteine an und zähl mit!"
+ },
+ {
+  "s": "klonk",
+  "k": "9c8163c8a6180f77e4d9",
+  "text": "Tippe alle Glühbirnen an und zähl mit!"
+ },
+ {
+  "s": "klonk",
+  "k": "1ed53b06e14466635742",
+  "text": "Tippe alle Raketen an und zähl mit!"
+ },
+ {
+  "s": "klonk",
+  "k": "6e3f99f37db7805b23da",
+  "text": "Tippe alle Roboter an und zähl mit!"
+ },
+ {
+  "s": "klonk",
+  "k": "201c3c351207e9f3e599",
+  "text": "Tippe alle Schrauben an und zähl mit!"
+ },
+ {
+  "s": "klonk",
+  "k": "7837e150a0462fdcf755",
+  "text": "Tippe alle Zahnräder an und zähl mit!"
+ },
+ {
+  "s": "klonk",
+  "k": "1c7d4f2fceedb4f074c1",
+  "text": "Tippe auf eine Zahl!"
+ },
+ {
+  "s": "klonk",
+  "k": "69a8e274be00ecfb12a3",
+  "text": "Toll gemacht!"
+ },
+ {
+  "s": "klonk",
+  "k": "3293b2a5cdc430af020c",
+  "text": "Toll gemacht, Sam!"
+ },
+ {
+  "s": "klonk",
+  "k": "25dc72d3340457dcfe2d",
+  "text": "Ton an"
+ },
+ {
+  "s": "klonk",
+  "k": "6ae0e95cdd0ab6d6e27e",
+  "text": "Vier"
+ },
+ {
+  "s": "klonk",
+  "k": "b8b29210d2c5e788ca18",
+  "text": "Vier."
+ },
+ {
+  "s": "klonk",
+  "k": "5ac09cbc3a78e87f20b3",
+  "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "klonk",
+  "k": "9fdb3b9d91ad00ffa073",
+  "text": "Wie viel ist"
+ },
+ {
+  "s": "klonk",
+  "k": "13524ea5d94cd7decbc2",
+  "text": "Wie viel ist gar nichts?"
+ },
+ {
+  "s": "klonk",
+  "k": "233b0cf411c094cd5852",
+  "text": "Wie viele Batterien siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "894d418bd5783c335f45",
+  "text": "Wie viele Edelsteine siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "008881e225c4a0dc8854",
+  "text": "Wie viele Glühbirnen siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "4e5b58469ece41cf3f2b",
+  "text": "Wie viele Raketen siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "32b22e3b09c7a3bff125",
+  "text": "Wie viele Roboter siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "3ba5eab9cd4780b7b1c3",
+  "text": "Wie viele Schrauben siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "96079029a1e79e654148",
+  "text": "Wie viele Zahnräder siehst du?"
+ },
+ {
+  "s": "klonk",
+  "k": "6330375fe4db46859aa4",
+  "text": "Wo ist die"
+ },
+ {
+  "s": "klonk",
+  "k": "1fb04f4f682f53d651f9",
+  "text": "Wunderbar!"
+ },
+ {
+  "s": "klonk",
+  "k": "af89a121f885b3d5b348",
+  "text": "Wunderbar, Sam!"
+ },
+ {
+  "s": "klonk",
+  "k": "3e5d10ae17a42749b04c",
+  "text": "Zahlen von"
+ },
+ {
+  "s": "klonk",
+  "k": "b3906e2ea96c9dbc9fe0",
+  "text": "Zahnräder gezählt."
+ },
+ {
+  "s": "klonk",
+  "k": "8a85680390953fa0e2ff",
+  "text": "Zahnräder!"
+ },
+ {
+  "s": "klonk",
+  "k": "c3545979b8ee1f032dc0",
+  "text": "Zahnräder."
+ },
+ {
+  "s": "klonk",
+  "k": "c87a279085c3f009e953",
+  "text": "Zauberhaft!"
+ },
+ {
+  "s": "klonk",
+  "k": "c2d9989f6baa1d693578",
+  "text": "Zauberhaft, Sam!"
+ },
+ {
+  "s": "klonk",
+  "k": "71c6b9aba6115bce8709",
+  "text": "Zehn"
+ },
+ {
+  "s": "klonk",
+  "k": "147d3b987fed11d3dcf3",
+  "text": "Zehn."
+ },
+ {
+  "s": "klonk",
+  "k": "90a69f47c4d99c5820eb",
+  "text": "Zwei"
+ },
+ {
+  "s": "klonk",
+  "k": "e086c0f979194d6bf4ed",
+  "text": "Zwei."
+ },
+ {
+  "s": "klonk",
+  "k": "59f805bc9b56cdcd8020",
+  "text": "bis"
+ },
+ {
+  "s": "klonk",
+  "k": "559318954d274d8ed1b7",
+  "text": "gehen weg."
+ },
+ {
+  "s": "klonk",
+  "k": "27e012bdf1d60b14560f",
+  "text": "geht weg."
+ },
+ {
+  "s": "klonk",
+  "k": "22ee0000c16b361329bd",
+  "text": "ist"
+ },
+ {
+  "s": "klonk",
+  "k": "9461aa7ffd17f7da337f",
+  "text": "minus"
+ },
+ {
+  "s": "klonk",
+  "k": "1099bce80997d00c5709",
+  "text": "plus"
+ },
+ {
+  "s": "holunder",
+  "k": "40bcce838e4a0de4db9f",
+  "text": "Acht"
+ },
+ {
+  "s": "holunder",
+  "k": "e2f6bd37079039bcf583",
+  "text": "Acht."
+ },
+ {
+  "s": "holunder",
+  "k": "914bf6ca74ca965f57da",
+  "text": "Besen gezählt."
+ },
+ {
+  "s": "holunder",
+  "k": "ffd15a010961ba60a603",
+  "text": "Besen!"
+ },
+ {
+  "s": "holunder",
+  "k": "1126cc4577219db71b71",
+  "text": "Besen."
+ },
+ {
+  "s": "holunder",
+  "k": "a463f2b5a2080e1aacc8",
+  "text": "Blubber, blubber!"
+ },
+ {
+  "s": "holunder",
+  "k": "f1400aa87c2695bca076",
+  "text": "Da ist gar nichts!"
+ },
+ {
+  "s": "holunder",
+  "k": "6943cc6fe985ac9be186",
+  "text": "Das Feld ist leer."
+ },
+ {
+  "s": "holunder",
+  "k": "652855c6d0f87aeb5160",
+  "text": "Das ist die"
+ },
+ {
+  "s": "holunder",
+  "k": "27f32d563371d00e3df7",
+  "text": "Die"
+ },
+ {
+  "s": "holunder",
+  "k": "803061293dca0ec6d344",
+  "text": "Drei"
+ },
+ {
+  "s": "holunder",
+  "k": "d9306a81993ef5d35aaf",
+  "text": "Drei."
+ },
+ {
+  "s": "holunder",
+  "k": "e004a561b9f94addae12",
+  "text": "Du hast"
+ },
+ {
+  "s": "holunder",
+  "k": "a569d84ab2f8dea3fbe1",
+  "text": "Ein Besen."
+ },
+ {
+  "s": "holunder",
+  "k": "7a6d4a0a8a614ca7c3d2",
+  "text": "Ein Frosch."
+ },
+ {
+  "s": "holunder",
+  "k": "dce5bade83bdc7004b97",
+  "text": "Ein Kürbis."
+ },
+ {
+  "s": "holunder",
+  "k": "da8ec72cb48687ce1b32",
+  "text": "Ein Pilz."
+ },
+ {
+  "s": "holunder",
+  "k": "3c0defe400fec00367be",
+  "text": "Ein Zauberstern."
+ },
+ {
+  "s": "holunder",
+  "k": "1e7bf8fe6b90edd0210d",
+  "text": "Ein Zaubertrank."
+ },
+ {
+  "s": "holunder",
+  "k": "e1196f2012cce1de356c",
+  "text": "Ein blaues Nilpferd."
+ },
+ {
+  "s": "holunder",
+  "k": "f00417b9dca25aebedbf",
+  "text": "Eine Fledermaus."
+ },
+ {
+  "s": "holunder",
+  "k": "30ee2a46cdbe60bc72a1",
+  "text": "Eins"
+ },
+ {
+  "s": "holunder",
+  "k": "96dc5427fe9880495645",
+  "text": "Eins."
+ },
+ {
+  "s": "holunder",
+  "k": "ae63ebbdd9d4f4ad739a",
+  "text": "Fledermäuse gezählt."
+ },
+ {
+  "s": "holunder",
+  "k": "59b474a22029c5ac49e8",
+  "text": "Fledermäuse!"
+ },
+ {
+  "s": "holunder",
+  "k": "bb9423eeda441004403a",
+  "text": "Fledermäuse."
+ },
+ {
+  "s": "holunder",
+  "k": "76b982aa584b4db0acc4",
+  "text": "Frösche gezählt."
+ },
+ {
+  "s": "holunder",
+  "k": "7c67f5511a3885f37625",
+  "text": "Frösche!"
+ },
+ {
+  "s": "holunder",
+  "k": "f7ab9543c7f9eb5bad5c",
+  "text": "Frösche."
+ },
+ {
+  "s": "holunder",
+  "k": "bfb872c28b0f5661da3a",
+  "text": "Fünf"
+ },
+ {
+  "s": "holunder",
+  "k": "6bf1f505fad7749d8bb0",
+  "text": "Fünf."
+ },
+ {
+  "s": "holunder",
+  "k": "aebe4cf014b464dc476e",
+  "text": "Für Eltern: den Knopf gedrückt halten."
+ },
+ {
+  "s": "holunder",
+  "k": "41085cece987b241a90b",
+  "text": "Ganz genau!"
+ },
+ {
+  "s": "holunder",
+  "k": "00f962bd114627b27961",
+  "text": "Ganz genau, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "6850775935be1d137348",
+  "text": "Heraus kommt Hoppel!"
+ },
+ {
+  "s": "holunder",
+  "k": "59a9b0d1888b731c6016",
+  "text": "Heraus kommt Klonk!"
+ },
+ {
+  "s": "holunder",
+  "k": "b8e79865dbfd92ebcac2",
+  "text": "Heraus kommt ein Einhorn!"
+ },
+ {
+  "s": "holunder",
+  "k": "e8a628d415e65348f65d",
+  "text": "Heraus kommt ein Regenbogen!"
+ },
+ {
+  "s": "holunder",
+  "k": "76ff4df4f9ebf5fe5947",
+  "text": "Heraus kommt ein kleiner Drache!"
+ },
+ {
+  "s": "holunder",
+  "k": "d64c86b9f3305fb605d7",
+  "text": "Heraus kommt ganz viele Schmetterlinge!"
+ },
+ {
+  "s": "holunder",
+  "k": "fb5479bc7768bd0c378d",
+  "text": "Hier sind"
+ },
+ {
+  "s": "holunder",
+  "k": "8dd3f00fad4369a5177f",
+  "text": "Hier zaubern wir mit Plus und Minus."
+ },
+ {
+  "s": "holunder",
+  "k": "2b0112dbf5d7e385238b",
+  "text": "Hihi!"
+ },
+ {
+  "s": "holunder",
+  "k": "a5a1b2683a4d11e0ee31",
+  "text": "Hihi, gut so!"
+ },
+ {
+  "s": "holunder",
+  "k": "3c778d89ada0953668ed",
+  "text": "Hmm."
+ },
+ {
+  "s": "holunder",
+  "k": "f2efe7de3ea051ae2826",
+  "text": "Ich bin Hexe Holunder."
+ },
+ {
+  "s": "holunder",
+  "k": "5ebdebf6a07e5308b0cf",
+  "text": "In meinem Hexenhaus brodelt immer ein Zaubertrank."
+ },
+ {
+  "s": "holunder",
+  "k": "d135991529a426adf17a",
+  "text": "Ja, genau!"
+ },
+ {
+  "s": "holunder",
+  "k": "ee661e4c2795d9b60602",
+  "text": "Ja, genau, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "76e8fc39c06f0e82275b",
+  "text": "Kürbisse gezählt."
+ },
+ {
+  "s": "holunder",
+  "k": "e7861ef4168c47af7b77",
+  "text": "Kürbisse!"
+ },
+ {
+  "s": "holunder",
+  "k": "0e933d51593986d01f47",
+  "text": "Kürbisse."
+ },
+ {
+  "s": "holunder",
+  "k": "5ac68f937f8a1475f720",
+  "text": "Lass uns zusammen zählen!"
+ },
+ {
+  "s": "holunder",
+  "k": "474578566670a247c2ed",
+  "text": "Neun"
+ },
+ {
+  "s": "holunder",
+  "k": "31502d22d51f9611b0f2",
+  "text": "Neun."
+ },
+ {
+  "s": "holunder",
+  "k": "efb1d339bf7e10d19f01",
+  "text": "Noch etwas!"
+ },
+ {
+  "s": "holunder",
+  "k": "d67c82dc70b8949f4633",
+  "text": "Null"
+ },
+ {
+  "s": "holunder",
+  "k": "7ea56c3417670604a12c",
+  "text": "Null heißt: gar nichts!"
+ },
+ {
+  "s": "holunder",
+  "k": "d9432c46a7a0b4a463a9",
+  "text": "Null."
+ },
+ {
+  "s": "holunder",
+  "k": "a88ddfcbcd615fe7dfe2",
+  "text": "Pilze gezählt."
+ },
+ {
+  "s": "holunder",
+  "k": "77809cadf09d2186b1ff",
+  "text": "Pilze!"
+ },
+ {
+  "s": "holunder",
+  "k": "40153512350dfd7e5192",
+  "text": "Pilze."
+ },
+ {
+  "s": "holunder",
+  "k": "cb2e9585529060e0e8bf",
+  "text": "Prima!"
+ },
+ {
+  "s": "holunder",
+  "k": "1b198fddb1254f326348",
+  "text": "Prima, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "46af4e4ef65ffb592021",
+  "text": "Richtig!"
+ },
+ {
+  "s": "holunder",
+  "k": "90793885e463e8aa046a",
+  "text": "Richtig, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "154d9d92e96c3136aefd",
+  "text": "Sag mal: Acht!"
+ },
+ {
+  "s": "holunder",
+  "k": "a6f1c90c7331c7423be0",
+  "text": "Sag mal: Drei!"
+ },
+ {
+  "s": "holunder",
+  "k": "d8a476d577d48f7cf0be",
+  "text": "Sag mal: Eins!"
+ },
+ {
+  "s": "holunder",
+  "k": "bc361cb261bb918228b6",
+  "text": "Sag mal: Fünf!"
+ },
+ {
+  "s": "holunder",
+  "k": "71484a60eac14ee024d1",
+  "text": "Sag mal: Neun!"
+ },
+ {
+  "s": "holunder",
+  "k": "e77c41fb85519b77f330",
+  "text": "Sag mal: Null!"
+ },
+ {
+  "s": "holunder",
+  "k": "a0326e62e9c4852efc66",
+  "text": "Sag mal: Sechs!"
+ },
+ {
+  "s": "holunder",
+  "k": "5723726238630de0f2a6",
+  "text": "Sag mal: Sieben!"
+ },
+ {
+  "s": "holunder",
+  "k": "4a2646837fbe3996dfcf",
+  "text": "Sag mal: Vier!"
+ },
+ {
+  "s": "holunder",
+  "k": "f8c12ce9b70960b3be1b",
+  "text": "Sag mal: Zehn!"
+ },
+ {
+  "s": "holunder",
+  "k": "b7c54d13c9559cf2ca99",
+  "text": "Sag mal: Zwei!"
+ },
+ {
+  "s": "holunder",
+  "k": "401cc54aa0bcfe325ad9",
+  "text": "Schau mal, da ist gar nichts."
+ },
+ {
+  "s": "holunder",
+  "k": "9c5f1e65895ba34a328e",
+  "text": "Schau mal, es bleibt gar nichts übrig!"
+ },
+ {
+  "s": "holunder",
+  "k": "8b34b93255818f3867b0",
+  "text": "Sechs"
+ },
+ {
+  "s": "holunder",
+  "k": "bcdbf6555b31f5d36da9",
+  "text": "Sechs."
+ },
+ {
+  "s": "holunder",
+  "k": "568c274ce04c5b7badd2",
+  "text": "Sehr gut!"
+ },
+ {
+  "s": "holunder",
+  "k": "9cb427826d2cb5c5f2f1",
+  "text": "Sehr gut, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "90c674b78edb18d6f755",
+  "text": "Sehr schön!"
+ },
+ {
+  "s": "holunder",
+  "k": "228d5f89ae76471cf0c5",
+  "text": "Sehr schön, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "1bb4c2404721af44bf7d",
+  "text": "Sieben"
+ },
+ {
+  "s": "holunder",
+  "k": "9cf5ee2384e28f529401",
+  "text": "Sieben."
+ },
+ {
+  "s": "holunder",
+  "k": "55f842559bc8680a663e",
+  "text": "Simsalabim!"
+ },
+ {
+  "s": "holunder",
+  "k": "f32f699142cec35a1f5f",
+  "text": "Tippe alle Besen an und zähl mit!"
+ },
+ {
+  "s": "holunder",
+  "k": "b63fad5741417daf43e3",
+  "text": "Tippe alle Fledermäuse an und zähl mit!"
+ },
+ {
+  "s": "holunder",
+  "k": "a2de1b850052dcb14ad9",
+  "text": "Tippe alle Frösche an und zähl mit!"
+ },
+ {
+  "s": "holunder",
+  "k": "740c9e58b6d32a361c15",
+  "text": "Tippe alle Kürbisse an und zähl mit!"
+ },
+ {
+  "s": "holunder",
+  "k": "dbf222cacc3a0bdb2fcc",
+  "text": "Tippe alle Pilze an und zähl mit!"
+ },
+ {
+  "s": "holunder",
+  "k": "a7fa4b4ecd1eaa982cdc",
+  "text": "Tippe alle Zaubersterne an und zähl mit!"
+ },
+ {
+  "s": "holunder",
+  "k": "cbd94e305d4d6acb2bde",
+  "text": "Tippe alle Zaubertränke an und zähl mit!"
+ },
+ {
+  "s": "holunder",
+  "k": "0ace35cdf3ba78332413",
+  "text": "Tippe alle blaue Nilpferde an und zähl mit!"
+ },
+ {
+  "s": "holunder",
+  "k": "645e0a9670c45301749d",
+  "text": "Tippe auf eine Zahl!"
+ },
+ {
+  "s": "holunder",
+  "k": "b62027a807e70118789a",
+  "text": "Toll gemacht!"
+ },
+ {
+  "s": "holunder",
+  "k": "82e7d685fc752a5137bc",
+  "text": "Toll gemacht, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "e980900a5784cb50a512",
+  "text": "Ton an"
+ },
+ {
+  "s": "holunder",
+  "k": "ba1a89c134834298a5c1",
+  "text": "Umrühren!"
+ },
+ {
+  "s": "holunder",
+  "k": "3c4ec6aabff6cc517eab",
+  "text": "Vier"
+ },
+ {
+  "s": "holunder",
+  "k": "d340c3d49d9b22a543e8",
+  "text": "Vier."
+ },
+ {
+  "s": "holunder",
+  "k": "55b13c24a9007733f1c3",
+  "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "holunder",
+  "k": "6284552d2de22b14efa1",
+  "text": "Wie viel ist"
+ },
+ {
+  "s": "holunder",
+  "k": "fccd772cf9c152ec67e9",
+  "text": "Wie viel ist gar nichts?"
+ },
+ {
+  "s": "holunder",
+  "k": "78eff87f4a40f529bd18",
+  "text": "Wie viele Besen siehst du?"
+ },
+ {
+  "s": "holunder",
+  "k": "c20385cd0d9ff58b4580",
+  "text": "Wie viele Fledermäuse siehst du?"
+ },
+ {
+  "s": "holunder",
+  "k": "05ecc536723909b18453",
+  "text": "Wie viele Frösche siehst du?"
+ },
+ {
+  "s": "holunder",
+  "k": "1146d5c3b10b8c08b51d",
+  "text": "Wie viele Kürbisse siehst du?"
+ },
+ {
+  "s": "holunder",
+  "k": "793f6ea5e16b8d577c7b",
+  "text": "Wie viele Pilze siehst du?"
+ },
+ {
+  "s": "holunder",
+  "k": "fd278492889324bdcd9b",
+  "text": "Wie viele Zaubersterne siehst du?"
+ },
+ {
+  "s": "holunder",
+  "k": "c5c0b4fca0e27cce7efa",
+  "text": "Wie viele Zaubertränke siehst du?"
+ },
+ {
+  "s": "holunder",
+  "k": "52924dc7615f6c6f0d45",
+  "text": "Wie viele blaue Nilpferde siehst du?"
+ },
+ {
+  "s": "holunder",
+  "k": "b273cc3c2af226c16ead",
+  "text": "Willkommen in meinem Hexenhaus!"
+ },
+ {
+  "s": "holunder",
+  "k": "10f08bf4dc7c880490a2",
+  "text": "Wir brauen einen Zaubertrank."
+ },
+ {
+  "s": "holunder",
+  "k": "514e67aeed44d591486b",
+  "text": "Wirf alle Zutaten in den Kessel!"
+ },
+ {
+  "s": "holunder",
+  "k": "fc3e15fa15a189015909",
+  "text": "Wo ist die"
+ },
+ {
+  "s": "holunder",
+  "k": "5539da3895cb54a466ce",
+  "text": "Wunderbar!"
+ },
+ {
+  "s": "holunder",
+  "k": "54969a2838bc4acfceac",
+  "text": "Wunderbar, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "597268433a66087f39a2",
+  "text": "Zahlen von"
+ },
+ {
+  "s": "holunder",
+  "k": "93052c357ac43c57a65d",
+  "text": "Zauberhaft!"
+ },
+ {
+  "s": "holunder",
+  "k": "31f3549ddf42c4222119",
+  "text": "Zauberhaft, Sam!"
+ },
+ {
+  "s": "holunder",
+  "k": "eb3ba3ec017337a500ab",
+  "text": "Zaubersterne gezählt."
+ },
+ {
+  "s": "holunder",
+  "k": "e4ccb0ccb0d1f02ba704",
+  "text": "Zaubersterne!"
+ },
+ {
+  "s": "holunder",
+  "k": "692331e6fa628185c811",
+  "text": "Zaubersterne."
+ },
+ {
+  "s": "holunder",
+  "k": "23b968fa9a28e2f2e6bb",
+  "text": "Zaubertränke gezählt."
+ },
+ {
+  "s": "holunder",
+  "k": "c41ddb1a1d7bdb331b44",
+  "text": "Zaubertränke!"
+ },
+ {
+  "s": "holunder",
+  "k": "9cff85e4e7628d018359",
+  "text": "Zaubertränke."
+ },
+ {
+  "s": "holunder",
+  "k": "2f8756f87a819e5b7eba",
+  "text": "Zehn"
+ },
+ {
+  "s": "holunder",
+  "k": "87b8a5af8fe1043f0740",
+  "text": "Zehn."
+ },
+ {
+  "s": "holunder",
+  "k": "6f6e63eb9602f2d82f30",
+  "text": "Zwei"
+ },
+ {
+  "s": "holunder",
+  "k": "0a53af5ab12080c4f975",
+  "text": "Zwei."
+ },
+ {
+  "s": "holunder",
+  "k": "8eb6be2d9099343ef6bb",
+  "text": "bis"
+ },
+ {
+  "s": "holunder",
+  "k": "333dd50526f469966b82",
+  "text": "blaue Nilpferde gezählt."
+ },
+ {
+  "s": "holunder",
+  "k": "9669bab37cc5209c49f4",
+  "text": "blaue Nilpferde!"
+ },
+ {
+  "s": "holunder",
+  "k": "68275b30146198ed5fdb",
+  "text": "blaue Nilpferde."
+ },
+ {
+  "s": "holunder",
+  "k": "cab9bf2b9a77a9eb030b",
+  "text": "gehen weg."
+ },
+ {
+  "s": "holunder",
+  "k": "a0246ba32e57801e2a26",
+  "text": "geht weg."
+ },
+ {
+  "s": "holunder",
+  "k": "a10e0667191cc0716b98",
+  "text": "ist"
+ },
+ {
+  "s": "holunder",
+  "k": "7456607064ab4a66cc01",
+  "text": "minus"
+ },
+ {
+  "s": "holunder",
+  "k": "52963df51bd908fe144a",
+  "text": "plus"
+ },
+ {
+  "s": "hoppel",
+  "k": "0fdb630de00473b0f516",
+  "text": "Acht"
+ },
+ {
+  "s": "hoppel",
+  "k": "7e8b16d1f424bf1da642",
+  "text": "Acht."
+ },
+ {
+  "s": "hoppel",
+  "k": "5a1a9b2c2d81e07914cc",
+  "text": "Auf meiner Wiese verstecken sich Zahlen."
+ },
+ {
+  "s": "hoppel",
+  "k": "5733a7db865583281f49",
+  "text": "Blumen gezählt."
+ },
+ {
+  "s": "hoppel",
+  "k": "65155563ea9390b0159d",
+  "text": "Blumen!"
+ },
+ {
+  "s": "hoppel",
+  "k": "9e3e2f52b52a78cd2dfa",
+  "text": "Blumen."
+ },
+ {
+  "s": "hoppel",
+  "k": "24e7bf673a59d9d4f219",
+  "text": "Da ist gar nichts!"
+ },
+ {
+  "s": "hoppel",
+  "k": "fc4dbf71e5d91e3d366b",
+  "text": "Das Feld ist leer."
+ },
+ {
+  "s": "hoppel",
+  "k": "607443a5b89da6002b3e",
+  "text": "Das ist die"
+ },
+ {
+  "s": "hoppel",
+  "k": "8c3e73731a89af3b1d65",
+  "text": "Die"
+ },
+ {
+  "s": "hoppel",
+  "k": "b7ddf726413ac266755f",
+  "text": "Drei"
+ },
+ {
+  "s": "hoppel",
+  "k": "c036af34069174facdfa",
+  "text": "Drei."
+ },
+ {
+  "s": "hoppel",
+  "k": "2c7e2a29a0e87f018cea",
+  "text": "Du bist schnell!"
+ },
+ {
+  "s": "hoppel",
+  "k": "da218dfb66a4ba8503e1",
+  "text": "Du hast"
+ },
+ {
+  "s": "hoppel",
+  "k": "0e41769f6ed7ca6af37a",
+  "text": "Du hast mich sechsmal gefunden!"
+ },
+ {
+  "s": "hoppel",
+  "k": "7f2b5a6b23798cd241ed",
+  "text": "Ein Kaninchen."
+ },
+ {
+  "s": "hoppel",
+  "k": "d16bf1a8446ff94ffcfd",
+  "text": "Ein Marienkäfer."
+ },
+ {
+  "s": "hoppel",
+  "k": "feae3ce3196be07f6677",
+  "text": "Ein Schmetterling."
+ },
+ {
+  "s": "hoppel",
+  "k": "ed9b361f623f87b775d8",
+  "text": "Eine Blume."
+ },
+ {
+  "s": "hoppel",
+  "k": "269436a23e2b43bd77d2",
+  "text": "Eine Erdbeere."
+ },
+ {
+  "s": "hoppel",
+  "k": "5e2ddcb1164b9941726e",
+  "text": "Eine Karotte."
+ },
+ {
+  "s": "hoppel",
+  "k": "9d57aa8c954a72ca8409",
+  "text": "Eine Schnecke."
+ },
+ {
+  "s": "hoppel",
+  "k": "360be496fb38f7ab4f6e",
+  "text": "Eins"
+ },
+ {
+  "s": "hoppel",
+  "k": "3a9c1bf137c708f8c954",
+  "text": "Eins."
+ },
+ {
+  "s": "hoppel",
+  "k": "36cf1d32f9885cd615d9",
+  "text": "Erdbeeren gezählt."
+ },
+ {
+  "s": "hoppel",
+  "k": "03a337ad907d015fd123",
+  "text": "Erdbeeren!"
+ },
+ {
+  "s": "hoppel",
+  "k": "c098954ed06a6b4aee07",
+  "text": "Erdbeeren."
+ },
+ {
+  "s": "hoppel",
+  "k": "7edc4f0623a01e7caeb8",
+  "text": "Fünf"
+ },
+ {
+  "s": "hoppel",
+  "k": "c1596c8ff81c43498860",
+  "text": "Fünf."
+ },
+ {
+  "s": "hoppel",
+  "k": "479cc228b449b2b4b37e",
+  "text": "Für Eltern: den Knopf gedrückt halten."
+ },
+ {
+  "s": "hoppel",
+  "k": "b68e0eea5f4de6c5027b",
+  "text": "Ganz genau!"
+ },
+ {
+  "s": "hoppel",
+  "k": "bde13324fc5e40d69730",
+  "text": "Ganz genau, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "e2759a18816d90fdd898",
+  "text": "Hallo!"
+ },
+ {
+  "s": "hoppel",
+  "k": "f8cd114083e89de8810b",
+  "text": "Hallo, hallo!"
+ },
+ {
+  "s": "hoppel",
+  "k": "61285e5f6f6afc9ff140",
+  "text": "Hier sind"
+ },
+ {
+  "s": "hoppel",
+  "k": "e7087d408cbdae609d36",
+  "text": "Hier, eine Karotte für dich!"
+ },
+ {
+  "s": "hoppel",
+  "k": "7198e87f7f0458c2571c",
+  "text": "Hihi, erwischt!"
+ },
+ {
+  "s": "hoppel",
+  "k": "c0d2829e9c1cf8f5f08a",
+  "text": "Hilfst du mir, sie zu finden?"
+ },
+ {
+  "s": "hoppel",
+  "k": "dfa2e2fcb813db8578b5",
+  "text": "Hmm."
+ },
+ {
+  "s": "hoppel",
+  "k": "3c7656def5ccce99e7ac",
+  "text": "Huch!"
+ },
+ {
+  "s": "hoppel",
+  "k": "af4d9fa84a366dc2058c",
+  "text": "Ich bin Hoppel!"
+ },
+ {
+  "s": "hoppel",
+  "k": "f0a2621a223d288b044c",
+  "text": "Ich verstecke mich in meinen Löchern!"
+ },
+ {
+  "s": "hoppel",
+  "k": "fbfdce9ddf857d1c42d2",
+  "text": "Ich wohne auf der Kaninchenwiese und hüpfe den ganzen Tag!"
+ },
+ {
+  "s": "hoppel",
+  "k": "046b7d44cd5ee89d6646",
+  "text": "Ja, genau!"
+ },
+ {
+  "s": "hoppel",
+  "k": "d071a6d1157cfb914c98",
+  "text": "Ja, genau, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "df0c4bd2c3995cd2a1c1",
+  "text": "Kaninchen gezählt."
+ },
+ {
+  "s": "hoppel",
+  "k": "b73bbaa613ed66efcfda",
+  "text": "Kaninchen!"
+ },
+ {
+  "s": "hoppel",
+  "k": "26a4ec6f43cb3830bc19",
+  "text": "Kaninchen."
+ },
+ {
+  "s": "hoppel",
+  "k": "67fced3239ebc5e1f258",
+  "text": "Karotten gezählt."
+ },
+ {
+  "s": "hoppel",
+  "k": "22735ab0fa8721559c07",
+  "text": "Karotten!"
+ },
+ {
+  "s": "hoppel",
+  "k": "22581269273de6090d77",
+  "text": "Karotten."
+ },
+ {
+  "s": "hoppel",
+  "k": "777571c9d4e16d736a9d",
+  "text": "Lass uns zusammen zählen!"
+ },
+ {
+  "s": "hoppel",
+  "k": "b3ef5145aacbe1f7df70",
+  "text": "Marienkäfer gezählt."
+ },
+ {
+  "s": "hoppel",
+  "k": "5965acd80508e25cc73d",
+  "text": "Marienkäfer!"
+ },
+ {
+  "s": "hoppel",
+  "k": "33c5c72e850a85fd6bb6",
+  "text": "Marienkäfer."
+ },
+ {
+  "s": "hoppel",
+  "k": "cedc64cc429cfe8c264d",
+  "text": "Neun"
+ },
+ {
+  "s": "hoppel",
+  "k": "b848d221717e2ab4b030",
+  "text": "Neun."
+ },
+ {
+  "s": "hoppel",
+  "k": "c6d57c315344a2d868e0",
+  "text": "Nochmal!"
+ },
+ {
+  "s": "hoppel",
+  "k": "1a1701006820371bff99",
+  "text": "Null"
+ },
+ {
+  "s": "hoppel",
+  "k": "0f000db4e05a81ec7a14",
+  "text": "Null heißt: gar nichts!"
+ },
+ {
+  "s": "hoppel",
+  "k": "4da8ecd267ddbfd40bae",
+  "text": "Null."
+ },
+ {
+  "s": "hoppel",
+  "k": "06a1192c23ff901359bd",
+  "text": "Prima!"
+ },
+ {
+  "s": "hoppel",
+  "k": "d680e45ca234b03e735c",
+  "text": "Prima, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "c0ff0d49aac70790062b",
+  "text": "Richtig!"
+ },
+ {
+  "s": "hoppel",
+  "k": "4501ffed1ce6787db1e2",
+  "text": "Richtig, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "6b29af3206188fff6fcf",
+  "text": "Sag mal: Acht!"
+ },
+ {
+  "s": "hoppel",
+  "k": "9b01f8c5b68b983b656f",
+  "text": "Sag mal: Drei!"
+ },
+ {
+  "s": "hoppel",
+  "k": "66cb9e9cbdec3a8caea5",
+  "text": "Sag mal: Eins!"
+ },
+ {
+  "s": "hoppel",
+  "k": "0c6773f7a2ced8da52e5",
+  "text": "Sag mal: Fünf!"
+ },
+ {
+  "s": "hoppel",
+  "k": "f9a1b5c28cff0bd142b3",
+  "text": "Sag mal: Neun!"
+ },
+ {
+  "s": "hoppel",
+  "k": "63aef5f02fa1fad5428b",
+  "text": "Sag mal: Null!"
+ },
+ {
+  "s": "hoppel",
+  "k": "d3a5f53d2fac85d3117c",
+  "text": "Sag mal: Sechs!"
+ },
+ {
+  "s": "hoppel",
+  "k": "425ad015cab30bf07f40",
+  "text": "Sag mal: Sieben!"
+ },
+ {
+  "s": "hoppel",
+  "k": "4759e51dfd4e0fc84fe7",
+  "text": "Sag mal: Vier!"
+ },
+ {
+  "s": "hoppel",
+  "k": "37886fe7827ff59b3d61",
+  "text": "Sag mal: Zehn!"
+ },
+ {
+  "s": "hoppel",
+  "k": "8e971cbdcbba4ded9b2f",
+  "text": "Sag mal: Zwei!"
+ },
+ {
+  "s": "hoppel",
+  "k": "bcbb1dd7c8cd1ccf2156",
+  "text": "Schau mal, da ist gar nichts."
+ },
+ {
+  "s": "hoppel",
+  "k": "4dc78c418778bc2b0c63",
+  "text": "Schau mal, es bleibt gar nichts übrig!"
+ },
+ {
+  "s": "hoppel",
+  "k": "93bca94f57118c2ff4d9",
+  "text": "Schmetterlinge gezählt."
+ },
+ {
+  "s": "hoppel",
+  "k": "70c9b0e79da5e90e97e2",
+  "text": "Schmetterlinge!"
+ },
+ {
+  "s": "hoppel",
+  "k": "227f8af3ece57337719e",
+  "text": "Schmetterlinge."
+ },
+ {
+  "s": "hoppel",
+  "k": "8229ae2b4a106ccfbbb5",
+  "text": "Schnecken gezählt."
+ },
+ {
+  "s": "hoppel",
+  "k": "8cf933131ec043df2728",
+  "text": "Schnecken!"
+ },
+ {
+  "s": "hoppel",
+  "k": "2db27b4196951cb5287f",
+  "text": "Schnecken."
+ },
+ {
+  "s": "hoppel",
+  "k": "5b95e01b66d6b141c037",
+  "text": "Sechs"
+ },
+ {
+  "s": "hoppel",
+  "k": "77c002eb552ae0423fa1",
+  "text": "Sechs."
+ },
+ {
+  "s": "hoppel",
+  "k": "ee8d58cd80841fdb8ad9",
+  "text": "Sehr gut!"
+ },
+ {
+  "s": "hoppel",
+  "k": "290170a9cc293a7c2b33",
+  "text": "Sehr gut, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "bc6adf3db00ed0a0afa2",
+  "text": "Sehr schön!"
+ },
+ {
+  "s": "hoppel",
+  "k": "925096f4a2841af0b4ad",
+  "text": "Sehr schön, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "f0a91504d1e4e15fb852",
+  "text": "Sieben"
+ },
+ {
+  "s": "hoppel",
+  "k": "9237dd5cf5c12aa29c6a",
+  "text": "Sieben."
+ },
+ {
+  "s": "hoppel",
+  "k": "8b0e207f882a281c706f",
+  "text": "Tipp mich an, wenn ich rausgucke!"
+ },
+ {
+  "s": "hoppel",
+  "k": "25bfd631f657e7e7f32a",
+  "text": "Tippe alle Blumen an und zähl mit!"
+ },
+ {
+  "s": "hoppel",
+  "k": "4b3fd433354d2e9188e8",
+  "text": "Tippe alle Erdbeeren an und zähl mit!"
+ },
+ {
+  "s": "hoppel",
+  "k": "8e5ac5a314612dc4e8e0",
+  "text": "Tippe alle Kaninchen an und zähl mit!"
+ },
+ {
+  "s": "hoppel",
+  "k": "eade05fe660b7793ad5f",
+  "text": "Tippe alle Karotten an und zähl mit!"
+ },
+ {
+  "s": "hoppel",
+  "k": "d0dc02984c8dd807d277",
+  "text": "Tippe alle Marienkäfer an und zähl mit!"
+ },
+ {
+  "s": "hoppel",
+  "k": "6f27090be32eba31da23",
+  "text": "Tippe alle Schmetterlinge an und zähl mit!"
+ },
+ {
+  "s": "hoppel",
+  "k": "4e8ab66ae502f29d1cf5",
+  "text": "Tippe alle Schnecken an und zähl mit!"
+ },
+ {
+  "s": "hoppel",
+  "k": "17e71a9b834ecb75203d",
+  "text": "Tippe auf eine Zahl!"
+ },
+ {
+  "s": "hoppel",
+  "k": "f9c766f1a430874cec49",
+  "text": "Toll gemacht!"
+ },
+ {
+  "s": "hoppel",
+  "k": "171db0c6aebff22d2b67",
+  "text": "Toll gemacht, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "64c58051ac9137ce1541",
+  "text": "Ton an"
+ },
+ {
+  "s": "hoppel",
+  "k": "d1403d2aa861536fb5d2",
+  "text": "Vier"
+ },
+ {
+  "s": "hoppel",
+  "k": "f2980ec5609cb728fba6",
+  "text": "Vier."
+ },
+ {
+  "s": "hoppel",
+  "k": "6e84a188b8aa63aebd49",
+  "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "hoppel",
+  "k": "e8b3b55336c59d52399c",
+  "text": "Wie viel ist"
+ },
+ {
+  "s": "hoppel",
+  "k": "16bb425f369c1a1c2c78",
+  "text": "Wie viel ist gar nichts?"
+ },
+ {
+  "s": "hoppel",
+  "k": "3273ec943f106384611c",
+  "text": "Wie viele Blumen siehst du?"
+ },
+ {
+  "s": "hoppel",
+  "k": "fa3969c815a98e3a85e1",
+  "text": "Wie viele Erdbeeren siehst du?"
+ },
+ {
+  "s": "hoppel",
+  "k": "9eb1da0a98d4638aef3f",
+  "text": "Wie viele Kaninchen siehst du?"
+ },
+ {
+  "s": "hoppel",
+  "k": "0ea701de7926ee304de1",
+  "text": "Wie viele Karotten siehst du?"
+ },
+ {
+  "s": "hoppel",
+  "k": "7283263eb1c01c9fe375",
+  "text": "Wie viele Marienkäfer siehst du?"
+ },
+ {
+  "s": "hoppel",
+  "k": "6de9719b9173daf9ae39",
+  "text": "Wie viele Schmetterlinge siehst du?"
+ },
+ {
+  "s": "hoppel",
+  "k": "8d3dd51fd3b6bce58eaa",
+  "text": "Wie viele Schnecken siehst du?"
+ },
+ {
+  "s": "hoppel",
+  "k": "8bc7ef9442b3f495617b",
+  "text": "Wo ist die"
+ },
+ {
+  "s": "hoppel",
+  "k": "a661d36d1479bceb08d1",
+  "text": "Wunderbar!"
+ },
+ {
+  "s": "hoppel",
+  "k": "3173a159f6e5da3d68a8",
+  "text": "Wunderbar, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "2347d11c996d854c891d",
+  "text": "Zahlen von"
+ },
+ {
+  "s": "hoppel",
+  "k": "7f6f13404ffa8f76ef65",
+  "text": "Zauberhaft!"
+ },
+ {
+  "s": "hoppel",
+  "k": "c948ab6c03785e097ce2",
+  "text": "Zauberhaft, Sam!"
+ },
+ {
+  "s": "hoppel",
+  "k": "fb436cadf9f8d6861392",
+  "text": "Zehn"
+ },
+ {
+  "s": "hoppel",
+  "k": "37d8999bcea80c1580bb",
+  "text": "Zehn."
+ },
+ {
+  "s": "hoppel",
+  "k": "98a2ffa62bbac83f188c",
+  "text": "Zwei"
+ },
+ {
+  "s": "hoppel",
+  "k": "5517b9c04d9169c93319",
+  "text": "Zwei."
+ },
+ {
+  "s": "hoppel",
+  "k": "8eb04ca9ab37cf00269a",
+  "text": "bis"
+ },
+ {
+  "s": "hoppel",
+  "k": "3963824f649c846f3d02",
+  "text": "gehen weg."
+ },
+ {
+  "s": "hoppel",
+  "k": "852f0d206336ec730f09",
+  "text": "geht weg."
+ },
+ {
+  "s": "hoppel",
+  "k": "77942d2f0201a6bc923a",
+  "text": "ist"
+ },
+ {
+  "s": "hoppel",
+  "k": "3f7ad0ee3a9d216b2514",
+  "text": "minus"
+ },
+ {
+  "s": "hoppel",
+  "k": "5489b69311d6305aeadf",
+  "text": "plus"
+ },
+ {
+  "s": "blupp",
+  "k": "1a4913a6c23183ab69f5",
+  "text": "Acht"
+ },
+ {
+  "s": "blupp",
+  "k": "d011bb769f597e19fe0b",
+  "text": "Acht."
  },
  {
   "s": "blupp",
@@ -1506,6 +3876,11 @@
  },
  {
   "s": "blupp",
+  "k": "af89299eaa97efe9b8f3",
+  "text": "Da ist gar nichts!"
+ },
+ {
+  "s": "blupp",
   "k": "989642c31df7049479f2",
   "text": "Danke!"
  },
@@ -1516,13 +3891,168 @@
  },
  {
   "s": "blupp",
+  "k": "2c749465497ccc03252e",
+  "text": "Das Feld ist leer."
+ },
+ {
+  "s": "blupp",
+  "k": "652624794eb64199a7e9",
+  "text": "Das ist die"
+ },
+ {
+  "s": "blupp",
   "k": "17ffd64c6518f749f6be",
   "text": "Das war schön!"
  },
  {
   "s": "blupp",
+  "k": "e2c0faca65e2157b7814",
+  "text": "Die"
+ },
+ {
+  "s": "blupp",
+  "k": "2a657f9151d7b4a5b3da",
+  "text": "Drei"
+ },
+ {
+  "s": "blupp",
+  "k": "2b19fdfce99f91bc9d9c",
+  "text": "Drei."
+ },
+ {
+  "s": "blupp",
+  "k": "3d9798ba07dfb5614957",
+  "text": "Du hast"
+ },
+ {
+  "s": "blupp",
+  "k": "7360aebd6f82f77da03f",
+  "text": "Ein Fisch."
+ },
+ {
+  "s": "blupp",
+  "k": "fee23ad4e761110254fc",
+  "text": "Ein Krebs."
+ },
+ {
+  "s": "blupp",
+  "k": "03b4f9ecfbf20e8b9aa5",
+  "text": "Ein Segelboot."
+ },
+ {
+  "s": "blupp",
+  "k": "f97d1ad748f7ba399889",
+  "text": "Ein Tintenfisch."
+ },
+ {
+  "s": "blupp",
+  "k": "697211d31e8c08f00166",
+  "text": "Ein blaues Nilpferd."
+ },
+ {
+  "s": "blupp",
+  "k": "52d26fced29c11a4e5e4",
+  "text": "Ein bunter Fisch."
+ },
+ {
+  "s": "blupp",
+  "k": "2ce715f4ffb76cd46832",
+  "text": "Eine Ente."
+ },
+ {
+  "s": "blupp",
+  "k": "d760c91763e29432ed5e",
+  "text": "Eine Muschel."
+ },
+ {
+  "s": "blupp",
+  "k": "9aea49d033c3c2691d58",
+  "text": "Eine Schildkröte."
+ },
+ {
+  "s": "blupp",
+  "k": "7642084619913c454e49",
+  "text": "Eins"
+ },
+ {
+  "s": "blupp",
+  "k": "d21b41d086d75b6d7db5",
+  "text": "Eins."
+ },
+ {
+  "s": "blupp",
+  "k": "ce5f2220c6cd92272f95",
+  "text": "Enten gezählt."
+ },
+ {
+  "s": "blupp",
+  "k": "679b42ef6f5bd5021455",
+  "text": "Enten!"
+ },
+ {
+  "s": "blupp",
+  "k": "f0b849368c7ca5bd8605",
+  "text": "Enten."
+ },
+ {
+  "s": "blupp",
+  "k": "672c4609f42ae7267aa5",
+  "text": "Fische gezählt."
+ },
+ {
+  "s": "blupp",
+  "k": "99f99b831abbe546dca2",
+  "text": "Fische!"
+ },
+ {
+  "s": "blupp",
+  "k": "e3095b1cc3c6210db057",
+  "text": "Fische."
+ },
+ {
+  "s": "blupp",
+  "k": "d863447f40df1a8ab629",
+  "text": "Fünf"
+ },
+ {
+  "s": "blupp",
+  "k": "2795cc37e5709e0d6629",
+  "text": "Fünf."
+ },
+ {
+  "s": "blupp",
+  "k": "1ee04d5b0f8883a85133",
+  "text": "Für Eltern: den Knopf gedrückt halten."
+ },
+ {
+  "s": "blupp",
+  "k": "717e8f70c98b6cb427ce",
+  "text": "Ganz genau!"
+ },
+ {
+  "s": "blupp",
+  "k": "ff913a5de4bf85079caa",
+  "text": "Ganz genau, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "cc61d95c9c52ea583a4d",
+  "text": "Hier sind"
+ },
+ {
+  "s": "blupp",
+  "k": "f15385e0451d012aee6d",
+  "text": "Hier zählen wir, was im Wasser schwimmt."
+ },
+ {
+  "s": "blupp",
   "k": "26c6c1b65374c6490673",
   "text": "Hihi!"
+ },
+ {
+  "s": "blupp",
+  "k": "986549074efdf81b91b9",
+  "text": "Hmm."
  },
  {
   "s": "blupp",
@@ -1538,6 +4068,36 @@
   "s": "blupp",
   "k": "87d13e601ec212aaeb6f",
   "text": "Ich wohne im Zauberwald!"
+ },
+ {
+  "s": "blupp",
+  "k": "723bcc458d77dcefb5b8",
+  "text": "Ja, genau!"
+ },
+ {
+  "s": "blupp",
+  "k": "14099a3936979adfd093",
+  "text": "Ja, genau, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "fcf94059ab5c0bff781e",
+  "text": "Krebse gezählt."
+ },
+ {
+  "s": "blupp",
+  "k": "e7a6e1bd9c4e282cb9c4",
+  "text": "Krebse!"
+ },
+ {
+  "s": "blupp",
+  "k": "9e5b74153e7756f4bbb8",
+  "text": "Krebse."
+ },
+ {
+  "s": "blupp",
+  "k": "0eff8d63af1b1d7229ad",
+  "text": "Lass uns zusammen zählen!"
  },
  {
   "s": "blupp",
@@ -1561,8 +4121,48 @@
  },
  {
   "s": "blupp",
+  "k": "ce7148aaea6cbff1d92d",
+  "text": "Muscheln gezählt."
+ },
+ {
+  "s": "blupp",
+  "k": "262a97bb61bfec22413e",
+  "text": "Muscheln!"
+ },
+ {
+  "s": "blupp",
+  "k": "d0eaaf100c66c467d98c",
+  "text": "Muscheln."
+ },
+ {
+  "s": "blupp",
+  "k": "0e9f017f6a5c7e3bff61",
+  "text": "Neun"
+ },
+ {
+  "s": "blupp",
+  "k": "a2f2136fa39c8654acf5",
+  "text": "Neun."
+ },
+ {
+  "s": "blupp",
   "k": "a47d6c19a740067dc4b9",
   "text": "Noch eins, bitte!"
+ },
+ {
+  "s": "blupp",
+  "k": "66d7fd33add4e6c9d994",
+  "text": "Null"
+ },
+ {
+  "s": "blupp",
+  "k": "135d2f82ea5bd6681938",
+  "text": "Null heißt: gar nichts!"
+ },
+ {
+  "s": "blupp",
+  "k": "b47d698cfe7a1821ff74",
+  "text": "Null."
  },
  {
   "s": "blupp",
@@ -1576,8 +4176,178 @@
  },
  {
   "s": "blupp",
+  "k": "9cbbcfe4e70caea6a833",
+  "text": "Prima!"
+ },
+ {
+  "s": "blupp",
+  "k": "13b0511098d599db114c",
+  "text": "Prima, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "0864af648970195481a6",
+  "text": "Richtig!"
+ },
+ {
+  "s": "blupp",
+  "k": "e68e00b86867cdc16f9d",
+  "text": "Richtig, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "84a2a3c208a968a6ddcc",
+  "text": "Sag mal: Acht!"
+ },
+ {
+  "s": "blupp",
+  "k": "d31173302387964882a1",
+  "text": "Sag mal: Drei!"
+ },
+ {
+  "s": "blupp",
+  "k": "1c1c0943dba3e1df085d",
+  "text": "Sag mal: Eins!"
+ },
+ {
+  "s": "blupp",
+  "k": "b2fa1c78fff71910851e",
+  "text": "Sag mal: Fünf!"
+ },
+ {
+  "s": "blupp",
+  "k": "a7884db79d318c421a88",
+  "text": "Sag mal: Neun!"
+ },
+ {
+  "s": "blupp",
+  "k": "acd1185e8c3748875d19",
+  "text": "Sag mal: Null!"
+ },
+ {
+  "s": "blupp",
+  "k": "3fc2e17da21a258f5122",
+  "text": "Sag mal: Sechs!"
+ },
+ {
+  "s": "blupp",
+  "k": "6a9e88b5d4578fbbb5d7",
+  "text": "Sag mal: Sieben!"
+ },
+ {
+  "s": "blupp",
+  "k": "09bd0a61b78e723576cd",
+  "text": "Sag mal: Vier!"
+ },
+ {
+  "s": "blupp",
+  "k": "4b556b3023941be638d2",
+  "text": "Sag mal: Zehn!"
+ },
+ {
+  "s": "blupp",
+  "k": "8ae17eda3af0265640a0",
+  "text": "Sag mal: Zwei!"
+ },
+ {
+  "s": "blupp",
+  "k": "3cb1862928088b56b1a4",
+  "text": "Schau mal, da ist gar nichts."
+ },
+ {
+  "s": "blupp",
+  "k": "ccf636ea3a2691c7555c",
+  "text": "Schau mal, es bleibt gar nichts übrig!"
+ },
+ {
+  "s": "blupp",
   "k": "c045820e05961dedac06",
   "text": "Schau mal, ich puste Seifenblasen!"
+ },
+ {
+  "s": "blupp",
+  "k": "992119fb7960c8827ab6",
+  "text": "Schildkröten gezählt."
+ },
+ {
+  "s": "blupp",
+  "k": "22434713363583b32233",
+  "text": "Schildkröten!"
+ },
+ {
+  "s": "blupp",
+  "k": "b9f87284a4b4faa804b2",
+  "text": "Schildkröten."
+ },
+ {
+  "s": "blupp",
+  "k": "84646dfbbbbba79a4952",
+  "text": "Sechs"
+ },
+ {
+  "s": "blupp",
+  "k": "948a6301f2c21eb5c618",
+  "text": "Sechs."
+ },
+ {
+  "s": "blupp",
+  "k": "3ab81b85f537813b0af3",
+  "text": "Segelboote gezählt."
+ },
+ {
+  "s": "blupp",
+  "k": "aea860b5593d14f2db01",
+  "text": "Segelboote!"
+ },
+ {
+  "s": "blupp",
+  "k": "8c9ee59ece9c79efd740",
+  "text": "Segelboote."
+ },
+ {
+  "s": "blupp",
+  "k": "be91c9fc693a4aa7bd28",
+  "text": "Sehr gut!"
+ },
+ {
+  "s": "blupp",
+  "k": "5ec9f22ed197fbb75352",
+  "text": "Sehr gut, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "4a7d9ea378e9c7f96c44",
+  "text": "Sehr schön!"
+ },
+ {
+  "s": "blupp",
+  "k": "782a8f2f4df56f341011",
+  "text": "Sehr schön, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "ff341ac35acf28a7d7fe",
+  "text": "Sieben"
+ },
+ {
+  "s": "blupp",
+  "k": "772a7795da96c9da1d2d",
+  "text": "Sieben."
+ },
+ {
+  "s": "blupp",
+  "k": "1c5a49a794f122ec2570",
+  "text": "Tintenfische gezählt."
+ },
+ {
+  "s": "blupp",
+  "k": "26c7b876bce35a6cb17c",
+  "text": "Tintenfische!"
+ },
+ {
+  "s": "blupp",
+  "k": "dec79c19384e5989d5ba",
+  "text": "Tintenfische."
  },
  {
   "s": "blupp",
@@ -1588,5 +4358,255 @@
   "s": "blupp",
   "k": "0b9678b0ca1ffaeaffa0",
   "text": "Tipp sie an, dann machen sie Plopp!"
+ },
+ {
+  "s": "blupp",
+  "k": "cb8b22230e2464c6225f",
+  "text": "Tippe alle Enten an und zähl mit!"
+ },
+ {
+  "s": "blupp",
+  "k": "d51ad378938598a302df",
+  "text": "Tippe alle Fische an und zähl mit!"
+ },
+ {
+  "s": "blupp",
+  "k": "865fa4518a4a0813146f",
+  "text": "Tippe alle Krebse an und zähl mit!"
+ },
+ {
+  "s": "blupp",
+  "k": "701b803e23b89bd60b89",
+  "text": "Tippe alle Muscheln an und zähl mit!"
+ },
+ {
+  "s": "blupp",
+  "k": "921dc4a023e8d4dc4209",
+  "text": "Tippe alle Schildkröten an und zähl mit!"
+ },
+ {
+  "s": "blupp",
+  "k": "7f9a586a0b41384a5435",
+  "text": "Tippe alle Segelboote an und zähl mit!"
+ },
+ {
+  "s": "blupp",
+  "k": "99248400dd7d98d374f6",
+  "text": "Tippe alle Tintenfische an und zähl mit!"
+ },
+ {
+  "s": "blupp",
+  "k": "3843430bc1216d0cdcac",
+  "text": "Tippe alle blaue Nilpferde an und zähl mit!"
+ },
+ {
+  "s": "blupp",
+  "k": "6be349f5686000d090be",
+  "text": "Tippe alle bunte Fische an und zähl mit!"
+ },
+ {
+  "s": "blupp",
+  "k": "25437dadd9b55b9e7573",
+  "text": "Tippe auf eine Zahl!"
+ },
+ {
+  "s": "blupp",
+  "k": "87076c5c3d831e85957f",
+  "text": "Toll gemacht!"
+ },
+ {
+  "s": "blupp",
+  "k": "42858c4c8efc86ce7c92",
+  "text": "Toll gemacht, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "2248cae3058455eee36f",
+  "text": "Ton an"
+ },
+ {
+  "s": "blupp",
+  "k": "ad7b92188ada6c89d67c",
+  "text": "Vier"
+ },
+ {
+  "s": "blupp",
+  "k": "67d066f76c2d06238342",
+  "text": "Vier."
+ },
+ {
+  "s": "blupp",
+  "k": "f4264cda2a61c48812f2",
+  "text": "Welche Zahl ist das?"
+ },
+ {
+  "s": "blupp",
+  "k": "3f49e4e91aebfe280073",
+  "text": "Wie viel ist"
+ },
+ {
+  "s": "blupp",
+  "k": "ed74e0b5e402a7ebbce3",
+  "text": "Wie viel ist gar nichts?"
+ },
+ {
+  "s": "blupp",
+  "k": "9b6a11434416c34a4afa",
+  "text": "Wie viele Enten siehst du?"
+ },
+ {
+  "s": "blupp",
+  "k": "6bdf85dcd872ac70cf45",
+  "text": "Wie viele Fische siehst du?"
+ },
+ {
+  "s": "blupp",
+  "k": "42bf8e79c50a54845bc3",
+  "text": "Wie viele Krebse siehst du?"
+ },
+ {
+  "s": "blupp",
+  "k": "a924c8810d5735e6035a",
+  "text": "Wie viele Muscheln siehst du?"
+ },
+ {
+  "s": "blupp",
+  "k": "bc41656c14c78e33fef8",
+  "text": "Wie viele Schildkröten siehst du?"
+ },
+ {
+  "s": "blupp",
+  "k": "c81aad9a451cc6529aff",
+  "text": "Wie viele Segelboote siehst du?"
+ },
+ {
+  "s": "blupp",
+  "k": "f93e4c599838f1dcb718",
+  "text": "Wie viele Tintenfische siehst du?"
+ },
+ {
+  "s": "blupp",
+  "k": "c5bfefc8be51e2245782",
+  "text": "Wie viele blaue Nilpferde siehst du?"
+ },
+ {
+  "s": "blupp",
+  "k": "80787a517af9dd981d32",
+  "text": "Wie viele bunte Fische siehst du?"
+ },
+ {
+  "s": "blupp",
+  "k": "ecb9233f3f853015b853",
+  "text": "Willkommen am Wellenstrand!"
+ },
+ {
+  "s": "blupp",
+  "k": "9df14af20f269b722834",
+  "text": "Wo ist die"
+ },
+ {
+  "s": "blupp",
+  "k": "a768be51e321b56f00fe",
+  "text": "Wunderbar!"
+ },
+ {
+  "s": "blupp",
+  "k": "3e2b2a7e34db58f24ac8",
+  "text": "Wunderbar, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "d68dd719cd25efb8b5f2",
+  "text": "Zahlen von"
+ },
+ {
+  "s": "blupp",
+  "k": "705eb5bd6c444301472f",
+  "text": "Zauberhaft!"
+ },
+ {
+  "s": "blupp",
+  "k": "273263ebb3ca13dc8205",
+  "text": "Zauberhaft, Sam!"
+ },
+ {
+  "s": "blupp",
+  "k": "9557a29ae5945d3bbc51",
+  "text": "Zehn"
+ },
+ {
+  "s": "blupp",
+  "k": "b93fa90c40bd6938addd",
+  "text": "Zehn."
+ },
+ {
+  "s": "blupp",
+  "k": "354e28ea1e02311e8b82",
+  "text": "Zwei"
+ },
+ {
+  "s": "blupp",
+  "k": "037c214eaafb8cb736e0",
+  "text": "Zwei."
+ },
+ {
+  "s": "blupp",
+  "k": "c180d2ae3c8a22e04bfd",
+  "text": "bis"
+ },
+ {
+  "s": "blupp",
+  "k": "c179436ea09c0f1a08fa",
+  "text": "blaue Nilpferde gezählt."
+ },
+ {
+  "s": "blupp",
+  "k": "2f7279813e4a776b9d9f",
+  "text": "blaue Nilpferde!"
+ },
+ {
+  "s": "blupp",
+  "k": "d09d6aa2e7b3f958eaae",
+  "text": "blaue Nilpferde."
+ },
+ {
+  "s": "blupp",
+  "k": "03f965c6fe6a00f939a9",
+  "text": "bunte Fische gezählt."
+ },
+ {
+  "s": "blupp",
+  "k": "4345b640b5d2de0656e9",
+  "text": "bunte Fische!"
+ },
+ {
+  "s": "blupp",
+  "k": "01393c85b4d9ae83e848",
+  "text": "bunte Fische."
+ },
+ {
+  "s": "blupp",
+  "k": "72e206a9295cd8b22260",
+  "text": "gehen weg."
+ },
+ {
+  "s": "blupp",
+  "k": "79704d69cf73c2080521",
+  "text": "geht weg."
+ },
+ {
+  "s": "blupp",
+  "k": "d0f1f015761e6a7ac8b8",
+  "text": "ist"
+ },
+ {
+  "s": "blupp",
+  "k": "2ea33ab9b760b51330c6",
+  "text": "minus"
+ },
+ {
+  "s": "blupp",
+  "k": "097bb831f0a1cc3a19d7",
+  "text": "plus"
  }
 ]

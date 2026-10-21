@@ -23,7 +23,7 @@
 <script>
 // Alle Spiele der Reihe – neue einfach hier eintragen
 const GAMES=[
-  {href:'mathe.html',ico:'🔢',label:'Mathe',say:'Mathe',c:'#e9a25b'},
+  {href:'mathe.html',ico:'🗺️',label:'Zahlenland',say:'Auf ins Zahlenland',c:'#e9a25b'},
   {ico:'🔤',label:'Buchstaben',say:'Buchstaben',c:'#6fa8b5'},
   {ico:'🎨',label:'Farben & Formen',say:'Farben und Formen',c:'#b48fc4'},
   {ico:'⏰',label:'Uhrzeit',say:'Uhrzeit',c:'#7fae8a'}
@@ -37,19 +37,23 @@ function home(){
   $('#app').innerHTML=`<div class="home">
     <p class="hello">${state.name?`Hallo ${esc(state.name)}!`:'Hallo!'}</p>
     <h1>${title}</h1>
-    <p class="sub">im Zauberwald</p>
+    <p class="sub">im Zauberland</p>
     <div class="hero"><img src="bilder/zauberwald.jpg" alt="BluppBlupp und Herr Zinn im Zauberwald"><button class="l" data-f="blupp" aria-label="BluppBlupp"></button><button class="r" data-f="zinn" aria-label="Herr Zinn"></button></div>
+    <div class="freunde">${['hoppel','klonk','holunder'].map(f=>`<button data-f="${f}" aria-label="${CHAR[f].name}">${fig(f)}</button>`).join('')}</div>
     <div class="modes">${GAMES.map((g,i)=>`<button class="mode ${g.href?'':'soon'}" data-g="${i}" style="--c:${g.c}"><span class="ico">${g.ico}</span>${g.label}${g.href?'':'<span class="tag">Bald</span>'}</button>`).join('')}</div>
     ${progHTML()}
     <div class="bar">
       <button class="pill" id="vt">${state.voice?'🔊 Ton an':'🔇 Ton aus'}</button>
       <button class="pill" id="par">👪 Eltern</button>
     </div>
-    <div class="hint" id="hint">Tipp auf BluppBlupp und Herrn Zinn!</div>
+    <div class="hint" id="hint">Tipp auf die Freunde!</div>
   </div>`;
   const hi={blupp:'Blubb, blubb! Ich bin BluppBlupp, das blaue Nilpferd. Ich wohne im Zauberwald!',
-    zinn:'Guten Tag! Ich bin Herr Zinn, der Onkel von BluppBlupp. Meine Laterne leuchtet uns den Weg.'};
-  $$('[data-f]').forEach(b=>b.onclick=()=>{hush();const f=b.dataset.f;CHAR[f].sound();restart($('.hero'),'bump');setTimeout(()=>say(hi[f],token,f),700)});
+    zinn:'Guten Tag! Ich bin Herr Zinn, der Onkel von BluppBlupp. Meine Laterne leuchtet uns den Weg.',
+    hoppel:'Hallo! Ich bin Hoppel! Ich wohne auf der Kaninchenwiese und hüpfe den ganzen Tag!',
+    klonk:'Piep, piep! Ich bin Klonk, der Roboter. Ich baue Sachen in meiner Werkstatt in den Bergen.',
+    holunder:'Hihi! Ich bin Hexe Holunder. In meinem Hexenhaus brodelt immer ein Zaubertrank.'};
+  $$('[data-f]').forEach(b=>b.onclick=()=>{hush();const f=b.dataset.f;CHAR[f].sound();restart(b.closest('.hero')||b,b.closest('.hero')?'bump':'jump');setTimeout(()=>say(hi[f],token,STIMME_VON[f]),700)});
   $$('[data-g]').forEach(b=>b.onclick=async()=>{
     const g=GAMES[+b.dataset.g];hush();
     if(!g.href){restart(b,'shake');say(g.say+' kommt bald!');return}

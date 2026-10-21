@@ -12,7 +12,7 @@ const lies = f => fs.readFileSync(path.join(ROOT, f), 'utf8');
 const { teile, schluessel } = createRequire(import.meta.url)('../gemeinsam/stimmbank.js');
 const NAME = 'Sam'; // Lob und Begrüßungen gibt es mit und ohne diesen Namen
 
-const saetze = { erzaehler: new Set(), zinn: new Set(), blupp: new Set() };
+const saetze = Object.fromEntries(Object.keys(STIMMEN).map(s => [s, new Set()]));
 const add = (text, s = 'erzaehler') => teile(text).forEach(x => saetze[s].add(x));
 const mitName = (s, sep = ', ') => [s, s + sep + NAME];
 
@@ -22,17 +22,26 @@ const PRAISE = eval(kern.match(/const PRAISE=(\[[^\]]*\]);/)[1]);
 const mathe = lies('mathe.html');
 const WORDS = eval(mathe.match(/const WORDS=(\[[^\]]*\]);/)[1]);
 const CAP = w => w[0].toUpperCase() + w.slice(1);
-const THINGS = eval(mathe.match(/const THINGS=(\[[\s\S]*?\]);/)[1]);
+const ORTE = eval(lies('gemeinsam/welt.js').match(/const ORTE=(\[[\s\S]*?\n\]);/)[1]);
+const GAESTE = [...new Set(ORTE.map(o => o.gast))];
 const figuren = lies('gemeinsam/figuren.js');
 const CHAR = eval('(' + figuren.match(/const CHAR=(\{[\s\S]*?\n\});/)[1].replace(/sound:\(\)=>sfx\.\w+\(\)/g, 'sound:0') + ')');
+const STIMME_VON = eval('(' + figuren.match(/const STIMME_VON=(\{[^}]*\});/)[1] + ')');
 const beloh = lies('gemeinsam/belohnungen.js');
-const { STORIES, RIDDLES, FINDS, HATCH } = new Function('state', 'fig', 'ytId', 'rnd', 'shuffle',
-  beloh.slice(0, beloh.indexOf('/* ---------- Video')) + ';return {STORIES,RIDDLES,FINDS,HATCH}')({ videos: [] }, () => '', () => '', a => a[0], a => a);
+const { STORIES, RIDDLES, FINDS, HATCH, VERZAUBERT } = new Function('state', 'fig', 'ytId', 'rnd', 'shuffle',
+  beloh.slice(0, beloh.indexOf('/* ---------- Video')) + ';return {STORIES,RIDDLES,FINDS,HATCH,VERZAUBERT}')({ videos: [] }, () => '', () => '', a => a[0], a => a);
 
 /* ---------- 2. Alles, was mit einfachem Text gesprochen wird: say('…') und say('…',t,'zinn') ---------- */
 for (const f of ['index.html', 'mathe.html', 'gemeinsam/kern.js', 'gemeinsam/belohnungen.js']) {
   const src = lies(f);
-  for (const m of src.matchAll(/\bsay\(\s*'((?:[^'\\]|\\.)*)'\s*(?:,\s*[^,()]+?\s*(?:,\s*'(\w+)')?)?\s*\)/g)) add(m[1].replace(/\\'/g, "'"), m[2] || 'erzaehler');
+  // In Mathe spricht der Gastgeber des Ortes – dort jeden Satz in allen Gastgeber-Stimmen
+  const stimmen = f === 'mathe.html' ? ['erzaehler', ...GAESTE] : null;
+  for (const m of src.matchAll(/\bsay\(\s*'((?:[^'\\]|\\.)*)'\s*(?:,\s*[^,()]+?\s*(?:,\s*'(\w+)')?)?\s*\)/g)) {
+    const text = m[1].replace(/\\'/g, "'");
+    (m[2] ? [m[2]] : stimmen || ['erzaehler']).forEach(v => add(text, v));
+  }
+  // say(rnd(['…','…']),t,'hoppel')
+  for (const m of src.matchAll(/say\(rnd\((\[[^\]]*\])\),\s*\w+(?:,\s*'(\w+)')?\)/g)) eval(m[1]).forEach(x => add(x, m[2] || 'erzaehler'));
   // withName('Juhu')+'! …' – mit und ohne Namen
   for (const m of src.matchAll(/say\(withName\('([^']*)'(?:,'([^']*)')?\)\+'([^']*)'(?:,\s*\w+(?:,\s*'(\w+)')?)?\)/g))
     mitName(m[1], m[2] ?? ', ').forEach(v => add(v + m[3], m[4] || 'erzaehler'));
@@ -43,18 +52,24 @@ for (const f of ['index.html', 'mathe.html', 'gemeinsam/kern.js', 'gemeinsam/bel
   }
 }
 
-/* ---------- 3. Bausteine fürs Rechnen und Zählen (talk() setzt sie zusammen) ---------- */
-WORDS.forEach(w => add(CAP(w) + '.'));
-WORDS.forEach(w => add(CAP(w)));
-PRAISE.forEach(p => mitName(p).forEach(v => add(v + '!')));
-['Das ist die', 'Wo ist die', 'Die', 'Wie viel ist', 'plus', 'minus', 'ist', 'Hier sind', 'geht weg.', 'gehen weg.', 'Du hast', 'Zahlen von', 'bis',
-  'Da ist gar nichts!', 'Tippe auf eine Zahl!', 'Entdecken', 'Finde die Zahl', 'Wie viele?', 'Zählen', 'Rechnen', 'Ich spreche',
-  'Mathe', 'Mathe kommt bald!', 'Buchstaben kommt bald!', 'Farben und Formen kommt bald!', 'Uhrzeit kommt bald!', 'Buchstaben', 'Farben und Formen', 'Uhrzeit'].forEach(x => add(x));
-WORDS.forEach(w => add(`Sag mal: ${CAP(w)}!`));
-const DINGE = [...THINGS, ...Object.values(CHAR).filter(c => c.count !== false)];
-for (const th of DINGE) {
-  add(`${CAP(th.sg)}.`); add(`${th.pl}.`); add(`${th.pl}!`); add(`${th.pl} gezählt.`); add(`Das ist die`);
-  add(`Wie viele ${th.pl} siehst du?`); add(`Tippe alle ${th.pl} an und zähl mit!`);
+/* ---------- 3. Bausteine fürs Rechnen und Zählen (talk() setzt sie zusammen) – in jeder Gastgeber-Stimme ---------- */
+for (const v of ['erzaehler', ...GAESTE]) {
+  const a = x => add(x, v);
+  WORDS.forEach(w => { a(CAP(w) + '.'); a(CAP(w)); a(`Sag mal: ${CAP(w)}!`); });
+  PRAISE.forEach(p => mitName(p).forEach(x => a(x + '!')));
+  ['Das ist die', 'Wo ist die', 'Die', 'Wie viel ist', 'plus', 'minus', 'ist', 'Hier sind', 'geht weg.', 'gehen weg.', 'Du hast', 'Zahlen von', 'bis',
+    'Da ist gar nichts!', 'Tippe auf eine Zahl!', 'Für Eltern: den Knopf gedrückt halten.'].forEach(a);
+}
+['Auf ins Zahlenland', 'Auf ins Zahlenland kommt bald!', 'Buchstaben kommt bald!', 'Farben und Formen kommt bald!', 'Uhrzeit kommt bald!', 'Ton an'].forEach(x => add(x));
+// Jeder Ort: Begrüßung und alles, was dort gezählt wird – in der Stimme des Gastgebers
+for (const o of ORTE) {
+  const v = STIMME_VON[o.gast] || 'erzaehler', g = CHAR[o.gast].count !== false ? o.gast : 'blupp';
+  add(o.hallo, v);
+  for (const th of [...o.dinge, CHAR[g]]) {
+    const a = x => add(x, v);
+    a(`${CAP(th.sg)}.`); a(`${th.pl}.`); a(`${th.pl}!`); a(`${th.pl} gezählt.`);
+    a(`Wie viele ${th.pl} siehst du?`); a(`Tippe alle ${th.pl} an und zähl mit!`);
+  }
 }
 
 /* ---------- 4. Geschichten, Rätsel, Überraschungen ---------- */
@@ -65,7 +80,8 @@ HATCH.forEach(h => add(`Das ist ${h.n}` + (h.f ? '' : '!')));
 for (const c of Object.values(CHAR)) add(`Das ist ${c.name}, ${c.who}.`);
 ['Mmmh!', 'Lecker!', 'Mampf!', 'Noch eins, bitte!'].forEach(x => add(x, 'blupp'));
 // Begrüßung auf der Startseite (hi = {blupp:'…',zinn:'…'})
-for (const m of lies('index.html').matchAll(/\b(blupp|zinn):'([^']*)'/g)) add(m[2], m[1]);
+for (const m of lies('index.html').matchAll(/\b(blupp|zinn|hoppel|klonk|holunder):'([^']*)'/g)) add(m[2], STIMME_VON[m[1]]);
+VERZAUBERT.forEach(v => add(`Simsalabim! Heraus kommt ${v.n}!`, 'holunder'));
 mitName('Guten Tag').forEach(v => add(v + '! Ich bin Herr Zinn. Komm mit in den Zauberwald. Was möchtest du spielen?', 'zinn'));
 
 /* ---------- 5. Erzeugen, was fehlt ---------- */

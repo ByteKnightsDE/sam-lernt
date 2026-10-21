@@ -8,10 +8,11 @@ const KI_ADRESSE=/\.pages\.dev$|\.workers\.dev$|byteknights\.de$/.test(location.
 
 // Was die KI in Bildern zeigen darf – muss zur Liste im Server passen
 // Was die KI in Bildern zeigen darf – muss zu TOKENS in ki-server/src/index.js passen
-const KI_TOKENS=['blupp','blupp:big','blupp:fall','blupp:dance','zinn','zinn:big',
+const KI_TOKENS=['blupp','blupp:big','blupp:fall','blupp:dance','zinn','zinn:big','klonk','klonk:big','holunder','holunder:big','hoppel','hoppel:big',
+  '🌊','🏔️','🥕','🧪','🧹','⚙️','🐚','🦀','🎃','🦇','🚀','💡','🐇',
   '🌙','⭐','🌟','✨','☀️','🌈','☁️','🌧️','💧','❄️','🌲','🌳','🍂','🍄','🌰','🌸','🌻','🦋','🐞','🐌','🦔','🦊','🦉','🐿️','🐸','🦆','🐟','🐢',
   '🫐','🍓','🍎','🍯','🧁','🏮','💎','🔮','🗝️','🎁','🎵','🎶','🔔','🫧','🛶','🏞️','🏡','🛏️','😴','😄','❤️','🧣','👢','🪁'];
-const KI_THEMEN=['ein verlorenes Glühwürmchen','der Mond spiegelt sich im See','eine Pilz-Party','der erste Schnee im Zauberwald','ein Regenbogen nach dem Regen',
+const KI_THEMEN=['Klonk baut eine Maschine','Hoppel verliert seine Karotte','Hexe Holunders Zaubertrank wird bunt','ein Ausflug an den Wellenstrand','das Echo auf dem Berggipfel','ein verlorenes Glühwürmchen','der Mond spiegelt sich im See','eine Pilz-Party','der erste Schnee im Zauberwald','ein Regenbogen nach dem Regen',
   'die kleine Eule kann nicht schlafen','eine Schatzkarte aus Blättern','Zählen bis fünf mit Sternen','ein kleiner Drache sucht einen Freund','Herr Zinns Laterne flackert',
   'BluppBlupp lernt pfeifen','ein Picknick am Bach','ein Drachen im Herbstwind','die Glühwürmchen-Laternen-Parade','ein Geheimgang unter der alten Eiche'];
 
@@ -61,7 +62,7 @@ const KI={
     const eigen=this.url!==KI_ADRESSE;
     return `<div class="box">
       <h2>KI-Helfer (ChatGPT) <span class="ki-status" id="kistat">${this.ready()?'prüfe …':'nicht eingerichtet'}</span></h2>
-      <p>ChatGPT erfindet immer neue Zauberwald-Geschichten mit BluppBlupp und Herrn Zinn und schreibt euch auf Wunsch einen kurzen Bericht über den Lernstand. Ohne Internet laufen die eingebauten Geschichten weiter.</p>
+      <p>ChatGPT erfindet immer neue Geschichten mit BluppBlupp, Herrn Zinn und ihren Freunden und schreibt euch auf Wunsch einen kurzen Bericht über den Lernstand. Ohne Internet laufen die eingebauten Geschichten weiter.</p>
       <p><label><input type="checkbox" id="kiname" ${this.sendName?'checked':''}> Den Vornamen in die Geschichten einbauen (er wird dafür an ChatGPT geschickt)</label></p>
       <p><button class="sb" id="kitest">Verbindung testen</button> <button class="sb" id="kireport">📝 Lernbericht schreiben</button></p>
       <p id="kiout" style="white-space:pre-wrap"></p>

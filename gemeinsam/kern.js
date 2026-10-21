@@ -12,7 +12,7 @@ function save(k,v){try{localStorage.setItem('samlernt.'+k,JSON.stringify(v))}cat
 
 // Sterne und Schatzkiste gelten für die ganze Reihe
 const state={
-  name:load('name',''),stars:load('stars',0),prog:load('prog',0),goal:load('goal',8),
+  stimme:'erzaehler',name:load('name',''),stars:load('stars',0),prog:load('prog',0),goal:load('goal',8),
   videos:load('videos',[]),videoMin:load('videoMin',4),voice:load('voice',true),voiceName:load('voiceName',''),
   prompt:null
 };
@@ -109,7 +109,7 @@ const BANK={liste:null,mem:new Map()};
 const bankBereit=()=>NATUR.on&&!!BANK.liste&&typeof teile==='function';
 fetch('stimme/liste.json').then(r=>r.ok?r.json():null).then(l=>{
   if(!l)return;
-  BANK.liste={};for(const s of ['erzaehler','zinn','blupp'])BANK.liste[s]=new Set(l[s]||[]);
+  BANK.liste={};for(const s of Object.keys(l))if(Array.isArray(l[s]))BANK.liste[s]=new Set(l[s]);
   // Einmal im Hintergrund alle Dateien holen, damit die Stimmen auch ohne Internet da sind
   const merk='stimmbank.'+(l.version||1)+'.'+Object.values(BANK.liste).reduce((a,x)=>a+x.size,0);
   if(load('stimmbank.geladen','')!==merk&&navigator.onLine!==false)setTimeout(async()=>{
@@ -143,9 +143,16 @@ async function bankSpielen(ks,s,t){
 }
 
 // Sprechen: wer spricht, steht in s – 'erzaehler', 'zinn' oder 'blupp'
-async function say(text,t=token,s='erzaehler'){
+// Ohne Angabe spricht, wer gerade dran ist (state.stimme): im Spiel der Gastgeber, sonst der Erzähler.
+// Spricht eine Figur, die gerade zu sehen ist, bewegt sie dabei den Mund.
+async function say(text,t=token,s=state.stimme||'erzaehler'){
   if(t!==token)return;
   if(!state.voice)return new Promise(r=>setTimeout(r,350+text.length*45));
+  const mund=s!=='erzaehler'?$(`.gastgeber[data-f="${Object.keys(STIMME_VON||{}).find(f=>STIMME_VON[f]===s)}"] .fig`):null;
+  if(mund)mund.classList.add('talk');
+  try{return await sayStimme(text,t,s)}finally{if(mund)mund.classList.remove('talk')}
+}
+async function sayStimme(text,t,s){
   const ks=await bankSchluessel(text,s);
   if(t!==token)return;
   if(ks){try{return await bankSpielen(ks,s,t)}catch(e){}}
@@ -249,6 +256,10 @@ const sfx={
   blubb:()=>{sweep(180,420,.12,{type:'sine',vol:.2,lp:2000});sweep(200,480,.12,{type:'sine',vol:.18,lp:2000,delay:.16});sweep(160,380,.14,{type:'sine',vol:.16,lp:2000,delay:.34})},
   zinn:()=>{sweep(196,220,.35,{type:'triangle',vol:.12,lp:900});sweep(220,196,.4,{type:'triangle',vol:.12,lp:900,delay:.38});bell([1568],.1,.05)},
   firefly:()=>bell([1760+Math.random()*600],.1,.05),
+  klonk:()=>{tone([660,880,660,990],.07,'square',.04);noise(.05,.2,2500,.3)},
+  hexe:()=>{bell([1319,1568,1976,2637],.06,.06);sweep(300,900,.5,{type:'sine',vol:.06,lp:3000,delay:.1})},
+  hoppel:()=>{sweep(400,900,.09,{type:'sine',vol:.12,lp:4000});sweep(420,950,.09,{type:'sine',vol:.12,lp:4000,delay:.18})},
+  wave:()=>noise(1.4,.08,600),
   bubble:()=>{sweep(500+Math.random()*300,1400,.08,{type:'sine',vol:.12,lp:5000});noise(.03,.15,4000)},
   bang:()=>{noise(.15,.5,900);tone([1200,600],.05,'square',.04)},
   crack:()=>noise(.08,.4,3000),
@@ -339,7 +350,7 @@ function parentsPage({extraHTML='',wire=()=>{},back}){
     <div class="box">
       <h2>Belohnung</h2>
       <p>Schatzkiste alle ${sel('goal',[5,8,10,15,20],state.goal,'Sterne')} &nbsp; Video höchstens ${sel('vmin',[2,3,4,5,8,10],state.videoMin,'Minuten')}</p>
-      <p>In der Schatzkiste darf er aus drei Überraschungen wählen: Geschichten, Rätsel, Glühwürmchen fangen, Seifenblasen, BluppBlupp füttern, Waldmusik, Zauberstein-Suche, Zauber-Ei – und ein <b>Video</b>, wenn unten Links stehen. Danach geht es von selbst weiter.</p>
+      <p>In der Schatzkiste darf er aus drei Überraschungen wählen: Geschichten, Rätsel, Glühwürmchen fangen, Seifenblasen, BluppBlupp füttern, Waldmusik, Zauberstein-Suche, Zauber-Ei, Zaubertrank, Hoppel fangen – und ein <b>Video</b>, wenn unten Links stehen. Danach geht es von selbst weiter.</p>
       <p><b>YouTube-Links</b> – einer pro Zeile. Am besten die Videos vorher selbst anschauen, das Spiel nimmt zufällig eins davon:</p>
       <textarea id="vids" placeholder="https://www.youtube.com/watch?v=...">${esc(state.videos.join('\n'))}</textarea>
       <p class="ok" id="vcount"></p>

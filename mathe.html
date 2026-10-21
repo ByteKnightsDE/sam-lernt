@@ -57,6 +57,7 @@
 <script src="gemeinsam/stimmbank.js"></script>
 <script src="gemeinsam/kern.js"></script>
 <script src="gemeinsam/figuren.js"></script>
+<script src="gemeinsam/welt.js"></script>
 <script src="gemeinsam/ki.js"></script>
 <script src="gemeinsam/belohnungen.js"></script>
 <script>
@@ -64,21 +65,17 @@ const WORDS=['null','eins','zwei','drei','vier','fünf','sechs','sieben','acht',
 const CAP=w=>w[0].toUpperCase()+w.slice(1);
 // Aquarellfarben für die Zahlen 0–10, gut unterscheidbar und trotzdem ruhig
 const COLORS=['#9a8f97','#d9675a','#e08a3c','#c49a2c','#6f9f6b','#3f9a8f','#4f8fb5','#6a74b8','#9a72b8','#c76a96','#8a6a52'];
-// Was im Zauberwald gezählt wird
-const THINGS=[
-  {e:'🍄',sg:'ein Pilz',pl:'Pilze'},{e:'🦉',sg:'eine Eule',pl:'Eulen'},{e:'⭐',sg:'ein Stern',pl:'Sterne'},
-  {e:'🦔',sg:'ein Igel',pl:'Igel'},{e:'🦊',sg:'ein Fuchs',pl:'Füchse'},{e:'🌰',sg:'eine Kastanie',pl:'Kastanien'},
-  {e:'🍂',sg:'ein Blatt',pl:'Blätter'},{e:'🦋',sg:'ein Schmetterling',pl:'Schmetterlinge'},{e:'🐞',sg:'ein Marienkäfer',pl:'Marienkäfer'},
-  {e:'🐌',sg:'eine Schnecke',pl:'Schnecken'},{e:'🐸',sg:'ein Frosch',pl:'Frösche'},{e:'🫐',sg:'eine Blaubeere',pl:'Blaubeeren'},
-  {e:'🐿️',sg:'ein Eichhörnchen',pl:'Eichhörnchen'},{e:'🌸',sg:'eine Blume',pl:'Blumen'}
-];
-// BluppBlupp kommt oft vor; Herr Zinn wird nicht abgezählt
-const FIGTHINGS=Object.keys(CHAR).filter(f=>CHAR[f].count!==false).map(f=>({f,sg:CHAR[f].sg,pl:CHAR[f].pl}));
-const thing=()=>Math.random()<.35?rnd(FIGTHINGS):rnd(THINGS);
+// Was gezählt wird, hängt vom Ort ab (gemeinsam/welt.js). Dazu kommt der Gastgeber selbst, wenn man ihn zählen kann,
+// sonst BluppBlupp – Herr Zinn und Hexe Holunder gibt es nur einmal.
+function thing(){
+  const o=ORT(M.ort)||ORTE[0],g=CHAR[o.gast].count!==false?o.gast:'blupp';
+  return Math.random()<.25?{f:g,sg:CHAR[g].sg,pl:CHAR[g].pl}:rnd(o.dinge);
+}
 const thingHTML=th=>th.f?fig(th.f):th.e;
 const app=$('#app');
 
-const M={max:load('mathe.max',5),useRec:load('mathe.useRec',true),stats:load('mathe.stats',{}),last:null};
+const M={max:load('mathe.max',5),useRec:load('mathe.useRec',true),stats:load('mathe.stats',{}),last:null,
+  ort:null,hier:load('welt.hier','strand'),sterne:load('welt.sterne',{})};
 const weights={};
 
 /* ---------- Eigene Aufnahmen der Zahlen (bleiben im Browser gespeichert) ---------- */
@@ -87,14 +84,14 @@ const playRec=(n,t=token)=>playUrl(rec[n],t);
 // Text und Zahlen gemischt sprechen: Zahlen aus der eigenen Aufnahme oder der Stimmbank, Text aus der Stimmbank.
 // Liegt nicht alles in der Stimmbank, wird wie früher der ganze Satz am Stück gesprochen (Zahlen als Wort).
 async function talk(t,...parts){
-  const stuecke=[];let alleDa=bankBereit();
+  const stuecke=[];let alleDa=bankBereit();const stimme=state.stimme||'erzaehler';
   for(const p of parts){
     if(typeof p==='number'){
       if(rec[p]&&M.useRec)stuecke.push({rec:p});
       else stuecke.push({text:CAP(WORDS[p])});
     }else if(teile(p).length)stuecke.push({text:p});
   }
-  if(alleDa)for(const st of stuecke)if(st.text&&!(await bankSchluessel(st.text,'erzaehler'))){alleDa=false;break}
+  if(alleDa)for(const st of stuecke)if(st.text&&!(await bankSchluessel(st.text,stimme))){alleDa=false;break}
   if(t!==token)return;
   if(alleDa){
     for(const st of stuecke){if(t!==token)return;st.rec!==undefined?await playRec(st.rec,t):await say(st.text,t)}
@@ -217,11 +214,17 @@ function topbar(){
   <button class="ic" id="again" aria-label="Nochmal hören">🔊</button></div><div id="stage"></div>`;
 }
 function wireTop(){
-  $('#home').onclick=()=>{hush();home()};
+  $('#home').onclick=()=>{hush();state.stimme='erzaehler';home()};
   $('#again').onclick=()=>{quiet();state.prompt&&state.prompt()};
 }
-// Bei richtigen Antworten saust manchmal eine Figur vorbei
-function cheer(){confetti();if(Math.random()<.35)flyBy(undefined,false)}
+// Richtig: Konfetti, der Gastgeber freut sich, die Station bekommt einen Stern
+function cheer(){
+  confetti();if(Math.random()<.25)flyBy(undefined,false);
+  const g=$('.gastgeber');if(g){restart(g,'freut');if(Math.random()<.5)CHAR[g.dataset.f].sound()}
+  if(M.ort){M.sterne[M.ort]=(M.sterne[M.ort]||0)+1;save('welt.sterne',M.sterne)}
+}
+// Falsch: freundliches Kopfschütteln
+function falsch(){sfx.no();const g=$('.gastgeber');if(g)restart(g,'nein')}
 async function countAlong(t,n){
   const objs=$$('#stage .obj:not(.gone)');$$('#stage .slot i').forEach(i=>i.remove());
   for(let i=0;i<n;i++){
@@ -231,45 +234,64 @@ async function countAlong(t,n){
   }
 }
 
-/* ---------- Startseite ---------- */
+/* ---------- Weltkarte: Startseite von Mathe ---------- */
+const START={explore:()=>explore(),find:()=>findRound(),how:()=>howRound(),count:()=>countRound(),math:()=>mathRound(),speak:()=>speakShow(0)};
+const sterneVon=id=>{const n=M.sterne[id]||0;return [3,10,25].map(g=>n>=g?'⭐':'<span class="leer">⭐</span>').join('')};
+let wegLaenge={};
 function home(){
-  state.prompt=null;
-  const title='Mathe'.split('').map((c,i)=>`<span style="color:${COLORS[i*2+1]};animation-delay:${i*.15}s">${c}</span>`).join('');
-  app.innerHTML=`<div class="home">
-    <p class="series">Sam lernt:</p>
-    <h1>${title}</h1>
-    <div class="modes">
-      <button class="mode" data-m="explore" style="--c:#6fa8b5"><span class="ico">🔍</span>Entdecken</button>
-      <button class="mode" data-m="find" style="--c:#e9a25b"><span class="ico">👂</span>Finde die Zahl</button>
-      <button class="mode" data-m="how" style="--c:#86c6d2"><span class="ico">${fig('blupp')}</span>Wie viele?</button>
-      <button class="mode" data-m="count" style="--c:#c9a440"><span class="ico">🍄</span>Zählen</button>
-      <button class="mode" data-m="math" style="--c:#7fae8a"><span class="ico">➕</span>Rechnen</button>
-      <button class="mode" data-m="speak" style="--c:#c76a96"><span class="ico">🎙️</span>Ich spreche</button>
-    </div>
-    ${progHTML()}
-    <div class="bar">
-      <a class="pill" href="index.html">◀ Alle Spiele</a>
-      <div class="seg" role="group" aria-label="Zahlenraum">
-        <button class="${M.max===5?'on':''}" data-max="5">0 – 5</button>
-        <button class="${M.max===10?'on':''}" data-max="10">0 – 10</button>
-      </div>
-    </div>
-    <div class="bar">
-      <button class="pill" id="vt">${state.voice?'🔊 Ton an':'🔇 Ton aus'}</button>
+  hush();state.prompt=null;state.stimme='erzaehler';M.ort=null;
+  szene(null);document.body.dataset.ort='karte';
+  app.classList.add('ganz');
+  app.innerHTML=`<div class="karte" id="karte"><div class="karteinnen" id="ki">${karteSVG()}
+      <div class="kartentitel" style="top:5.2%"><h1>Zahlenland</h1><p>Sam lernt Mathe</p></div>
+      ${ORTE.map(o=>{const [x,y]=PUNKTE[o.id];return `<button class="station ${o.id===M.hier?'hier':''}" data-o="${o.id}" style="left:${x/4}%;top:${y/15}%;--c:${COLORS[ORTE.indexOf(o)*2%11]}">
+        <span class="rund">${fig(o.gast)}<span class="ico">${o.ico}</span></span>
+        <span class="schild">${o.name}<small>${o.spiel}</small></span><span class="st">${sterneVon(o.id)}</span></button>`}).join('')}
+      <div class="avatar" id="av">${fig('blupp')}</div>
+    </div></div>
+    <div class="kartenkopf"><a class="ic" href="index.html" aria-label="Alle Spiele">🏠</a>${progHTML()}<button class="ic" id="vt" aria-label="Ton">${state.voice?'🔊':'🔇'}</button></div>
+    <div class="kartenfuss">
+      <div class="seg" role="group" aria-label="Zahlenraum"><button class="${M.max===5?'on':''}" data-max="5">0 – 5</button><button class="${M.max===10?'on':''}" data-max="10">0 – 10</button></div>
       <button class="pill" id="par">👪 Eltern</button>
-    </div>
-    <div class="hint" id="hint">Noch ${Math.max(0,state.goal-state.prog)} Sterne bis zur Schatzkiste 🎁</div>
-  </div>`;
-  const names={explore:'Entdecken',find:'Finde die Zahl',how:'Wie viele?',count:'Zählen',math:'Rechnen',speak:'Ich spreche'};
-  const start={explore,find:findRound,how:howRound,count:countRound,math:mathRound,speak:()=>speakShow(0)};
-  $$('.mode').forEach(b=>b.onclick=()=>{
-    hush();const m=b.dataset.m,t=token;
-    app.innerHTML=topbar();wireTop();
-    say(names[m],t).then(()=>{if(t===token)start[m]()});
-  });
-  $$('[data-max]').forEach(b=>b.onclick=()=>{M.max=+b.dataset.max;save('mathe.max',M.max);M.last=null;hush();home();talk(token,'Zahlen von ',0,' bis ',M.max)});
-  $('#vt').onclick=()=>{state.voice=!state.voice;save('voice',state.voice);hush();home();say('Ton an')};
-  holdToOpen($('#par'),()=>{hush();parents()},()=>{$('#hint').textContent='Für Eltern: den Knopf „Eltern“ gedrückt halten.'});
+    </div>`;
+  // Wo auf dem Weg liegen die Stationen? (für BluppBlupps Spaziergang)
+  const weg=$('#weg'),L=weg.getTotalLength();wegLaenge={};
+  for(const o of ORTE){let best=0,bd=1e9;const [px,py]=PUNKTE[o.id];for(let l=0;l<=L;l+=6){const q=weg.getPointAtLength(l),d=(q.x-px)**2+(q.y-py)**2;if(d<bd){bd=d;best=l}}wegLaenge[o.id]=best}
+  setzeAvatar(wegLaenge[M.hier]);
+  const k=$('#karte'),st=$(`.station[data-o="${M.hier}"]`);
+  requestAnimationFrame(()=>{k.style.scrollBehavior='auto';k.scrollTop=st.offsetTop-k.clientHeight*.55;k.style.scrollBehavior=''});
+  $$('.station').forEach(b=>b.onclick=()=>besuche(b.dataset.o));
+  $$('[data-max]').forEach(b=>b.onclick=()=>{M.max=+b.dataset.max;save('mathe.max',M.max);M.last=null;home();talk(token,'Zahlen von ',0,' bis ',M.max)});
+  $('#vt').onclick=()=>{state.voice=!state.voice;save('voice',state.voice);home();say('Ton an')};
+  holdToOpen($('#par'),()=>{hush();parents()},()=>say('Für Eltern: den Knopf gedrückt halten.'));
+}
+function setzeAvatar(l){
+  const q=$('#weg').getPointAtLength(l),av=$('#av');
+  av.style.left=q.x/4+'%';av.style.top=q.y/15+'%';
+}
+// BluppBlupp spaziert über den Weg zur Station, dann geht das Spiel los
+function besuche(id){
+  hush();const t=token,von=wegLaenge[M.hier]??0,nach=wegLaenge[id],av=$('#av'),k=$('#karte');
+  const dauer=Math.min(2200,300+Math.abs(nach-von)*1.4),t0=performance.now();
+  av.classList.add('laeuft');sfx.blubb();
+  const schritt=now=>{
+    if(t!==token)return;
+    const f=Math.min(1,(now-t0)/dauer),e=f<.5?2*f*f:1-(-2*f+2)**2/2;
+    setzeAvatar(von+(nach-von)*e);
+    const r=av.getBoundingClientRect();if(r.top<k.clientHeight*.25||r.top>k.clientHeight*.75)k.scrollTop+=(r.top-k.clientHeight*.5)*.08;
+    if(f<1)requestAnimationFrame(schritt);else{av.classList.remove('laeuft');M.hier=id;save('welt.hier',id);betrete(id,t)}
+  };
+  requestAnimationFrame(schritt);
+}
+function betrete(id,t){
+  if(t!==token)return;
+  const o=ORT(id);M.ort=id;state.stimme=o.gast;M.last=null;
+  szene(id);app.classList.remove('ganz');
+  app.innerHTML=topbar();wireTop();
+  const g=document.createElement('button');g.className='gastgeber'+(o.modus==='explore'?' links':'');g.dataset.f=o.gast;g.setAttribute('aria-label',CHAR[o.gast].name);
+  g.innerHTML=fig(o.gast);g.onclick=()=>{CHAR[o.gast].sound();restart(g,'freut')};app.appendChild(g);
+  CHAR[o.gast].sound();
+  say(o.hallo,t).then(()=>{if(t===token)START[o.modus]()});
 }
 
 /* ---------- Modus 1: Entdecken ---------- */
@@ -316,7 +338,7 @@ async function findRound(){
       await talk(t,`${praise()} Das ist die `,target,'.');
       await wait(500,t);next(t,findRound);
     }else{
-      sfx.no();b.classList.add('wrong');b.disabled=true;showDots(b,n);learn(target,false);
+      falsch();b.classList.add('wrong');b.disabled=true;showDots(b,n);learn(target,false);
       await talk(t,'Das ist die ',n,'. Wo ist die ',target,'?');
     }
   });
@@ -342,7 +364,7 @@ async function howRound(){
       }
       await wait(500,t);next(t,howRound);
     }else{
-      sfx.no();b.classList.add('wrong');b.disabled=true;learn(target,false);
+      falsch();b.classList.add('wrong');b.disabled=true;learn(target,false);
       if(target===0)await say('Schau mal, da ist gar nichts. Wie viel ist gar nichts?',t);
       else{
         await say('Hmm. Lass uns zusammen zählen!',t);
@@ -400,7 +422,7 @@ async function mathRound(){
       await talk(t,`${praise()} `,a,word,b,' ist ',res,'.');
       await wait(500,t);next(t,mathRound);
     }else{
-      sfx.no();btn.classList.add('wrong');btn.disabled=true;tally(minus?'minus':'plus',false);
+      falsch();btn.classList.add('wrong');btn.disabled=true;tally(minus?'minus':'plus',false);
       if(res===0)await say('Schau mal, es bleibt gar nichts übrig!',t);
       else{await say('Lass uns zusammen zählen!',t);await countAlong(t,res)}
       await say('Welche Zahl ist das?',t);
