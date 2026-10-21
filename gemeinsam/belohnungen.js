@@ -19,12 +19,16 @@ async function reward(then){
   const o=overlay();
   o.innerHTML=`<h2>Du hast die Schatzkiste erreicht!</h2><button class="gift" id="gift">🎁</button><p class="clock">Tipp die Kiste an!</p>`;
   sfx.fanfare();
+  // Kinder tippen oft mehrmals schnell hintereinander. Ohne Sperre landete ein Tipp, der noch der Rechenaufgabe galt,
+  // auf der Kiste und der nächste gleich auf einer Überraschung – dann begann „von selbst“ eine Geschichte.
+  let frei=Date.now()+1200;
   const finish=async()=>{
     hush();closeOverlay();updProg();
     await say(withName("Weiter geht's")+'!',token);
     then();
   };
   $('#gift').onclick=()=>{
+    if(Date.now()<frei)return;frei=Date.now()+1200;
     hush();sfx.ok();confetti(['✨','⭐','🍂','🌟']);
     // Ist ein Video eingetragen, ist es immer dabei – dazu zwei zufällige Überraschungen
     const vid=REWARDS[0].ok()?[REWARDS[0]]:[];
@@ -32,7 +36,7 @@ async function reward(then){
     o.innerHTML=`<h2>Was möchtest du?</h2><div class="choices">${pick.map(r=>
       `<button class="choice" data-r="${r.id}"><span class="ico">${typeof r.ico==='function'?r.ico():r.ico}</span>${r.label}</button>`).join('')}</div>`;
     say('Was möchtest du? '+pick.map(r=>r.label).join(', oder ')+'?');
-    $$('.choice').forEach(b=>b.onclick=()=>{const r=REWARDS.find(x=>x.id===b.dataset.r);hush();r.run(finish)});
+    $$('.choice').forEach(b=>b.onclick=()=>{if(Date.now()<frei)return;const r=REWARDS.find(x=>x.id===b.dataset.r);hush();r.run(finish)});
   };
   await say(withName('Juhu')+'! Du hast die Schatzkiste erreicht! Tipp sie an!',t);
 }
