@@ -149,6 +149,7 @@ const alleFehlenden = alle.filter(x => !fs.existsSync(datei(x)));
 const fehlt = alleFehlenden.slice(0, MAX);
 console.log('Fehlt noch:', alleFehlenden.length, '– jetzt:', fehlt.length);
 let fertig = 0, fehler = 0, quotaLeer = false;
+const letzteFehler = [];
 const warte = [...fehlt];
 async function sprich(x) {
   for (let versuch = 1; versuch <= 4; versuch++) {
@@ -169,10 +170,10 @@ async function sprich(x) {
     // Budget oder Guthaben aufgebraucht: sofort aufhören statt stundenlang zu warten
     if (/insufficient_quota|billing|budget|exceeded your current quota|spend limit/i.test(msg)) {
       console.error('ABBRUCH: OpenAI-Budget oder Guthaben aufgebraucht – im Projekt „Sam lernt“ unter Settings › Limits erhöhen.');
-      console.error(msg.slice(0, 300)); quotaLeer = true; warte.length = 0; return;
+      console.error(msg.slice(0, 300)); letzteFehler.push('BUDGET: ' + msg.slice(0, 400)); quotaLeer = true; warte.length = 0; return;
     }
     if (r.status === 429 || r.status >= 500) { await new Promise(res => setTimeout(res, 2000 * versuch)); continue; }
-    console.error('Fehler', r.status, x.s, x.text, msg.slice(0, 200)); fehler++; return;
+    console.error('Fehler', r.status, x.s, x.text, msg.slice(0, 200)); fehler++; letzteFehler.push(`${r.status} ${x.s} „${x.text}“: ${msg.slice(0, 400)}`); return;
   }
   fehler++;
 }
@@ -182,6 +183,8 @@ for (const s of Object.keys(saetze)) liste[s] = liste[s].filter(k => fs.existsSy
 fs.writeFileSync(path.join(ROOT, 'stimme/liste.json'), JSON.stringify(liste));
 console.log('Fertig:', fertig, 'neu,', fehler, 'Fehler');
 // Exit 3 = es fehlen noch Sätze (die Action macht dann den nächsten Durchgang), 1 = zu viele Fehler
+// Fehler ins Repo schreiben, damit man sie ohne Zugriff aufs Action-Protokoll lesen kann
+fs.writeFileSync(path.join(ROOT, 'stimme/fehler.txt'), letzteFehler.length ? new Date().toISOString() + '\n' + letzteFehler.slice(0, 15).join('\n') + '\n' : '');
 if (quotaLeer) process.exit(4);
 if (fehler > 20) process.exit(1);
 if (alleFehlenden.length > fehlt.length) process.exit(3);

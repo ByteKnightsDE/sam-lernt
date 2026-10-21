@@ -28,5 +28,5 @@ jobs:
             git add stimme
             git diff --cached --quiet || { git commit -q -m "Stimmbank aktualisiert ($durchgang)"; git pull -q --rebase; git push -q; }
             if [ $code -eq 0 ]; then echo "Alle Sätze fertig"; exit 0; fi
-            if [ $code -ne 3 ]; then echo "Abbruch mit Fehler $code"; exit $code; fi
+            if [ $code -ne 3 ]; then echo "Abbruch mit Fehler $code"; cat stimme/fehler.txt; exit $code; fi
           done
