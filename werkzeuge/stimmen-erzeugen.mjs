@@ -172,10 +172,10 @@ async function sprich(x) {
       console.error('ABBRUCH: OpenAI-Budget oder Guthaben aufgebraucht – im Projekt „Sam lernt“ unter Settings › Limits erhöhen.');
       console.error(msg.slice(0, 300)); letzteFehler.push('BUDGET: ' + msg.slice(0, 400)); quotaLeer = true; warte.length = 0; return;
     }
-    if (r.status === 429 || r.status >= 500) { await new Promise(res => setTimeout(res, 2000 * versuch)); continue; }
+    if (r.status === 429 || r.status >= 500) { x.letzte = `${r.status}: ${msg.slice(0, 400)}`; await new Promise(res => setTimeout(res, 2000 * versuch)); continue; }
     console.error('Fehler', r.status, x.s, x.text, msg.slice(0, 200)); fehler++; letzteFehler.push(`${r.status} ${x.s} „${x.text}“: ${msg.slice(0, 400)}`); return;
   }
-  fehler++;
+  letzteFehler.push(`aufgegeben ${x.s} „${x.text}“ – ${x.letzte || 'Zeitüberschreitung'}`); fehler++;
 }
 await Promise.all(Array.from({ length: 4 }, async () => { while (warte.length) await sprich(warte.shift()); }));
 // Nur fertige Dateien in die Liste – so spielt die App nie eine Datei, die es nicht gibt
