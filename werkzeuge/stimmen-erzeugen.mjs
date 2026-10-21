@@ -148,7 +148,8 @@ const MAX = maxArg > 0 ? +process.argv[maxArg + 1] : Infinity;
 const alleFehlenden = alle.filter(x => !fs.existsSync(datei(x)));
 const fehlt = alleFehlenden.slice(0, MAX);
 console.log('Fehlt noch:', alleFehlenden.length, '– jetzt:', fehlt.length);
-let fertig = 0, fehler = 0;
+let fertig = 0, fehler = 0, quotaLeer = false;
+const warte = [...fehlt];
 async function sprich(x) {
   for (let versuch = 1; versuch <= 4; versuch++) {
     // Nie ewig warten: hängt eine Anfrage, nach 60 s abbrechen und neu versuchen
@@ -165,17 +166,22 @@ async function sprich(x) {
       return;
     }
     const msg = await r.text();
+    // Budget oder Guthaben aufgebraucht: sofort aufhören statt stundenlang zu warten
+    if (/insufficient_quota|billing|budget|exceeded your current quota|spend limit/i.test(msg)) {
+      console.error('ABBRUCH: OpenAI-Budget oder Guthaben aufgebraucht – im Projekt „Sam lernt“ unter Settings › Limits erhöhen.');
+      console.error(msg.slice(0, 300)); quotaLeer = true; warte.length = 0; return;
+    }
     if (r.status === 429 || r.status >= 500) { await new Promise(res => setTimeout(res, 2000 * versuch)); continue; }
     console.error('Fehler', r.status, x.s, x.text, msg.slice(0, 200)); fehler++; return;
   }
   fehler++;
 }
-const warte = [...fehlt];
 await Promise.all(Array.from({ length: 4 }, async () => { while (warte.length) await sprich(warte.shift()); }));
 // Nur fertige Dateien in die Liste – so spielt die App nie eine Datei, die es nicht gibt
 for (const s of Object.keys(saetze)) liste[s] = liste[s].filter(k => fs.existsSync(path.join(ROOT, 'stimme', s, k + '.mp3')));
 fs.writeFileSync(path.join(ROOT, 'stimme/liste.json'), JSON.stringify(liste));
 console.log('Fertig:', fertig, 'neu,', fehler, 'Fehler');
 // Exit 3 = es fehlen noch Sätze (die Action macht dann den nächsten Durchgang), 1 = zu viele Fehler
+if (quotaLeer) process.exit(4);
 if (fehler > 20) process.exit(1);
 if (alleFehlenden.length > fehlt.length) process.exit(3);
