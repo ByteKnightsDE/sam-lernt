@@ -54,16 +54,27 @@ function deviceSay(text,t=token){
 const NATUR={on:load('stimme.natur',true),mem:new Map(),laeuft:new Map(),src:null,aus:0};
 const naturBereit=()=>NATUR.on&&typeof KI!=='undefined'&&KI.ready()&&KI.url==='/api'&&'caches' in window&&navigator.onLine!==false&&Date.now()>NATUR.aus;
 const naturUrl=(text,s)=>'/api/stimme?s='+s+'&t='+encodeURIComponent(text);
+// Gleicher Fingerabdruck wie im Server: so merkt die App, wenn eine falsche Aufnahme zurückkommt
+async function naturHash(text,s){
+  const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s+'|'+text));
+  return [...new Uint8Array(d)].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+const STIMM_SPEICHER='samlernt-stimme-2';
+// Der alte Speicher konnte falsche Aufnahmen enthalten (ein Geschichten-Satz statt der Rechenaufgabe) – weg damit
+try{caches.delete('samlernt-stimme')}catch(e){}
 function naturLaden(text,s){
   const key=s+'|'+text;
   if(NATUR.mem.has(key))return Promise.resolve(NATUR.mem.get(key));
   if(NATUR.laeuft.has(key))return NATUR.laeuft.get(key);
   const p=(async()=>{
-    const url=naturUrl(text,s);let r;
-    try{const c=await caches.open('samlernt-stimme');r=await c.match(url);
+    const url=naturUrl(text,s),soll=await naturHash(text,s);let r;
+    try{const c=await caches.open(STIMM_SPEICHER);r=await c.match(url);
+      if(r&&r.headers.get('x-stimme')!==soll){await c.delete(url);r=null}
       if(!r){r=await fetch(url);
         // Die Begründung des Servers (z. B. von OpenAI) weitergeben, damit Eltern sehen, woran es liegt
         if(!r.ok){const j=await r.json().catch(()=>({}));throw new Error(j.fehler||('HTTP '+r.status))}
+        // Nie etwas abspielen oder speichern, das nicht nachweislich zu diesem Satz gehört
+        if(r.headers.get('x-stimme')!==soll)throw new Error('Falsche Aufnahme vom Server');
         try{await c.put(url,r.clone())}catch(e){}}}
     catch(e){
       // Server nicht erreichbar oder ohne Guthaben: eine Weile nur die Gerätestimme nehmen statt jedes Mal zu warten

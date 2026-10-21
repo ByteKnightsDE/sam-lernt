@@ -143,23 +143,30 @@ async function bericht(env, b) {
    Drei feste Stimmen. Die Anweisung hängt an der Stimme, nicht an der Anfrage – so ist derselbe Satz immer
    dieselbe Datei und kann dauerhaft gespeichert werden (bei Cloudflare und auf dem Gerät).
    VERSION_STIMME hochzählen, wenn sich Stimmen oder Modell ändern – dann werden alle Sätze neu erzeugt. */
-const VERSION_STIMME = '1';
+const VERSION_STIMME = '2';
 const STIMMEN = {
   erzaehler: { voice: 'marin', instructions: 'Du liest einem kleinen Kind eine Gutenachtgeschichte auf Deutsch vor. Sprich warm, ruhig und etwas langsam, freundlich lächelnd, mit klarer Aussprache. Kleine Pausen an Satzenden. Nie hektisch, nie übertrieben.' },
   zinn: { voice: 'cedar', instructions: 'Du bist Herr Zinn, ein alter, gemütlicher Mann aus dem Zauberwald mit tiefer, sanfter Stimme. Sprich Deutsch, langsam, warm, ein wenig brummig und verschmitzt schmunzelnd, wie ein liebevoller Großonkel.' },
   blupp: { voice: 'verse', instructions: 'Du bist BluppBlupp, ein kleines, fröhliches blaues Nilpferd. Sprich Deutsch mit heller, verspielter, kindlicher Stimme, neugierig und gut gelaunt, ein bisschen kichernd, aber deutlich und nicht zu schnell.' }
 };
 
+async function fingerabdruck(t) {
+  const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t));
+  return [...new Uint8Array(d)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
 async function stimme(req, env, url, h) {
   const s = url.searchParams.get('s') || 'erzaehler';
   const text = String(url.searchParams.get('t') || '').replace(/[\u0000-\u001f]/g, ' ').trim();
   if (!STIMMEN[s]) return antwort({ fehler: 'Unbekannte Stimme' }, 400, h);
   if (!text || text.length > 600) return antwort({ fehler: 'Text fehlt oder ist zu lang' }, 400, h);
-  // Fester Schlüssel für den Cloudflare-Speicher: Version + Stimme + Text
-  const key = new Request(`${url.origin}/api/stimme-cache/v${VERSION_STIMME}/${s}?t=${encodeURIComponent(text)}`);
+  // Fester Schlüssel für den Cloudflare-Speicher: Version + Stimme + Fingerabdruck des Textes – im PFAD, nicht im
+  // Query-String. Zonen mit „Query-String ignorieren“ hätten sonst allen Sätzen dieselbe Aufnahme gegeben.
+  const hash = await fingerabdruck(s + '|' + text);
+  const key = new Request(`${url.origin}/api/stimme-cache/v${VERSION_STIMME}/${s}/${hash}`);
   const cache = caches.default;
   const alt = await cache.match(key);
-  if (alt) return new Response(alt.body, { headers: { ...Object.fromEntries(alt.headers), ...h } });
+  if (alt && alt.headers.get('x-stimme') === hash) return new Response(alt.body, { headers: { ...Object.fromEntries(alt.headers), ...h } });
 
   const r = await fetch('https://api.openai.com/v1/audio/speech', {
     method: 'POST',
@@ -171,7 +178,8 @@ async function stimme(req, env, url, h) {
     return antwort({ fehler: (j.error && j.error.message) || 'Stimme: OpenAI antwortet mit ' + r.status }, r.status === 429 ? 429 : 502, h);
   }
   const audio = await r.arrayBuffer();
-  const kopf = { 'content-type': 'audio/mpeg', 'cache-control': 'public, max-age=31536000, immutable' };
+  // x-stimme: die App prüft damit, dass wirklich die Aufnahme zu IHREM Satz zurückkommt
+  const kopf = { 'content-type': 'audio/mpeg', 'cache-control': 'public, max-age=31536000, immutable', 'x-stimme': hash, 'access-control-expose-headers': 'x-stimme' };
   await cache.put(key, new Response(audio, { headers: kopf }));
   return new Response(audio, { headers: { ...kopf, ...h } });
 }
