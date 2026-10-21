@@ -142,19 +142,26 @@ if (process.argv.includes('--nur-liste')) process.exit(0);
 const key = process.env.OPENAI_API_KEY;
 if (!key) { console.error('OPENAI_API_KEY fehlt'); process.exit(1); }
 const datei = ({ s, k }) => path.join(ROOT, 'stimme', s, k + '.mp3');
-const fehlt = alle.filter(x => !fs.existsSync(datei(x)));
-console.log('Fehlt noch:', fehlt.length);
+// --max N: höchstens N Sätze in diesem Durchgang (die Action speichert nach jedem Durchgang zwischen)
+const maxArg = process.argv.indexOf('--max');
+const MAX = maxArg > 0 ? +process.argv[maxArg + 1] : Infinity;
+const alleFehlenden = alle.filter(x => !fs.existsSync(datei(x)));
+const fehlt = alleFehlenden.slice(0, MAX);
+console.log('Fehlt noch:', alleFehlenden.length, '– jetzt:', fehlt.length);
 let fertig = 0, fehler = 0;
 async function sprich(x) {
   for (let versuch = 1; versuch <= 4; versuch++) {
-    const r = await fetch('https://api.openai.com/v1/audio/speech', {
+    // Nie ewig warten: hängt eine Anfrage, nach 60 s abbrechen und neu versuchen
+    let r;
+    try { r = await fetch('https://api.openai.com/v1/audio/speech', {
+      signal: AbortSignal.timeout(60000),
       method: 'POST', headers: { authorization: 'Bearer ' + key, 'content-type': 'application/json' },
       body: JSON.stringify({ model: MODELL_STIMME, voice: STIMMEN[x.s].voice, instructions: STIMMEN[x.s].instructions, input: x.text, response_format: 'mp3' })
-    });
+    }); } catch (e) { console.error('Zeitüberschreitung/Netz', x.s, x.text.slice(0, 40)); await new Promise(res => setTimeout(res, 2000 * versuch)); continue; }
     if (r.ok) {
       fs.mkdirSync(path.dirname(datei(x)), { recursive: true });
       fs.writeFileSync(datei(x), Buffer.from(await r.arrayBuffer()));
-      if (++fertig % 25 === 0) console.log(fertig, '/', fehlt.length);
+      if (++fertig % 50 === 0) console.log(fertig, '/', fehlt.length);
       return;
     }
     const msg = await r.text();
@@ -169,4 +176,6 @@ await Promise.all(Array.from({ length: 4 }, async () => { while (warte.length) a
 for (const s of Object.keys(saetze)) liste[s] = liste[s].filter(k => fs.existsSync(path.join(ROOT, 'stimme', s, k + '.mp3')));
 fs.writeFileSync(path.join(ROOT, 'stimme/liste.json'), JSON.stringify(liste));
 console.log('Fertig:', fertig, 'neu,', fehler, 'Fehler');
-if (fehler) process.exit(1);
+// Exit 3 = es fehlen noch Sätze (die Action macht dann den nächsten Durchgang), 1 = zu viele Fehler
+if (fehler > 20) process.exit(1);
+if (alleFehlenden.length > fehlt.length) process.exit(3);

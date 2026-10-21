@@ -1,4 +1,5 @@
 # Erzeugt die Stimmbank (stimme/) mit OpenAI – nur Sätze, die noch fehlen – und legt sie ins Repo.
+# Arbeitet in Durchgängen zu je 400 Sätzen und speichert nach jedem Durchgang, damit nichts verloren geht.
 # Braucht unter Settings › Secrets and variables › Actions das Geheimnis OPENAI_API_KEY.
 name: Stimmen erzeugen
 on:
@@ -8,21 +9,24 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
-concurrency: { group: stimmen, cancel-in-progress: false }
+concurrency: { group: stimmen, cancel-in-progress: true }
 jobs:
   stimmen:
     runs-on: ubuntu-latest
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
-      - name: Fehlende Sätze sprechen lassen
+      - name: Fehlende Sätze sprechen lassen (in Durchgängen) und zwischenspeichern
         env: { OPENAI_API_KEY: '${{ secrets.OPENAI_API_KEY }}' }
-        run: node werkzeuge/stimmen-erzeugen.mjs
-      - name: Ins Repo legen
         run: |
           git config user.name "Sam lernt Stimmen"
           git config user.email "actions@users.noreply.github.com"
-          git add stimme
-          git diff --cached --quiet || git commit -m "Stimmbank aktualisiert"
-          git push
+          for durchgang in $(seq 1 15); do
+            set +e; node werkzeuge/stimmen-erzeugen.mjs --max 400; code=$?; set -e
+            git add stimme
+            git diff --cached --quiet || { git commit -q -m "Stimmbank aktualisiert ($durchgang)"; git pull -q --rebase; git push -q; }
+            if [ $code -eq 0 ]; then echo "Alle Sätze fertig"; exit 0; fi
+            if [ $code -ne 3 ]; then echo "Abbruch mit Fehler $code"; exit $code; fi
+          done
