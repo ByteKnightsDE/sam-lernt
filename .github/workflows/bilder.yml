@@ -1,0 +1,28 @@
+# Erzeugt Illustrationen (bilder/illu/) mit OpenAI im Stil von bilder/zauberwald.jpg – nur fehlende Bilder.
+# Von Hand starten: Actions › Bilder erzeugen › Run workflow. Braucht das Geheimnis OPENAI_API_KEY.
+name: Bilder erzeugen
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: { group: bilder, cancel-in-progress: false }
+jobs:
+  bilder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Bilder erzeugen
+        env: { OPENAI_API_KEY: '${{ secrets.OPENAI_API_KEY }}' }
+        run: |
+          set +e; node werkzeuge/bilder-erzeugen.mjs; code=$?; set -e
+          git config user.name "Sam lernt Bilder"
+          git config user.email "actions@users.noreply.github.com"
+          git add bilder/illu
+          if ! git diff --cached --quiet; then
+            git commit -q -m "Illustrationen erzeugt"
+            for v in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done
+          fi
+          exit $code

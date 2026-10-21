@@ -5,11 +5,11 @@ name: Stimmen erzeugen
 on:
   push:
     branches: [main]
-    paths-ignore: ['stimme/**']
+    paths-ignore: ['stimme/**', 'bilder/**', 'probe.html', 'werkzeuge/bilder-erzeugen.mjs', '.github/workflows/bilder.yml']
   workflow_dispatch:
 permissions:
   contents: write
-concurrency: { group: stimmen, cancel-in-progress: true }
+concurrency: { group: stimmen, cancel-in-progress: false }
 jobs:
   stimmen:
     runs-on: ubuntu-latest

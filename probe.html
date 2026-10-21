@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Sam lernt – Probe Illustrationen</title>
+<link rel="stylesheet" href="gemeinsam/stil.css">
+<style>
+/* Probeseite: Wie sähe Sam lernt mit gemalten Bildern aus? Bilder kommen aus bilder/illu/ */
+body{background:#f6e3d3}
+#bild{position:fixed;inset:0;background:#f6e3d3 center/cover no-repeat}
+.figur{position:fixed;bottom:calc(10px + env(safe-area-inset-bottom));width:min(44vw,34vh);aspect-ratio:1;background:center bottom/contain no-repeat;
+  filter:drop-shadow(0 10px 10px rgba(80,50,40,.18));transform-origin:50% 100%;animation:atmen 3.4s ease-in-out infinite;cursor:pointer}
+.figur.links{left:2vw}.figur.rechts{right:2vw;animation-delay:-1.3s}
+.figur.hops{animation:hops .7s ease-out}
+@keyframes atmen{0%,100%{transform:scale(1,1)}50%{transform:scale(1.015,.985) translateY(1px)}}
+@keyframes hops{0%{transform:translateY(0)}35%{transform:translateY(-14%) scale(1.03)}70%{transform:translateY(0) scale(1.02,.97)}100%{transform:none}}
+.mitte{position:fixed;left:0;right:0;top:30%;display:flex;flex-direction:column;align-items:center;gap:18px;z-index:2;padding:0 16px}
+.frage{background:#fffaf4e6;border-radius:22px;padding:12px 22px;font-size:clamp(20px,5.4vw,30px);font-weight:1000;box-shadow:var(--shadow-sm);text-align:center}
+.info{position:fixed;top:calc(10px + env(safe-area-inset-top));left:12px;right:12px;z-index:3;text-align:center;font-size:14px;font-weight:800;color:#6b5a52}
+.info b{background:#fffaf4d9;border-radius:999px;padding:6px 12px;display:inline-block}
+.leer{position:fixed;inset:0;display:grid;place-items:center;z-index:5;padding:24px;text-align:center;font-size:18px;font-weight:800}
+</style>
+</head>
+<body>
+<div id="bild"></div>
+<div class="info"><b>Probe: gemalte Bilder · tipp auf die Figuren</b></div>
+<div class="mitte">
+  <div class="frage">Wie viele Muscheln siehst du?</div>
+  <div class="cards"><button class="opt num" style="--c:#e08a3c">2</button><button class="opt num" style="--c:#c49a2c">3</button><button class="opt num" style="--c:#6f9f6b">4</button></div>
+</div>
+<div class="figur links" id="blupp" role="button" aria-label="BluppBlupp"></div>
+<div class="figur rechts" id="paul" role="button" aria-label="Pirat Paul"></div>
+<script>
+const B='bilder/illu/',v='?'+Date.now();
+const da=async f=>{try{return (await fetch(B+f+v,{method:'HEAD'})).ok}catch(e){return false}};
+(async()=>{
+  const fehlt=[];
+  for(const f of ['strand.jpg','blupp-normal.png','blupp-freut.png','paul-normal.png','paul-freut.png'])if(!await da(f))fehlt.push(f);
+  if(fehlt.length===5){document.body.insertAdjacentHTML('beforeend','<div class="leer">Die Probebilder sind noch nicht erzeugt.<br>GitHub › Actions › „Bilder erzeugen“ › Run workflow.</div>');return}
+  document.getElementById('bild').style.backgroundImage=`url(${B}strand.jpg${v})`;
+  for(const n of ['blupp','paul']){
+    const el=document.getElementById(n),normal=`url(${B}${n}-normal.png${v})`,freut=`url(${B}${n}-freut.png${v})`;
+    el.style.backgroundImage=normal;
+    el.onclick=()=>{el.style.backgroundImage=freut;el.classList.remove('hops');void el.offsetWidth;el.classList.add('hops');setTimeout(()=>el.style.backgroundImage=normal,1400)};
+  }
+})();
+</script>
+</body>
+</html>
