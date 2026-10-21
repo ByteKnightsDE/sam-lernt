@@ -23,19 +23,21 @@ const mathe = lies('mathe.html');
 const WORDS = eval(mathe.match(/const WORDS=(\[[^\]]*\]);/)[1]);
 const CAP = w => w[0].toUpperCase() + w.slice(1);
 const ORTE = eval(lies('gemeinsam/welt.js').match(/const ORTE=(\[[\s\S]*?\n\]);/)[1]);
-const GAESTE = [...new Set(ORTE.map(o => o.gast))];
 const figuren = lies('gemeinsam/figuren.js');
 const CHAR = eval('(' + figuren.match(/const CHAR=(\{[\s\S]*?\n\});/)[1].replace(/sound:\(\)=>sfx\.\w+\(\)/g, 'sound:0') + ')');
 const STIMME_VON = eval('(' + figuren.match(/const STIMME_VON=(\{[^}]*\});/)[1] + ')');
+// Wer in Mathe sprechen kann: alle Gastgeber der Orte und Bobo (Teste dein Können)
+const GAESTE = [...new Set([...ORTE.map(o => STIMME_VON[o.gast] || o.gast), 'bobo'])];
 const beloh = lies('gemeinsam/belohnungen.js');
-const { STORIES, RIDDLES, FINDS, HATCH, VERZAUBERT } = new Function('state', 'fig', 'ytId', 'rnd', 'shuffle',
-  beloh.slice(0, beloh.indexOf('/* ---------- Video')) + ';return {STORIES,RIDDLES,FINDS,HATCH,VERZAUBERT}')({ videos: [] }, () => '', () => '', a => a[0], a => a);
+const { STORIES, RIDDLES, FINDS, HATCH, VERZAUBERT, SCHATZFUND, WITZE, LACHEN } = new Function('state', 'fig', 'ytId', 'rnd', 'shuffle',
+  beloh.slice(0, beloh.indexOf('/* ---------- Video')) + ';return {STORIES,RIDDLES,FINDS,HATCH,VERZAUBERT,SCHATZFUND,WITZE,LACHEN}')({ videos: [] }, () => '', () => '', a => a[0], a => a);
 
 /* ---------- 2. Alles, was mit einfachem Text gesprochen wird: say('…') und say('…',t,'zinn') ---------- */
-for (const f of ['index.html', 'mathe.html', 'gemeinsam/kern.js', 'gemeinsam/belohnungen.js']) {
+const UHR_STIMMEN = ['erzaehler', 'paul', 'kasimir', 'hubert'];
+for (const f of ['index.html', 'mathe.html', 'uhr.html', 'gemeinsam/kern.js', 'gemeinsam/belohnungen.js']) {
   const src = lies(f);
-  // In Mathe spricht der Gastgeber des Ortes – dort jeden Satz in allen Gastgeber-Stimmen
-  const stimmen = f === 'mathe.html' ? ['erzaehler', ...GAESTE] : null;
+  // In Mathe und in der Piratenbucht spricht der Gastgeber – dort jeden Satz in allen Gastgeber-Stimmen
+  const stimmen = f === 'mathe.html' ? ['erzaehler', ...GAESTE] : f === 'uhr.html' ? UHR_STIMMEN : null;
   for (const m of src.matchAll(/\bsay\(\s*'((?:[^'\\]|\\.)*)'\s*(?:,\s*[^,()]+?\s*(?:,\s*'(\w+)')?)?\s*\)/g)) {
     const text = m[1].replace(/\\'/g, "'");
     (m[2] ? [m[2]] : stimmen || ['erzaehler']).forEach(v => add(text, v));
@@ -66,7 +68,8 @@ for (const o of ORTE) {
   const v = STIMME_VON[o.gast] || 'erzaehler', g = CHAR[o.gast].count !== false ? o.gast : 'blupp';
   add(o.hallo, v);
   for (const th of [...o.dinge, CHAR[g]]) {
-    const a = x => add(x, v);
+    // auch in Bobos Stimme – er stellt bei „Teste dein Können“ Fragen aus allen Orten
+    const a = x => { add(x, v); add(x, 'bobo'); };
     a(`${CAP(th.sg)}.`); a(`${th.pl}.`); a(`${th.pl}!`); a(`${th.pl} gezählt.`);
     a(`Wie viele ${th.pl} siehst du?`); a(`Tippe alle ${th.pl} an und zähl mit!`);
   }
@@ -83,6 +86,35 @@ for (const o of ORTE) {
   }
 }
 
+/* ---------- 3c. Uhrzeit, Klapperhöhle, Vertiefen, Teste dein Können, Witze ---------- */
+{
+  const uhr = lies('gemeinsam/uhr.js');
+  const STUNDENWORT = eval(uhr.match(/const STUNDENWORT=(\[[^\]]*\]);/)[1]);
+  const hWort = h => STUNDENWORT[h % 12 || 12];
+  const zeitText = (h, m) => { h = h % 12 || 12; const nh = h % 12 + 1; return m === 0 ? (h === 1 ? 'ein' : hWort(h)) + ' Uhr' : m === 30 ? 'halb ' + hWort(nh) : m === 15 ? 'Viertel nach ' + hWort(h) : 'Viertel vor ' + hWort(nh); };
+  const UHR_SAETZE = eval('(' + uhr.match(/const UHR_SAETZE=(\{[\s\S]*?\n\});/)[1] + ')');
+  for (const v of [...UHR_STIMMEN, 'bobo']) for (let h = 1; h <= 12; h++) for (const m of [0, 30, 15, 45]) {
+    Object.values(UHR_SAETZE).forEach(x => add(x.replace('{T}', zeitText(h, m)), v));
+    add(zeitText(h, m), v);
+  }
+  // Begrüßungen der Piratenbucht-Stationen
+  for (const m of lies('uhr.html').matchAll(/stimme:'(\w+)',start:[^\n]*\n\s*hallo:'([^']*)'/g)) add(m[2], m[1]);
+  ['Nur volle Stunden', 'Volle und halbe Stunden', 'Jetzt auch Viertel nach und Viertel vor'].forEach(x => add(x));
+  // Klapperhöhle und Vertiefen
+  const HOER = eval('(' + mathe.match(/const HOER_SAETZE=(\{.*?\});/)[1] + ')');
+  const NAMEN = [...WORDS.map(CAP), 'Elf', 'Zwölf', 'Dreizehn', 'Vierzehn', 'Fünfzehn', 'Sechzehn', 'Siebzehn', 'Achtzehn', 'Neunzehn', 'Zwanzig'];
+  for (const v of ['erzaehler', ...GAESTE]) {
+    Object.values(HOER).forEach(x => x.includes('{Z}') ? NAMEN.forEach(n => add(x.replace('{Z}', n), v)) : add(x, v));
+    WORDS.forEach(w => add(`Die ${CAP(w)} üben wir noch einmal zusammen.`, v));
+    add('Null heißt: gar nichts! Das Feld ist leer.', v); add('Lass uns zusammen zählen!', v); add('von zehn richtig!', v);
+  }
+  ['Gold! Du bist ein echter Zahlen-Profi!', 'Silber! Das war richtig stark!', 'Bronze! Gut gemacht!', 'Super, dass du es versucht hast! Wir üben weiter.'].forEach(x => add(x, 'bobo'));
+  // Hubert, Paul
+  WITZE.forEach(([f, p]) => { add(f, 'hubert'); add(p, 'hubert'); });
+  LACHEN.forEach(x => add(x, 'hubert'));
+  Object.values(SCHATZFUND).forEach(x => add(x, 'paul'));
+}
+
 /* ---------- 4. Geschichten, Rätsel, Überraschungen ---------- */
 for (const st of STORIES) { add(st.t); st.p.forEach(pg => add(pg.x)); }
 for (const r of RIDDLES) add(r.q);
@@ -91,7 +123,7 @@ HATCH.forEach(h => add(`Das ist ${h.n}` + (h.f ? '' : '!')));
 for (const c of Object.values(CHAR)) add(`Das ist ${c.name}, ${c.who}.`);
 ['Mmmh!', 'Lecker!', 'Mampf!', 'Noch eins, bitte!'].forEach(x => add(x, 'blupp'));
 // Begrüßung auf der Startseite (hi = {blupp:'…',zinn:'…'})
-for (const m of lies('index.html').matchAll(/\b(blupp|zinn|hoppel|klonk|holunder):'([^']*)'/g)) add(m[2], STIMME_VON[m[1]]);
+for (const m of lies('index.html').matchAll(/\b(blupp|zinn|hoppel|klonk|holunder|pig|monkey|skel|pirate|krebs):'([^']*)'/g)) add(m[2], STIMME_VON[m[1]]);
 VERZAUBERT.forEach(v => add(`Simsalabim! Heraus kommt ${v.n}!`, 'holunder'));
 mitName('Guten Tag').forEach(v => add(v + '! Ich bin Herr Zinn. Komm mit in den Zauberwald. Was möchtest du spielen?', 'zinn'));
 

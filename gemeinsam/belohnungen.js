@@ -12,7 +12,12 @@ const REWARDS=[
   {id:'stone',ico:()=>fig('zinn'),label:'Zauberstein-Suche',run:d=>stone(d)},
   {id:'egg',ico:'🥚',label:'Zauber-Ei',run:d=>egg(d)},
   {id:'trank',ico:()=>fig('holunder'),label:'Zaubertrank',run:d=>zaubertrank(d)},
-  {id:'hoppel',ico:()=>fig('hoppel'),label:'Hoppel fangen',run:d=>hoppelFangen(d)}
+  {id:'hoppel',ico:()=>fig('hoppel'),label:'Hoppel fangen',run:d=>hoppelFangen(d)},
+  {id:'schatz',ico:()=>fig('pirate'),label:'Schatzsuche',run:d=>schatzsuche(d)},
+  {id:'disco',ico:()=>fig('skel'),label:'Skelett-Disco',run:d=>disco(d)},
+  {id:'bobo',ico:()=>fig('monkey'),label:'Bobo füttern',run:d=>feedMonkey(d)},
+  {id:'rosi',ico:()=>fig('pig'),label:'Schweine-Flug',run:d=>pigs(d)},
+  {id:'witz',ico:()=>fig('hummer'),label:'Hummer-Witze',run:d=>witzStunde(d)}
 ];
 
 async function reward(then){
@@ -334,6 +339,123 @@ function hoppelFangen(done){
     endLater(t,done,{showAfter:500,autoAfter:12000});
   });
   say('Ich verstecke mich in meinen Löchern! Tipp mich an, wenn ich rausgucke!',t,'hoppel').then(()=>{if(t===token)raus()});
+}
+
+/* ---------- Schatzsuche mit Pirat Paul ---------- */
+const SCHATZFUND={'🦀':'Ein Krebs! Zwick, zwick!','💀':'Huch! Ein Totenkopf! Klapper, klapper!','🥾':'Nur ein alter Stiefel!','🐙':'Ein Tintenfisch! Blubb!','🐚':'Eine Muschel!'};
+function schatzsuche(done){
+  hush();const t=token,o=overlay('sea');
+  const items=shuffle(['💰','🦀','💀','🥾','🐙','🐚']);
+  o.innerHTML=`<div class="side" style="left:2vw;bottom:2vh">${fig('pirate')}</div><h2>Wo ist der Schatz?</h2><div class="mounds sand">${items.map((x,k)=>`<button class="mound" data-k="${k}"></button>`).join('')}</div>`;
+  let found=false;
+  $$('.mound').forEach(m=>m.onclick=async()=>{
+    if(found||m.classList.contains('dug'))return;
+    const x=items[+m.dataset.k];quiet();sfx.dig();
+    m.classList.add('dug');m.textContent=x;
+    if(x==='💰'){
+      found=true;sfx.arr();confetti(['💰','💎','👑','⭐']);
+      restart($('.side'),'jump');
+      await say(withName('Arrr! Du hast meinen Schatz gefunden')+'! Danke, mein kleiner Pirat!',t,'paul');
+      endLater(t,done,{showAfter:500,autoAfter:15000});
+    }else{
+      if(x==='💀')sfx.rattle();
+      await say(SCHATZFUND[x],t,'paul');
+    }
+  });
+  say('Arrr! Ich bin Pirat Paul. Hilf mir, meinen Schatz zu finden! Tippe auf die Sandhügel!',t,'paul');
+}
+
+/* ---------- Skelett-Disco ---------- */
+function disco(done){
+  hush();const t=token,o=overlay('disco');
+  o.innerHTML=`<h2>💀 Skelett-Disco 🕺</h2><div class="bigfig" id="sk">${fig('skel')}</div>
+    <div class="discobtns"><button data-d="drum">🥁</button><button data-d="spin">💃</button><button data-d="trumpet">🎺</button><button data-d="xylo">🦴</button></div>`;
+  const sk=$('#sk'),f=sk.querySelector('.fig');
+  let beat=0;const iv=setInterval(()=>{if(t!==token||!$('#ov'))return clearInterval(iv);beat++;if(beat%2)sweep(120,50,.15,{type:'sine',vol:.25,lp:3000});else noise(.05,.15,6000)},300);
+  const moves={
+    drum:()=>{sfx.drum();restart(sk,'jump')},
+    spin:()=>{sfx.boing();restart(sk,'spinme')},
+    trumpet:()=>{sfx.trumpet();f.classList.add('dance');setTimeout(()=>f.classList.remove('dance'),1600)},
+    xylo:()=>{sfx.xylo();sfx.rattle();f.classList.add('talk');setTimeout(()=>f.classList.remove('talk'),1200)}
+  };
+  $$('.discobtns button').forEach(b=>b.onclick=()=>{quiet();moves[b.dataset.d]()});
+  sk.onclick=()=>moves.drum();
+  say('Willkommen in der Skelett-Disco! Drück die Knöpfe, dann tanze ich!',t,'klapper');
+  endLater(t,()=>{clearInterval(iv);done()},{showAfter:10000,autoAfter:40000});
+}
+
+/* ---------- Affe Bobo füttern ---------- */
+function feedMonkey(done){
+  hush();const t=token,o=overlay('jungle');
+  o.innerHTML=`<h2>Bobo hat Hunger!</h2><div class="bigfig" id="mk" style="margin-top:22vh">${fig('monkey')}</div>`;
+  const mk=$('#mk');let fed=0;const total=5;
+  for(let i=0;i<total;i++){
+    const b=document.createElement('button');b.className='banana';b.textContent='🍌';
+    b.style.left=6+i*(80/total)+Math.random()*6+'vw';b.style.top=12+Math.random()*16+'vh';
+    b.onclick=async()=>{
+      if(b.dataset.used)return;b.dataset.used=1;quiet();
+      const br=b.getBoundingClientRect(),mr=mk.getBoundingClientRect();
+      b.style.transform=`translate(${mr.left+mr.width/2-br.left-br.width/2}px,${mr.top+mr.height*.55-br.top-br.height/2}px) scale(.4)`;b.style.opacity='0';
+      await wait(500,t);if(t!==token)return;
+      b.remove();sfx.chomp();restart(mk,'jump');fed++;
+      if(fed<total){say(rnd(['Mmmh!','Lecker!','Mampf!','Noch eine!']),t,'bobo');return}
+      sfx.monkey();restart(mk,'flip360');confetti(['🍌','⭐','🎉']);
+      await say(withName('Danke')+'! Mein Bauch ist jetzt ganz voll.',t,'bobo');
+      sfx.burp();await wait(800,t);
+      await say('Oh! Entschuldigung! Hihi!',t,'bobo');
+      endLater(t,done,{showAfter:300,autoAfter:12000});
+    };
+    o.appendChild(b);
+  }
+  mk.onclick=()=>{sfx.monkey();restart(mk,'jump')};
+  say('Uh uh, ah ah! Ich hab großen Hunger! Tipp auf die Bananen und füttere mich!',t,'bobo');
+}
+
+/* ---------- Schweine-Flug mit Rosi ---------- */
+function pigs(done){
+  catcher(done,{title:'Fang die fliegenden Schweine!',cls:'himmel',wer:'rosi',intro:'Oink! Schau mal, meine Familie fliegt vorbei! Tipp uns an!',end:'Oink oink! Alle Schweine sind nach Hause geflogen.',
+    make:()=>{const p=document.createElement('button');p.className='flypig'+(Math.random()<.5?' rev':'');p.innerHTML=fig('pig');
+      p.style.top=12+Math.random()*65+'vh';p.style.animationDuration=4+Math.random()*3+'s';return p},
+    hit:(p,o)=>{sfx.oink();boomAt(p,o,rnd(['💫','💖','✨']));p.style.left=getComputedStyle(p).left;p.classList.add('hit');setTimeout(()=>p.remove(),700)}});
+}
+
+
+/* ---------- Hummer Hubert und seine Witze ---------- */
+// Absichtlich kindgerechte Kalauer – Frage, kurze Pause, Pointe, Lachen
+const WITZE=[
+  ['Was ist orange und läuft durch den Wald?','Eine Wanderine!'],
+  ['Was ist grün und klopft an die Tür?','Ein Klopfsalat!'],
+  ['Was liegt am Strand und spricht ganz undeutlich?','Eine Nuschel!'],
+  ['Was hat vier Beine und kann fliegen?','Zwei Vögel!'],
+  ['Wie nennt man einen Bumerang, der nicht zurückkommt?','Einen Stock!'],
+  ['Was ist ein Keks unter einem Baum?','Ein schattiges Plätzchen!'],
+  ['Was macht ein Clown im Büro?','Faxen!'],
+  ['Was ist rot und schlecht für die Zähne?','Ein Ziegelstein!'],
+  ['Was ist braun, klebrig und läuft durch die Wüste?','Ein Karamel!'],
+  ['Was sagt der große Stift zum kleinen Stift?','Wachs mal, Stift!'],
+  ['Was ist grau und kann nicht fliegen?','Ein Parkplatz!'],
+  ['Welches Tier ist am stärksten?','Die Schnecke. Die trägt ihr ganzes Haus!'],
+  ['Wie heißt ein Hummer mit Zylinder?','Herr Hummer-Hut!'],
+  ['Was macht ein Krebs am Computer?','Er klickt mit der Schere!'],
+  ['Warum summen Bienen?','Weil sie den Text vergessen haben!'],
+  ['Was ist gelb und schießt?','Eine Banone!']
+];
+let witzNr=Math.floor(Math.random()*WITZE.length);
+const LACHEN=['Hahaha!','Hihihi, der war gut!','Hohoho! Verstehst du?','Hahaha! Ich lach mich schlapp!'];
+async function hubertWitz(t=token){
+  const [frage,pointe]=WITZE[witzNr++%WITZE.length];
+  await say(frage,t,'hubert');await wait(1300,t);
+  await say(pointe,t,'hubert');sfx.hummer();
+  await say(rnd(LACHEN),t,'hubert');
+}
+function witzStunde(done){
+  hush();const t=token,o=overlay('sea');
+  o.innerHTML=`<h2>Hubert erzählt Witze</h2><div class="bigfig" id="hu">${fig('hummer')}</div><p class="clock">Tipp Hubert an für noch einen Witz!</p>`;
+  let laeuft=false;
+  const los=async()=>{if(laeuft)return;laeuft=true;const f=$('#hu .fig');f&&f.classList.add('talk');await hubertWitz(t);f&&f.classList.remove('talk');laeuft=false};
+  $('#hu').onclick=los;
+  say('Hallo! Ich bin Hubert, der Hummer. Ich kenne die besten Witze der Welt!',t,'hubert').then(()=>{if(t===token)los()});
+  endLater(t,done,{showAfter:9000,autoAfter:60000});
 }
 
 /* ---------- Video: eingebettet (über https oder die Startdatei) oder im eigenen Fenster ---------- */

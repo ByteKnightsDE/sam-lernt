@@ -1,6 +1,6 @@
 # Sam lernt
 
-Lernspiele für Kinder im Zauberwald – mit BluppBlupp, dem blauen Nilpferd, und seinem Onkel Herrn Zinn mit der Laterne.
+Lernspiele im Zauberland – mit BluppBlupp, Herrn Zinn, Hoppel, Klonk, Hexe Holunder, Rosi, Bobo, Klapper, Pirat Paul, Krebs Kasimir und Hummer Hubert.
 Verträumt, ruhig und trotzdem spannend. Vorlage der Figuren: `bilder/zauberwald.jpg`.
 Läuft im Browser am PC und auf dem iPad, auch ohne Internet.
 
@@ -9,7 +9,8 @@ Läuft im Browser am PC und auf dem iPad, auch ohne Internet.
 | Datei / Ordner | Wozu |
 |---|---|
 | `index.html` | Startseite der Reihe – hier kommen neue Spiele dazu |
-| `mathe.html` | Sam lernt: Mathe (Zahlen 0–10, Zählen, Plus und Minus) |
+| `mathe.html` | Zahlenland: Weltkarte mit Stationen (Zählen, Rechnen, Schreiben, Spiegelsee, Klapperhöhle zum Sprechen), „Teste dein Können“ |
+| `uhr.html` | Uhrzeit in der Piratenbucht: Uhr lesen (Paul), Uhr stellen (Kasimir), Uhrzeit sagen (Hubert) |
 | `gemeinsam/` | Was alle Spiele teilen: Aussehen, Schrift, Stimme, Töne, Sterne, Figuren, Schatzkiste, KI-Anbindung |
 | `bilder/` | Titelbild aus dem Zauberwald und App-Symbol |
 | `sw.js`, `manifest.webmanifest` | Offline-Modus und „Zum Home-Bildschirm“ auf dem iPad |
@@ -61,3 +62,14 @@ Schalter und Hörproben: *Eltern* → *Stimme*. Ohne Internet oder Guthaben spri
 Der OpenAI-Schlüssel braucht dafür auch die Berechtigung für Audio (`/v1/audio/speech`).
 **Wichtig:** Das Sprachmodell `gpt-4o-mini-tts` schaltet OpenAI am 6. Januar 2027 ab – vorher den Server auf den Nachfolger umstellen
 (nur `ki-server/`, die App bleibt gleich; dann `VERSION_STIMME` hochzählen).
+
+## Zuhören (Spracheingabe)
+
+In der Klapperhöhle, bei „Wie spät ist es?“ und im Test antwortet Sam mit der Stimme. Die App nimmt kurz auf und schickt die Aufnahme an
+`/api/hoeren` (OpenAI `gpt-transcribe`); zurück kommt nur der Text, gespeichert wird nichts. Klappt es zweimal nicht oder gibt es kein Internet,
+erscheinen Knöpfe zum Antippen. Beim ersten Mal fragt das iPad nach dem Mikrofon – erlauben.
+
+## Üben, was schwerfällt
+
+Falsche Antworten machen eine Zahl (bzw. Uhrzeit) häufiger; das bleibt gespeichert. Zweimal hintereinander dieselbe Zahl daneben →
+kurze Extra-Erklärung. Im Eltern-Bereich steht, was gerade öfter geübt wird.

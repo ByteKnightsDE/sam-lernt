@@ -20,13 +20,14 @@
 <script src="gemeinsam/kern.js"></script>
 <script src="gemeinsam/figuren.js"></script>
 <script src="gemeinsam/ki.js"></script>
+<script src="gemeinsam/belohnungen.js"></script>
 <script>
 // Alle Spiele der Reihe – neue einfach hier eintragen
 const GAMES=[
   {href:'mathe.html',ico:'🗺️',label:'Zahlenland',say:'Auf ins Zahlenland',c:'#e9a25b'},
   {ico:'🔤',label:'Buchstaben',say:'Buchstaben',c:'#6fa8b5'},
   {ico:'🎨',label:'Farben & Formen',say:'Farben und Formen',c:'#b48fc4'},
-  {ico:'⏰',label:'Uhrzeit',say:'Uhrzeit',c:'#7fae8a'}
+  {href:'uhr.html',ico:'⏰',label:'Uhrzeit',say:'Auf in die Piratenbucht',c:'#7fae8a'}
 ];
 // Aquarellfarben passend zum Zauberwald
 const COLORS=['#d9776a','#e39a52','#c9a440','#7fae8a','#5f9fb0','#9a84c2'];
@@ -39,7 +40,7 @@ function home(){
     <h1>${title}</h1>
     <p class="sub">im Zauberland</p>
     <div class="hero"><img src="bilder/zauberwald.jpg" alt="BluppBlupp und Herr Zinn im Zauberwald"><button class="l" data-f="blupp" aria-label="BluppBlupp"></button><button class="r" data-f="zinn" aria-label="Herr Zinn"></button></div>
-    <div class="freunde">${['hoppel','klonk','holunder'].map(f=>`<button data-f="${f}" aria-label="${CHAR[f].name}">${fig(f)}</button>`).join('')}</div>
+    <div class="freunde">${['hoppel','klonk','holunder','pig','monkey','skel','pirate','krebs','hummer'].map(f=>`<button data-f="${f}" aria-label="${CHAR[f].name}">${fig(f)}</button>`).join('')}</div>
     <div class="modes">${GAMES.map((g,i)=>`<button class="mode ${g.href?'':'soon'}" data-g="${i}" style="--c:${g.c}"><span class="ico">${g.ico}</span>${g.label}${g.href?'':'<span class="tag">Bald</span>'}</button>`).join('')}</div>
     ${progHTML()}
     <div class="bar">
@@ -52,8 +53,13 @@ function home(){
     zinn:'Guten Tag! Ich bin Herr Zinn, der Onkel von BluppBlupp. Meine Laterne leuchtet uns den Weg.',
     hoppel:'Hallo! Ich bin Hoppel! Ich wohne auf der Kaninchenwiese und hüpfe den ganzen Tag!',
     klonk:'Piep, piep! Ich bin Klonk, der Roboter. Ich baue Sachen in meiner Werkstatt in den Bergen.',
-    holunder:'Hihi! Ich bin Hexe Holunder. In meinem Hexenhaus brodelt immer ein Zaubertrank.'};
-  $$('[data-f]').forEach(b=>b.onclick=()=>{hush();const f=b.dataset.f;CHAR[f].sound();restart(b.closest('.hero')||b,b.closest('.hero')?'bump':'jump');setTimeout(()=>say(hi[f],token,STIMME_VON[f]),700)});
+    holunder:'Hihi! Ich bin Hexe Holunder. In meinem Hexenhaus brodelt immer ein Zaubertrank.',
+    pig:'Oink! Ich bin Rosi, das fliegende Schwein! Ich fliege über das ganze Zauberland.',
+    monkey:'Uh uh, ah ah! Ich bin Bobo, der Affe! Ich feuere dich an, wenn du dein Können testest!',
+    skel:'Klapper, klapper! Ich bin Klapper, das Skelett. In meiner Höhle hören wir ganz genau zu.',
+    pirate:'Arrr! Ich bin Pirat Paul. In meiner Piratenbucht lernen wir die Uhrzeit!',
+    krebs:'Zwick, zwack! Ich bin Kasimir, der Krebs. Mit meinen Scheren drehe ich die Uhrzeiger.'};
+  $$('[data-f]').forEach(b=>b.onclick=()=>{hush();const f=b.dataset.f;CHAR[f].sound();restart(b.closest('.hero')||b,b.closest('.hero')?'bump':'jump');const t=token;setTimeout(()=>f==='hummer'?hubertWitz(t):say(hi[f],t,STIMME_VON[f]),700)});
   $$('[data-g]').forEach(b=>b.onclick=async()=>{
     const g=GAMES[+b.dataset.g];hush();
     if(!g.href){restart(b,'shake');say(g.say+' kommt bald!');return}

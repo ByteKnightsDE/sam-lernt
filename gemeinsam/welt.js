@@ -29,6 +29,10 @@ const ORTE=[
     hallo:'Piep, piep! Ich bin Klonk. In meiner Werkstatt in den Bergen zählen wir alles ganz genau.',
     dinge:[{e:'⚙️',sg:'ein Zahnrad',pl:'Zahnräder'},{e:'🔩',sg:'eine Schraube',pl:'Schrauben'},{e:'🔋',sg:'eine Batterie',pl:'Batterien'},
       {e:'💡',sg:'eine Glühbirne',pl:'Glühbirnen'},{e:'💎',sg:'ein Edelstein',pl:'Edelsteine'},{e:'🚀',sg:'eine Rakete',pl:'Raketen'}]},
+  {id:'hoehle',name:'Klapperhöhle',modus:'listen',spiel:'Sag es laut 🎙️',gast:'skel',ico:'🎙️',
+    hallo:'Klapper, klapper! Willkommen in meiner Höhle. Hier antwortest du mit deiner Stimme. Ich höre ganz genau zu!',
+    dinge:[{e:'💎',sg:'ein Kristall',pl:'Kristalle'},{e:'🦇',sg:'eine Fledermaus',pl:'Fledermäuse'},{e:'🕯️',sg:'eine Kerze',pl:'Kerzen'},
+      {e:'🦴',sg:'ein Knochen',pl:'Knochen'},{e:'🍄',sg:'ein Leuchtpilz',pl:'Leuchtpilze'},{e:'🪨',sg:'ein Stein',pl:'Steine'}]},
   {id:'gipfel',name:'Echo-Gipfel',modus:'speak',spiel:'Ich spreche',gast:'klonk',ico:'🏔️',
     hallo:'Piep! Hier oben auf dem Echo-Gipfel nehme ich deine Stimme auf. Sag die Zahl ganz laut!',
     dinge:[{e:'❄️',sg:'eine Schneeflocke',pl:'Schneeflocken'},{e:'🐐',sg:'eine Ziege',pl:'Ziegen'},{e:'🌲',sg:'eine Tanne',pl:'Tannen'},
@@ -112,6 +116,25 @@ function szeneSVG(id){
       ${Array.from({length:26},(_,i)=>`<circle class="flocke" style="animation-delay:${-(i*.7)%8}s;animation-duration:${6+(i%5)}s" cx="${(i*61)%400}" cy="-10" r="${2+(i%3)}" fill="#fff"/>`).join('')}`
   };
   k.sand=k.strand;
+  k.hoehle=`<defs><radialGradient id="hhl" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#4a4363"/><stop offset="1" stop-color="#1c1928"/></radialGradient></defs>
+      <rect width="400" height="800" fill="url(#hhl)"/>
+      <path d="M0 0 H400 V90 Q360 140 330 100 Q300 170 260 110 Q230 160 200 100 Q160 150 130 105 Q90 160 60 110 Q30 150 0 100Z" fill="#14121c"/>
+      <path d="M0 800 V640 Q80 600 160 640 T320 630 T400 640 V800Z" fill="#2a2638"/>
+      ${[[40,640,'#9be7e0'],[80,660,'#d7b6f5'],[330,630,'#9be7e0'],[370,650,'#f7c6e0'],[200,690,'#d7b6f5']].map(([x,y,f],i)=>`<path class="glimm" style="animation-delay:${-i*.5}s" d="M${x} ${y} l8 -30 l8 30z M${x+12} ${y} l6 -18 l6 18z" fill="${f}" opacity=".85"/>`).join('')}
+      ${sterne(14,500,9)}
+      <g class="fledermaus"><text font-size="22">🦇</text></g>`;
+  k.bucht=`<defs><linearGradient id="hpb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6c9b5"/><stop offset=".45" stop-color="#fbe2cf"/><stop offset="1" stop-color="#fbe2cf"/></linearGradient></defs>
+      <rect width="400" height="800" fill="url(#hpb)"/><circle cx="90" cy="230" r="54" fill="#ffd9a0" opacity=".9"/>${wolke(300,120,22)}${wolke(150,90,16)}
+      <g class="schiff"><path d="M210 455 L360 455 L340 495 L230 495Z" fill="#8a5a3c"/><path d="M215 462 H355" stroke="#6b4329" stroke-width="3"/>
+        <rect x="282" y="300" width="5" height="160" fill="#6b4329"/><path d="M288 310 Q340 350 288 430Z" fill="#fff8ee"/><path d="M282 318 Q240 360 282 428Z" fill="#f3e6d6"/>
+        <path d="M287 296 l22 8 l-22 8z" fill="#2f3340"/><circle cx="296" cy="304" r="2.4" fill="#fff"/>
+        <circle cx="245" cy="474" r="4" fill="#3b2a20"/><circle cx="270" cy="474" r="4" fill="#3b2a20"/><circle cx="295" cy="474" r="4" fill="#3b2a20"/><circle cx="320" cy="474" r="4" fill="#3b2a20"/></g>
+      <g class="wellenzug">${wellen(480,['#9fd3e0','#7fc0d3','#5fa9c2'])}</g>
+      <path d="M0 610 Q140 585 260 600 T400 595 V800 H0Z" fill="#f3d9a8"/><path d="M0 650 Q180 630 400 645 V800 H0Z" fill="#ecca8e"/>
+      <path d="M50 640 Q60 540 40 470" stroke="#8a6040" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <g fill="#6f9f6b"><path d="M40 470 q-40 -10 -60 20 q30 -10 60 -20z"/><path d="M40 470 q40 -20 70 5 q-35 -5 -70 -5z"/><path d="M40 470 q-15 -40 -50 -45 q25 20 50 45z"/><path d="M40 470 q20 -40 55 -40 q-30 15 -55 40z"/></g>
+      <rect x="300" y="640" width="46" height="30" rx="4" fill="#9a6a3e"/><rect x="298" y="634" width="50" height="10" rx="3" fill="#b8854f"/><circle cx="323" cy="652" r="4" fill="#e9b949"/>
+      <text x="140" y="720" font-size="22">🐚</text><text x="230" y="760" font-size="18">⭐</text>`;
   return `<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMax slice">${k[id]}</svg>`;
 }
 // Landschaft hinter das Spiel legen (ersetzt den Wald-Hintergrund)
@@ -125,7 +148,7 @@ function szene(id){
 
 /* ---------- Weltkarte: ein Pfad vom Strand (unten) bis zum Gipfel (oben) ---------- */
 const KARTE_H=1500;
-const PUNKTE={strand:[115,1410],sand:[290,1305],wiese:[105,1170],wald:[290,1030],spiegel:[105,880],hexe:[285,715],werkstatt:[125,470],gipfel:[205,215]};
+const PUNKTE={strand:[115,1410],sand:[290,1305],wiese:[105,1170],wald:[290,1030],spiegel:[105,880],hexe:[285,715],werkstatt:[120,495],hoehle:[300,372],gipfel:[175,252]};
 function kartePfad(){
   const p=ORTE.map(o=>PUNKTE[o.id]);let d=`M${p[0][0]} ${p[0][1]}`;
   for(let i=1;i<p.length;i++){const [x0,y0]=p[i-1],[x1,y1]=p[i];d+=` C${x0} ${y0-110} ${x1} ${y1+110} ${x1} ${y1}`}
@@ -144,6 +167,9 @@ function karteSVG(){
   <!-- Berge mit Werkstatt -->
   ${berge(600,'#a9b8cb','#fff',[[60,230,110],[340,260,120]])}${berge(620,'#8b9cb3',null,[[200,170,150]])}
   ${tanne(40,610,16)}${tanne(370,620,15)}${werkstatt(300,545,.8)}
+  <!-- Klapperhöhle -->
+  <path d="M250 420 Q250 330 330 330 Q400 330 400 420Z" fill="#6f6a80"/><path d="M275 420 Q278 360 325 360 Q372 360 375 420Z" fill="#2c2838"/>
+  <circle class="glimm" cx="300" cy="405" r="3" fill="#9be7e0"/><circle class="glimm" cx="350" cy="398" r="2.5" fill="#d7b6f5"/>
   <!-- Hexenhaus -->
   ${huegel(800,'#a58fb0',30,0)}${hexenhaus(345,790,.62)}<g class="fledermaus"><text font-size="16">🦇</text></g>
   <!-- Zauberwald -->

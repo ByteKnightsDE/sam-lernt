@@ -59,6 +59,8 @@
 <script src="gemeinsam/figuren.js"></script>
 <script src="gemeinsam/welt.js"></script>
 <script src="gemeinsam/schrift.js"></script>
+<script src="gemeinsam/uhr.js"></script>
+<script src="gemeinsam/hoeren.js"></script>
 <script src="gemeinsam/ki.js"></script>
 <script src="gemeinsam/belohnungen.js"></script>
 <script>
@@ -76,8 +78,9 @@ const thingHTML=th=>th.f?fig(th.f):th.e;
 const app=$('#app');
 
 const M={max:load('mathe.max',5),useRec:load('mathe.useRec',true),stats:load('mathe.stats',{}),last:null,
-  ort:null,hier:load('welt.hier','strand'),sterne:load('welt.sterne',{})};
-const weights={};
+  ort:null,hier:load('welt.hier','strand'),sterne:load('welt.sterne',{}),serie:{},vertiefen:null,pruefung:null};
+// Wie oft eine Zahl drankommt – bleibt gespeichert, damit Schwächen auch morgen noch geübt werden
+const weights=load('mathe.gewichte',{});
 
 /* ---------- Eigene Aufnahmen der Zahlen (bleiben im Browser gespeichert) ---------- */
 const rec={};
@@ -184,7 +187,12 @@ async function record(n,{onStart,onDone,ms=2500}={}){
 /* ---------- Lernlogik: falsch beantwortete Zahlen kommen öfter ---------- */
 const weight=n=>weights[n]??2;
 function tally(key,ok){const s=M.stats[key]||(M.stats[key]={ok:0,bad:0});s[ok?'ok':'bad']++;save('mathe.stats',M.stats)}
-function learn(n,ok){weights[n]=ok?Math.max(1,weight(n)-1):weight(n)+3;tally(n,ok)}
+function learn(n,ok){
+  weights[n]=ok?Math.max(1,weight(n)-1):weight(n)+3;save('mathe.gewichte',weights);tally(n,ok);
+  // Zweimal hintereinander daneben? Dann gibt es gleich eine kleine Extra-Erklärung (siehe next)
+  M.serie[n]=ok?0:(M.serie[n]||0)+1;
+  if(M.serie[n]>=2&&typeof n==='number'){M.vertiefen=n;M.serie[n]=0}
+}
 function pick(min){
   const ns=[];for(let n=min;n<=M.max;n++)if(n!==M.last)ns.push(n);
   let r=Math.random()*ns.reduce((a,n)=>a+weight(n),0);
@@ -199,7 +207,7 @@ function options(target){
 
 /* ---------- Bausteine ---------- */
 function frameHTML(n,th,cls=''){
-  const slots=M.max<=5?5:10;let h='<div class="frame">';
+  const slots=M.max<=5&&n<=5?5:10;let h='<div class="frame">';
   for(let i=0;i<slots;i++)h+=i<n?`<div class="slot"><span class="obj ${cls}">${thingHTML(th)}</span></div>`:'<div class="slot"></div>';
   return h+'</div>';
 }
@@ -222,10 +230,10 @@ function wireTop(){
 function cheer(){
   confetti();if(Math.random()<.25)flyBy(undefined,false);
   const g=$('.gastgeber');if(g){restart(g,'freut');if(Math.random()<.5)CHAR[g.dataset.f].sound()}
-  if(M.ort){M.sterne[M.ort]=(M.sterne[M.ort]||0)+1;save('welt.sterne',M.sterne)}
+  if(M.ort&&!M.pruefung){M.sterne[M.ort]=(M.sterne[M.ort]||0)+1;save('welt.sterne',M.sterne)}
 }
 // Falsch: freundliches Kopfschütteln
-function falsch(){sfx.no();const g=$('.gastgeber');if(g)restart(g,'nein')}
+function falsch(){sfx.no();const g=$('.gastgeber');if(g)restart(g,'nein');if(M.pruefung)M.pruefung.fehler=true}
 async function countAlong(t,n){
   const objs=$$('#stage .obj:not(.gone)');$$('#stage .slot i').forEach(i=>i.remove());
   for(let i=0;i<n;i++){
@@ -236,7 +244,7 @@ async function countAlong(t,n){
 }
 
 /* ---------- Weltkarte: Startseite von Mathe ---------- */
-const START={write:()=>schreibRunde(),mirror:()=>spiegelRunde(),explore:()=>explore(),find:()=>findRound(),how:()=>howRound(),count:()=>countRound(),math:()=>mathRound(),speak:()=>speakShow(0)};
+const START={listen:()=>sprichRunde(),write:()=>schreibRunde(),mirror:()=>spiegelRunde(),explore:()=>explore(),find:()=>findRound(),how:()=>howRound(),count:()=>countRound(),math:()=>mathRound(),speak:()=>speakShow(0)};
 const sterneVon=id=>{const n=M.sterne[id]||0;return [3,10,25].map(g=>n>=g?'⭐':'<span class="leer">⭐</span>').join('')};
 let wegLaenge={};
 function home(){
@@ -249,8 +257,10 @@ function home(){
         <span class="rund">${fig(o.gast)}<span class="ico">${o.ico}</span></span>
         <span class="schild">${o.name}<small>${o.spiel}</small></span><span class="st">${sterneVon(o.id)}</span></button>`}).join('')}
       <div class="avatar" id="av">${fig('blupp')}</div>
+      <button class="kartenfreund" id="hubert" style="left:84%;top:97%" aria-label="Hubert erzählt einen Witz">${fig('hummer')}</button>
+      <button class="kartenfreund klein" id="kasimir" style="left:66%;top:98.3%" aria-label="Kasimir">${fig('krebs')}</button>
     </div></div>
-    <div class="kartenkopf"><a class="ic" href="index.html" aria-label="Alle Spiele">🏠</a>${progHTML()}<button class="ic" id="vt" aria-label="Ton">${state.voice?'🔊':'🔇'}</button></div>
+    <div class="kartenkopf"><a class="ic" href="index.html" aria-label="Alle Spiele">🏠</a>${progHTML()}<button class="ic" id="pruef" aria-label="Teste dein Können">🏆</button><button class="ic" id="vt" aria-label="Ton">${state.voice?'🔊':'🔇'}</button></div>
     <div class="kartenfuss">
       <div class="seg" role="group" aria-label="Zahlenraum"><button class="${M.max===5?'on':''}" data-max="5">0 – 5</button><button class="${M.max===10?'on':''}" data-max="10">0 – 10</button></div>
       <button class="pill" id="par">👪 Eltern</button>
@@ -259,6 +269,9 @@ function home(){
   const weg=$('#weg'),L=weg.getTotalLength();wegLaenge={};
   for(const o of ORTE){let best=0,bd=1e9;const [px,py]=PUNKTE[o.id];for(let l=0;l<=L;l+=6){const q=weg.getPointAtLength(l),d=(q.x-px)**2+(q.y-py)**2;if(d<bd){bd=d;best=l}}wegLaenge[o.id]=best}
   setzeAvatar(wegLaenge[M.hier]);
+  $('#pruef').onclick=()=>pruefung();
+  $('#hubert').onclick=()=>{hush();restart($('#hubert'),'jump');hubertWitz(token)};
+  $('#kasimir').onclick=()=>{hush();sfx.zwick();restart($('#kasimir'),'jump');say('Zwick, zwack! In der Piratenbucht lernen wir die Uhrzeit!',token,'kasimir')};
   const k=$('#karte'),st=$(`.station[data-o="${M.hier}"]`);
   requestAnimationFrame(()=>{k.style.scrollBehavior='auto';k.scrollTop=st.offsetTop-k.clientHeight*.55;k.style.scrollBehavior=''});
   $$('.station').forEach(b=>b.onclick=()=>besuche(b.dataset.o));
@@ -286,7 +299,7 @@ function besuche(id){
 }
 function betrete(id,t){
   if(t!==token)return;
-  const o=ORT(id);M.ort=id;state.stimme=o.gast;M.last=null;
+  const o=ORT(id);M.ort=id;state.stimme=STIMME_VON[o.gast]||o.gast;M.last=null;
   szene(id);app.classList.remove('ganz');
   app.innerHTML=topbar();wireTop();
   const g=document.createElement('button');g.className='gastgeber'+(o.modus==='explore'?' links':'');g.dataset.f=o.gast;g.setAttribute('aria-label',CHAR[o.gast].name);
@@ -583,6 +596,7 @@ function parents(){
     <div class="box">
       <h2>Mathe: Fortschritt</h2>
       <div class="stats">${[0,1,2,3,4,5,6,7,8,9,10,'plus','minus','spiegel'].map(st).join('')}</div>
+      <p>Wird gerade öfter geübt: ${Object.entries(weights).filter(([,g])=>g>=5).map(([k])=>k==='plus'?'Plus':k==='minus'?'Minus':k).join(', ')||'nichts Besonderes'}. Bester Test: ${load('mathe.bestwert',0)} von 10.</p>
       <p>🪞 = Spiegelsee (richtig herum erkannt). Geschriebene Ziffern: ${Object.entries(M.schreib).filter(([k])=>k!=='spiegel').map(([k,v])=>`${k}: ${v}×`).join(', ')||'noch keine'}.</p>
       <p><button class="sb" id="sreset">Statistik löschen</button></p>
     </div>
@@ -610,6 +624,116 @@ function parents(){
       });
     }});
 }
+
+/* ---------- Klapperhöhle: mit der Stimme antworten ----------
+   Klapper zeigt eine Zahl oder ein paar Dinge, Sam sagt laut, was er sieht. Klappt das Zuhören zweimal nicht
+   (oder gibt es kein Internet), erscheinen Zahlenknöpfe – Sam soll nie festhängen. */
+const HOER_SAETZE={zahl:'Welche Zahl ist das?',gehoert:'Ich habe {Z} gehört.',nochmal:'Schau nochmal genau.',nichtverstanden:'Das habe ich nicht verstanden. Sag es nochmal.'};
+const ZAHLNAME=n=>n<=10?CAP(WORDS[n]):['Elf','Zwölf','Dreizehn','Vierzehn','Fünfzehn','Sechzehn','Siebzehn','Achtzehn','Neunzehn','Zwanzig'][n-11]||String(n);
+async function sprichRunde(){
+  hush();const t=token,n=pick(0),art=Math.random()<.5||n===0?'zahl':'menge',th=thing();
+  let versuche=0,locked=false;
+  state.prompt=()=>art==='zahl'?say(HOER_SAETZE.zahl):say(`Wie viele ${th.pl} siehst du?`);
+  $('#stage').innerHTML=`${art==='zahl'?`<div class="bignum pop" style="color:${COLORS[n]}">${n}</div>`:frameHTML(n,th,'pop')}<div id="antwort">${mikroKnopf()}</div>`;
+  const richtig=async()=>{locked=true;sfx.ok();cheer();learn(n,versuche===0);addStar();
+    if(art==='menge'&&n>0)await countAlong(t,n);
+    await talk(t,`${praise()} Das ist die `,n,'.');await wait(500,t);next(t,sprichRunde)};
+  const knoepfe=()=>{
+    $('#antwort').innerHTML=numBtns(options(n));
+    $$('.num').forEach(b=>b.onclick=async()=>{if(locked||b.disabled)return;quiet();const x=+b.dataset.n;
+      if(x===n)return richtig();falsch();b.classList.add('wrong');b.disabled=true;learn(n,false);await say(HOER_SAETZE.nochmal,t)});
+  };
+  const runde=async()=>{
+    if(locked||t!==token)return;
+    const text=await zuhoeren(t);
+    if(t!==token||locked)return;
+    if(text===null){knoepfe();return}
+    const x=verstehZahl(text);versuche++;
+    if(x===n)return richtig();
+    if(x===null)await say(HOER_SAETZE.nichtverstanden,t);
+    else{falsch();learn(n,false);await say(HOER_SAETZE.gehoert.replace('{Z}',ZAHLNAME(x)),t);
+      if(art==='menge'&&n>0){await say('Lass uns zusammen zählen!',t);await countAlong(t,n)}else await say(HOER_SAETZE.nochmal,t)}
+    if(versuche>=2)knoepfe();else if(!locked)runde();
+  };
+  if(!hoerenMoeglich()){knoepfe();await state.prompt();return}
+  $('#mik').onclick=runde;
+  await state.prompt();
+  runde();
+}
+
+/* ---------- Vertiefen: zweimal dieselbe Zahl daneben → kurz gemeinsam anschauen ---------- */
+const _next=next;
+next=function(t,fn){
+  if(t!==token)return;
+  if(M.pruefung)return pruefWeiter(t);
+  if(M.vertiefen!=null){const n=M.vertiefen;M.vertiefen=null;return vertiefung(t,n,()=>_next(t,fn))}
+  return _next(t,fn);
+};
+async function vertiefung(t,n,dann){
+  const th=thing();
+  $('#stage').innerHTML=`<div class="bignum pop" style="color:${COLORS[n]}">${n}</div>${n?frameHTML(n,th,'hidden'):''}`;
+  await say(`Die ${ZN(n)} üben wir noch einmal zusammen.`,t);
+  if(n===0)await say('Null heißt: gar nichts! Das Feld ist leer.',t);
+  const objs=$$('#stage .obj');
+  for(let i=0;i<n;i++){if(t!==token)return;objs[i].classList.remove('hidden');badge(objs[i],i+1);sfx.pop(i+1);await talk(t,i+1)}
+  await talk(t,'Das ist die ',n,'.');await wait(700,t);if(t===token)dann();
+}
+
+/* ---------- Teste dein Können: zehn Fragen querbeet, am Ende eine Medaille ---------- */
+const PRUEF_ARTEN=()=>['how','find','math','mirror','uhr',...(hoerenMoeglich()?['listen','listen']:['how'])];
+const PRUEF_START={how:()=>howRound(),find:()=>findRound(),math:()=>mathRound(),mirror:()=>spiegelRunde(),listen:()=>sprichRunde(),uhr:()=>uhrFrage()};
+function pruefung(){
+  hush();const t=token;
+  M.pruefung={nr:0,punkte:0,fehler:false,arten:shuffle([...PRUEF_ARTEN(),...PRUEF_ARTEN()]).slice(0,10)};
+  state.stimme='bobo';szene('wiese');app.classList.remove('ganz');
+  app.innerHTML=topbar();wireTop();
+  $('#home').onclick=()=>{hush();M.pruefung=null;home()};
+  const g=document.createElement('button');g.className='gastgeber';g.dataset.f='monkey';g.innerHTML=fig('monkey');g.onclick=()=>{sfx.monkey();restart(g,'freut')};app.appendChild(g);
+  sfx.fanfare();
+  say('Uh uh, ah ah! Teste dein Können! Ich stelle dir zehn Fragen. Los geht’s!',t).then(()=>{if(t===token)pruefFrage(t)});
+}
+function pruefFrage(t){
+  if(t!==token||!M.pruefung)return;
+  const p=M.pruefung,art=p.arten[p.nr];p.fehler=false;
+  M.ort=rnd(['strand','wiese','wald','hexe','werkstatt','hoehle']);
+  let chip=$('#pruefchip');if(!chip){chip=document.createElement('div');chip.id='pruefchip';chip.className='ortname pruefchip';$('.top').after(chip)}
+  chip.innerHTML=`🏆 Frage ${p.nr+1} von 10 · ${'⭐'.repeat(p.punkte)||'–'}`;
+  if($('.strip'))$('.strip').remove();
+  PRUEF_START[art]();
+}
+function pruefWeiter(t){
+  const p=M.pruefung;if(!p)return;
+  if(!p.fehler)p.punkte++;p.nr++;
+  if(p.nr<10)return pruefFrage(t);
+  pruefErgebnis(t);
+}
+async function pruefErgebnis(){
+  hush();const t=token,n=M.pruefung.punkte;M.pruefung=null;
+  const [med,text]=n>=9?['🥇','Gold! Du bist ein echter Zahlen-Profi!']:n>=6?['🥈','Silber! Das war richtig stark!']:n>=3?['🥉','Bronze! Gut gemacht!']:['🎖️','Super, dass du es versucht hast! Wir üben weiter.'];
+  const best=load('mathe.bestwert',0);if(n>best)save('mathe.bestwert',n);
+  const o=overlay('jungle');
+  o.innerHTML=`<h2>Teste dein Können</h2><div class="gift">${med}</div><h2>${n} von 10 richtig</h2><div class="bigfig dance">${fig('monkey')}</div>`;
+  sfx.fanfare();confetti(['⭐','🍌','✨',med]);sfx.monkey();
+  await talk(t,'Du hast ',n,' von zehn richtig!');await say(text,t);
+  const b=document.createElement('button');b.className='bigbtn';b.textContent='Zur Karte ▶';b.onclick=()=>{closeOverlay();home()};o.appendChild(b);
+}
+// Eine Uhr-Frage für den Test (wie in der Piratenbucht)
+async function uhrFrage(){
+  hush();const t=token,stufe=load('uhr.stufe',1),z=zufallsZeit(stufe);
+  const andere=[];while(andere.length<2){const x=zufallsZeit(stufe,z);if(!andere.some(a=>gleicheZeit(a,x)))andere.push(x)}
+  const alle=shuffle([z,...andere]);let locked=false;
+  state.prompt=()=>say(uhrSatz('zeig',z.h,z.m));
+  $('#stage').innerHTML=`<div class="q">⏰</div><div class="uhren">${alle.map((x,i)=>`<button class="opt uhrwahl" data-i="${i}">${uhrSVG(x.h,x.m,{klein:true})}</button>`).join('')}</div>`;
+  $$('.uhrwahl').forEach(b=>b.onclick=async()=>{
+    if(locked||b.disabled)return;quiet();const x=alle[+b.dataset.i];
+    if(gleicheZeit(x,z)){locked=true;sfx.ok();b.classList.add('right');cheer();addStar();await say(uhrSatz('richtig',z.h,z.m),t);await wait(400,t);next(t,uhrFrage)}
+    else{falsch();b.classList.add('wrong');b.disabled=true;await say(minutenTipp(z.m),t)}
+  });
+  await state.prompt();
+}
+
+// Auf der Karte fliegt ab und zu Rosi vorbei oder Bobo schwingt sich durchs Bild
+setInterval(()=>{if($('#karte')&&!$('#ov'))flyBy(rnd(['pig','pig','monkey']),false)},16000);
 
 loadRecs().then(()=>state.name?home():nameScreen(home));
 </script>

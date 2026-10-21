@@ -185,6 +185,27 @@ async function stimme(req, env, url, h) {
   return new Response(audio, { headers: { ...kopf, ...h } });
 }
 
+/* ---------- Hören: das Kind spricht, der Server schreibt mit (OpenAI-Transkription) ----------
+   Die App schickt eine kurze Aufnahme (höchstens ein paar Sekunden); zurück kommt nur der Text. Nichts wird gespeichert. */
+const HOER_WOERTER = ['null', 'eins', 'zwei', 'drei', 'vier', 'fünf', 'sechs', 'sieben', 'acht', 'neun', 'zehn', 'elf', 'zwölf', 'Uhr', 'halb', 'Viertel', 'nach', 'vor'];
+async function hoeren(req, env, h) {
+  const typ = req.headers.get('content-type') || 'audio/webm';
+  const daten = await req.arrayBuffer();
+  if (!daten.byteLength || daten.byteLength > 2_000_000) return antwort({ fehler: 'Aufnahme fehlt oder ist zu groß' }, 400, h);
+  const endung = /mp4|m4a|aac/.test(typ) ? 'm4a' : /wav/.test(typ) ? 'wav' : /ogg/.test(typ) ? 'ogg' : 'webm';
+  const form = new FormData();
+  form.append('file', new Blob([daten], { type: typ.split(';')[0] }), 'kind.' + endung);
+  form.append('model', env.MODELL_HOEREN || 'gpt-transcribe');
+  form.append('languages[]', 'de');
+  HOER_WOERTER.forEach(w => form.append('keywords[]', w));
+  form.append('prompt', 'Ein kleines Kind antwortet auf Deutsch mit einer Zahl, einer Rechnung oder einer Uhrzeit, zum Beispiel: sieben, drei Uhr, halb vier, Viertel nach zwei.');
+  form.append('response_format', 'json');
+  const r = await fetch('https://api.openai.com/v1/audio/transcriptions', { method: 'POST', headers: { authorization: 'Bearer ' + env.OPENAI_API_KEY }, body: form });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) return antwort({ fehler: (j.error && j.error.message) || 'Hören: OpenAI antwortet mit ' + r.status }, r.status === 429 ? 429 : 502, h);
+  return antwort({ text: String(j.text || '').slice(0, 200) }, 200, h);
+}
+
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
@@ -204,6 +225,7 @@ export default {
     if (!env.OPENAI_API_KEY) return antwort({ fehler: 'OPENAI_API_KEY fehlt im Server' }, 500, h);
     if (istStimme) { try { return await stimme(req, env, url, h) } catch (e) { return antwort({ fehler: e.message || 'Fehler' }, 500, h) } }
 
+    if (url.pathname === '/api/hoeren') { try { return await hoeren(req, env, h) } catch (e) { return antwort({ fehler: e.message || 'Fehler' }, 500, h) } }
     let b = {};
     try { const t = await req.text(); if (t.length > 8000) throw 0; b = t ? JSON.parse(t) : {} } catch (e) { return antwort({ fehler: 'Ungültige Anfrage' }, 400, h) }
 

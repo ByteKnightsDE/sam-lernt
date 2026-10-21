@@ -335,7 +335,7 @@ body[data-ort="hexe"] .hint{color:#f3e6f5}
 /* BluppBlupp steht neben der Station, nicht davor */
 .avatar{position:absolute;width:clamp(58px,16vw,84px);height:clamp(58px,16vw,84px);transform:translate(calc(-50% - clamp(52px,15vw,78px)),-80%);pointer-events:none;z-index:3;filter:drop-shadow(0 6px 6px rgba(40,40,80,.25))}
 .avatar.laeuft .fig{animation:wiggle .35s ease-in-out infinite}
-.kartenkopf{position:absolute;top:0;left:0;right:0;z-index:4;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:calc(10px + env(safe-area-inset-top)) var(--gut) 10px;pointer-events:none}
+.kartenkopf{position:absolute;top:0;left:0;right:0;z-index:4;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:calc(10px + env(safe-area-inset-top)) var(--gut) 10px;pointer-events:none}
 .kartenkopf>*{pointer-events:auto}
 .kartenfuss{position:absolute;bottom:0;left:0;right:0;z-index:4;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:10px var(--gut) calc(12px + env(safe-area-inset-bottom));pointer-events:none}
 .kartenfuss>*{pointer-events:auto}
@@ -387,3 +387,74 @@ body[data-ort="spiegel"] .tafelgrund{fill:#fffaf4}
 .seekarte g{transition:transform .45s}
 .seekarte.dreht svg{animation:umdrehen .9s ease-in-out}
 @keyframes umdrehen{50%{transform:rotateY(90deg)}}
+
+/* Rosi, Bobo, Klapper, Paul, Kasimir, Hubert */
+.fig.pig{animation:float 1.6s ease-in-out infinite}
+.fig .wing{transform-box:fill-box;animation:flapL .28s ease-in-out infinite alternate}
+.fig .wl{transform-origin:100% 60%}
+.fig .wr{transform-origin:0 60%;animation-name:flapR}
+.fig.skel{filter:drop-shadow(0 0 1.2px #6b5d70) drop-shadow(0 0 .8px #6b5d70)}
+.fig .jaw{transform-box:fill-box}
+.fig.dance .jaw,.fig.talk .jaw,.dance .fig .jaw,.talk .fig .jaw{animation:chatter .25s steps(2) infinite}
+.fig.dance .ar,.dance .fig .ar{animation:waveR .5s ease-in-out infinite alternate}
+.fig.pirate{animation:sway 2.4s ease-in-out infinite;transform-origin:50% 100%}
+.fig.monkey .tail,.fig.pig .tail{transform-box:fill-box;transform-origin:0 50%;animation:wag 1s ease-in-out infinite alternate}
+.fig.krebs{animation:seitwaerts 3s ease-in-out infinite}
+.fig.krebs .arm{transform-box:fill-box;transform-origin:50% 100%;animation:zwicken 1.6s ease-in-out infinite}
+.fig.hummer{animation:sway 3s ease-in-out infinite;transform-origin:50% 100%}
+.fig.hummer .fuehler{transform-box:fill-box;transform-origin:50% 100%;animation:wobble 2.2s ease-in-out infinite}
+.fig.hummer.talk,.talk .fig.hummer{animation:lachen .3s ease-in-out infinite}
+@keyframes seitwaerts{0%,100%{transform:translateX(0)}50%{transform:translateX(6%)}}
+@keyframes zwicken{0%,70%,100%{transform:rotate(0)}80%{transform:rotate(-10deg)}90%{transform:rotate(6deg)}}
+@keyframes lachen{50%{transform:translateY(-3%) rotate(2deg)}}
+.fly-pig{left:-30vw;animation:across 4s linear forwards}
+.fly-monkey{top:-30vh;animation:swing 4s ease-in-out forwards}
+.fly-monkey::before{content:"";position:absolute;left:50%;bottom:80%;width:4px;height:100vh;background:#7fae8a}
+.fly-skel{bottom:-30vh;animation:popup 4s ease-in-out forwards}
+.fly-pirate,.fly-krebs,.fly-hummer{right:-30vw;animation:slidein 5s ease-in-out forwards}
+
+/* Überraschungen von Paul, Klapper, Bobo, Rosi, Hubert */
+#ov.sea{background:linear-gradient(#bfe3ef 0,#9fd3e0 38%,#f3d9a8 38%,#ecca8e)}
+#ov.jungle{background:linear-gradient(#cfe3c0,#9fc57f 70%,#8d7a5f)}
+#ov.himmel{background:linear-gradient(#bfe3ef,#fbe2cf)}
+#ov.disco{background:#211d38;color:#fff7ee}
+#ov.disco::before{content:"";position:absolute;inset:-50%;background:conic-gradient(#d9675a,#e9b949,#7fae8a,#5f9fb0,#9a84c2,#d9675a);opacity:.25;animation:spin 8s linear infinite;pointer-events:none}
+.mounds.sand .mound{background:radial-gradient(ellipse at 50% 30%,#f7e0ae,#d4b072)}
+.mounds.sand .mound.dug{background:radial-gradient(ellipse at 50% 60%,#8a6b48,#b8935f)}
+#ov>.flypig,#ov>.banana{position:absolute}
+.flypig{position:absolute;width:min(26vw,18vh);height:min(26vw,18vh);animation:across linear forwards}
+.flypig.rev{animation-name:acrossRev}
+.flypig.rev .fig{transform:scaleX(-1)}
+.flypig.hit{animation:zoomUp .7s ease-in forwards}
+.banana{position:absolute;font-size:min(14vw,10vh);line-height:1;transition:transform .5s ease-in,opacity .5s}
+
+/* Freunde auf der Karte und Test-Anzeige */
+.kartenfreund{position:absolute;transform:translate(-50%,-100%);width:clamp(54px,15vw,80px);height:clamp(54px,15vw,80px);z-index:3}
+.kartenfreund.klein{width:clamp(40px,11vw,60px);height:clamp(40px,11vw,60px)}
+.pruefchip{margin:0 auto -4px;position:relative;z-index:2}
+/* ---------- Uhr ---------- */
+.uhr{width:min(70vw,44vh);height:auto;aspect-ratio:1;display:block;touch-action:none}
+.uhr.klein{width:100%}
+.urand{fill:#c9a27a;stroke:#9a7350;stroke-width:1.5}
+.ublatt{fill:#fffaf2}
+.ust{stroke:#cdbfae;stroke-width:.6}.ust5{stroke:#8a7a6a;stroke-width:1.3}
+.uz{font-size:8.5px;font-weight:900;text-anchor:middle;fill:#43384a;font-family:Nunito,sans-serif}
+.uhr.klein .uz{font-size:10px}
+.zeiger-h,.zeiger-m{transform-origin:50px 50px;transform-box:view-box;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.uhr.zieh .zeiger-h,.uhr.zieh .zeiger-m{transition:none}
+.uzh{stroke:#3f5f8f;stroke-width:4.6;stroke-linecap:round}
+.uzm{stroke:#d9675a;stroke-width:2.8;stroke-linecap:round}
+.umitte{fill:#43384a}
+.uhren{display:flex;gap:min(4vw,2.6vh);flex-wrap:wrap;justify-content:center}
+.uhrwahl{width:min(28vw,19vh);padding:8px;background:#fffaf4}
+.zeitwahl{font-size:min(9vw,6vh);font-weight:1000;padding:10px 18px;min-width:min(26vw,17vh);background:#fffaf4}
+.stationen{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;width:100%}
+.station-karte{background:#fffaf4;border-radius:var(--r);box-shadow:var(--shadow);padding:12px;display:flex;flex-direction:column;align-items:center;gap:6px;font-weight:900;font-size:clamp(15px,4.2vw,19px);text-align:center}
+.station-karte .fig{width:clamp(70px,22vw,110px);height:clamp(70px,22vw,110px)}
+.station-karte small{font-weight:800;color:var(--ink2);font-size:.8em}
+/* Sprechen */
+.mikro{position:relative;width:min(30vw,18vh);height:min(30vw,18vh);border-radius:50%;background:linear-gradient(#f2b66f,#e48f4b);color:#fff;font-size:min(14vw,9vh);box-shadow:0 6px 0 #c1713a,0 16px 26px -12px rgba(193,113,58,.7)}
+.mikro .ring{position:absolute;inset:-10px;border-radius:50%;border:5px solid #f2b66f88;transition:transform .08s;pointer-events:none}
+.mikro.live{background:linear-gradient(#ef7d6d,#d9675a);box-shadow:0 6px 0 #a8473b,0 0 0 8px #ef7d6d44}
+.hoerhinweis{margin:0;font-size:clamp(15px,4.2vw,19px);font-weight:900;color:var(--ink2);text-align:center;min-height:1.3em;background:#fffaf4cc;border-radius:12px;padding:4px 12px}
+.bignum.zeigen{color:var(--c)}
